@@ -142,5 +142,14 @@ namespace TractionAir
             SpeedSimulationForm speedSim = new SpeedSimulationForm();
             speedSim.Show();
         }
+
+        private void TractionAirForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'sampleDBDataSet.ECUdata' table. You can move, or remove it, as needed.
+            this.eCUdataTableAdapter.Fill(this.sampleDBDataSet.ECUdata);
+            // TODO: This line of code loads data into the 'sampleDBDataSet.ECUdata' table. You can move, or remove it, as needed.
+            this.eCUdataTableAdapter.Fill(this.sampleDBDataSet.ECUdata);
+
+        }
     }
 }
