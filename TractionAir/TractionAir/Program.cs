@@ -8,6 +8,8 @@ namespace TractionAir
 {
     static class Program
     {
+        public static String Version = "V1.0";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +18,7 @@ namespace TractionAir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new TractionAirForm());
         }
     }
 }
