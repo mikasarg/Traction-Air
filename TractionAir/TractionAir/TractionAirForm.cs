@@ -168,6 +168,28 @@ namespace TractionAir
             //TODO link the owner list form to a database of owners
         }
 
+        /// <summary>
+        /// Views the selected entry in a new window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void viewButton_Click(object sender, EventArgs e)
+        {
+            ViewForm viewEntry = new ViewForm();
+            viewEntry.Show();
+        }
+
+        /// <summary>
+        /// Allows the user to make changes to the entry in a new window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void changeButton_Click(object sender, EventArgs e)
+        {
+            ChangeForm changeEntry = new ChangeForm();
+            changeEntry.Show();
+        }
+
         //TODO queries and saving queries
         //TODO viewing and changing entries
         //TODO notes for entries and a box to view them

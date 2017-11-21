@@ -69,6 +69,8 @@
             // 
             // tableDataGridView
             // 
+            this.tableDataGridView.AllowUserToAddRows = false;
+            this.tableDataGridView.AllowUserToDeleteRows = false;
             this.tableDataGridView.AutoGenerateColumns = false;
             this.tableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -84,6 +86,7 @@
             this.tableDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableDataGridView.Location = new System.Drawing.Point(0, 0);
             this.tableDataGridView.Name = "tableDataGridView";
+            this.tableDataGridView.ReadOnly = true;
             this.tableDataGridView.Size = new System.Drawing.Size(898, 517);
             this.tableDataGridView.TabIndex = 1;
             // 
@@ -92,42 +95,49 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Loaded ON Road";
             this.dataGridViewTextBoxColumn2.HeaderText = "Loaded ON Road";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Loaded OFF Road";
             this.dataGridViewTextBoxColumn3.HeaderText = "Loaded OFF Road";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Unloaded ON Road";
             this.dataGridViewTextBoxColumn4.HeaderText = "Unloaded ON Road";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Max Traction";
             this.dataGridViewTextBoxColumn5.HeaderText = "Max Traction";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "Date Mod";
             this.dataGridViewTextBoxColumn6.HeaderText = "Date Mod";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "Time Mod";
             this.dataGridViewTextBoxColumn7.HeaderText = "Time Mod";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // PressureGroupsForm
             // 
