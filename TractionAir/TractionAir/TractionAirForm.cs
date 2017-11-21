@@ -147,7 +147,6 @@ namespace TractionAir
         {
             // TODO: This line of code loads data into the 'sampleDBDataSet1.ECUdata' table. You can move, or remove it, as needed.
             this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
-
         }
 
         /// <summary>
@@ -161,6 +160,11 @@ namespace TractionAir
             pressureGroups.Show();
         }
 
+        /// <summary>
+        /// Displays a window which has a list of owners in the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ownerListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OwnerListForm ownerList = new OwnerListForm();
@@ -175,8 +179,13 @@ namespace TractionAir
         /// <param name="e"></param>
         private void viewButton_Click(object sender, EventArgs e)
         {
-            ViewForm viewEntry = new ViewForm();
-            viewEntry.Show();
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                ViewForm viewEntry = new ViewForm(row);
+                viewEntry.Show();
+            }
         }
 
         /// <summary>
@@ -186,12 +195,18 @@ namespace TractionAir
         /// <param name="e"></param>
         private void changeButton_Click(object sender, EventArgs e)
         {
-            ChangeForm changeEntry = new ChangeForm();
-            changeEntry.Show();
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                ChangeForm changeEntry = new ChangeForm(row);
+                changeEntry.Show();
+            }
         }
 
         //TODO queries and saving queries
-        //TODO viewing and changing entries
+        //TODO changing entries
+        //TODO dropdown lists in change form
         //TODO notes for entries and a box to view them
         //TODO add buttons for pressure and speed setup
         //TODO progress bar

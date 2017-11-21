@@ -43,7 +43,6 @@
             this.onlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eCxRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pressureGroupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ownerListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eCxSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +66,18 @@
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.eCUdataDataGridView = new System.Windows.Forms.DataGridView();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.viewButton = new System.Windows.Forms.Button();
+            this.ecuDatabase = new System.Windows.Forms.DataGridView();
+            this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.onlineLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
+            this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,28 +97,13 @@
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.onlineLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet = new TractionAir.sampleDBDataSet();
-            this.eCUdataTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.ECUdataTableAdapter();
-            this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
-            this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
-            this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
-            this.viewButton = new System.Windows.Forms.Button();
-            this.changeButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eCUdataDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuDatabase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -214,7 +209,6 @@
             // browseToolStripMenuItem
             // 
             this.browseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eCxRecordsToolStripMenuItem,
             this.pressureGroupsToolStripMenuItem,
             this.ownerListToolStripMenuItem,
             this.eCxSoftwareToolStripMenuItem,
@@ -223,12 +217,6 @@
             this.browseToolStripMenuItem.Name = "browseToolStripMenuItem";
             this.browseToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.browseToolStripMenuItem.Text = "Browse";
-            // 
-            // eCxRecordsToolStripMenuItem
-            // 
-            this.eCxRecordsToolStripMenuItem.Name = "eCxRecordsToolStripMenuItem";
-            this.eCxRecordsToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.eCxRecordsToolStripMenuItem.Text = "ECx Records";
             // 
             // pressureGroupsToolStripMenuItem
             // 
@@ -393,7 +381,9 @@
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
-            this.tabPage1.Controls.Add(this.eCUdataDataGridView);
+            this.tabPage1.Controls.Add(this.changeButton);
+            this.tabPage1.Controls.Add(this.viewButton);
+            this.tabPage1.Controls.Add(this.ecuDatabase);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -402,13 +392,33 @@
             this.tabPage1.Text = "Data";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // eCUdataDataGridView
+            // changeButton
             // 
-            this.eCUdataDataGridView.AllowUserToAddRows = false;
-            this.eCUdataDataGridView.AllowUserToDeleteRows = false;
-            this.eCUdataDataGridView.AutoGenerateColumns = false;
-            this.eCUdataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.eCUdataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.changeButton.Location = new System.Drawing.Point(532, 395);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(75, 23);
+            this.changeButton.TabIndex = 6;
+            this.changeButton.Text = "Change";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
+            // viewButton
+            // 
+            this.viewButton.Location = new System.Drawing.Point(441, 395);
+            this.viewButton.Name = "viewButton";
+            this.viewButton.Size = new System.Drawing.Size(75, 23);
+            this.viewButton.TabIndex = 5;
+            this.viewButton.Text = "View";
+            this.viewButton.UseVisualStyleBackColor = true;
+            this.viewButton.Click += new System.EventHandler(this.viewButton_Click);
+            // 
+            // ecuDatabase
+            // 
+            this.ecuDatabase.AllowUserToAddRows = false;
+            this.ecuDatabase.AllowUserToDeleteRows = false;
+            this.ecuDatabase.AutoGenerateColumns = false;
+            this.ecuDatabase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ecuDatabase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -428,12 +438,75 @@
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
             this.dataGridViewTextBoxColumn19});
-            this.eCUdataDataGridView.DataSource = this.eCUdataBindingSource1;
-            this.eCUdataDataGridView.Location = new System.Drawing.Point(3, 0);
-            this.eCUdataDataGridView.Name = "eCUdataDataGridView";
-            this.eCUdataDataGridView.ReadOnly = true;
-            this.eCUdataDataGridView.Size = new System.Drawing.Size(1020, 421);
-            this.eCUdataDataGridView.TabIndex = 0;
+            this.ecuDatabase.DataSource = this.eCUdataBindingSource1;
+            this.ecuDatabase.Location = new System.Drawing.Point(3, 0);
+            this.ecuDatabase.Name = "ecuDatabase";
+            this.ecuDatabase.ReadOnly = true;
+            this.ecuDatabase.Size = new System.Drawing.Size(1020, 389);
+            this.ecuDatabase.TabIndex = 0;
+            // 
+            // eCUdataBindingSource1
+            // 
+            this.eCUdataBindingSource1.DataMember = "ECUdata";
+            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1;
+            // 
+            // sampleDBDataSet1
+            // 
+            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1026, 424);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Setup";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressBar1.Location = new System.Drawing.Point(4, 481);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 2;
+            // 
+            // onlineLabel
+            // 
+            this.onlineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.onlineLabel.AutoSize = true;
+            this.onlineLabel.Location = new System.Drawing.Point(110, 487);
+            this.onlineLabel.Name = "onlineLabel";
+            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
+            this.onlineLabel.TabIndex = 3;
+            this.onlineLabel.Text = "Offline ...";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(969, 487);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "COM Port: 3";
+            // 
+            // eCUdataBindingSource
+            // 
+            this.eCUdataBindingSource.DataMember = "ECUdata";
+            // 
+            // eCUdataTableAdapter1
+            // 
+            this.eCUdataTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.ECUdataTableAdapter = this.eCUdataTableAdapter1;
+            this.tableAdapterManager1.UpdateOrder = TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -567,113 +640,13 @@
             this.dataGridViewTextBoxColumn19.HeaderText = "Notes";
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
             this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // eCUdataBindingSource1
-            // 
-            this.eCUdataBindingSource1.DataMember = "ECUdata";
-            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1;
-            // 
-            // sampleDBDataSet1
-            // 
-            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
-            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1026, 424);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Setup";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressBar1.Location = new System.Drawing.Point(4, 481);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.TabIndex = 2;
-            // 
-            // onlineLabel
-            // 
-            this.onlineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.onlineLabel.AutoSize = true;
-            this.onlineLabel.Location = new System.Drawing.Point(110, 487);
-            this.onlineLabel.Name = "onlineLabel";
-            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
-            this.onlineLabel.TabIndex = 3;
-            this.onlineLabel.Text = "Offline ...";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(969, 487);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "COM Port: 3";
-            // 
-            // eCUdataBindingSource
-            // 
-            this.eCUdataBindingSource.DataMember = "ECUdata";
-            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet;
-            // 
-            // sampleDBDataSet
-            // 
-            this.sampleDBDataSet.DataSetName = "sampleDBDataSet";
-            this.sampleDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // eCUdataTableAdapter
-            // 
-            this.eCUdataTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ECUdataTableAdapter = this.eCUdataTableAdapter;
-            this.tableAdapterManager.UpdateOrder = TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // eCUdataTableAdapter1
-            // 
-            this.eCUdataTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.ECUdataTableAdapter = this.eCUdataTableAdapter1;
-            this.tableAdapterManager1.UpdateOrder = TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // viewButton
-            // 
-            this.viewButton.Location = new System.Drawing.Point(466, 481);
-            this.viewButton.Name = "viewButton";
-            this.viewButton.Size = new System.Drawing.Size(75, 23);
-            this.viewButton.TabIndex = 5;
-            this.viewButton.Text = "View";
-            this.viewButton.UseVisualStyleBackColor = true;
-            this.viewButton.Click += new System.EventHandler(this.viewButton_Click);
-            // 
-            // changeButton
-            // 
-            this.changeButton.Location = new System.Drawing.Point(557, 481);
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(75, 23);
-            this.changeButton.TabIndex = 6;
-            this.changeButton.Text = "Change";
-            this.changeButton.UseVisualStyleBackColor = true;
-            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            this.dataGridViewTextBoxColumn19.Visible = false;
             // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 509);
-            this.Controls.Add(this.changeButton);
-            this.Controls.Add(this.viewButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.onlineLabel);
             this.Controls.Add(this.progressBar1);
@@ -689,11 +662,10 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.eCUdataDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuDatabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -711,7 +683,6 @@
         private System.Windows.Forms.ToolStripMenuItem onlineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offlineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem browseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eCxRecordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pressureGroupsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ownerListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eCxSoftwareToolStripMenuItem;
@@ -742,15 +713,14 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label onlineLabel;
         private System.Windows.Forms.Label label2;
-        private sampleDBDataSet sampleDBDataSet;
         private System.Windows.Forms.BindingSource eCUdataBindingSource;
-        private sampleDBDataSetTableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
-        private sampleDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private sampleDBDataSet1 sampleDBDataSet1;
         private System.Windows.Forms.BindingSource eCUdataBindingSource1;
         private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter1;
         private sampleDBDataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.DataGridView eCUdataDataGridView;
+        private System.Windows.Forms.DataGridView ecuDatabase;
+        private System.Windows.Forms.Button viewButton;
+        private System.Windows.Forms.Button changeButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -770,8 +740,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.Button viewButton;
-        private System.Windows.Forms.Button changeButton;
     }
 }
 

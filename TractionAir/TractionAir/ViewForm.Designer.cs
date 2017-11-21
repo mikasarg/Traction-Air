@@ -38,23 +38,23 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.buildDateTextbox = new System.Windows.Forms.TextBox();
+            this.serialNumberTextbox = new System.Windows.Forms.TextBox();
+            this.vehicleRefTextbox = new System.Windows.Forms.TextBox();
+            this.pressureCellTextbox = new System.Windows.Forms.TextBox();
+            this.pt1SerialTextbox = new System.Windows.Forms.TextBox();
+            this.pt2SerialTextbox = new System.Windows.Forms.TextBox();
+            this.descriptionTextbox = new System.Windows.Forms.TextBox();
+            this.boardNumberTextbox = new System.Windows.Forms.TextBox();
+            this.installDateTextbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.programVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.customerComboBox = new System.Windows.Forms.ComboBox();
+            this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -146,14 +146,14 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "Notes";
             // 
-            // richTextBox1
+            // notesRichTextbox
             // 
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 341);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(474, 116);
-            this.richTextBox1.TabIndex = 12;
-            this.richTextBox1.Text = "";
+            this.notesRichTextbox.Enabled = false;
+            this.notesRichTextbox.Location = new System.Drawing.Point(12, 341);
+            this.notesRichTextbox.Name = "notesRichTextbox";
+            this.notesRichTextbox.Size = new System.Drawing.Size(474, 116);
+            this.notesRichTextbox.TabIndex = 12;
+            this.notesRichTextbox.Text = "";
             // 
             // label13
             // 
@@ -185,77 +185,77 @@
             this.label15.TabIndex = 15;
             this.label15.Text = "PT2 Serial";
             // 
-            // textBox1
+            // buildDateTextbox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(103, 139);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 16;
+            this.buildDateTextbox.Enabled = false;
+            this.buildDateTextbox.Location = new System.Drawing.Point(103, 139);
+            this.buildDateTextbox.Name = "buildDateTextbox";
+            this.buildDateTextbox.Size = new System.Drawing.Size(160, 20);
+            this.buildDateTextbox.TabIndex = 16;
             // 
-            // textBox2
+            // serialNumberTextbox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(103, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 17;
+            this.serialNumberTextbox.Enabled = false;
+            this.serialNumberTextbox.Location = new System.Drawing.Point(103, 33);
+            this.serialNumberTextbox.Name = "serialNumberTextbox";
+            this.serialNumberTextbox.Size = new System.Drawing.Size(83, 20);
+            this.serialNumberTextbox.TabIndex = 17;
             // 
-            // textBox3
+            // vehicleRefTextbox
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(103, 192);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 18;
+            this.vehicleRefTextbox.Enabled = false;
+            this.vehicleRefTextbox.Location = new System.Drawing.Point(103, 192);
+            this.vehicleRefTextbox.Name = "vehicleRefTextbox";
+            this.vehicleRefTextbox.Size = new System.Drawing.Size(160, 20);
+            this.vehicleRefTextbox.TabIndex = 18;
             // 
-            // textBox4
+            // pressureCellTextbox
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(103, 218);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 19;
+            this.pressureCellTextbox.Enabled = false;
+            this.pressureCellTextbox.Location = new System.Drawing.Point(103, 218);
+            this.pressureCellTextbox.Name = "pressureCellTextbox";
+            this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
+            this.pressureCellTextbox.TabIndex = 19;
             // 
-            // textBox5
+            // pt1SerialTextbox
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(103, 243);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 20;
+            this.pt1SerialTextbox.Enabled = false;
+            this.pt1SerialTextbox.Location = new System.Drawing.Point(103, 243);
+            this.pt1SerialTextbox.Name = "pt1SerialTextbox";
+            this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
+            this.pt1SerialTextbox.TabIndex = 20;
             // 
-            // textBox6
+            // pt2SerialTextbox
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(103, 266);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 21;
+            this.pt2SerialTextbox.Enabled = false;
+            this.pt2SerialTextbox.Location = new System.Drawing.Point(103, 266);
+            this.pt2SerialTextbox.Name = "pt2SerialTextbox";
+            this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
+            this.pt2SerialTextbox.TabIndex = 21;
             // 
-            // textBox7
+            // descriptionTextbox
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(103, 292);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 22;
+            this.descriptionTextbox.Enabled = false;
+            this.descriptionTextbox.Location = new System.Drawing.Point(103, 292);
+            this.descriptionTextbox.Name = "descriptionTextbox";
+            this.descriptionTextbox.Size = new System.Drawing.Size(160, 20);
+            this.descriptionTextbox.TabIndex = 22;
             // 
-            // textBox8
+            // boardNumberTextbox
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(103, 7);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 23;
+            this.boardNumberTextbox.Enabled = false;
+            this.boardNumberTextbox.Location = new System.Drawing.Point(103, 7);
+            this.boardNumberTextbox.Name = "boardNumberTextbox";
+            this.boardNumberTextbox.Size = new System.Drawing.Size(55, 20);
+            this.boardNumberTextbox.TabIndex = 23;
             // 
-            // textBox9
+            // installDateTextbox
             // 
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(103, 164);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 25;
+            this.installDateTextbox.Enabled = false;
+            this.installDateTextbox.Location = new System.Drawing.Point(103, 164);
+            this.installDateTextbox.Name = "installDateTextbox";
+            this.installDateTextbox.Size = new System.Drawing.Size(160, 20);
+            this.installDateTextbox.TabIndex = 25;
             // 
             // label9
             // 
@@ -267,55 +267,55 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Install Date";
             // 
-            // comboBox1
+            // programVersionComboBox
             // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(103, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(52, 21);
-            this.comboBox1.TabIndex = 26;
+            this.programVersionComboBox.Enabled = false;
+            this.programVersionComboBox.FormattingEnabled = true;
+            this.programVersionComboBox.Location = new System.Drawing.Point(103, 59);
+            this.programVersionComboBox.Name = "programVersionComboBox";
+            this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
+            this.programVersionComboBox.TabIndex = 26;
             // 
-            // comboBox2
+            // customerComboBox
             // 
-            this.comboBox2.Enabled = false;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(103, 113);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 27;
+            this.customerComboBox.Enabled = false;
+            this.customerComboBox.FormattingEnabled = true;
+            this.customerComboBox.Location = new System.Drawing.Point(103, 113);
+            this.customerComboBox.Name = "customerComboBox";
+            this.customerComboBox.Size = new System.Drawing.Size(181, 21);
+            this.customerComboBox.TabIndex = 27;
             // 
-            // comboBox3
+            // pressureGroupComboBox
             // 
-            this.comboBox3.Enabled = false;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(103, 86);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 28;
+            this.pressureGroupComboBox.Enabled = false;
+            this.pressureGroupComboBox.FormattingEnabled = true;
+            this.pressureGroupComboBox.Location = new System.Drawing.Point(103, 86);
+            this.pressureGroupComboBox.Name = "pressureGroupComboBox";
+            this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
+            this.pressureGroupComboBox.TabIndex = 28;
             // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 470);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.pressureGroupComboBox);
+            this.Controls.Add(this.customerComboBox);
+            this.Controls.Add(this.programVersionComboBox);
+            this.Controls.Add(this.installDateTextbox);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.boardNumberTextbox);
+            this.Controls.Add(this.descriptionTextbox);
+            this.Controls.Add(this.pt2SerialTextbox);
+            this.Controls.Add(this.pt1SerialTextbox);
+            this.Controls.Add(this.pressureCellTextbox);
+            this.Controls.Add(this.vehicleRefTextbox);
+            this.Controls.Add(this.serialNumberTextbox);
+            this.Controls.Add(this.buildDateTextbox);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.notesRichTextbox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -344,22 +344,22 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox notesRichTextbox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox buildDateTextbox;
+        private System.Windows.Forms.TextBox serialNumberTextbox;
+        private System.Windows.Forms.TextBox vehicleRefTextbox;
+        private System.Windows.Forms.TextBox pressureCellTextbox;
+        private System.Windows.Forms.TextBox pt1SerialTextbox;
+        private System.Windows.Forms.TextBox pt2SerialTextbox;
+        private System.Windows.Forms.TextBox descriptionTextbox;
+        private System.Windows.Forms.TextBox boardNumberTextbox;
+        private System.Windows.Forms.TextBox installDateTextbox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox programVersionComboBox;
+        private System.Windows.Forms.ComboBox customerComboBox;
+        private System.Windows.Forms.ComboBox pressureGroupComboBox;
     }
 }
