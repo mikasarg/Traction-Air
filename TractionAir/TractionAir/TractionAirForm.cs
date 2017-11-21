@@ -143,9 +143,13 @@ namespace TractionAir
             speedSim.Show();
         }
 
+        /// <summary>
+        /// Loads the data into the sampleDB table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TractionAirForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'sampleDBDataSet1.ECUdata' table. You can move, or remove it, as needed.
             this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
         }
 
@@ -205,11 +209,10 @@ namespace TractionAir
         }
 
         //TODO queries and saving queries
-        //TODO changing entries
-        //TODO dropdown lists in change form
+        //TODO fix dates in view/change windows
         //TODO notes for entries and a box to view them
         //TODO add buttons for pressure and speed setup
-        //TODO progress bar
+        //TODO progress bar and text next to it
         //TODO COM Port number
     }
 }

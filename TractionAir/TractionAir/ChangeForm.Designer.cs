@@ -214,6 +214,7 @@
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 69;
+            this.pressureGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedIndexChanged);
             // 
             // customerComboBox
             // 
@@ -222,6 +223,7 @@
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 68;
+            this.customerComboBox.SelectedIndexChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
             // 
             // programVersionComboBox
             // 
@@ -230,6 +232,7 @@
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
             this.programVersionComboBox.TabIndex = 67;
+            this.programVersionComboBox.SelectedIndexChanged += new System.EventHandler(this.programVersionComboBox_SelectedIndexChanged);
             // 
             // installDateTextbox
             // 
@@ -237,6 +240,7 @@
             this.installDateTextbox.Name = "installDateTextbox";
             this.installDateTextbox.Size = new System.Drawing.Size(160, 20);
             this.installDateTextbox.TabIndex = 66;
+            this.installDateTextbox.TextChanged += new System.EventHandler(this.installDateTextbox_TextChanged);
             // 
             // boardNumberTextbox
             // 
@@ -244,6 +248,7 @@
             this.boardNumberTextbox.Name = "boardNumberTextbox";
             this.boardNumberTextbox.Size = new System.Drawing.Size(55, 20);
             this.boardNumberTextbox.TabIndex = 65;
+            this.boardNumberTextbox.TextChanged += new System.EventHandler(this.boardNumberTextbox_TextChanged);
             // 
             // descriptionTextbox
             // 
@@ -251,6 +256,7 @@
             this.descriptionTextbox.Name = "descriptionTextbox";
             this.descriptionTextbox.Size = new System.Drawing.Size(160, 20);
             this.descriptionTextbox.TabIndex = 64;
+            this.descriptionTextbox.TextChanged += new System.EventHandler(this.descriptionTextbox_TextChanged);
             // 
             // pt2SerialTextbox
             // 
@@ -258,6 +264,7 @@
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
             this.pt2SerialTextbox.TabIndex = 63;
+            this.pt2SerialTextbox.TextChanged += new System.EventHandler(this.pt2SerialTextbox_TextChanged);
             // 
             // pt1SerialTextbox
             // 
@@ -265,6 +272,7 @@
             this.pt1SerialTextbox.Name = "pt1SerialTextbox";
             this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
             this.pt1SerialTextbox.TabIndex = 62;
+            this.pt1SerialTextbox.TextChanged += new System.EventHandler(this.pt1SerialTextbox_TextChanged);
             // 
             // pressureCellTextbox
             // 
@@ -272,6 +280,7 @@
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
             this.pressureCellTextbox.TabIndex = 61;
+            this.pressureCellTextbox.TextChanged += new System.EventHandler(this.pressureCellTextbox_TextChanged);
             // 
             // vehicleRefTextbox
             // 
@@ -279,6 +288,7 @@
             this.vehicleRefTextbox.Name = "vehicleRefTextbox";
             this.vehicleRefTextbox.Size = new System.Drawing.Size(160, 20);
             this.vehicleRefTextbox.TabIndex = 60;
+            this.vehicleRefTextbox.TextChanged += new System.EventHandler(this.vehicleRefTextbox_TextChanged);
             // 
             // serialNumberTextbox
             // 
@@ -286,6 +296,7 @@
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.Size = new System.Drawing.Size(83, 20);
             this.serialNumberTextbox.TabIndex = 59;
+            this.serialNumberTextbox.TextChanged += new System.EventHandler(this.serialNumberTextbox_TextChanged);
             // 
             // buildDateTextbox
             // 
@@ -293,6 +304,7 @@
             this.buildDateTextbox.Name = "buildDateTextbox";
             this.buildDateTextbox.Size = new System.Drawing.Size(160, 20);
             this.buildDateTextbox.TabIndex = 58;
+            this.buildDateTextbox.TextChanged += new System.EventHandler(this.buildDateTextbox_TextChanged);
             // 
             // notesRichTextbox
             // 
@@ -301,6 +313,7 @@
             this.notesRichTextbox.Size = new System.Drawing.Size(474, 116);
             this.notesRichTextbox.TabIndex = 57;
             this.notesRichTextbox.Text = "";
+            this.notesRichTextbox.TextChanged += new System.EventHandler(this.notesRichTextbox_TextChanged);
             // 
             // ChangeForm
             // 
