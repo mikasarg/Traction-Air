@@ -33,5 +33,16 @@ namespace TractionAir.Properties {
                 return ((string)(this["sampleDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\pressureGroup" +
+            "s.mdf;Integrated Security=True")]
+        public string pressureGroupsConnectionString {
+            get {
+                return ((string)(this["pressureGroupsConnectionString"]));
+            }
+        }
     }
 }

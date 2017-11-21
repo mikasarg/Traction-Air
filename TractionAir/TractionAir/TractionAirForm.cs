@@ -145,11 +145,34 @@ namespace TractionAir
 
         private void TractionAirForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'sampleDBDataSet.ECUdata' table. You can move, or remove it, as needed.
-            this.eCUdataTableAdapter.Fill(this.sampleDBDataSet.ECUdata);
-            // TODO: This line of code loads data into the 'sampleDBDataSet.ECUdata' table. You can move, or remove it, as needed.
-            this.eCUdataTableAdapter.Fill(this.sampleDBDataSet.ECUdata);
+            // TODO: This line of code loads data into the 'sampleDBDataSet1.ECUdata' table. You can move, or remove it, as needed.
+            this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
 
         }
+
+        /// <summary>
+        /// Shows a window with a database of the pressure groups
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pressureGroupsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PressureGroupsForm pressureGroups = new PressureGroupsForm();
+            pressureGroups.Show();
+        }
+
+        private void ownerListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OwnerListForm ownerList = new OwnerListForm();
+            ownerList.Show();
+            //TODO link the owner list form to a database of owners
+        }
+
+        //TODO queries and saving queries
+        //TODO viewing and changing entries
+        //TODO notes for entries and a box to view them
+        //TODO add buttons for pressure and speed setup
+        //TODO progress bar
+        //TODO COM Port number
     }
 }

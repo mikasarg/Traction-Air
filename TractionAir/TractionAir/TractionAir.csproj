@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -60,10 +60,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OwnerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerListForm.Designer.cs">
+      <DependentUpon>OwnerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pressureGroupsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PressureGroupsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PressureGroupsForm.Designer.cs">
+      <DependentUpon>PressureGroupsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="sampleDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sampleDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="SpeedSimulationForm.cs">
       <SubType>Form</SubType>
@@ -79,6 +101,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="OwnerListForm.resx">
+      <DependentUpon>OwnerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PressureGroupsForm.resx">
+      <DependentUpon>PressureGroupsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpeedSimulationForm.resx">
       <DependentUpon>SpeedSimulationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +122,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="pressureGroupsDataSet.xsc">
+      <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="pressureGroupsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>pressureGroupsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="pressureGroupsDataSet.xss">
+      <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,11 +153,29 @@
     <None Include="sampleDBDataSet.xss">
       <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
     </None>
+    <None Include="sampleDBDataSet1.xsc">
+      <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="sampleDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sampleDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sampleDBDataSet1.xss">
+      <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pressureGroups.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pressureGroups_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>pressureGroups.mdf</DependentUpon>
+    </Content>
     <Content Include="sampleDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

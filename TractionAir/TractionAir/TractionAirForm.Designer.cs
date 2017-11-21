@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TractionAirForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,12 +71,15 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.onlineLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.sampleDBDataSet = new TractionAir.sampleDBDataSet();
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet = new TractionAir.sampleDBDataSet();
             this.eCUdataTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.ECUdataTableAdapter();
             this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
+            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
+            this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
+            this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.eCUdataDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,11 +98,14 @@
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,12 +233,14 @@
             this.pressureGroupsToolStripMenuItem.Name = "pressureGroupsToolStripMenuItem";
             this.pressureGroupsToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.pressureGroupsToolStripMenuItem.Text = "Pressure Groups";
+            this.pressureGroupsToolStripMenuItem.Click += new System.EventHandler(this.pressureGroupsToolStripMenuItem_Click);
             // 
             // ownerListToolStripMenuItem
             // 
             this.ownerListToolStripMenuItem.Name = "ownerListToolStripMenuItem";
             this.ownerListToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.ownerListToolStripMenuItem.Text = "Owner List";
+            this.ownerListToolStripMenuItem.Click += new System.EventHandler(this.ownerListToolStripMenuItem_Click);
             // 
             // eCxSoftwareToolStripMenuItem
             // 
@@ -381,6 +390,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.AutoScroll = true;
             this.tabPage1.Controls.Add(this.eCUdataDataGridView);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -429,15 +439,15 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "COM Port: 3";
             // 
-            // sampleDBDataSet
-            // 
-            this.sampleDBDataSet.DataSetName = "sampleDBDataSet";
-            this.sampleDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // eCUdataBindingSource
             // 
             this.eCUdataBindingSource.DataMember = "ECUdata";
             this.eCUdataBindingSource.DataSource = this.sampleDBDataSet;
+            // 
+            // sampleDBDataSet
+            // 
+            this.sampleDBDataSet.DataSetName = "sampleDBDataSet";
+            this.sampleDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // eCUdataTableAdapter
             // 
@@ -449,16 +459,31 @@
             this.tableAdapterManager.ECUdataTableAdapter = this.eCUdataTableAdapter;
             this.tableAdapterManager.UpdateOrder = TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // sampleDBDataSet1
+            // 
+            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // eCUdataBindingSource1
+            // 
+            this.eCUdataBindingSource1.DataMember = "ECUdata";
+            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1;
+            // 
+            // eCUdataTableAdapter1
+            // 
+            this.eCUdataTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.ECUdataTableAdapter = this.eCUdataTableAdapter1;
+            this.tableAdapterManager1.UpdateOrder = TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // eCUdataDataGridView
             // 
-            this.eCUdataDataGridView.AllowUserToAddRows = false;
-            this.eCUdataDataGridView.AllowUserToDeleteRows = false;
-            this.eCUdataDataGridView.AllowUserToOrderColumns = true;
-            this.eCUdataDataGridView.AllowUserToResizeRows = false;
             this.eCUdataDataGridView.AutoGenerateColumns = false;
             this.eCUdataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.eCUdataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -476,18 +501,13 @@
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18});
-            this.eCUdataDataGridView.DataSource = this.eCUdataBindingSource;
-            this.eCUdataDataGridView.Location = new System.Drawing.Point(0, 3);
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19});
+            this.eCUdataDataGridView.DataSource = this.eCUdataBindingSource1;
+            this.eCUdataDataGridView.Location = new System.Drawing.Point(3, 0);
             this.eCUdataDataGridView.Name = "eCUdataDataGridView";
-            this.eCUdataDataGridView.Size = new System.Drawing.Size(1020, 415);
+            this.eCUdataDataGridView.Size = new System.Drawing.Size(1020, 421);
             this.eCUdataDataGridView.TabIndex = 0;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Error";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Error";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -597,6 +617,12 @@
             this.dataGridViewTextBoxColumn18.HeaderText = "Time Mod";
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Notes";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Notes";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -607,6 +633,7 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TractionAirForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -616,8 +643,10 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -671,8 +700,11 @@
         private System.Windows.Forms.BindingSource eCUdataBindingSource;
         private sampleDBDataSetTableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
         private sampleDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private sampleDBDataSet1 sampleDBDataSet1;
+        private System.Windows.Forms.BindingSource eCUdataBindingSource1;
+        private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter1;
+        private sampleDBDataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.DataGridView eCUdataDataGridView;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -691,6 +723,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
     }
 }
 
