@@ -66,6 +66,12 @@
     <Compile Include="AccessCodeForm.Designer.cs">
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PressureSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PressureSetupForm.Designer.cs">
+      <DependentUpon>PressureSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServerAddressForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PressureGroupsForm.resx">
       <DependentUpon>PressureGroupsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PressureSetupForm.resx">
+      <DependentUpon>PressureSetupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServerAddressForm.resx">
       <DependentUpon>ServerAddressForm.cs</DependentUpon>

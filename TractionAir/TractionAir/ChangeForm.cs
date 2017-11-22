@@ -65,7 +65,6 @@ namespace TractionAir
             if (changedBoxes.Count == 0) //No changes were made, so exit
             {
                 this.Close();
-                return;
             }
 
             previouslyVisited.Clear();
