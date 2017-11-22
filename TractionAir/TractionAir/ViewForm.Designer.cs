@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,6 +56,18 @@
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
             this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
+            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
+            this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
+            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
+            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -148,9 +161,9 @@
             // 
             // notesRichTextbox
             // 
-            this.notesRichTextbox.Enabled = false;
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 341);
             this.notesRichTextbox.Name = "notesRichTextbox";
+            this.notesRichTextbox.ReadOnly = true;
             this.notesRichTextbox.Size = new System.Drawing.Size(474, 116);
             this.notesRichTextbox.TabIndex = 12;
             this.notesRichTextbox.Text = "";
@@ -187,73 +200,73 @@
             // 
             // buildDateTextbox
             // 
-            this.buildDateTextbox.Enabled = false;
             this.buildDateTextbox.Location = new System.Drawing.Point(103, 139);
             this.buildDateTextbox.Name = "buildDateTextbox";
+            this.buildDateTextbox.ReadOnly = true;
             this.buildDateTextbox.Size = new System.Drawing.Size(160, 20);
             this.buildDateTextbox.TabIndex = 16;
             // 
             // serialNumberTextbox
             // 
-            this.serialNumberTextbox.Enabled = false;
             this.serialNumberTextbox.Location = new System.Drawing.Point(103, 33);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
+            this.serialNumberTextbox.ReadOnly = true;
             this.serialNumberTextbox.Size = new System.Drawing.Size(83, 20);
             this.serialNumberTextbox.TabIndex = 17;
             // 
             // vehicleRefTextbox
             // 
-            this.vehicleRefTextbox.Enabled = false;
             this.vehicleRefTextbox.Location = new System.Drawing.Point(103, 192);
             this.vehicleRefTextbox.Name = "vehicleRefTextbox";
+            this.vehicleRefTextbox.ReadOnly = true;
             this.vehicleRefTextbox.Size = new System.Drawing.Size(160, 20);
             this.vehicleRefTextbox.TabIndex = 18;
             // 
             // pressureCellTextbox
             // 
-            this.pressureCellTextbox.Enabled = false;
             this.pressureCellTextbox.Location = new System.Drawing.Point(103, 218);
             this.pressureCellTextbox.Name = "pressureCellTextbox";
+            this.pressureCellTextbox.ReadOnly = true;
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
             this.pressureCellTextbox.TabIndex = 19;
             // 
             // pt1SerialTextbox
             // 
-            this.pt1SerialTextbox.Enabled = false;
             this.pt1SerialTextbox.Location = new System.Drawing.Point(103, 243);
             this.pt1SerialTextbox.Name = "pt1SerialTextbox";
+            this.pt1SerialTextbox.ReadOnly = true;
             this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
             this.pt1SerialTextbox.TabIndex = 20;
             // 
             // pt2SerialTextbox
             // 
-            this.pt2SerialTextbox.Enabled = false;
             this.pt2SerialTextbox.Location = new System.Drawing.Point(103, 266);
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
+            this.pt2SerialTextbox.ReadOnly = true;
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
             this.pt2SerialTextbox.TabIndex = 21;
             // 
             // descriptionTextbox
             // 
-            this.descriptionTextbox.Enabled = false;
             this.descriptionTextbox.Location = new System.Drawing.Point(103, 292);
             this.descriptionTextbox.Name = "descriptionTextbox";
+            this.descriptionTextbox.ReadOnly = true;
             this.descriptionTextbox.Size = new System.Drawing.Size(160, 20);
             this.descriptionTextbox.TabIndex = 22;
             // 
             // boardNumberTextbox
             // 
-            this.boardNumberTextbox.Enabled = false;
             this.boardNumberTextbox.Location = new System.Drawing.Point(103, 7);
             this.boardNumberTextbox.Name = "boardNumberTextbox";
+            this.boardNumberTextbox.ReadOnly = true;
             this.boardNumberTextbox.Size = new System.Drawing.Size(55, 20);
             this.boardNumberTextbox.TabIndex = 23;
             // 
             // installDateTextbox
             // 
-            this.installDateTextbox.Enabled = false;
             this.installDateTextbox.Location = new System.Drawing.Point(103, 164);
             this.installDateTextbox.Name = "installDateTextbox";
+            this.installDateTextbox.ReadOnly = true;
             this.installDateTextbox.Size = new System.Drawing.Size(160, 20);
             this.installDateTextbox.TabIndex = 25;
             // 
@@ -269,30 +282,72 @@
             // 
             // programVersionComboBox
             // 
-            this.programVersionComboBox.Enabled = false;
+            this.programVersionComboBox.DataSource = this.eCUdataBindingSource;
+            this.programVersionComboBox.DisplayMember = "Version";
+            this.programVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.programVersionComboBox.FormattingEnabled = true;
             this.programVersionComboBox.Location = new System.Drawing.Point(103, 59);
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
             this.programVersionComboBox.TabIndex = 26;
+            this.programVersionComboBox.ValueMember = "Version";
             // 
             // customerComboBox
             // 
-            this.customerComboBox.Enabled = false;
+            this.customerComboBox.DataSource = this.eCUdataBindingSource;
+            this.customerComboBox.DisplayMember = "Owner";
+            this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerComboBox.FormattingEnabled = true;
             this.customerComboBox.Location = new System.Drawing.Point(103, 113);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 27;
+            this.customerComboBox.ValueMember = "Owner";
             // 
             // pressureGroupComboBox
             // 
-            this.pressureGroupComboBox.Enabled = false;
+            this.pressureGroupComboBox.DataSource = this.tableBindingSource;
+            this.pressureGroupComboBox.DisplayMember = "Description";
+            this.pressureGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pressureGroupComboBox.FormattingEnabled = true;
             this.pressureGroupComboBox.Location = new System.Drawing.Point(103, 86);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 28;
+            this.pressureGroupComboBox.ValueMember = "Description";
+            // 
+            // sampleDBDataSet1
+            // 
+            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sampleDBDataSet1BindingSource
+            // 
+            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
+            this.sampleDBDataSet1BindingSource.Position = 0;
+            // 
+            // eCUdataBindingSource
+            // 
+            this.eCUdataBindingSource.DataMember = "ECUdata";
+            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
+            // 
+            // eCUdataTableAdapter
+            // 
+            this.eCUdataTableAdapter.ClearBeforeFill = true;
+            // 
+            // pressureGroupsDataSet
+            // 
+            this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
+            this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableBindingSource
+            // 
+            this.tableBindingSource.DataMember = "Table";
+            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
+            // 
+            // tableTableAdapter
+            // 
+            this.tableTableAdapter.ClearBeforeFill = true;
             // 
             // ViewForm
             // 
@@ -327,7 +382,14 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View";
+            this.Load += new System.EventHandler(this.ViewForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,5 +423,12 @@
         private System.Windows.Forms.ComboBox programVersionComboBox;
         private System.Windows.Forms.ComboBox customerComboBox;
         private System.Windows.Forms.ComboBox pressureGroupComboBox;
+        private System.Windows.Forms.BindingSource sampleDBDataSet1BindingSource;
+        private sampleDBDataSet1 sampleDBDataSet1;
+        private System.Windows.Forms.BindingSource eCUdataBindingSource;
+        private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
+        private pressureGroupsDataSet pressureGroupsDataSet;
+        private System.Windows.Forms.BindingSource tableBindingSource;
+        private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
     }
 }

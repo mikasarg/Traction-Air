@@ -12,17 +12,32 @@ namespace TractionAir
 {
     public partial class ViewForm : Form
     {
+        DataGridViewRow row;
 
         public ViewForm(DataGridViewRow row)
         {
-            InitializeComponent();
+            this.row = row;
 
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Loads the databases and fills the boxes with their respective values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ViewForm_Load(object sender, EventArgs e)
+        {
+            this.tableTableAdapter.Fill(this.pressureGroupsDataSet.Table);
+            this.eCUdataTableAdapter.Fill(this.sampleDBDataSet1.ECUdata);
+
+            //Sets the text for the boxes to be their equivalents in the selected entry
             boardNumberTextbox.Text = row.Cells[3].Value.ToString();
             serialNumberTextbox.Text = row.Cells[1].Value.ToString();
-            programVersionComboBox.Text = row.Cells[4].Value.ToString();
-            pressureGroupComboBox.Text = row.Cells[2].Value.ToString();
-            customerComboBox.Text = row.Cells[5].Value.ToString();
-            buildDateTextbox.Text = row.Cells[16].Value.ToString();
+            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(row.Cells[4].Value.ToString());
+            pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(row.Cells[2].Value.ToString());
+            customerComboBox.SelectedIndex = customerComboBox.FindStringExact(row.Cells[5].Value.ToString());
+            buildDateTextbox.Text = row.Cells[0].Value.ToString();
             installDateTextbox.Text = row.Cells[16].Value.ToString();
             vehicleRefTextbox.Text = row.Cells[7].Value.ToString();
             pressureCellTextbox.Text = row.Cells[12].Value.ToString();

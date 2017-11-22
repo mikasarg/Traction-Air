@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(770, 398);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OwnerListForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Browse Owners";
             this.ResumeLayout(false);
 
