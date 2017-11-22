@@ -275,7 +275,7 @@
             this.boardNumberTextbox.Location = new System.Drawing.Point(103, 12);
             this.boardNumberTextbox.Name = "boardNumberTextbox";
             this.boardNumberTextbox.ReadOnly = true;
-            this.boardNumberTextbox.Size = new System.Drawing.Size(55, 20);
+            this.boardNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.boardNumberTextbox.TabIndex = 65;
             // 
             // descriptionTextbox
@@ -322,7 +322,7 @@
             // 
             this.serialNumberTextbox.Location = new System.Drawing.Point(103, 38);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
-            this.serialNumberTextbox.Size = new System.Drawing.Size(83, 20);
+            this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.serialNumberTextbox.TabIndex = 59;
             this.serialNumberTextbox.TextChanged += new System.EventHandler(this.serialNumberTextbox_TextChanged);
             // 

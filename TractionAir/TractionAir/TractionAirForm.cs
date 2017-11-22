@@ -151,6 +151,13 @@ namespace TractionAir
         private void TractionAirForm_Load(object sender, EventArgs e)
         {
             this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
+
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                notesRichTextbox.Text = row.Cells[18].Value.ToString();
+            }
         }
 
         /// <summary>
@@ -208,11 +215,68 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Allows a user to enter a function access code
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void accessCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccessCodeForm accessCode = new AccessCodeForm();
+            accessCode.Show();
+        }
+
+        /// <summary>
+        /// Allows a user to enter an IP address
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void enterServerAddressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServerAddressForm serverAddress = new ServerAddressForm();
+            serverAddress.Show();
+        }
+
+        /// <summary>
+        /// Displays a help window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO create a help window and have content in it
+        }
+
+        private void pressureSetupButton_Click(object sender, EventArgs e)
+        {
+            //TODO pressure setup
+        }
+
+        private void speedSetupButton_Click(object sender, EventArgs e)
+        {
+            //TODO speed setup
+        }
+
+        /// <summary>
+        /// Updates the notes textbox to reflect changes in selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ecuDatabase_SelectionChanged(object sender, EventArgs e)
+        {
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                notesRichTextbox.Text = row.Cells[18].Value.ToString();
+            }
+        }
+
+        //TODO be able to insert, change and delete pressure group entries
         //TODO queries and saving queries
-        //TODO fix dates in view/change windows
-        //TODO notes for entries and a box to view them
-        //TODO add buttons for pressure and speed setup
         //TODO progress bar and text next to it
         //TODO COM Port number
+        //TODO all menu functions
+        //TODO setup tab
     }
 }

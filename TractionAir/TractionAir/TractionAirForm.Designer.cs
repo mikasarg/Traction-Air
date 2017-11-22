@@ -51,33 +51,20 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accessCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enterServerAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.networkConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speedSimulateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readErrorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eCxReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.browseTractionAirECUDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.speedSetupButton = new System.Windows.Forms.Button();
+            this.pressureSetupButton = new System.Windows.Forms.Button();
+            this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.changeButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
             this.ecuDatabase = new System.Windows.Forms.DataGridView();
-            this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.onlineLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
-            this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +84,15 @@
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.onlineLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
+            this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
+            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -114,7 +110,6 @@
             this.modeToolStripMenuItem,
             this.browseToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.windowToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -255,7 +250,6 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accessCodeToolStripMenuItem,
             this.enterServerAddressToolStripMenuItem,
-            this.networkConnectionToolStripMenuItem,
             this.speedSimulateToolStripMenuItem,
             this.readErrorDataToolStripMenuItem,
             this.eCxReportToolStripMenuItem});
@@ -266,82 +260,35 @@
             // accessCodeToolStripMenuItem
             // 
             this.accessCodeToolStripMenuItem.Name = "accessCodeToolStripMenuItem";
-            this.accessCodeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.accessCodeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.accessCodeToolStripMenuItem.Text = "Access Code";
+            this.accessCodeToolStripMenuItem.Click += new System.EventHandler(this.accessCodeToolStripMenuItem_Click);
             // 
             // enterServerAddressToolStripMenuItem
             // 
             this.enterServerAddressToolStripMenuItem.Name = "enterServerAddressToolStripMenuItem";
-            this.enterServerAddressToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.enterServerAddressToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.enterServerAddressToolStripMenuItem.Text = "Enter Server Address";
-            // 
-            // networkConnectionToolStripMenuItem
-            // 
-            this.networkConnectionToolStripMenuItem.Name = "networkConnectionToolStripMenuItem";
-            this.networkConnectionToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.networkConnectionToolStripMenuItem.Text = "Network Connection";
+            this.enterServerAddressToolStripMenuItem.Click += new System.EventHandler(this.enterServerAddressToolStripMenuItem_Click);
             // 
             // speedSimulateToolStripMenuItem
             // 
             this.speedSimulateToolStripMenuItem.Name = "speedSimulateToolStripMenuItem";
-            this.speedSimulateToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.speedSimulateToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.speedSimulateToolStripMenuItem.Text = "Speed Simulation";
             this.speedSimulateToolStripMenuItem.Click += new System.EventHandler(this.speedSimulationToolStripMenuItem_Click);
             // 
             // readErrorDataToolStripMenuItem
             // 
             this.readErrorDataToolStripMenuItem.Name = "readErrorDataToolStripMenuItem";
-            this.readErrorDataToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.readErrorDataToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.readErrorDataToolStripMenuItem.Text = "Read Error Data";
             // 
             // eCxReportToolStripMenuItem
             // 
             this.eCxReportToolStripMenuItem.Name = "eCxReportToolStripMenuItem";
-            this.eCxReportToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.eCxReportToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.eCxReportToolStripMenuItem.Text = "ECx Report";
-            // 
-            // windowToolStripMenuItem
-            // 
-            this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tileToolStripMenuItem,
-            this.cascadeToolStripMenuItem,
-            this.arrangeIconsToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.browseTractionAirECUDataToolStripMenuItem});
-            this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
-            this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.windowToolStripMenuItem.Text = "Window";
-            // 
-            // tileToolStripMenuItem
-            // 
-            this.tileToolStripMenuItem.Name = "tileToolStripMenuItem";
-            this.tileToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.tileToolStripMenuItem.Text = "Tile";
-            // 
-            // cascadeToolStripMenuItem
-            // 
-            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.cascadeToolStripMenuItem.Text = "Cascade";
-            // 
-            // arrangeIconsToolStripMenuItem
-            // 
-            this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.arrangeIconsToolStripMenuItem.Text = "Arrange Icons";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(231, 6);
-            // 
-            // browseTractionAirECUDataToolStripMenuItem
-            // 
-            this.browseTractionAirECUDataToolStripMenuItem.Checked = true;
-            this.browseTractionAirECUDataToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.browseTractionAirECUDataToolStripMenuItem.Name = "browseTractionAirECUDataToolStripMenuItem";
-            this.browseTractionAirECUDataToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.browseTractionAirECUDataToolStripMenuItem.Text = "1 Browse TractionAir ECU Data";
             // 
             // helpToolStripMenuItem
             // 
@@ -357,6 +304,7 @@
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.contentsToolStripMenuItem.Text = "Contents";
+            this.contentsToolStripMenuItem.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
             // versionToolStripMenuItem
             // 
@@ -375,26 +323,58 @@
             this.tabControl1.Location = new System.Drawing.Point(4, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1034, 450);
+            this.tabControl1.Size = new System.Drawing.Size(1034, 551);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.Controls.Add(this.speedSetupButton);
+            this.tabPage1.Controls.Add(this.pressureSetupButton);
+            this.tabPage1.Controls.Add(this.notesRichTextbox);
             this.tabPage1.Controls.Add(this.changeButton);
             this.tabPage1.Controls.Add(this.viewButton);
             this.tabPage1.Controls.Add(this.ecuDatabase);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1026, 424);
+            this.tabPage1.Size = new System.Drawing.Size(1026, 525);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Data";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // speedSetupButton
+            // 
+            this.speedSetupButton.Location = new System.Drawing.Point(899, 464);
+            this.speedSetupButton.Name = "speedSetupButton";
+            this.speedSetupButton.Size = new System.Drawing.Size(92, 23);
+            this.speedSetupButton.TabIndex = 9;
+            this.speedSetupButton.Text = "Speed Setup";
+            this.speedSetupButton.UseVisualStyleBackColor = true;
+            this.speedSetupButton.Click += new System.EventHandler(this.speedSetupButton_Click);
+            // 
+            // pressureSetupButton
+            // 
+            this.pressureSetupButton.Location = new System.Drawing.Point(899, 424);
+            this.pressureSetupButton.Name = "pressureSetupButton";
+            this.pressureSetupButton.Size = new System.Drawing.Size(92, 23);
+            this.pressureSetupButton.TabIndex = 8;
+            this.pressureSetupButton.Text = "Pressure Setup";
+            this.pressureSetupButton.UseVisualStyleBackColor = true;
+            this.pressureSetupButton.Click += new System.EventHandler(this.pressureSetupButton_Click);
+            // 
+            // notesRichTextbox
+            // 
+            this.notesRichTextbox.Location = new System.Drawing.Point(7, 396);
+            this.notesRichTextbox.Name = "notesRichTextbox";
+            this.notesRichTextbox.ReadOnly = true;
+            this.notesRichTextbox.Size = new System.Drawing.Size(412, 123);
+            this.notesRichTextbox.TabIndex = 7;
+            this.notesRichTextbox.Text = "";
+            // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(532, 395);
+            this.changeButton.Location = new System.Drawing.Point(444, 464);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(75, 23);
             this.changeButton.TabIndex = 6;
@@ -404,7 +384,7 @@
             // 
             // viewButton
             // 
-            this.viewButton.Location = new System.Drawing.Point(441, 395);
+            this.viewButton.Location = new System.Drawing.Point(444, 424);
             this.viewButton.Name = "viewButton";
             this.viewButton.Size = new System.Drawing.Size(75, 23);
             this.viewButton.TabIndex = 5;
@@ -440,73 +420,12 @@
             this.dataGridViewTextBoxColumn19});
             this.ecuDatabase.DataSource = this.eCUdataBindingSource1;
             this.ecuDatabase.Location = new System.Drawing.Point(3, 0);
+            this.ecuDatabase.MultiSelect = false;
             this.ecuDatabase.Name = "ecuDatabase";
             this.ecuDatabase.ReadOnly = true;
             this.ecuDatabase.Size = new System.Drawing.Size(1020, 389);
             this.ecuDatabase.TabIndex = 0;
-            // 
-            // eCUdataBindingSource1
-            // 
-            this.eCUdataBindingSource1.DataMember = "ECUdata";
-            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1;
-            // 
-            // sampleDBDataSet1
-            // 
-            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
-            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1026, 424);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Setup";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressBar1.Location = new System.Drawing.Point(4, 481);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.TabIndex = 2;
-            // 
-            // onlineLabel
-            // 
-            this.onlineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.onlineLabel.AutoSize = true;
-            this.onlineLabel.Location = new System.Drawing.Point(110, 487);
-            this.onlineLabel.Name = "onlineLabel";
-            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
-            this.onlineLabel.TabIndex = 3;
-            this.onlineLabel.Text = "Offline ...";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(969, 487);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "COM Port: 3";
-            // 
-            // eCUdataBindingSource
-            // 
-            this.eCUdataBindingSource.DataMember = "ECUdata";
-            // 
-            // eCUdataTableAdapter1
-            // 
-            this.eCUdataTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.ECUdataTableAdapter = this.eCUdataTableAdapter1;
-            this.tableAdapterManager1.UpdateOrder = TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.ecuDatabase.SelectionChanged += new System.EventHandler(this.ecuDatabase_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -642,11 +561,74 @@
             this.dataGridViewTextBoxColumn19.ReadOnly = true;
             this.dataGridViewTextBoxColumn19.Visible = false;
             // 
+            // eCUdataBindingSource1
+            // 
+            this.eCUdataBindingSource1.DataMember = "ECUdata";
+            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1;
+            // 
+            // sampleDBDataSet1
+            // 
+            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1026, 525);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Setup";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressBar1.Location = new System.Drawing.Point(4, 582);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 2;
+            // 
+            // onlineLabel
+            // 
+            this.onlineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.onlineLabel.AutoSize = true;
+            this.onlineLabel.Location = new System.Drawing.Point(110, 588);
+            this.onlineLabel.Name = "onlineLabel";
+            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
+            this.onlineLabel.TabIndex = 3;
+            this.onlineLabel.Text = "Offline ...";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(969, 588);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "COM Port: 3";
+            // 
+            // eCUdataTableAdapter1
+            // 
+            this.eCUdataTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.ECUdataTableAdapter = this.eCUdataTableAdapter1;
+            this.tableAdapterManager1.UpdateOrder = TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // eCUdataBindingSource
+            // 
+            this.eCUdataBindingSource.DataMember = "ECUdata";
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 509);
+            this.ClientSize = new System.Drawing.Size(1040, 610);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.onlineLabel);
             this.Controls.Add(this.progressBar1);
@@ -691,16 +673,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accessCodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enterServerAddressToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem networkConnectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem speedSimulateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readErrorDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eCxReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem browseTractionAirECUDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
@@ -740,6 +715,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.Button speedSetupButton;
+        private System.Windows.Forms.Button pressureSetupButton;
+        private System.Windows.Forms.RichTextBox notesRichTextbox;
     }
 }
 

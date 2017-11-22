@@ -41,8 +41,8 @@ namespace TractionAir
             programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(row.Cells[4].Value.ToString());
             pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(row.Cells[2].Value.ToString());
             customerComboBox.SelectedIndex = customerComboBox.FindStringExact(row.Cells[5].Value.ToString());
-            buildDateTextbox.Text = row.Cells[0].Value.ToString();
-            installDateTextbox.Text = row.Cells[16].Value.ToString();
+            buildDateTextbox.Text = ((DateTime)row.Cells[0].Value).ToString("dd/MM/yyyy");
+            installDateTextbox.Text = ((DateTime)row.Cells[16].Value).ToString("dd/MM/yyyy");
             vehicleRefTextbox.Text = row.Cells[7].Value.ToString();
             pressureCellTextbox.Text = row.Cells[12].Value.ToString();
             pt1SerialTextbox.Text = row.Cells[13].Value.ToString();

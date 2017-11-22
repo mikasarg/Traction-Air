@@ -211,7 +211,7 @@
             this.serialNumberTextbox.Location = new System.Drawing.Point(103, 33);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.ReadOnly = true;
-            this.serialNumberTextbox.Size = new System.Drawing.Size(83, 20);
+            this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.serialNumberTextbox.TabIndex = 17;
             // 
             // vehicleRefTextbox
@@ -259,7 +259,7 @@
             this.boardNumberTextbox.Location = new System.Drawing.Point(103, 7);
             this.boardNumberTextbox.Name = "boardNumberTextbox";
             this.boardNumberTextbox.ReadOnly = true;
-            this.boardNumberTextbox.Size = new System.Drawing.Size(55, 20);
+            this.boardNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.boardNumberTextbox.TabIndex = 23;
             // 
             // installDateTextbox
