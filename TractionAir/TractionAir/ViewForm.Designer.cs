@@ -63,6 +63,18 @@
             this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.loadedOffRoadTextbox = new System.Windows.Forms.TextBox();
+            this.notLoadedTextbox = new System.Windows.Forms.TextBox();
+            this.maxTractionTextbox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.speedControlComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
@@ -164,7 +176,7 @@
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 341);
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.ReadOnly = true;
-            this.notesRichTextbox.Size = new System.Drawing.Size(394, 116);
+            this.notesRichTextbox.Size = new System.Drawing.Size(512, 116);
             this.notesRichTextbox.TabIndex = 12;
             this.notesRichTextbox.Text = "";
             // 
@@ -191,7 +203,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(41, 271);
+            this.label15.Location = new System.Drawing.Point(41, 272);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label15.Size = new System.Drawing.Size(56, 13);
@@ -240,7 +252,7 @@
             // 
             // pt2SerialTextbox
             // 
-            this.pt2SerialTextbox.Location = new System.Drawing.Point(103, 268);
+            this.pt2SerialTextbox.Location = new System.Drawing.Point(103, 269);
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
             this.pt2SerialTextbox.ReadOnly = true;
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -349,11 +361,136 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(278, 197);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 13);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Manual Database Update";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(278, 223);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "SpeedUp Function:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(288, 248);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(89, 13);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Loaded Off Road";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(308, 297);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Max Traction";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(314, 272);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 13);
+            this.label18.TabIndex = 34;
+            this.label18.Text = "Not Loaded";
+            // 
+            // loadedOffRoadTextbox
+            // 
+            this.loadedOffRoadTextbox.Location = new System.Drawing.Point(383, 245);
+            this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
+            this.loadedOffRoadTextbox.ReadOnly = true;
+            this.loadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
+            this.loadedOffRoadTextbox.TabIndex = 35;
+            this.loadedOffRoadTextbox.Text = "0";
+            // 
+            // notLoadedTextbox
+            // 
+            this.notLoadedTextbox.Location = new System.Drawing.Point(383, 269);
+            this.notLoadedTextbox.Name = "notLoadedTextbox";
+            this.notLoadedTextbox.ReadOnly = true;
+            this.notLoadedTextbox.Size = new System.Drawing.Size(38, 20);
+            this.notLoadedTextbox.TabIndex = 36;
+            this.notLoadedTextbox.Text = "0";
+            // 
+            // maxTractionTextbox
+            // 
+            this.maxTractionTextbox.Location = new System.Drawing.Point(383, 294);
+            this.maxTractionTextbox.Name = "maxTractionTextbox";
+            this.maxTractionTextbox.ReadOnly = true;
+            this.maxTractionTextbox.Size = new System.Drawing.Size(38, 20);
+            this.maxTractionTextbox.TabIndex = 37;
+            this.maxTractionTextbox.Text = "0";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(425, 248);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(32, 13);
+            this.label19.TabIndex = 38;
+            this.label19.Text = "km/h";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(425, 272);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(32, 13);
+            this.label20.TabIndex = 39;
+            this.label20.Text = "km/h";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(425, 297);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(32, 13);
+            this.label21.TabIndex = 40;
+            this.label21.Text = "km/h";
+            // 
+            // speedControlComboBox
+            // 
+            this.speedControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.speedControlComboBox.FormattingEnabled = true;
+            this.speedControlComboBox.Items.AddRange(new object[] {
+            "No Speed Control",
+            "Only Max Traction",
+            "Lower Two Pressures",
+            "Lower Three Pressures"});
+            this.speedControlComboBox.Location = new System.Drawing.Point(383, 220);
+            this.speedControlComboBox.Name = "speedControlComboBox";
+            this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
+            this.speedControlComboBox.TabIndex = 41;
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 470);
+            this.ClientSize = new System.Drawing.Size(536, 470);
+            this.Controls.Add(this.speedControlComboBox);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.maxTractionTextbox);
+            this.Controls.Add(this.notLoadedTextbox);
+            this.Controls.Add(this.loadedOffRoadTextbox);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.pressureGroupComboBox);
             this.Controls.Add(this.customerComboBox);
             this.Controls.Add(this.programVersionComboBox);
@@ -384,6 +521,7 @@
             this.Name = "ViewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
@@ -430,5 +568,17 @@
         private pressureGroupsDataSet pressureGroupsDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox loadedOffRoadTextbox;
+        private System.Windows.Forms.TextBox notLoadedTextbox;
+        private System.Windows.Forms.TextBox maxTractionTextbox;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox speedControlComboBox;
     }
 }

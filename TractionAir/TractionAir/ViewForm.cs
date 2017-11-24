@@ -45,6 +45,8 @@ namespace TractionAir
             pt2SerialTextbox.Text = row.Cells[14].Value.ToString();
             descriptionTextbox.Text = row.Cells[6].Value.ToString();
             notesRichTextbox.Text = row.Cells[18].Value.ToString();
+
+            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(row.Cells[8].Value.ToString());
         }
     }
 }

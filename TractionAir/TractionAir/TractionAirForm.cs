@@ -140,7 +140,7 @@ namespace TractionAir
         private void speedSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SpeedSimulationForm speedSim = new SpeedSimulationForm();
-            speedSim.Show();
+            speedSim.ShowDialog();
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace TractionAir
         private void pressureGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PressureGroupsForm pressureGroups = new PressureGroupsForm();
-            pressureGroups.Show();
+            pressureGroups.ShowDialog();
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace TractionAir
         private void ownerListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OwnerListForm ownerList = new OwnerListForm();
-            ownerList.Show();
+            ownerList.ShowDialog();
             //TODO link the owner list form to a database of owners
         }
 
@@ -197,7 +197,7 @@ namespace TractionAir
             {
                 DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
                 ViewForm viewEntry = new ViewForm(row);
-                viewEntry.Show();
+                viewEntry.ShowDialog();
             }
         }
 
@@ -213,7 +213,7 @@ namespace TractionAir
             {
                 DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
                 ChangeForm changeEntry = new ChangeForm(row);
-                changeEntry.Show();
+                changeEntry.ShowDialog();
             }
         }
 
@@ -225,7 +225,7 @@ namespace TractionAir
         private void accessCodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AccessCodeForm accessCode = new AccessCodeForm();
-            accessCode.Show();
+            accessCode.ShowDialog();
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace TractionAir
         private void enterServerAddressToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ServerAddressForm serverAddress = new ServerAddressForm();
-            serverAddress.Show();
+            serverAddress.ShowDialog();
         }
 
         /// <summary>
@@ -252,13 +252,13 @@ namespace TractionAir
         private void pressureSetupButton_Click(object sender, EventArgs e)
         {
             PressureSetupForm pressureSetup = new PressureSetupForm();
-            pressureSetup.Show();
+            pressureSetup.ShowDialog();
         }
 
         private void speedSetupButton_Click(object sender, EventArgs e)
         {
             SpeedSetupForm speedSetup = new SpeedSetupForm();
-            speedSetup.Show();
+            speedSetup.ShowDialog();
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace TractionAir
         {
             //TODO query - VERY HARD by the looks of things?? Have to write in SQL???
             queryForm query = new queryForm();
-            query.Show();
+            query.ShowDialog();
         }
 
         //TODO add the manual database update group to view and change forms
