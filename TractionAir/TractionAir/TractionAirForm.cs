@@ -158,6 +158,8 @@ namespace TractionAir
                 DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
                 notesRichTextbox.Text = row.Cells[18].Value.ToString();
             }
+
+            ecuCountLabel.Text = "ECU Count: " + ecuDatabase.RowCount;
         }
 
         /// <summary>
@@ -249,12 +251,14 @@ namespace TractionAir
 
         private void pressureSetupButton_Click(object sender, EventArgs e)
         {
-            //TODO pressure setup
+            PressureSetupForm pressureSetup = new PressureSetupForm();
+            pressureSetup.Show();
         }
 
         private void speedSetupButton_Click(object sender, EventArgs e)
         {
-            //TODO speed setup
+            SpeedSetupForm speedSetup = new SpeedSetupForm();
+            speedSetup.Show();
         }
 
         /// <summary>
@@ -272,9 +276,18 @@ namespace TractionAir
             }
         }
 
+        private void queryButton_Click(object sender, EventArgs e)
+        {
+            //TODO query - VERY HARD by the looks of things?? Have to write in SQL???
+            queryForm query = new queryForm();
+            query.Show();
+        }
+
+        //TODO add the manual database update group to view and change forms
         //TODO be able to insert, change and delete pressure group entries
         //TODO queries and saving queries
         //TODO progress bar and text next to it
+        //TODO connected board text
         //TODO COM Port number
         //TODO all menu functions
         //TODO setup tab

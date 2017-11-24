@@ -46,7 +46,12 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
+            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
+            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
             this.installDateTextbox = new System.Windows.Forms.TextBox();
             this.boardNumberTextbox = new System.Windows.Forms.TextBox();
@@ -58,20 +63,15 @@
             this.serialNumberTextbox = new System.Windows.Forms.TextBox();
             this.buildDateTextbox = new System.Windows.Forms.TextBox();
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
-            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
-            this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -205,7 +205,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(128, 482);
+            this.saveButton.Location = new System.Drawing.Point(110, 482);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 55;
@@ -215,7 +215,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(218, 482);
+            this.cancelButton.Location = new System.Drawing.Point(200, 482);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 56;
@@ -236,6 +236,16 @@
             this.pressureGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedIndexChanged);
             this.pressureGroupComboBox.TextChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedIndexChanged);
             // 
+            // tableBindingSource
+            // 
+            this.tableBindingSource.DataMember = "Table";
+            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
+            // 
+            // pressureGroupsDataSet
+            // 
+            this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
+            this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // customerComboBox
             // 
             this.customerComboBox.DataSource = this.eCUdataBindingSource;
@@ -248,6 +258,21 @@
             this.customerComboBox.ValueMember = "Owner";
             this.customerComboBox.SelectedIndexChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
             this.customerComboBox.TextChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
+            // 
+            // eCUdataBindingSource
+            // 
+            this.eCUdataBindingSource.DataMember = "ECUdata";
+            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
+            // 
+            // sampleDBDataSet1BindingSource
+            // 
+            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
+            this.sampleDBDataSet1BindingSource.Position = 0;
+            // 
+            // sampleDBDataSet1
+            // 
+            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // programVersionComboBox
             // 
@@ -338,20 +363,10 @@
             // 
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 346);
             this.notesRichTextbox.Name = "notesRichTextbox";
-            this.notesRichTextbox.Size = new System.Drawing.Size(474, 116);
+            this.notesRichTextbox.Size = new System.Drawing.Size(379, 116);
             this.notesRichTextbox.TabIndex = 57;
             this.notesRichTextbox.Text = "";
             this.notesRichTextbox.TextChanged += new System.EventHandler(this.notesRichTextbox_TextChanged);
-            // 
-            // pressureGroupsDataSet
-            // 
-            this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
-            this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableBindingSource
-            // 
-            this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
             // 
             // tableTableAdapter
             // 
@@ -362,21 +377,6 @@
             this.tableBindingSource1.DataMember = "Table";
             this.tableBindingSource1.DataSource = this.pressureGroupsDataSet;
             // 
-            // sampleDBDataSet1
-            // 
-            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
-            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sampleDBDataSet1BindingSource
-            // 
-            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
-            this.sampleDBDataSet1BindingSource.Position = 0;
-            // 
-            // eCUdataBindingSource
-            // 
-            this.eCUdataBindingSource.DataMember = "ECUdata";
-            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
-            // 
             // eCUdataTableAdapter
             // 
             this.eCUdataTableAdapter.ClearBeforeFill = true;
@@ -385,7 +385,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 517);
+            this.ClientSize = new System.Drawing.Size(400, 517);
             this.Controls.Add(this.pressureGroupComboBox);
             this.Controls.Add(this.customerComboBox);
             this.Controls.Add(this.programVersionComboBox);
@@ -419,12 +419,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change";
             this.Load += new System.EventHandler(this.ChangeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

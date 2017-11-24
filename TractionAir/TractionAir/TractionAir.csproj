@@ -72,6 +72,18 @@
     <Compile Include="PressureSetupForm.Designer.cs">
       <DependentUpon>PressureSetupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="queryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="queryForm.Designer.cs">
+      <DependentUpon>queryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectPressureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectPressureForm.Designer.cs">
+      <DependentUpon>SelectPressureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServerAddressForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +117,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SpeedSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeedSetupForm.Designer.cs">
+      <DependentUpon>SpeedSetupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SpeedSimulationForm.cs">
       <SubType>Form</SubType>
@@ -141,8 +159,17 @@
     <EmbeddedResource Include="PressureSetupForm.resx">
       <DependentUpon>PressureSetupForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="queryForm.resx">
+      <DependentUpon>queryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectPressureForm.resx">
+      <DependentUpon>SelectPressureForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServerAddressForm.resx">
       <DependentUpon>ServerAddressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeedSetupForm.resx">
+      <DependentUpon>SpeedSetupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpeedSimulationForm.resx">
       <DependentUpon>SpeedSimulationForm.cs</DependentUpon>

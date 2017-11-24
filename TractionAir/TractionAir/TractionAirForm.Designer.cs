@@ -93,6 +93,9 @@
             this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.conncectedBoardLabel = new System.Windows.Forms.Label();
+            this.ecuCountLabel = new System.Windows.Forms.Label();
+            this.queryButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -329,6 +332,9 @@
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.Controls.Add(this.queryButton);
+            this.tabPage1.Controls.Add(this.ecuCountLabel);
+            this.tabPage1.Controls.Add(this.conncectedBoardLabel);
             this.tabPage1.Controls.Add(this.speedSetupButton);
             this.tabPage1.Controls.Add(this.pressureSetupButton);
             this.tabPage1.Controls.Add(this.notesRichTextbox);
@@ -345,6 +351,7 @@
             // 
             // speedSetupButton
             // 
+            this.speedSetupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.speedSetupButton.Location = new System.Drawing.Point(899, 464);
             this.speedSetupButton.Name = "speedSetupButton";
             this.speedSetupButton.Size = new System.Drawing.Size(92, 23);
@@ -355,6 +362,7 @@
             // 
             // pressureSetupButton
             // 
+            this.pressureSetupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pressureSetupButton.Location = new System.Drawing.Point(899, 424);
             this.pressureSetupButton.Name = "pressureSetupButton";
             this.pressureSetupButton.Size = new System.Drawing.Size(92, 23);
@@ -365,6 +373,7 @@
             // 
             // notesRichTextbox
             // 
+            this.notesRichTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.notesRichTextbox.Location = new System.Drawing.Point(7, 396);
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.ReadOnly = true;
@@ -374,6 +383,7 @@
             // 
             // changeButton
             // 
+            this.changeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.changeButton.Location = new System.Drawing.Point(444, 464);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(75, 23);
@@ -384,6 +394,7 @@
             // 
             // viewButton
             // 
+            this.viewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.viewButton.Location = new System.Drawing.Point(444, 424);
             this.viewButton.Name = "viewButton";
             this.viewButton.Size = new System.Drawing.Size(75, 23);
@@ -396,6 +407,9 @@
             // 
             this.ecuDatabase.AllowUserToAddRows = false;
             this.ecuDatabase.AllowUserToDeleteRows = false;
+            this.ecuDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ecuDatabase.AutoGenerateColumns = false;
             this.ecuDatabase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ecuDatabase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -624,6 +638,35 @@
             // 
             this.eCUdataBindingSource.DataMember = "ECUdata";
             // 
+            // conncectedBoardLabel
+            // 
+            this.conncectedBoardLabel.AutoSize = true;
+            this.conncectedBoardLabel.Location = new System.Drawing.Point(691, 429);
+            this.conncectedBoardLabel.Name = "conncectedBoardLabel";
+            this.conncectedBoardLabel.Size = new System.Drawing.Size(93, 13);
+            this.conncectedBoardLabel.TabIndex = 10;
+            this.conncectedBoardLabel.Text = "Connected Board:";
+            // 
+            // ecuCountLabel
+            // 
+            this.ecuCountLabel.AutoSize = true;
+            this.ecuCountLabel.Location = new System.Drawing.Point(691, 469);
+            this.ecuCountLabel.Name = "ecuCountLabel";
+            this.ecuCountLabel.Size = new System.Drawing.Size(63, 13);
+            this.ecuCountLabel.TabIndex = 11;
+            this.ecuCountLabel.Text = "ECU Count:";
+            // 
+            // queryButton
+            // 
+            this.queryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.queryButton.Location = new System.Drawing.Point(551, 424);
+            this.queryButton.Name = "queryButton";
+            this.queryButton.Size = new System.Drawing.Size(75, 23);
+            this.queryButton.TabIndex = 12;
+            this.queryButton.Text = "Query";
+            this.queryButton.UseVisualStyleBackColor = true;
+            this.queryButton.Click += new System.EventHandler(this.queryButton_Click);
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -644,6 +687,7 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ecuDatabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
@@ -718,6 +762,9 @@
         private System.Windows.Forms.Button speedSetupButton;
         private System.Windows.Forms.Button pressureSetupButton;
         private System.Windows.Forms.RichTextBox notesRichTextbox;
+        private System.Windows.Forms.Button queryButton;
+        private System.Windows.Forms.Label ecuCountLabel;
+        private System.Windows.Forms.Label conncectedBoardLabel;
     }
 }
 

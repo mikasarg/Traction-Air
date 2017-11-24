@@ -54,26 +54,26 @@
             this.installDateTextbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
             this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
-            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
-            this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
-            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
+            this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 142);
+            this.label1.Location = new System.Drawing.Point(41, 144);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(56, 13);
@@ -83,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 36);
+            this.label2.Location = new System.Drawing.Point(24, 38);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(73, 13);
@@ -93,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 89);
+            this.label3.Location = new System.Drawing.Point(17, 91);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(80, 13);
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 10);
+            this.label4.Location = new System.Drawing.Point(22, 12);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(75, 13);
@@ -113,7 +113,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 62);
+            this.label5.Location = new System.Drawing.Point(15, 64);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(84, 13);
@@ -123,7 +123,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 116);
+            this.label6.Location = new System.Drawing.Point(46, 118);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label6.Size = new System.Drawing.Size(51, 13);
@@ -133,7 +133,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 295);
+            this.label7.Location = new System.Drawing.Point(37, 297);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(60, 13);
@@ -143,7 +143,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(35, 195);
+            this.label8.Location = new System.Drawing.Point(35, 197);
             this.label8.Name = "label8";
             this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label8.Size = new System.Drawing.Size(62, 13);
@@ -164,14 +164,14 @@
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 341);
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.ReadOnly = true;
-            this.notesRichTextbox.Size = new System.Drawing.Size(474, 116);
+            this.notesRichTextbox.Size = new System.Drawing.Size(394, 116);
             this.notesRichTextbox.TabIndex = 12;
             this.notesRichTextbox.Text = "";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(29, 221);
+            this.label13.Location = new System.Drawing.Point(29, 223);
             this.label13.Name = "label13";
             this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label13.Size = new System.Drawing.Size(68, 13);
@@ -181,7 +181,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(41, 246);
+            this.label14.Location = new System.Drawing.Point(41, 248);
             this.label14.Name = "label14";
             this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label14.Size = new System.Drawing.Size(56, 13);
@@ -191,7 +191,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(41, 269);
+            this.label15.Location = new System.Drawing.Point(41, 271);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label15.Size = new System.Drawing.Size(56, 13);
@@ -200,7 +200,7 @@
             // 
             // buildDateTextbox
             // 
-            this.buildDateTextbox.Location = new System.Drawing.Point(103, 139);
+            this.buildDateTextbox.Location = new System.Drawing.Point(103, 141);
             this.buildDateTextbox.Name = "buildDateTextbox";
             this.buildDateTextbox.ReadOnly = true;
             this.buildDateTextbox.Size = new System.Drawing.Size(160, 20);
@@ -208,7 +208,7 @@
             // 
             // serialNumberTextbox
             // 
-            this.serialNumberTextbox.Location = new System.Drawing.Point(103, 33);
+            this.serialNumberTextbox.Location = new System.Drawing.Point(103, 35);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.ReadOnly = true;
             this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
@@ -216,7 +216,7 @@
             // 
             // vehicleRefTextbox
             // 
-            this.vehicleRefTextbox.Location = new System.Drawing.Point(103, 192);
+            this.vehicleRefTextbox.Location = new System.Drawing.Point(103, 194);
             this.vehicleRefTextbox.Name = "vehicleRefTextbox";
             this.vehicleRefTextbox.ReadOnly = true;
             this.vehicleRefTextbox.Size = new System.Drawing.Size(160, 20);
@@ -224,7 +224,7 @@
             // 
             // pressureCellTextbox
             // 
-            this.pressureCellTextbox.Location = new System.Drawing.Point(103, 218);
+            this.pressureCellTextbox.Location = new System.Drawing.Point(103, 220);
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.ReadOnly = true;
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
@@ -232,7 +232,7 @@
             // 
             // pt1SerialTextbox
             // 
-            this.pt1SerialTextbox.Location = new System.Drawing.Point(103, 243);
+            this.pt1SerialTextbox.Location = new System.Drawing.Point(103, 245);
             this.pt1SerialTextbox.Name = "pt1SerialTextbox";
             this.pt1SerialTextbox.ReadOnly = true;
             this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -240,7 +240,7 @@
             // 
             // pt2SerialTextbox
             // 
-            this.pt2SerialTextbox.Location = new System.Drawing.Point(103, 266);
+            this.pt2SerialTextbox.Location = new System.Drawing.Point(103, 268);
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
             this.pt2SerialTextbox.ReadOnly = true;
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -248,7 +248,7 @@
             // 
             // descriptionTextbox
             // 
-            this.descriptionTextbox.Location = new System.Drawing.Point(103, 292);
+            this.descriptionTextbox.Location = new System.Drawing.Point(103, 294);
             this.descriptionTextbox.Name = "descriptionTextbox";
             this.descriptionTextbox.ReadOnly = true;
             this.descriptionTextbox.Size = new System.Drawing.Size(160, 20);
@@ -256,7 +256,7 @@
             // 
             // boardNumberTextbox
             // 
-            this.boardNumberTextbox.Location = new System.Drawing.Point(103, 7);
+            this.boardNumberTextbox.Location = new System.Drawing.Point(103, 9);
             this.boardNumberTextbox.Name = "boardNumberTextbox";
             this.boardNumberTextbox.ReadOnly = true;
             this.boardNumberTextbox.Size = new System.Drawing.Size(160, 20);
@@ -264,7 +264,7 @@
             // 
             // installDateTextbox
             // 
-            this.installDateTextbox.Location = new System.Drawing.Point(103, 164);
+            this.installDateTextbox.Location = new System.Drawing.Point(103, 166);
             this.installDateTextbox.Name = "installDateTextbox";
             this.installDateTextbox.ReadOnly = true;
             this.installDateTextbox.Size = new System.Drawing.Size(160, 20);
@@ -273,7 +273,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 167);
+            this.label9.Location = new System.Drawing.Point(37, 169);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label9.Size = new System.Drawing.Size(60, 13);
@@ -286,11 +286,26 @@
             this.programVersionComboBox.DisplayMember = "Version";
             this.programVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.programVersionComboBox.FormattingEnabled = true;
-            this.programVersionComboBox.Location = new System.Drawing.Point(103, 59);
+            this.programVersionComboBox.Location = new System.Drawing.Point(103, 61);
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
             this.programVersionComboBox.TabIndex = 26;
             this.programVersionComboBox.ValueMember = "Version";
+            // 
+            // eCUdataBindingSource
+            // 
+            this.eCUdataBindingSource.DataMember = "ECUdata";
+            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
+            // 
+            // sampleDBDataSet1BindingSource
+            // 
+            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
+            this.sampleDBDataSet1BindingSource.Position = 0;
+            // 
+            // sampleDBDataSet1
+            // 
+            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // customerComboBox
             // 
@@ -298,7 +313,7 @@
             this.customerComboBox.DisplayMember = "Owner";
             this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerComboBox.FormattingEnabled = true;
-            this.customerComboBox.Location = new System.Drawing.Point(103, 113);
+            this.customerComboBox.Location = new System.Drawing.Point(103, 115);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 27;
@@ -310,40 +325,25 @@
             this.pressureGroupComboBox.DisplayMember = "Description";
             this.pressureGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pressureGroupComboBox.FormattingEnabled = true;
-            this.pressureGroupComboBox.Location = new System.Drawing.Point(103, 86);
+            this.pressureGroupComboBox.Location = new System.Drawing.Point(103, 88);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 28;
             this.pressureGroupComboBox.ValueMember = "Description";
             // 
-            // sampleDBDataSet1
+            // tableBindingSource
             // 
-            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
-            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sampleDBDataSet1BindingSource
-            // 
-            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
-            this.sampleDBDataSet1BindingSource.Position = 0;
-            // 
-            // eCUdataBindingSource
-            // 
-            this.eCUdataBindingSource.DataMember = "ECUdata";
-            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
-            // 
-            // eCUdataTableAdapter
-            // 
-            this.eCUdataTableAdapter.ClearBeforeFill = true;
+            this.tableBindingSource.DataMember = "Table";
+            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
             // 
             // pressureGroupsDataSet
             // 
             this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
             this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // tableBindingSource
+            // eCUdataTableAdapter
             // 
-            this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
+            this.eCUdataTableAdapter.ClearBeforeFill = true;
             // 
             // tableTableAdapter
             // 
@@ -353,7 +353,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 470);
+            this.ClientSize = new System.Drawing.Size(421, 470);
             this.Controls.Add(this.pressureGroupComboBox);
             this.Controls.Add(this.customerComboBox);
             this.Controls.Add(this.programVersionComboBox);
@@ -385,11 +385,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View";
             this.Load += new System.EventHandler(this.ViewForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
