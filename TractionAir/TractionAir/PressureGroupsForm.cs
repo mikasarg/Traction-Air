@@ -34,5 +34,31 @@ namespace TractionAir
         {
             this.tableTableAdapter.Fill(this.pressureGroupsDataSet.Table);
         }
+
+        /// <summary>
+        /// Opens an insert window for the user to specify a new pressure group
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void insertButton_Click(object sender, EventArgs e)
+        {
+            insertionForm insertion = new insertionForm(tableDataGridView);
+            insertion.ShowDialog();
+        }
+
+        /// <summary>
+        /// Deletes the selected pressure group from the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            int selectedCellCount = tableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = tableDataGridView.SelectedCells[0].OwningRow;
+                tableDataGridView.Rows.RemoveAt(row.Index);
+            }
+        }
     }
 }
