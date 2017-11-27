@@ -59,6 +59,9 @@
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.queryButton = new System.Windows.Forms.Button();
+            this.ecuCountLabel = new System.Windows.Forms.Label();
+            this.conncectedBoardLabel = new System.Windows.Forms.Label();
             this.speedSetupButton = new System.Windows.Forms.Button();
             this.pressureSetupButton = new System.Windows.Forms.Button();
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
@@ -93,9 +96,6 @@
             this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.conncectedBoardLabel = new System.Windows.Forms.Label();
-            this.ecuCountLabel = new System.Windows.Forms.Label();
-            this.queryButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -348,6 +348,35 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Data";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // queryButton
+            // 
+            this.queryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.queryButton.Location = new System.Drawing.Point(606, 424);
+            this.queryButton.Name = "queryButton";
+            this.queryButton.Size = new System.Drawing.Size(75, 23);
+            this.queryButton.TabIndex = 12;
+            this.queryButton.Text = "Query";
+            this.queryButton.UseVisualStyleBackColor = true;
+            this.queryButton.Click += new System.EventHandler(this.queryButton_Click);
+            // 
+            // ecuCountLabel
+            // 
+            this.ecuCountLabel.AutoSize = true;
+            this.ecuCountLabel.Location = new System.Drawing.Point(725, 469);
+            this.ecuCountLabel.Name = "ecuCountLabel";
+            this.ecuCountLabel.Size = new System.Drawing.Size(63, 13);
+            this.ecuCountLabel.TabIndex = 11;
+            this.ecuCountLabel.Text = "ECU Count:";
+            // 
+            // conncectedBoardLabel
+            // 
+            this.conncectedBoardLabel.AutoSize = true;
+            this.conncectedBoardLabel.Location = new System.Drawing.Point(725, 429);
+            this.conncectedBoardLabel.Name = "conncectedBoardLabel";
+            this.conncectedBoardLabel.Size = new System.Drawing.Size(93, 13);
+            this.conncectedBoardLabel.TabIndex = 10;
+            this.conncectedBoardLabel.Text = "Connected Board:";
             // 
             // speedSetupButton
             // 
@@ -637,35 +666,6 @@
             // eCUdataBindingSource
             // 
             this.eCUdataBindingSource.DataMember = "ECUdata";
-            // 
-            // conncectedBoardLabel
-            // 
-            this.conncectedBoardLabel.AutoSize = true;
-            this.conncectedBoardLabel.Location = new System.Drawing.Point(691, 429);
-            this.conncectedBoardLabel.Name = "conncectedBoardLabel";
-            this.conncectedBoardLabel.Size = new System.Drawing.Size(93, 13);
-            this.conncectedBoardLabel.TabIndex = 10;
-            this.conncectedBoardLabel.Text = "Connected Board:";
-            // 
-            // ecuCountLabel
-            // 
-            this.ecuCountLabel.AutoSize = true;
-            this.ecuCountLabel.Location = new System.Drawing.Point(691, 469);
-            this.ecuCountLabel.Name = "ecuCountLabel";
-            this.ecuCountLabel.Size = new System.Drawing.Size(63, 13);
-            this.ecuCountLabel.TabIndex = 11;
-            this.ecuCountLabel.Text = "ECU Count:";
-            // 
-            // queryButton
-            // 
-            this.queryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.queryButton.Location = new System.Drawing.Point(551, 424);
-            this.queryButton.Name = "queryButton";
-            this.queryButton.Size = new System.Drawing.Size(75, 23);
-            this.queryButton.TabIndex = 12;
-            this.queryButton.Text = "Query";
-            this.queryButton.UseVisualStyleBackColor = true;
-            this.queryButton.Click += new System.EventHandler(this.queryButton_Click);
             // 
             // TractionAirForm
             // 

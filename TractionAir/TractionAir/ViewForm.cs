@@ -47,6 +47,9 @@ namespace TractionAir
             notesRichTextbox.Text = row.Cells[18].Value.ToString();
 
             speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(row.Cells[8].Value.ToString());
+            loadedOffRoadTextbox.Text = row.Cells[9].Value.ToString();
+            notLoadedTextbox.Text = row.Cells[10].Value.ToString();
+            maxTractionTextbox.Text = row.Cells[11].Value.ToString();
         }
     }
 }

@@ -297,6 +297,7 @@
             this.programVersionComboBox.DataSource = this.eCUdataBindingSource;
             this.programVersionComboBox.DisplayMember = "Version";
             this.programVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.programVersionComboBox.Enabled = false;
             this.programVersionComboBox.FormattingEnabled = true;
             this.programVersionComboBox.Location = new System.Drawing.Point(103, 61);
             this.programVersionComboBox.Name = "programVersionComboBox";
@@ -324,6 +325,7 @@
             this.customerComboBox.DataSource = this.eCUdataBindingSource;
             this.customerComboBox.DisplayMember = "Owner";
             this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.customerComboBox.Enabled = false;
             this.customerComboBox.FormattingEnabled = true;
             this.customerComboBox.Location = new System.Drawing.Point(103, 115);
             this.customerComboBox.Name = "customerComboBox";
@@ -336,6 +338,7 @@
             this.pressureGroupComboBox.DataSource = this.tableBindingSource;
             this.pressureGroupComboBox.DisplayMember = "Description";
             this.pressureGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.pressureGroupComboBox.Enabled = false;
             this.pressureGroupComboBox.FormattingEnabled = true;
             this.pressureGroupComboBox.Location = new System.Drawing.Point(103, 88);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
@@ -463,6 +466,7 @@
             // speedControlComboBox
             // 
             this.speedControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.speedControlComboBox.Enabled = false;
             this.speedControlComboBox.FormattingEnabled = true;
             this.speedControlComboBox.Items.AddRange(new object[] {
             "No Speed Control",
@@ -518,6 +522,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View";

@@ -66,12 +66,26 @@
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
+            this.speedControlComboBox = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.maxTractionTextbox = new System.Windows.Forms.TextBox();
+            this.notLoadedTextbox = new System.Windows.Forms.TextBox();
+            this.loadedOffRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -205,7 +219,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(110, 482);
+            this.saveButton.Location = new System.Drawing.Point(188, 482);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 55;
@@ -215,7 +229,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(200, 482);
+            this.cancelButton.Location = new System.Drawing.Point(278, 482);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 56;
@@ -227,6 +241,7 @@
             // 
             this.pressureGroupComboBox.DataSource = this.tableBindingSource;
             this.pressureGroupComboBox.DisplayMember = "Description";
+            this.pressureGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pressureGroupComboBox.FormattingEnabled = true;
             this.pressureGroupComboBox.Location = new System.Drawing.Point(103, 91);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
@@ -248,8 +263,9 @@
             // 
             // customerComboBox
             // 
-            this.customerComboBox.DataSource = this.eCUdataBindingSource;
+            this.customerComboBox.DataSource = this.eCUdataBindingSource1;
             this.customerComboBox.DisplayMember = "Owner";
+            this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerComboBox.FormattingEnabled = true;
             this.customerComboBox.Location = new System.Drawing.Point(103, 118);
             this.customerComboBox.Name = "customerComboBox";
@@ -278,6 +294,7 @@
             // 
             this.programVersionComboBox.DataSource = this.eCUdataBindingSource;
             this.programVersionComboBox.DisplayMember = "Version";
+            this.programVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.programVersionComboBox.FormattingEnabled = true;
             this.programVersionComboBox.Location = new System.Drawing.Point(103, 64);
             this.programVersionComboBox.Name = "programVersionComboBox";
@@ -363,7 +380,7 @@
             // 
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 346);
             this.notesRichTextbox.Name = "notesRichTextbox";
-            this.notesRichTextbox.Size = new System.Drawing.Size(379, 116);
+            this.notesRichTextbox.Size = new System.Drawing.Size(526, 116);
             this.notesRichTextbox.TabIndex = 57;
             this.notesRichTextbox.Text = "";
             this.notesRichTextbox.TextChanged += new System.EventHandler(this.notesRichTextbox_TextChanged);
@@ -381,11 +398,143 @@
             // 
             this.eCUdataTableAdapter.ClearBeforeFill = true;
             // 
+            // speedControlComboBox
+            // 
+            this.speedControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.speedControlComboBox.FormattingEnabled = true;
+            this.speedControlComboBox.Items.AddRange(new object[] {
+            "No Speed Control",
+            "Only Max Traction",
+            "Lower Two Pressures",
+            "Lower Three Pressures"});
+            this.speedControlComboBox.Location = new System.Drawing.Point(396, 223);
+            this.speedControlComboBox.Name = "speedControlComboBox";
+            this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
+            this.speedControlComboBox.TabIndex = 81;
+            this.speedControlComboBox.SelectedIndexChanged += new System.EventHandler(this.speedControlComboBox_SelectedIndexChanged);
+            this.speedControlComboBox.TextChanged += new System.EventHandler(this.speedControlComboBox_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(438, 300);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(32, 13);
+            this.label21.TabIndex = 80;
+            this.label21.Text = "km/h";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(438, 275);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(32, 13);
+            this.label20.TabIndex = 79;
+            this.label20.Text = "km/h";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(438, 251);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(32, 13);
+            this.label19.TabIndex = 78;
+            this.label19.Text = "km/h";
+            // 
+            // maxTractionTextbox
+            // 
+            this.maxTractionTextbox.Location = new System.Drawing.Point(396, 297);
+            this.maxTractionTextbox.Name = "maxTractionTextbox";
+            this.maxTractionTextbox.Size = new System.Drawing.Size(38, 20);
+            this.maxTractionTextbox.TabIndex = 77;
+            this.maxTractionTextbox.Text = "0";
+            this.maxTractionTextbox.TextChanged += new System.EventHandler(this.maxTractionTextbox_TextChanged);
+            // 
+            // notLoadedTextbox
+            // 
+            this.notLoadedTextbox.Location = new System.Drawing.Point(396, 272);
+            this.notLoadedTextbox.Name = "notLoadedTextbox";
+            this.notLoadedTextbox.Size = new System.Drawing.Size(38, 20);
+            this.notLoadedTextbox.TabIndex = 76;
+            this.notLoadedTextbox.Text = "0";
+            this.notLoadedTextbox.TextChanged += new System.EventHandler(this.notLoadedTextbox_TextChanged);
+            // 
+            // loadedOffRoadTextbox
+            // 
+            this.loadedOffRoadTextbox.Location = new System.Drawing.Point(396, 248);
+            this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
+            this.loadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
+            this.loadedOffRoadTextbox.TabIndex = 75;
+            this.loadedOffRoadTextbox.Text = "0";
+            this.loadedOffRoadTextbox.TextChanged += new System.EventHandler(this.loadedOffRoadTextbox_TextChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(327, 275);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 13);
+            this.label18.TabIndex = 74;
+            this.label18.Text = "Not Loaded";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(321, 300);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 73;
+            this.label17.Text = "Max Traction";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(301, 251);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(89, 13);
+            this.label16.TabIndex = 72;
+            this.label16.Text = "Loaded Off Road";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(291, 226);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 13);
+            this.label11.TabIndex = 71;
+            this.label11.Text = "SpeedUp Function:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(291, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 13);
+            this.label10.TabIndex = 70;
+            this.label10.Text = "Manual Database Update";
+            // 
+            // eCUdataBindingSource1
+            // 
+            this.eCUdataBindingSource1.DataMember = "ECUdata";
+            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1BindingSource;
+            // 
             // ChangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 517);
+            this.ClientSize = new System.Drawing.Size(550, 517);
+            this.Controls.Add(this.speedControlComboBox);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.maxTractionTextbox);
+            this.Controls.Add(this.notLoadedTextbox);
+            this.Controls.Add(this.loadedOffRoadTextbox);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.pressureGroupComboBox);
             this.Controls.Add(this.customerComboBox);
             this.Controls.Add(this.programVersionComboBox);
@@ -414,7 +563,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChangeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change";
@@ -425,6 +577,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,5 +620,18 @@
         private sampleDBDataSet1 sampleDBDataSet1;
         private System.Windows.Forms.BindingSource eCUdataBindingSource;
         private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
+        private System.Windows.Forms.ComboBox speedControlComboBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox maxTractionTextbox;
+        private System.Windows.Forms.TextBox notLoadedTextbox;
+        private System.Windows.Forms.TextBox loadedOffRoadTextbox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.BindingSource eCUdataBindingSource1;
     }
 }

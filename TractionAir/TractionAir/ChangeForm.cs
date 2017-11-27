@@ -50,6 +50,11 @@ namespace TractionAir
             descriptionTextbox.Text = row.Cells[6].Value.ToString();
             notesRichTextbox.Text = row.Cells[18].Value.ToString();
 
+            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(row.Cells[8].Value.ToString());
+            loadedOffRoadTextbox.Text = row.Cells[9].Value.ToString();
+            notLoadedTextbox.Text = row.Cells[10].Value.ToString();
+            maxTractionTextbox.Text = row.Cells[11].Value.ToString();
+
             changedBoxes.Clear();
         }
 
@@ -69,7 +74,7 @@ namespace TractionAir
 
             previouslyVisited.Clear();
 
-            for (int j = changedBoxes.Count-1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
+            for (int j = changedBoxes.Count - 1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
             {
                 int i = changedBoxes[j].Item1;
                 string s = changedBoxes[j].Item2;
@@ -87,7 +92,7 @@ namespace TractionAir
                 else if (i == 0 || i == 16) //dates
                 {
                     DateTime dt;
-                    if (DateTime.TryParse(s, out dt)){
+                    if (DateTime.TryParse(s, out dt)) {
                         row.Cells[i].Value = dt.Date;
                     }
                     else
@@ -96,7 +101,7 @@ namespace TractionAir
                         return;
                     }
                 }
-                else if (i == 12) //int
+                else if (i == 12 || i == 9 || i == 10 || i == 11) //ints
                 {
                     int k;
                     if (Int32.TryParse(s, out k))
@@ -109,7 +114,7 @@ namespace TractionAir
                         return;
                     }
                 }
-                else if (i == 2 || i == 4 || i == 5) //comboboxes
+                else if (i == 2 || i == 4 || i == 5 || i == 8) //comboboxes
                 {
                     //TODO as of now accepts any input under 50 characters. Could be changed to only accept items found in the dropdown list. Depends on spec
                     if (s.Length <= 50)
@@ -220,6 +225,27 @@ namespace TractionAir
         private void notesRichTextbox_TextChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<int, string>(18, notesRichTextbox.Text));
+        }
+
+        //Also called when its text is changed
+        private void speedControlComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<int, string>(8, speedControlComboBox.Text));
+        }
+
+        private void loadedOffRoadTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<int, string>(9, loadedOffRoadTextbox.Text));
+        }
+
+        private void notLoadedTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<int, string>(10, notLoadedTextbox.Text));
+        }
+
+        private void maxTractionTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<int, string>(11, maxTractionTextbox.Text));
         }
     }
 }
