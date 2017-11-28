@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,10 @@ namespace TractionAir
     public partial class TractionAirForm : Form
     {
         private bool online;
+        private const int WM_DEVICECHANGE = 0x219;
+        private const int DBT_DEVICEARRIVAL = 0x8000;
+        private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
+        private const int DBT_DEVTYP_VOLUME = 0x00000002;
 
         /// <summary>
         /// Constructor
@@ -249,12 +254,22 @@ namespace TractionAir
             //TODO create a help window and have content in it
         }
 
+        /// <summary>
+        /// Opens the pressure setup window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pressureSetupButton_Click(object sender, EventArgs e)
         {
             PressureSetupForm pressureSetup = new PressureSetupForm();
             pressureSetup.ShowDialog();
         }
 
+        /// <summary>
+        /// Opens the speed setup window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void speedSetupButton_Click(object sender, EventArgs e)
         {
             SpeedSetupForm speedSetup = new SpeedSetupForm();
@@ -276,6 +291,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Opens up a query window for the user to enter and save queries
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void queryButton_Click(object sender, EventArgs e)
         {
             //TODO query - VERY HARD by the looks of things?? Have to write in SQL???
@@ -283,7 +303,41 @@ namespace TractionAir
             query.ShowDialog();
         }
 
-        //TODO add the manual database update group to view and change forms
+        /// <summary>
+        /// Overrides the windows proc method (for interacting with USB devices)
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            switch(m.Msg)
+            {
+                case WM_DEVICECHANGE:
+                    switch((int)m.WParam)
+                    {
+                        case DBT_DEVICEARRIVAL:
+                            //Device arrived
+
+                            int devType = Marshal.ReadInt32(m.LParam, 4);
+                            if (devType == DBT_DEVTYP_VOLUME) //storage device
+                            {
+                                DevBroadcastVolume vol;
+                                vol = (DevBroadcastVolume)Marshal.PtrToStructure(m.LParam,
+                                   typeof(DevBroadcastVolume));
+                                //Device mask is vol.Mask
+                                
+                            }
+                            break;
+                        case DBT_DEVICEREMOVECOMPLETE:
+                            //Device removed
+                            break;
+                    }
+                    break;
+
+            }
+        }
+
         //TODO be able to insert, change and delete pressure group entries
         //TODO queries and saving queries
         //TODO progress bar and text next to it

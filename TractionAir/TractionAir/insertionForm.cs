@@ -36,13 +36,13 @@ namespace TractionAir
             {
                 //TODO make a new row
                 
-                row.Cells[0].Value = descriptionTextbox.Text;
-                row.Cells[1].Value = loadedOnRoadTextbox.Text;
-                row.Cells[2].Value = loadedOffRoadTextbox.Text;
-                row.Cells[3].Value = unloadedOnRoadTextbox.Text;
-                row.Cells[4].Value = maxTractionTextbox.Text;
-                row.Cells[5].Value = DateTime.Now.Date.ToString("dd/MM/yyyy");
-                row.Cells[6].Value = DateTime.Now.TimeOfDay.ToString();
+                //row.Cells[0].Value = descriptionTextbox.Text;
+                //row.Cells[1].Value = loadedOnRoadTextbox.Text;
+                //row.Cells[2].Value = loadedOffRoadTextbox.Text;
+                //row.Cells[3].Value = unloadedOnRoadTextbox.Text;
+                //row.Cells[4].Value = maxTractionTextbox.Text;
+                //row.Cells[5].Value = DateTime.Now.Date.ToString("dd/MM/yyyy");
+                //row.Cells[6].Value = DateTime.Now.TimeOfDay.ToString();
 
                 this.Close();
             }

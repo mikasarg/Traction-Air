@@ -66,6 +66,7 @@
     <Compile Include="AccessCodeForm.Designer.cs">
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevBroadcastVolume.cs" />
     <Compile Include="insertionForm.cs">
       <SubType>Form</SubType>
     </Compile>
