@@ -121,7 +121,7 @@
             this.setupDataButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.onlineLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.comPortLabel = new System.Windows.Forms.Label();
             this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
@@ -341,14 +341,14 @@
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.contentsToolStripMenuItem.Text = "Contents";
             this.contentsToolStripMenuItem.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.versionToolStripMenuItem.Text = "Version";
             this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
@@ -953,16 +953,16 @@
             this.onlineLabel.TabIndex = 3;
             this.onlineLabel.Text = "Offline ...";
             // 
-            // label2
+            // comPortLabel
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(969, 588);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "COM Port: 0";
+            this.comPortLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comPortLabel.AutoSize = true;
+            this.comPortLabel.Location = new System.Drawing.Point(969, 588);
+            this.comPortLabel.Name = "comPortLabel";
+            this.comPortLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comPortLabel.Size = new System.Drawing.Size(65, 13);
+            this.comPortLabel.TabIndex = 4;
+            this.comPortLabel.Text = "COM Port: 0";
             // 
             // eCUdataTableAdapter1
             // 
@@ -994,7 +994,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 610);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comPortLabel);
             this.Controls.Add(this.onlineLabel);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.tabControl1);
@@ -1059,7 +1059,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label onlineLabel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label comPortLabel;
         private System.Windows.Forms.BindingSource eCUdataBindingSource;
         private sampleDBDataSet1 sampleDBDataSet1;
         private System.Windows.Forms.BindingSource eCUdataBindingSource1;

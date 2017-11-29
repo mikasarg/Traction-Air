@@ -23,14 +23,11 @@ namespace TractionAir
         //TODO connect and send data via USB
         //TODO connect to and edit the real database (online or offline)
 
-        private bool online; //Denotes whether or not the program is in online mode
-
         /// <summary>
         /// Constructor
         /// </summary>
         public TractionAirForm()
         {
-            online = false;
             InitializeComponent();
 
             InitializeUSBPort();
@@ -84,13 +81,13 @@ namespace TractionAir
         /// <param name="e"></param>
         private void offlineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (online)
+            if (Properties.Settings.Default.OnlineMode)
             {
-                online = false;
+                Properties.Settings.Default.OnlineMode = false;
                 offlineToolStripMenuItem.Checked = true;
                 onlineToolStripMenuItem.Checked = false;
-                onlineLabel.Text = "Offline ...";
-                //TODO change it to offline mode
+                onlineLabel.Text = "Offline Mode";
+                //TODO make this meaningful
             }
         }
 
@@ -101,13 +98,13 @@ namespace TractionAir
         /// <param name="e"></param>
         private void onlineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!online)
+            if (!Properties.Settings.Default.OnlineMode)
             {
-                online = true;
+                Properties.Settings.Default.OnlineMode = true;
                 onlineToolStripMenuItem.Checked = true;
                 offlineToolStripMenuItem.Checked = false;
-                onlineLabel.Text = "Online ...";
-                //TODO change it to online mode
+                onlineLabel.Text = "Online Mode";
+                //TODO make this meaningful, and let them know if they are connected to the internet
             }
         }
 
@@ -378,7 +375,7 @@ namespace TractionAir
             if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
             {
                 //ECU is connected
-                Properties.Settings.Default.IsConnected = true;
+                Properties.Settings.Default.EcuConnected = true;
                 List<string> names = ComPortNames(ECU_VID, ECU_PID);
 
                 if (names.Count > 0)
@@ -387,7 +384,7 @@ namespace TractionAir
                     {
                         if (names.Contains(s))
                         {
-                            Properties.Settings.Default.AutoConnectionPort = s;
+                            Properties.Settings.Default.ConnectionPort = s;
                         }
                     }
                 }
@@ -399,7 +396,7 @@ namespace TractionAir
         private void USBPort_USBDeviceAttached(object sender, USBClass.USBDeviceEventArgs e)
         {
             //Do nothing if ECU is already connected 
-            if (Properties.Settings.Default.IsConnected)
+            if (Properties.Settings.Default.EcuConnected)
             {
                 return;
             }
@@ -407,7 +404,7 @@ namespace TractionAir
             if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
             {
                 //ECU is connected
-                Properties.Settings.Default.IsConnected = true;
+                Properties.Settings.Default.EcuConnected = true;
 
                 List<string> names = ComPortNames(ECU_VID, ECU_PID);
 
@@ -417,7 +414,7 @@ namespace TractionAir
                     {
                         if (names.Contains(s))
                         {
-                            Properties.Settings.Default.AutoConnectionPort = s;
+                            Properties.Settings.Default.ConnectionPort = s;
                         }
                     }
                 }
@@ -427,7 +424,7 @@ namespace TractionAir
         private void USBPort_USBDeviceRemoved(object sender, USBClass.USBDeviceEventArgs e)
         {
             //Do nothing if ECU is already disconnected 
-            if (!Properties.Settings.Default.IsConnected)
+            if (!Properties.Settings.Default.EcuConnected)
             {
                 return;
             }
@@ -435,7 +432,7 @@ namespace TractionAir
             if (!USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
             {
                 //ECU is disconnected
-                Properties.Settings.Default.IsConnected = false;
+                Properties.Settings.Default.EcuConnected = false;
                 //TODO Console.WriteLine("ECU disconnected from usb");
             }
         }
@@ -474,6 +471,14 @@ namespace TractionAir
         }
         #endregion
 
+        #region eventhandlers
+        private void OnECUStatusChange(object sender, EventArgs e)
+        {
+            comPortLabel.Text = SerialManager.EcuStatusText;
+
+            //StatusText1.BackColor = SerialManager.GrassMasterStatusColor;
+        }
+        #endregion
 
     }
 }

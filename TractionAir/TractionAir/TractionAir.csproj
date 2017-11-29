@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ECU_Manager.cs" />
     <Compile Include="Forms\AccessCodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +163,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialManager.cs" />
     <Compile Include="USBClass.cs" />
     <Compile Include="Forms\ViewForm.cs">
       <SubType>Form</SubType>

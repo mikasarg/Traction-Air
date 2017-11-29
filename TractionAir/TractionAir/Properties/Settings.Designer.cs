@@ -60,24 +60,48 @@ namespace TractionAir.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("COM#")]
-        public string AutoConnectionPort {
+        public string ConnectionPort {
             get {
-                return ((string)(this["AutoConnectionPort"]));
+                return ((string)(this["ConnectionPort"]));
             }
             set {
-                this["AutoConnectionPort"] = value;
+                this["ConnectionPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsConnected {
+        public bool EcuConnected {
             get {
-                return ((bool)(this["IsConnected"]));
+                return ((bool)(this["EcuConnected"]));
             }
             set {
-                this["IsConnected"] = value;
+                this["EcuConnected"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OnlineMode {
+            get {
+                return ((bool)(this["OnlineMode"]));
+            }
+            set {
+                this["OnlineMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SerialPortOpen {
+            get {
+                return ((bool)(this["SerialPortOpen"]));
+            }
+            set {
+                this["SerialPortOpen"] = value;
             }
         }
     }
