@@ -88,6 +88,7 @@
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.queryButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.saveQueryButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.queryTab.SuspendLayout();
             this.SuspendLayout();
@@ -610,7 +611,7 @@
             // 
             // queryButton
             // 
-            this.queryButton.Location = new System.Drawing.Point(99, 572);
+            this.queryButton.Location = new System.Drawing.Point(56, 572);
             this.queryButton.Name = "queryButton";
             this.queryButton.Size = new System.Drawing.Size(75, 23);
             this.queryButton.TabIndex = 21;
@@ -620,7 +621,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(193, 572);
+            this.cancelButton.Location = new System.Drawing.Point(234, 572);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 22;
@@ -628,11 +629,22 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // saveQueryButton
+            // 
+            this.saveQueryButton.Location = new System.Drawing.Point(145, 572);
+            this.saveQueryButton.Name = "saveQueryButton";
+            this.saveQueryButton.Size = new System.Drawing.Size(75, 23);
+            this.saveQueryButton.TabIndex = 23;
+            this.saveQueryButton.Text = "Save Query";
+            this.saveQueryButton.UseVisualStyleBackColor = true;
+            this.saveQueryButton.Click += new System.EventHandler(this.saveQueryButton_Click);
+            // 
             // queryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 603);
+            this.Controls.Add(this.saveQueryButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.queryButton);
             this.Controls.Add(this.tabControl1);
@@ -711,5 +723,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button queryButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button saveQueryButton;
     }
 }

@@ -60,35 +60,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessCodeForm.cs">
+    <Compile Include="Forms\AccessCodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccessCodeForm.Designer.cs">
+    <Compile Include="Forms\AccessCodeForm.Designer.cs">
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DevBroadcastVolume.cs" />
-    <Compile Include="helpForm.cs">
+    <Compile Include="Forms\helpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="helpForm.Designer.cs">
+    <Compile Include="Forms\helpForm.Designer.cs">
       <DependentUpon>helpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="insertionForm.cs">
+    <Compile Include="Forms\insertionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="insertionForm.Designer.cs">
+    <Compile Include="Forms\insertionForm.Designer.cs">
       <DependentUpon>insertionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PressureSetupForm.cs">
+    <Compile Include="Forms\PressureSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PressureSetupForm.Designer.cs">
+    <Compile Include="Forms\PressureSetupForm.Designer.cs">
       <DependentUpon>PressureSetupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="queryForm.cs">
+    <Compile Include="Forms\queryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="queryForm.Designer.cs">
+    <Compile Include="Forms\queryForm.Designer.cs">
       <DependentUpon>queryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="sampleDBDataSet.Designer.cs">
@@ -96,28 +96,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SelectPressureForm.cs">
+    <Compile Include="Forms\SelectPressureForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectPressureForm.Designer.cs">
+    <Compile Include="Forms\SelectPressureForm.Designer.cs">
       <DependentUpon>SelectPressureForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServerAddressForm.cs">
+    <Compile Include="Forms\ServerAddressForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServerAddressForm.Designer.cs">
+    <Compile Include="Forms\ServerAddressForm.Designer.cs">
       <DependentUpon>ServerAddressForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeForm.cs">
+    <Compile Include="Forms\ChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeForm.Designer.cs">
+    <Compile Include="Forms\ChangeForm.Designer.cs">
       <DependentUpon>ChangeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OwnerListForm.cs">
+    <Compile Include="Forms\OwnerListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OwnerListForm.Designer.cs">
+    <Compile Include="Forms\OwnerListForm.Designer.cs">
       <DependentUpon>OwnerListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="pressureGroupsDataSet.Designer.cs">
@@ -125,10 +125,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="PressureGroupsForm.cs">
+    <Compile Include="Forms\PressureGroupsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PressureGroupsForm.Designer.cs">
+    <Compile Include="Forms\PressureGroupsForm.Designer.cs">
       <DependentUpon>PressureGroupsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="sampleDBDataSet1.Designer.cs">
@@ -136,78 +136,79 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="setupChangeForm.cs">
+    <Compile Include="Forms\setupChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="setupChangeForm.Designer.cs">
+    <Compile Include="Forms\setupChangeForm.Designer.cs">
       <DependentUpon>setupChangeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpeedSetupForm.cs">
+    <Compile Include="Forms\SpeedSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SpeedSetupForm.Designer.cs">
+    <Compile Include="Forms\SpeedSetupForm.Designer.cs">
       <DependentUpon>SpeedSetupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpeedSimulationForm.cs">
+    <Compile Include="Forms\SpeedSimulationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SpeedSimulationForm.Designer.cs">
+    <Compile Include="Forms\SpeedSimulationForm.Designer.cs">
       <DependentUpon>SpeedSimulationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TractionAirForm.cs">
+    <Compile Include="Forms\TractionAirForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TractionAirForm.Designer.cs">
+    <Compile Include="Forms\TractionAirForm.Designer.cs">
       <DependentUpon>TractionAirForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewForm.cs">
+    <Compile Include="USBClass.cs" />
+    <Compile Include="Forms\ViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewForm.Designer.cs">
+    <Compile Include="Forms\ViewForm.Designer.cs">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AccessCodeForm.resx">
+    <EmbeddedResource Include="Forms\AccessCodeForm.resx">
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeForm.resx">
+    <EmbeddedResource Include="Forms\ChangeForm.resx">
       <DependentUpon>ChangeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="helpForm.resx">
+    <EmbeddedResource Include="Forms\helpForm.resx">
       <DependentUpon>helpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="insertionForm.resx">
+    <EmbeddedResource Include="Forms\insertionForm.resx">
       <DependentUpon>insertionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OwnerListForm.resx">
+    <EmbeddedResource Include="Forms\OwnerListForm.resx">
       <DependentUpon>OwnerListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PressureGroupsForm.resx">
+    <EmbeddedResource Include="Forms\PressureGroupsForm.resx">
       <DependentUpon>PressureGroupsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PressureSetupForm.resx">
+    <EmbeddedResource Include="Forms\PressureSetupForm.resx">
       <DependentUpon>PressureSetupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="queryForm.resx">
+    <EmbeddedResource Include="Forms\queryForm.resx">
       <DependentUpon>queryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SelectPressureForm.resx">
+    <EmbeddedResource Include="Forms\SelectPressureForm.resx">
       <DependentUpon>SelectPressureForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServerAddressForm.resx">
+    <EmbeddedResource Include="Forms\ServerAddressForm.resx">
       <DependentUpon>ServerAddressForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="setupChangeForm.resx">
+    <EmbeddedResource Include="Forms\setupChangeForm.resx">
       <DependentUpon>setupChangeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SpeedSetupForm.resx">
+    <EmbeddedResource Include="Forms\SpeedSetupForm.resx">
       <DependentUpon>SpeedSetupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SpeedSimulationForm.resx">
+    <EmbeddedResource Include="Forms\SpeedSimulationForm.resx">
       <DependentUpon>SpeedSimulationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TractionAirForm.resx">
+    <EmbeddedResource Include="Forms\TractionAirForm.resx">
       <DependentUpon>TractionAirForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -219,7 +220,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ViewForm.resx">
+    <EmbeddedResource Include="Forms\ViewForm.resx">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="pressureGroupsDataSet.xsc">
@@ -296,5 +297,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

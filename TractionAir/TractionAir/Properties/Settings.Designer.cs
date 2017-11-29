@@ -56,5 +56,29 @@ namespace TractionAir.Properties {
                 this["TractionAirDesktopVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM#")]
+        public string AutoConnectionPort {
+            get {
+                return ((string)(this["AutoConnectionPort"]));
+            }
+            set {
+                this["AutoConnectionPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsConnected {
+            get {
+                return ((bool)(this["IsConnected"]));
+            }
+            set {
+                this["IsConnected"] = value;
+            }
+        }
     }
 }

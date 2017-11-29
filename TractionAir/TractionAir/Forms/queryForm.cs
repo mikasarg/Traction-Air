@@ -37,5 +37,15 @@ namespace TractionAir
         {
             this.Close();
         }
+
+        /// <summary>
+        /// Saves the query in the "Saved Queries" tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveQueryButton_Click(object sender, EventArgs e)
+        {
+            //TODO save the query
+        }
     }
 }

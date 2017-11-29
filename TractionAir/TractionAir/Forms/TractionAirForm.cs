@@ -8,16 +8,22 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
+using Microsoft.Win32;
+using System.Text.RegularExpressions;
 
 namespace TractionAir
 {
     public partial class TractionAirForm : Form
     {
-        private bool online;
-        private const int WM_DEVICECHANGE = 0x219;
-        private const int DBT_DEVICEARRIVAL = 0x8000;
-        private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
-        private const int DBT_DEVTYP_VOLUME = 0x00000002;
+        //TODO make the progress bar work
+        //TODO make the connected board text work
+        //TODO make the COM Port number work
+        //TODO all menu functions
+        //TODO connect and send data via USB
+        //TODO connect to and edit the real database (online or offline)
+
+        private bool online; //Denotes whether or not the program is in online mode
 
         /// <summary>
         /// Constructor
@@ -26,8 +32,31 @@ namespace TractionAir
         {
             online = false;
             InitializeComponent();
+
+            InitializeUSBPort();
         }
 
+        /// <summary>
+        /// Loads the data into the sampleDB table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TractionAirForm_Load(object sender, EventArgs e)
+        {
+            this.setupTableTableAdapter.Fill(this.sampleDBDataSet.setupTable);
+            this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
+
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                notesRichTextbox.Text = row.Cells[18].Value.ToString();
+            }
+
+            ecuCountLabel.Text = "ECU Count: " + ecuDatabase.RowCount;
+        }
+
+        #region Menu
         /// <summary>
         /// Closes the application
         /// </summary>
@@ -149,27 +178,6 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Loads the data into the sampleDB table
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TractionAirForm_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'sampleDBDataSet.setupTable' table. You can move, or remove it, as needed.
-            this.setupTableTableAdapter.Fill(this.sampleDBDataSet.setupTable);
-            this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
-
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
-            {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
-                notesRichTextbox.Text = row.Cells[18].Value.ToString();
-            }
-
-            ecuCountLabel.Text = "ECU Count: " + ecuDatabase.RowCount;
-        }
-
-        /// <summary>
         /// Shows a window with a database of the pressure groups
         /// </summary>
         /// <param name="sender"></param>
@@ -190,38 +198,6 @@ namespace TractionAir
             OwnerListForm ownerList = new OwnerListForm();
             ownerList.ShowDialog();
             //TODO link the owner list form to a database of owners
-        }
-
-        /// <summary>
-        /// Views the selected entry in a new window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void viewButton_Click(object sender, EventArgs e)
-        {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
-            {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
-                ViewForm viewEntry = new ViewForm(row);
-                viewEntry.ShowDialog();
-            }
-        }
-
-        /// <summary>
-        /// Allows the user to make changes to the entry in a new window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void changeButton_Click(object sender, EventArgs e)
-        {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
-            {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
-                ChangeForm changeEntry = new ChangeForm(row);
-                changeEntry.ShowDialog();
-            }
         }
 
         /// <summary>
@@ -256,6 +232,40 @@ namespace TractionAir
             helpForm help = new helpForm();
             help.Show();
         }
+        #endregion
+
+        #region Buttons
+        /// <summary>
+        /// Views the selected entry in a new window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void viewButton_Click(object sender, EventArgs e)
+        {
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                ViewForm viewEntry = new ViewForm(row);
+                viewEntry.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// Allows the user to make changes to the entry in a new window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void changeButton_Click(object sender, EventArgs e)
+        {
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                ChangeForm changeEntry = new ChangeForm(row);
+                changeEntry.ShowDialog();
+            }
+        }
 
         /// <summary>
         /// Opens the pressure setup window
@@ -280,65 +290,14 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Updates the notes textbox to reflect changes in selection
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ecuDatabase_SelectionChanged(object sender, EventArgs e)
-        {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
-            {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
-                notesRichTextbox.Text = row.Cells[18].Value.ToString();
-            }
-        }
-
-        /// <summary>
         /// Opens up a query window for the user to enter and save queries
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void queryButton_Click(object sender, EventArgs e)
         {
-            //TODO query - VERY HARD by the looks of things?? Have to write in SQL???
             queryForm query = new queryForm();
             query.ShowDialog();
-        }
-
-        /// <summary>
-        /// Overrides the windows proc method (for interacting with USB devices)
-        /// </summary>
-        /// <param name="m"></param>
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-
-            switch(m.Msg)
-            {
-                case WM_DEVICECHANGE:
-                    switch((int)m.WParam)
-                    {
-                        case DBT_DEVICEARRIVAL:
-                            //Device arrived
-
-                            int devType = Marshal.ReadInt32(m.LParam, 4);
-                            if (devType == DBT_DEVTYP_VOLUME) //storage device
-                            {
-                                DevBroadcastVolume vol;
-                                vol = (DevBroadcastVolume)Marshal.PtrToStructure(m.LParam,
-                                   typeof(DevBroadcastVolume));
-                                //Device mask is vol.Mask
-                                
-                            }
-                            break;
-                        case DBT_DEVICEREMOVECOMPLETE:
-                            //Device removed
-                            break;
-                    }
-                    break;
-
-            }
         }
 
         /// <summary>
@@ -366,11 +325,155 @@ namespace TractionAir
         {
             //TODO find out what this does + when it is active
         }
+        #endregion
 
-        //TODO queries and saving queries
-        //TODO make the progress bar work
-        //TODO make the connected board text work
-        //TODO make the COM Port number work
-        //TODO all menu functions
+        #region Database
+        /// <summary>
+        /// Updates the notes textbox to reflect changes in selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ecuDatabase_SelectionChanged(object sender, EventArgs e)
+        {
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                notesRichTextbox.Text = row.Cells[18].Value.ToString();
+            }
+        }
+        #endregion
+
+        #region USB
+        private USBClass USBPort;
+        private List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
+
+        private const string ECU_VID = "0403";
+        private const string ECU_PID = "6015";
+        private const string ECU_DEVID = "vid_0403&pid_6015";
+
+        /// <summary>
+        /// Overrides the windows proc method (for interacting with USB devices)
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            bool IsHandled = false;
+            USBPort.ProcessWindowsMessage(m.Msg, m.WParam, m.LParam, ref IsHandled);
+            base.WndProc(ref m);
+        }
+
+        private void InitializeUSBPort()
+        {
+            //Using the USBClassLibrary to detect ECU connections            
+            USBPort = new USBClass();
+            ListOfUSBDeviceProperties = new List<USBClass.DeviceProperties>();
+
+            USBPort.USBDeviceAttached += new USBClass.USBDeviceEventHandler(USBPort_USBDeviceAttached);
+            USBPort.USBDeviceRemoved += new USBClass.USBDeviceEventHandler(USBPort_USBDeviceRemoved);
+
+            USBPort.RegisterForDeviceChange(true, this.Handle);
+
+            //Check if ECU is already connected
+            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            {
+                //ECU is connected
+                Properties.Settings.Default.IsConnected = true;
+                List<string> names = ComPortNames(ECU_VID, ECU_PID);
+
+                if (names.Count > 0)
+                {
+                    foreach (String s in SerialPort.GetPortNames())
+                    {
+                        if (names.Contains(s))
+                        {
+                            Properties.Settings.Default.AutoConnectionPort = s;
+                        }
+                    }
+                }
+                //TODO Console.WriteLine("ECU autoconnected on " + Properties.Settings.Default.AutoConnectionPort);
+            }
+        }
+
+        //Implement Attach and Detach handlers:
+        private void USBPort_USBDeviceAttached(object sender, USBClass.USBDeviceEventArgs e)
+        {
+            //Do nothing if ECU is already connected 
+            if (Properties.Settings.Default.IsConnected)
+            {
+                return;
+            }
+
+            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            {
+                //ECU is connected
+                Properties.Settings.Default.IsConnected = true;
+
+                List<string> names = ComPortNames(ECU_VID, ECU_PID);
+
+                if (names.Count > 0)
+                {
+                    foreach (String s in SerialPort.GetPortNames())
+                    {
+                        if (names.Contains(s))
+                        {
+                            Properties.Settings.Default.AutoConnectionPort = s;
+                        }
+                    }
+                }
+                //TODO Console.WriteLine("ECU autoconnected on " + Properties.Settings.Default.AutoConnectionPort);
+            }
+        }
+        private void USBPort_USBDeviceRemoved(object sender, USBClass.USBDeviceEventArgs e)
+        {
+            //Do nothing if ECU is already disconnected 
+            if (!Properties.Settings.Default.IsConnected)
+            {
+                return;
+            }
+
+            if (!USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            {
+                //ECU is disconnected
+                Properties.Settings.Default.IsConnected = false;
+                //TODO Console.WriteLine("ECU disconnected from usb");
+            }
+        }
+
+        /// <summary>
+        /// Compile an array of COM port names associated with given VID and PID
+        /// </summary>
+        /// <param name="VID"></param>
+        /// <param name="PID"></param>
+        /// <returns></returns>
+        List<string> ComPortNames(String VID, String PID)
+        {
+            String pattern = String.Format("^VID_{0}.PID_{1}", VID, PID);
+            Regex _rx = new Regex(pattern, RegexOptions.IgnoreCase);
+            List<string> comports = new List<string>();
+            RegistryKey rk1 = Registry.LocalMachine;
+            RegistryKey rk2 = rk1.OpenSubKey("SYSTEM\\CurrentControlSet\\Enum");
+            foreach (String s3 in rk2.GetSubKeyNames())
+            {
+                RegistryKey rk3 = rk2.OpenSubKey(s3);
+                foreach (String s in rk3.GetSubKeyNames())
+                {
+                    if (_rx.Match(s).Success)
+                    {
+                        RegistryKey rk4 = rk3.OpenSubKey(s);
+                        foreach (String s2 in rk4.GetSubKeyNames())
+                        {
+                            RegistryKey rk5 = rk4.OpenSubKey(s2);
+                            RegistryKey rk6 = rk5.OpenSubKey("Device Parameters");
+                            comports.Add((string)rk6.GetValue("PortName"));
+                        }
+                    }
+                }
+            }
+            return comports;
+        }
+        #endregion
+
+
     }
 }

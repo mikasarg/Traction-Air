@@ -21,5 +21,11 @@
     <Setting Name="TractionAirDesktopVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)">V0.9.0</Value>
     </Setting>
+    <Setting Name="AutoConnectionPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM#</Value>
+    </Setting>
+    <Setting Name="IsConnected" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

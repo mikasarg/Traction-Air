@@ -39,18 +39,16 @@
             treeNode5});
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Access Code");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Enter Server Address");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Network Connection");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Speed Simulate");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Read Error Data");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("ECx Report");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Tools", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Speed Simulate");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Read Error Data");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("ECx Report");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Tools", new System.Windows.Forms.TreeNode[] {
             treeNode7,
             treeNode8,
             treeNode9,
             treeNode10,
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Browse");
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Browse");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(helpForm));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -76,24 +74,22 @@
             treeNode7.Text = "Access Code";
             treeNode8.Name = "enterServerAddressNode";
             treeNode8.Text = "Enter Server Address";
-            treeNode9.Name = "networkConnectionNode";
-            treeNode9.Text = "Network Connection";
-            treeNode10.Name = "speedSimulateNode";
-            treeNode10.Text = "Speed Simulate";
-            treeNode11.Name = "readErrorDataNode";
-            treeNode11.Text = "Read Error Data";
-            treeNode12.Name = "ecxReportNode";
-            treeNode12.Text = "ECx Report";
-            treeNode13.Name = "toolsNode";
-            treeNode13.Text = "Tools";
-            treeNode14.Name = "browseNode";
-            treeNode14.Text = "Browse";
+            treeNode9.Name = "speedSimulateNode";
+            treeNode9.Text = "Speed Simulate";
+            treeNode10.Name = "readErrorDataNode";
+            treeNode10.Text = "Read Error Data";
+            treeNode11.Name = "ecxReportNode";
+            treeNode11.Text = "ECx Report";
+            treeNode12.Name = "toolsNode";
+            treeNode12.Text = "Tools";
+            treeNode13.Name = "browseNode";
+            treeNode13.Text = "Browse";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode3,
             treeNode6,
-            treeNode13,
-            treeNode14});
+            treeNode12,
+            treeNode13});
             this.treeView1.Size = new System.Drawing.Size(229, 482);
             this.treeView1.TabIndex = 0;
             // 

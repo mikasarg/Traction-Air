@@ -68,27 +68,6 @@
             this.changeButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
             this.ecuDatabase = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.onlineLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.changeButton2 = new System.Windows.Forms.Button();
-            this.setupDataButton = new System.Windows.Forms.Button();
-            this.boardCodeButton = new System.Windows.Forms.Button();
-            this.wrongControllerLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.setupTableDataGridView = new System.Windows.Forms.DataGridView();
-            this.boardCodeLabel = new System.Windows.Forms.Label();
-            this.lcdContrastButton = new System.Windows.Forms.Label();
-            this.psiOffsetButton = new System.Windows.Forms.Label();
-            this.pressureRefButton = new System.Windows.Forms.Label();
-            this.psiKpaButton = new System.Windows.Forms.Label();
-            this.stepUpDelayLabel = new System.Windows.Forms.Label();
-            this.maxTracBeepLabel = new System.Windows.Forms.Label();
-            this.gpsButtonsLabel = new System.Windows.Forms.Label();
-            this.userProgLabel = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +89,17 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.userProgLabel = new System.Windows.Forms.Label();
+            this.gpsButtonsLabel = new System.Windows.Forms.Label();
+            this.maxTracBeepLabel = new System.Windows.Forms.Label();
+            this.stepUpDelayLabel = new System.Windows.Forms.Label();
+            this.psiKpaButton = new System.Windows.Forms.Label();
+            this.pressureRefButton = new System.Windows.Forms.Label();
+            this.psiOffsetButton = new System.Windows.Forms.Label();
+            this.lcdContrastButton = new System.Windows.Forms.Label();
+            this.boardCodeLabel = new System.Windows.Forms.Label();
+            this.setupTableDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,6 +112,16 @@
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.setupTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sampleDBDataSet = new TractionAir.sampleDBDataSet();
+            this.label1 = new System.Windows.Forms.Label();
+            this.wrongControllerLabel = new System.Windows.Forms.Label();
+            this.boardCodeButton = new System.Windows.Forms.Button();
+            this.changeButton2 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.setupDataButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.onlineLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.eCUdataTableAdapter1 = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
@@ -131,13 +131,13 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ecuDatabase)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.setupTableDataGridView)).BeginInit();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.setupTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -510,236 +510,6 @@
             this.ecuDatabase.TabIndex = 0;
             this.ecuDatabase.SelectionChanged += new System.EventHandler(this.ecuDatabase_SelectionChanged);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.userProgLabel);
-            this.tabPage2.Controls.Add(this.gpsButtonsLabel);
-            this.tabPage2.Controls.Add(this.maxTracBeepLabel);
-            this.tabPage2.Controls.Add(this.stepUpDelayLabel);
-            this.tabPage2.Controls.Add(this.psiKpaButton);
-            this.tabPage2.Controls.Add(this.pressureRefButton);
-            this.tabPage2.Controls.Add(this.psiOffsetButton);
-            this.tabPage2.Controls.Add(this.lcdContrastButton);
-            this.tabPage2.Controls.Add(this.boardCodeLabel);
-            this.tabPage2.Controls.Add(this.setupTableDataGridView);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.wrongControllerLabel);
-            this.tabPage2.Controls.Add(this.boardCodeButton);
-            this.tabPage2.Controls.Add(this.changeButton2);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1026, 513);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Setup";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressBar1.Location = new System.Drawing.Point(4, 582);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.TabIndex = 2;
-            // 
-            // onlineLabel
-            // 
-            this.onlineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.onlineLabel.AutoSize = true;
-            this.onlineLabel.Location = new System.Drawing.Point(110, 588);
-            this.onlineLabel.Name = "onlineLabel";
-            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
-            this.onlineLabel.TabIndex = 3;
-            this.onlineLabel.Text = "Offline ...";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(969, 588);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "COM Port: 3";
-            // 
-            // changeButton2
-            // 
-            this.changeButton2.Location = new System.Drawing.Point(76, 469);
-            this.changeButton2.Name = "changeButton2";
-            this.changeButton2.Size = new System.Drawing.Size(75, 23);
-            this.changeButton2.TabIndex = 0;
-            this.changeButton2.Text = "Change";
-            this.changeButton2.UseVisualStyleBackColor = true;
-            this.changeButton2.Click += new System.EventHandler(this.changeButton2_Click);
-            // 
-            // setupDataButton
-            // 
-            this.setupDataButton.Location = new System.Drawing.Point(8, 31);
-            this.setupDataButton.Name = "setupDataButton";
-            this.setupDataButton.Size = new System.Drawing.Size(75, 23);
-            this.setupDataButton.TabIndex = 1;
-            this.setupDataButton.Text = "Setup Data";
-            this.setupDataButton.UseVisualStyleBackColor = true;
-            this.setupDataButton.Click += new System.EventHandler(this.setupDataButton_Click);
-            // 
-            // boardCodeButton
-            // 
-            this.boardCodeButton.Enabled = false;
-            this.boardCodeButton.Location = new System.Drawing.Point(327, 469);
-            this.boardCodeButton.Name = "boardCodeButton";
-            this.boardCodeButton.Size = new System.Drawing.Size(75, 23);
-            this.boardCodeButton.TabIndex = 2;
-            this.boardCodeButton.Text = "Board Code";
-            this.boardCodeButton.UseVisualStyleBackColor = true;
-            this.boardCodeButton.Click += new System.EventHandler(this.boardCodeButton_Click);
-            // 
-            // wrongControllerLabel
-            // 
-            this.wrongControllerLabel.AutoSize = true;
-            this.wrongControllerLabel.Location = new System.Drawing.Point(65, 438);
-            this.wrongControllerLabel.Name = "wrongControllerLabel";
-            this.wrongControllerLabel.Size = new System.Drawing.Size(86, 13);
-            this.wrongControllerLabel.TabIndex = 3;
-            this.wrongControllerLabel.Text = "Wrong Controller";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Uploaded Data:";
-            // 
-            // setupTableDataGridView
-            // 
-            this.setupTableDataGridView.AllowUserToAddRows = false;
-            this.setupTableDataGridView.AllowUserToDeleteRows = false;
-            this.setupTableDataGridView.AutoGenerateColumns = false;
-            this.setupTableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.setupTableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.setupTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29});
-            this.setupTableDataGridView.DataSource = this.setupTableBindingSource;
-            this.setupTableDataGridView.Location = new System.Drawing.Point(6, 69);
-            this.setupTableDataGridView.MultiSelect = false;
-            this.setupTableDataGridView.Name = "setupTableDataGridView";
-            this.setupTableDataGridView.ReadOnly = true;
-            this.setupTableDataGridView.Size = new System.Drawing.Size(1017, 357);
-            this.setupTableDataGridView.TabIndex = 5;
-            // 
-            // boardCodeLabel
-            // 
-            this.boardCodeLabel.AutoSize = true;
-            this.boardCodeLabel.Location = new System.Drawing.Point(168, 47);
-            this.boardCodeLabel.Name = "boardCodeLabel";
-            this.boardCodeLabel.Size = new System.Drawing.Size(13, 13);
-            this.boardCodeLabel.TabIndex = 6;
-            this.boardCodeLabel.Text = "0";
-            // 
-            // lcdContrastButton
-            // 
-            this.lcdContrastButton.AutoSize = true;
-            this.lcdContrastButton.Location = new System.Drawing.Point(658, 47);
-            this.lcdContrastButton.Name = "lcdContrastButton";
-            this.lcdContrastButton.Size = new System.Drawing.Size(13, 13);
-            this.lcdContrastButton.TabIndex = 7;
-            this.lcdContrastButton.Text = "0";
-            // 
-            // psiOffsetButton
-            // 
-            this.psiOffsetButton.AutoSize = true;
-            this.psiOffsetButton.Location = new System.Drawing.Point(760, 47);
-            this.psiOffsetButton.Name = "psiOffsetButton";
-            this.psiOffsetButton.Size = new System.Drawing.Size(13, 13);
-            this.psiOffsetButton.TabIndex = 8;
-            this.psiOffsetButton.Text = "0";
-            // 
-            // pressureRefButton
-            // 
-            this.pressureRefButton.AutoSize = true;
-            this.pressureRefButton.Location = new System.Drawing.Point(856, 47);
-            this.pressureRefButton.Name = "pressureRefButton";
-            this.pressureRefButton.Size = new System.Drawing.Size(13, 13);
-            this.pressureRefButton.TabIndex = 9;
-            this.pressureRefButton.Text = "0";
-            // 
-            // psiKpaButton
-            // 
-            this.psiKpaButton.AutoSize = true;
-            this.psiKpaButton.Location = new System.Drawing.Point(958, 47);
-            this.psiKpaButton.Name = "psiKpaButton";
-            this.psiKpaButton.Size = new System.Drawing.Size(13, 13);
-            this.psiKpaButton.TabIndex = 10;
-            this.psiKpaButton.Text = "0";
-            // 
-            // stepUpDelayLabel
-            // 
-            this.stepUpDelayLabel.AutoSize = true;
-            this.stepUpDelayLabel.Location = new System.Drawing.Point(382, 47);
-            this.stepUpDelayLabel.Name = "stepUpDelayLabel";
-            this.stepUpDelayLabel.Size = new System.Drawing.Size(13, 13);
-            this.stepUpDelayLabel.TabIndex = 11;
-            this.stepUpDelayLabel.Text = "0";
-            // 
-            // maxTracBeepLabel
-            // 
-            this.maxTracBeepLabel.AutoSize = true;
-            this.maxTracBeepLabel.Location = new System.Drawing.Point(484, 47);
-            this.maxTracBeepLabel.Name = "maxTracBeepLabel";
-            this.maxTracBeepLabel.Size = new System.Drawing.Size(13, 13);
-            this.maxTracBeepLabel.TabIndex = 12;
-            this.maxTracBeepLabel.Text = "0";
-            // 
-            // gpsButtonsLabel
-            // 
-            this.gpsButtonsLabel.AutoSize = true;
-            this.gpsButtonsLabel.Location = new System.Drawing.Point(565, 47);
-            this.gpsButtonsLabel.Name = "gpsButtonsLabel";
-            this.gpsButtonsLabel.Size = new System.Drawing.Size(13, 13);
-            this.gpsButtonsLabel.TabIndex = 13;
-            this.gpsButtonsLabel.Text = "0";
-            // 
-            // userProgLabel
-            // 
-            this.userProgLabel.AutoSize = true;
-            this.userProgLabel.Location = new System.Drawing.Point(283, 47);
-            this.userProgLabel.Name = "userProgLabel";
-            this.userProgLabel.Size = new System.Drawing.Size(13, 13);
-            this.userProgLabel.TabIndex = 14;
-            this.userProgLabel.Text = "0";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(244, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 80);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Not For EC4";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.setupDataButton);
-            this.groupBox2.Location = new System.Drawing.Point(233, 438);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(177, 67);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Download";
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Build Date";
@@ -884,6 +654,139 @@
             this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
             this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.userProgLabel);
+            this.tabPage2.Controls.Add(this.gpsButtonsLabel);
+            this.tabPage2.Controls.Add(this.maxTracBeepLabel);
+            this.tabPage2.Controls.Add(this.stepUpDelayLabel);
+            this.tabPage2.Controls.Add(this.psiKpaButton);
+            this.tabPage2.Controls.Add(this.pressureRefButton);
+            this.tabPage2.Controls.Add(this.psiOffsetButton);
+            this.tabPage2.Controls.Add(this.lcdContrastButton);
+            this.tabPage2.Controls.Add(this.boardCodeLabel);
+            this.tabPage2.Controls.Add(this.setupTableDataGridView);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.wrongControllerLabel);
+            this.tabPage2.Controls.Add(this.boardCodeButton);
+            this.tabPage2.Controls.Add(this.changeButton2);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1026, 513);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Setup";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // userProgLabel
+            // 
+            this.userProgLabel.AutoSize = true;
+            this.userProgLabel.Location = new System.Drawing.Point(283, 47);
+            this.userProgLabel.Name = "userProgLabel";
+            this.userProgLabel.Size = new System.Drawing.Size(13, 13);
+            this.userProgLabel.TabIndex = 14;
+            this.userProgLabel.Text = "0";
+            // 
+            // gpsButtonsLabel
+            // 
+            this.gpsButtonsLabel.AutoSize = true;
+            this.gpsButtonsLabel.Location = new System.Drawing.Point(565, 47);
+            this.gpsButtonsLabel.Name = "gpsButtonsLabel";
+            this.gpsButtonsLabel.Size = new System.Drawing.Size(13, 13);
+            this.gpsButtonsLabel.TabIndex = 13;
+            this.gpsButtonsLabel.Text = "0";
+            // 
+            // maxTracBeepLabel
+            // 
+            this.maxTracBeepLabel.AutoSize = true;
+            this.maxTracBeepLabel.Location = new System.Drawing.Point(484, 47);
+            this.maxTracBeepLabel.Name = "maxTracBeepLabel";
+            this.maxTracBeepLabel.Size = new System.Drawing.Size(13, 13);
+            this.maxTracBeepLabel.TabIndex = 12;
+            this.maxTracBeepLabel.Text = "0";
+            // 
+            // stepUpDelayLabel
+            // 
+            this.stepUpDelayLabel.AutoSize = true;
+            this.stepUpDelayLabel.Location = new System.Drawing.Point(382, 47);
+            this.stepUpDelayLabel.Name = "stepUpDelayLabel";
+            this.stepUpDelayLabel.Size = new System.Drawing.Size(13, 13);
+            this.stepUpDelayLabel.TabIndex = 11;
+            this.stepUpDelayLabel.Text = "0";
+            // 
+            // psiKpaButton
+            // 
+            this.psiKpaButton.AutoSize = true;
+            this.psiKpaButton.Location = new System.Drawing.Point(958, 47);
+            this.psiKpaButton.Name = "psiKpaButton";
+            this.psiKpaButton.Size = new System.Drawing.Size(13, 13);
+            this.psiKpaButton.TabIndex = 10;
+            this.psiKpaButton.Text = "0";
+            // 
+            // pressureRefButton
+            // 
+            this.pressureRefButton.AutoSize = true;
+            this.pressureRefButton.Location = new System.Drawing.Point(856, 47);
+            this.pressureRefButton.Name = "pressureRefButton";
+            this.pressureRefButton.Size = new System.Drawing.Size(13, 13);
+            this.pressureRefButton.TabIndex = 9;
+            this.pressureRefButton.Text = "0";
+            // 
+            // psiOffsetButton
+            // 
+            this.psiOffsetButton.AutoSize = true;
+            this.psiOffsetButton.Location = new System.Drawing.Point(760, 47);
+            this.psiOffsetButton.Name = "psiOffsetButton";
+            this.psiOffsetButton.Size = new System.Drawing.Size(13, 13);
+            this.psiOffsetButton.TabIndex = 8;
+            this.psiOffsetButton.Text = "0";
+            // 
+            // lcdContrastButton
+            // 
+            this.lcdContrastButton.AutoSize = true;
+            this.lcdContrastButton.Location = new System.Drawing.Point(658, 47);
+            this.lcdContrastButton.Name = "lcdContrastButton";
+            this.lcdContrastButton.Size = new System.Drawing.Size(13, 13);
+            this.lcdContrastButton.TabIndex = 7;
+            this.lcdContrastButton.Text = "0";
+            // 
+            // boardCodeLabel
+            // 
+            this.boardCodeLabel.AutoSize = true;
+            this.boardCodeLabel.Location = new System.Drawing.Point(168, 47);
+            this.boardCodeLabel.Name = "boardCodeLabel";
+            this.boardCodeLabel.Size = new System.Drawing.Size(13, 13);
+            this.boardCodeLabel.TabIndex = 6;
+            this.boardCodeLabel.Text = "0";
+            // 
+            // setupTableDataGridView
+            // 
+            this.setupTableDataGridView.AllowUserToAddRows = false;
+            this.setupTableDataGridView.AllowUserToDeleteRows = false;
+            this.setupTableDataGridView.AutoGenerateColumns = false;
+            this.setupTableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.setupTableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.setupTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29});
+            this.setupTableDataGridView.DataSource = this.setupTableBindingSource;
+            this.setupTableDataGridView.Location = new System.Drawing.Point(6, 69);
+            this.setupTableDataGridView.MultiSelect = false;
+            this.setupTableDataGridView.Name = "setupTableDataGridView";
+            this.setupTableDataGridView.ReadOnly = true;
+            this.setupTableDataGridView.Size = new System.Drawing.Size(1017, 357);
+            this.setupTableDataGridView.TabIndex = 5;
+            // 
             // dataGridViewTextBoxColumn20
             // 
             this.dataGridViewTextBoxColumn20.DataPropertyName = "TRT Code";
@@ -964,6 +867,103 @@
             this.sampleDBDataSet.DataSetName = "sampleDBDataSet";
             this.sampleDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Uploaded Data:";
+            // 
+            // wrongControllerLabel
+            // 
+            this.wrongControllerLabel.AutoSize = true;
+            this.wrongControllerLabel.Location = new System.Drawing.Point(65, 438);
+            this.wrongControllerLabel.Name = "wrongControllerLabel";
+            this.wrongControllerLabel.Size = new System.Drawing.Size(86, 13);
+            this.wrongControllerLabel.TabIndex = 3;
+            this.wrongControllerLabel.Text = "Wrong Controller";
+            // 
+            // boardCodeButton
+            // 
+            this.boardCodeButton.Enabled = false;
+            this.boardCodeButton.Location = new System.Drawing.Point(327, 469);
+            this.boardCodeButton.Name = "boardCodeButton";
+            this.boardCodeButton.Size = new System.Drawing.Size(75, 23);
+            this.boardCodeButton.TabIndex = 2;
+            this.boardCodeButton.Text = "Board Code";
+            this.boardCodeButton.UseVisualStyleBackColor = true;
+            this.boardCodeButton.Click += new System.EventHandler(this.boardCodeButton_Click);
+            // 
+            // changeButton2
+            // 
+            this.changeButton2.Location = new System.Drawing.Point(76, 469);
+            this.changeButton2.Name = "changeButton2";
+            this.changeButton2.Size = new System.Drawing.Size(75, 23);
+            this.changeButton2.TabIndex = 0;
+            this.changeButton2.Text = "Change";
+            this.changeButton2.UseVisualStyleBackColor = true;
+            this.changeButton2.Click += new System.EventHandler(this.changeButton2_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(244, 17);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(387, 80);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Not For EC4";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.setupDataButton);
+            this.groupBox2.Location = new System.Drawing.Point(233, 438);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(177, 67);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Download";
+            // 
+            // setupDataButton
+            // 
+            this.setupDataButton.Location = new System.Drawing.Point(8, 31);
+            this.setupDataButton.Name = "setupDataButton";
+            this.setupDataButton.Size = new System.Drawing.Size(75, 23);
+            this.setupDataButton.TabIndex = 1;
+            this.setupDataButton.Text = "Setup Data";
+            this.setupDataButton.UseVisualStyleBackColor = true;
+            this.setupDataButton.Click += new System.EventHandler(this.setupDataButton_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressBar1.Location = new System.Drawing.Point(4, 582);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 2;
+            // 
+            // onlineLabel
+            // 
+            this.onlineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.onlineLabel.AutoSize = true;
+            this.onlineLabel.Location = new System.Drawing.Point(110, 588);
+            this.onlineLabel.Name = "onlineLabel";
+            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
+            this.onlineLabel.TabIndex = 3;
+            this.onlineLabel.Text = "Offline ...";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(969, 588);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "COM Port: 0";
+            // 
             // eCUdataTableAdapter1
             // 
             this.eCUdataTableAdapter1.ClearBeforeFill = true;
@@ -1011,14 +1011,14 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ecuDatabase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableDataGridView)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
