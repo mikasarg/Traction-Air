@@ -18,5 +18,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\pressureGroups.mdf;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="TractionAirDesktopVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V0.9.0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

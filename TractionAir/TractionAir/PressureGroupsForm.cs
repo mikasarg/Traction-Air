@@ -60,5 +60,15 @@ namespace TractionAir
                 tableDataGridView.Rows.RemoveAt(row.Index);
             }
         }
+
+        /// <summary>
+        /// Allows the user to change the selected entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void changeButton_Click(object sender, EventArgs e)
+        {
+            //TODO open a change dialog window
+        }
     }
 }

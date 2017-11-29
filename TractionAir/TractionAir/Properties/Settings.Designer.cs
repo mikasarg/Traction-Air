@@ -44,5 +44,17 @@ namespace TractionAir.Properties {
                 return ((string)(this["pressureGroupsConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("V0.9.0")]
+        public string TractionAirDesktopVersion {
+            get {
+                return ((string)(this["TractionAirDesktopVersion"]));
+            }
+            set {
+                this["TractionAirDesktopVersion"] = value;
+            }
+        }
     }
 }

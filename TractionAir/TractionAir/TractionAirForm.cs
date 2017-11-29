@@ -45,7 +45,7 @@ namespace TractionAir
         /// <param name="e"></param>
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("TractionAir Desktop " + Program.Version, "Version");
+            MessageBox.Show("TractionAir Desktop " + Properties.Settings.Default.TractionAirDesktopVersion, "Version");
         }
 
         /// <summary>
@@ -155,6 +155,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void TractionAirForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'sampleDBDataSet.setupTable' table. You can move, or remove it, as needed.
+            this.setupTableTableAdapter.Fill(this.sampleDBDataSet.setupTable);
             this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
 
             int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
@@ -251,7 +253,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO create a help window and have content in it
+            helpForm help = new helpForm();
+            help.Show();
         }
 
         /// <summary>
@@ -338,12 +341,36 @@ namespace TractionAir
             }
         }
 
-        //TODO be able to insert, change and delete pressure group entries
+        /// <summary>
+        /// Allows the user to change the selected entry in the setup table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void changeButton2_Click(object sender, EventArgs e)
+        {
+            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                DataGridViewRow row = setupTableDataGridView.SelectedCells[0].OwningRow;
+                setupChangeForm setupChange = new setupChangeForm(row);
+                setupChange.ShowDialog();
+            }
+        }
+
+        private void setupDataButton_Click(object sender, EventArgs e)
+        {
+            //TODO find out what this does
+        }
+
+        private void boardCodeButton_Click(object sender, EventArgs e)
+        {
+            //TODO find out what this does + when it is active
+        }
+
         //TODO queries and saving queries
-        //TODO progress bar and text next to it
-        //TODO connected board text
-        //TODO COM Port number
+        //TODO make the progress bar work
+        //TODO make the connected board text work
+        //TODO make the COM Port number work
         //TODO all menu functions
-        //TODO setup tab
     }
 }

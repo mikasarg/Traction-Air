@@ -8,8 +8,6 @@ namespace TractionAir
 {
     static class Program
     {
-        public static String Version = "V0.9.0";
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

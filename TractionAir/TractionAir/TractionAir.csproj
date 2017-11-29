@@ -67,6 +67,12 @@
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DevBroadcastVolume.cs" />
+    <Compile Include="helpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helpForm.Designer.cs">
+      <DependentUpon>helpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="insertionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,11 @@
     </Compile>
     <Compile Include="queryForm.Designer.cs">
       <DependentUpon>queryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sampleDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SelectPressureForm.cs">
       <SubType>Form</SubType>
@@ -125,6 +136,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="setupChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="setupChangeForm.Designer.cs">
+      <DependentUpon>setupChangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SpeedSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +174,9 @@
     <EmbeddedResource Include="ChangeForm.resx">
       <DependentUpon>ChangeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="helpForm.resx">
+      <DependentUpon>helpForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="insertionForm.resx">
       <DependentUpon>insertionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ServerAddressForm.resx">
       <DependentUpon>ServerAddressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="setupChangeForm.resx">
+      <DependentUpon>setupChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpeedSetupForm.resx">
       <DependentUpon>SpeedSetupForm.cs</DependentUpon>
@@ -219,6 +242,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="sampleDBDataSet.xsc">
+      <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sampleDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sampleDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sampleDBDataSet.xss">
+      <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="sampleDBDataSet1.xsc">
       <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
     </None>

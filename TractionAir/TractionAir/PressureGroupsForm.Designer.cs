@@ -44,6 +44,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insertButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).BeginInit();
@@ -89,6 +90,7 @@
             this.dataGridViewTextBoxColumn7});
             this.tableDataGridView.DataSource = this.tableBindingSource;
             this.tableDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.tableDataGridView.MultiSelect = false;
             this.tableDataGridView.Name = "tableDataGridView";
             this.tableDataGridView.ReadOnly = true;
             this.tableDataGridView.Size = new System.Drawing.Size(898, 479);
@@ -145,7 +147,8 @@
             // 
             // insertButton
             // 
-            this.insertButton.Location = new System.Drawing.Point(353, 487);
+            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.insertButton.Location = new System.Drawing.Point(304, 485);
             this.insertButton.Name = "insertButton";
             this.insertButton.Size = new System.Drawing.Size(75, 23);
             this.insertButton.TabIndex = 2;
@@ -155,7 +158,8 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(454, 487);
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(507, 485);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 3;
@@ -163,11 +167,23 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // changeButton
+            // 
+            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.changeButton.Location = new System.Drawing.Point(408, 485);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(75, 23);
+            this.changeButton.TabIndex = 4;
+            this.changeButton.Text = "Change";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
             // PressureGroupsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 517);
+            this.Controls.Add(this.changeButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.insertButton);
             this.Controls.Add(this.tableDataGridView);
@@ -199,5 +215,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button insertButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button changeButton;
     }
 }
