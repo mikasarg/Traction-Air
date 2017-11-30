@@ -8,9 +8,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using System.IO.Ports;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
+using TractionAir.Serial_Classes;
 
 namespace TractionAir
 {
@@ -18,9 +20,8 @@ namespace TractionAir
     {
         //TODO make the progress bar work
         //TODO make the connected board text work
-        //TODO make the COM Port number work
         //TODO all menu functions
-        //TODO connect and send data via USB
+        //TODO retrieve and send data via USB
         //TODO connect to and edit the real database (online or offline)
 
         /// <summary>
@@ -29,6 +30,10 @@ namespace TractionAir
         public TractionAirForm()
         {
             InitializeComponent();
+
+            SerialManager.Initialize();
+
+            SerialManager.Event_ECU_StatusChange += new EventHandler(OnECUStatusChange);
 
             InitializeUSBPort();
         }
@@ -53,7 +58,45 @@ namespace TractionAir
             ecuCountLabel.Text = "ECU Count: " + ecuDatabase.RowCount;
         }
 
+        #region System Methods
+        /// <summary>
+        /// Updates the SerialManager
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateTimer_tick(object sender, EventArgs e)
+        {
+            SerialManager.Update(timer_update.Interval);
+        }
+        #endregion
+
         #region Menu
+        /// <summary>
+        /// Sets the correct mode option to be checked and the status text
+        /// </summary>
+        private void InitialiseMode()
+        {
+            if (Properties.Settings.Default.OnlineMode)
+            {
+                offlineToolStripMenuItem.Checked = false;
+                onlineToolStripMenuItem.Checked = true;
+                if (true) //TODO check if connected to the internet
+                {
+                    onlineLabel.Text = "Online Mode: Connected";
+                }
+                else
+                {
+                    onlineLabel.Text = "Online Mode: Not Connected";
+                }
+            }
+            else //Offline mode
+            {
+                offlineToolStripMenuItem.Checked = true;
+                onlineToolStripMenuItem.Checked = false;
+                onlineLabel.Text = "Offline Mode";
+            }
+        }
+
         /// <summary>
         /// Closes the application
         /// </summary>
@@ -388,7 +431,7 @@ namespace TractionAir
                         }
                     }
                 }
-                //TODO Console.WriteLine("ECU autoconnected on " + Properties.Settings.Default.AutoConnectionPort);
+                //TODO ECU autoconnected on " + Properties.Settings.Default.ConnectionPort
             }
         }
 
@@ -418,7 +461,7 @@ namespace TractionAir
                         }
                     }
                 }
-                //TODO Console.WriteLine("ECU autoconnected on " + Properties.Settings.Default.AutoConnectionPort);
+                //TODO ECU connected on Properties.Settings.Default.ConnectionPort
             }
         }
         private void USBPort_USBDeviceRemoved(object sender, USBClass.USBDeviceEventArgs e)
@@ -438,7 +481,8 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Compile an array of COM port names associated with given VID and PID
+        /// Compile a list of COM port names associated with given VID and PID
+        /// from https://www.codeproject.com/Tips/349002/Select-a-USB-Serial-Device-via-its-VID-PID
         /// </summary>
         /// <param name="VID"></param>
         /// <param name="PID"></param>
@@ -475,8 +519,6 @@ namespace TractionAir
         private void OnECUStatusChange(object sender, EventArgs e)
         {
             comPortLabel.Text = SerialManager.EcuStatusText;
-
-            //StatusText1.BackColor = SerialManager.GrassMasterStatusColor;
         }
         #endregion
 

@@ -9,18 +9,17 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Threading;
 
-namespace TractionAir
+namespace TractionAir.Serial_Classes
 {
     static class SerialManager
     {
         private static List<string> LastAvailableSerialPorts = new List<string>();
         private static List<string> CurrentAvailableSerialPorts = new List<string>();
-        //private static SerialDownloadProcessor SerialDataProcessor = new SerialDownloadProcessor();
+        //TODO private static SerialDownloadProcessor SerialDataProcessor = new SerialDownloadProcessor();
         private static float statusPerc = 0;
         private static int linesReceived = 0;
         private static int previousLinesReceived = 0;
         private static string statusText = "";
-        private static Color statusBackColor = Color.WhiteSmoke;
         public static string downloadStream = "";
 
         public static bool CommandRequestSent = false;
@@ -44,7 +43,7 @@ namespace TractionAir
             //TODO set timeout for ECU?
         }
 
-        public static string ECU_Autoconnection_Port()
+        public static string ECU_Connection_Port()
         {
             return Properties.Settings.Default.ConnectionPort;
         }
@@ -52,6 +51,7 @@ namespace TractionAir
         public static void Initialize()
         {
             //TODO ??
+            statusText = "ECU Connected on " + Properties.Settings.Default.ConnectionPort;
         }
 
         public static void StartDownload()
@@ -78,7 +78,7 @@ namespace TractionAir
             }
             catch (Exception e)
             {
-                //TODO Console.WriteLine("SerialManager: Exception thrown when trying to start download : " + e.ToString());
+                MessageBox.Show("Exception thrown when trying to start download : " + e.ToString(), "Error");
             }
 
             //TODO start download
@@ -115,29 +115,9 @@ namespace TractionAir
             set
             {
                 statusText = value;
-
-                //TODO make this better
-                //set status colour (kind of a hack, but it works)
-                if (statusText.Contains("discon"))
-                {
-                    statusBackColor = Color.Transparent;
-                }
-                else
-                {
-                    statusBackColor = Color.LightGreen;
-                }
-
-                //alert subscribers               
                 Event_ECU_StatusChange(null, EventArgs.Empty);
             }
         }
-
-        public static Color GrassMasterStatusColor
-        {
-            get { return statusBackColor; }
-            set { statusBackColor = value; }
-        }
-
 
         public static void Update(float deltaTime)
         {
@@ -180,7 +160,7 @@ namespace TractionAir
             {
                 EcuStatusText = "ECU connected on " + Properties.Settings.Default.ConnectionPort;
             }
-            if (!Properties.Settings.Default.EcuConnected)
+            else //ECU disconnected
             {
                 EcuStatusText = "ECU disconnected";
             }
@@ -191,7 +171,7 @@ namespace TractionAir
             // Check ports for plugged/unplugged connections
             CurrentAvailableSerialPorts = SerialPort.GetPortNames().ToList().OrderBy(x => x).ToList();
 
-            //If something has been plugged in or disconnected, check if GMP is still connected
+            //If something has been plugged in or disconnected, check if ECU is still connected
             if (!CurrentAvailableSerialPorts.OrderBy(x => x).SequenceEqual(LastAvailableSerialPorts.OrderBy(x => x)))
             {
                 Event_AvailableSerialPorts_Changed(null, EventArgs.Empty);
@@ -232,19 +212,19 @@ namespace TractionAir
                 }
                 catch (InvalidOperationException invalidOpEx)
                 {
-                    //TODO throw error port is closed
+                    MessageBox.Show("Download could not be completed (port is closed): " + invalidOpEx.Message, "Error" );
                     StopDownload();
                     return;
                 }
                 catch (TimeoutException timeoutEx)
                 {
-                    //TODO throw error serialport.readline timed out
+                    MessageBox.Show("Download timed out: " + timeoutEx.ToString(), "Error");
                     StopDownload();
                     return;
                 }
                 catch (IOException ioex)
                 {
-                    //TODO throw error (likely that ECU was discon during download)
+                    MessageBox.Show("An error occured during the download (was the ECU disconnected?): " + e.ToString(), "Error");
                 }
                 //TODO SerialDataProcessor.AddData(incomingString);
 
@@ -268,7 +248,7 @@ namespace TractionAir
                 //Fire invalid data alert event
                 Event_DownloadInvalid(null, EventArgs.Empty);
 
-                MessageBox.Show("Invalid data received. Please disconnect the GrassMaster and try again.", "Error");
+                MessageBox.Show("Invalid data received. Please disconnect the ECU and try again.", "Error");
                 return;
             }
             else
@@ -361,7 +341,7 @@ namespace TractionAir
         }
 
         public static bool uploadError = false;
-        public static void UploadRowToGrassMaster(DataGridViewRow row)
+        public static void UploadRowToECU(DataGridViewRow row)
         {
             // Send the upload string to the ecu
             try

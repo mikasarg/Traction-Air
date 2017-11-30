@@ -127,6 +127,7 @@
             this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
             this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timer_update = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -226,17 +227,17 @@
             // 
             // onlineToolStripMenuItem
             // 
+            this.onlineToolStripMenuItem.Checked = true;
+            this.onlineToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.onlineToolStripMenuItem.Name = "onlineToolStripMenuItem";
-            this.onlineToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.onlineToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.onlineToolStripMenuItem.Text = "Online";
             this.onlineToolStripMenuItem.Click += new System.EventHandler(this.onlineToolStripMenuItem_Click);
             // 
             // offlineToolStripMenuItem
             // 
-            this.offlineToolStripMenuItem.Checked = true;
-            this.offlineToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.offlineToolStripMenuItem.Name = "offlineToolStripMenuItem";
-            this.offlineToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.offlineToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.offlineToolStripMenuItem.Text = "Offline";
             this.offlineToolStripMenuItem.Click += new System.EventHandler(this.offlineToolStripMenuItem_Click);
             // 
@@ -949,20 +950,19 @@
             this.onlineLabel.AutoSize = true;
             this.onlineLabel.Location = new System.Drawing.Point(110, 588);
             this.onlineLabel.Name = "onlineLabel";
-            this.onlineLabel.Size = new System.Drawing.Size(49, 13);
+            this.onlineLabel.Size = new System.Drawing.Size(67, 13);
             this.onlineLabel.TabIndex = 3;
-            this.onlineLabel.Text = "Offline ...";
+            this.onlineLabel.Text = "Online Mode";
             // 
             // comPortLabel
             // 
             this.comPortLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.comPortLabel.AutoSize = true;
-            this.comPortLabel.Location = new System.Drawing.Point(969, 588);
+            this.comPortLabel.Location = new System.Drawing.Point(868, 588);
             this.comPortLabel.Name = "comPortLabel";
-            this.comPortLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comPortLabel.Size = new System.Drawing.Size(65, 13);
+            this.comPortLabel.Size = new System.Drawing.Size(166, 13);
             this.comPortLabel.TabIndex = 4;
             this.comPortLabel.Text = "COM Port: 0";
+            this.comPortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // eCUdataTableAdapter1
             // 
@@ -988,6 +988,11 @@
             // eCUdataBindingSource
             // 
             this.eCUdataBindingSource.DataMember = "ECUdata";
+            // 
+            // timer_update
+            // 
+            this.timer_update.Enabled = true;
+            this.timer_update.Tick += new System.EventHandler(this.UpdateTimer_tick);
             // 
             // TractionAirForm
             // 
@@ -1124,6 +1129,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Timer timer_update;
     }
 }
 
