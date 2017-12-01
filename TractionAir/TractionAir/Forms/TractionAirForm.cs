@@ -13,6 +13,8 @@ using System.IO.Ports;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using TractionAir.Serial_Classes;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace TractionAir
 {
@@ -36,6 +38,8 @@ namespace TractionAir
             SerialManager.Event_ECU_StatusChange += new EventHandler(OnECUStatusChange);
 
             InitializeUSBPort();
+
+            connectionString = ConfigurationManager.ConnectionStrings["ecuSettingsDatabase.Properties.Settings.ConnectionString"].ConnectionString;
         }
 
         /// <summary>
@@ -45,17 +49,19 @@ namespace TractionAir
         /// <param name="e"></param>
         private void TractionAirForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.mainSettingsTable' table. You can move, or remove it, as needed.
+            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
             this.setupTableTableAdapter.Fill(this.sampleDBDataSet.setupTable);
             this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
 
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
             {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
-                notesRichTextbox.Text = row.Cells[18].Value.ToString();
+                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
+                notesRichTextbox.Text = row.Cells["notesColumn"].Value.ToString();
             }
 
-            ecuCountLabel.Text = "ECU Count: " + ecuDatabase.RowCount;
+            ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
         }
 
         #region System Methods
@@ -152,61 +158,6 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Cuts the selected text to the clipboard
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveControl is TextBox)
-            {
-                Clipboard.SetDataObject(((TextBox)this.ActiveControl).SelectedText, true);
-                ((TextBox)this.ActiveControl).SelectedText = "";
-            }
-            else if (this.ActiveControl is ComboBox)
-            {
-                Clipboard.SetDataObject(((ComboBox)this.ActiveControl).SelectedText, true);
-                ((ComboBox)this.ActiveControl).SelectedText = "";
-            }
-        }
-
-        /// <summary>
-        /// Copies the selected text to the clipboard
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveControl is TextBox)
-            {
-                Clipboard.SetDataObject(((TextBox)this.ActiveControl).SelectedText, true);
-            }
-            else if (this.ActiveControl is ComboBox)
-            {
-                Clipboard.SetDataObject(((ComboBox)this.ActiveControl).SelectedText, true);
-            }
-        }
-
-        /// <summary>
-        /// Pastes the text on the clipboard into the selected text or combo box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveControl is TextBox)
-            {
-                int nCursorPosition = ((TextBox)this.ActiveControl).SelectionStart;
-                this.ActiveControl.Text = this.ActiveControl.Text.Insert(nCursorPosition, Clipboard.GetText());
-            }
-            else if (this.ActiveControl is ComboBox)
-            {
-                int nCursorPosition = ((ComboBox)this.ActiveControl).SelectionStart;
-                this.ActiveControl.Text = this.ActiveControl.Text.Insert(nCursorPosition, Clipboard.GetText());
-            }
-        }
-
-        /// <summary>
         /// Shows a window with a database of the pressure groups
         /// </summary>
         /// <param name="sender"></param>
@@ -260,10 +211,10 @@ namespace TractionAir
         /// <param name="e"></param>
         private void viewButton_Click(object sender, EventArgs e)
         {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
             {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
                 ViewForm viewEntry = new ViewForm(row);
                 viewEntry.ShowDialog();
             }
@@ -276,10 +227,10 @@ namespace TractionAir
         /// <param name="e"></param>
         private void changeButton_Click(object sender, EventArgs e)
         {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
             {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
+                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
                 ChangeForm changeEntry = new ChangeForm(row);
                 changeEntry.ShowDialog();
             }
@@ -298,6 +249,9 @@ namespace TractionAir
         #endregion
 
         #region Database
+        private SqlConnection connection;
+        private string connectionString;
+
         /// <summary>
         /// Updates the notes textbox to reflect changes in selection
         /// </summary>
@@ -305,11 +259,11 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ecuDatabase_SelectionChanged(object sender, EventArgs e)
         {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
+            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
             {
-                DataGridViewRow row = ecuDatabase.SelectedCells[0].OwningRow;
-                notesRichTextbox.Text = row.Cells[18].Value.ToString();
+                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
+                notesRichTextbox.Text = row.Cells["notesColumn"].Value.ToString();
             }
         }
         #endregion

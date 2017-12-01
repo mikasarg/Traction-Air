@@ -60,6 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ecuSettingsDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ecuSettingsDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ECU_Manager.cs" />
     <Compile Include="Forms\AccessCodeForm.cs">
       <SubType>Form</SubType>
@@ -80,12 +85,6 @@
     <Compile Include="Forms\insertionForm.Designer.cs">
       <DependentUpon>insertionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PressureSetupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PressureSetupForm.Designer.cs">
-      <DependentUpon>PressureSetupForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\queryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,12 +101,6 @@
     </Compile>
     <Compile Include="Forms\SelectPressureForm.Designer.cs">
       <DependentUpon>SelectPressureForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ServerAddressForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ServerAddressForm.Designer.cs">
-      <DependentUpon>ServerAddressForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ChangeForm.cs">
       <SubType>Form</SubType>
@@ -142,18 +135,6 @@
     </Compile>
     <Compile Include="Forms\setupChangeForm.Designer.cs">
       <DependentUpon>setupChangeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SpeedSetupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SpeedSetupForm.Designer.cs">
-      <DependentUpon>SpeedSetupForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SpeedSimulationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SpeedSimulationForm.Designer.cs">
-      <DependentUpon>SpeedSimulationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TractionAirForm.cs">
       <SubType>Form</SubType>
@@ -190,26 +171,14 @@
     <EmbeddedResource Include="Forms\PressureGroupsForm.resx">
       <DependentUpon>PressureGroupsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PressureSetupForm.resx">
-      <DependentUpon>PressureSetupForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\queryForm.resx">
       <DependentUpon>queryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectPressureForm.resx">
       <DependentUpon>SelectPressureForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServerAddressForm.resx">
-      <DependentUpon>ServerAddressForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\setupChangeForm.resx">
       <DependentUpon>setupChangeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SpeedSetupForm.resx">
-      <DependentUpon>SpeedSetupForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SpeedSimulationForm.resx">
-      <DependentUpon>SpeedSimulationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TractionAirForm.resx">
       <DependentUpon>TractionAirForm.cs</DependentUpon>
@@ -226,6 +195,17 @@
     <EmbeddedResource Include="Forms\ViewForm.resx">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ecuSettingsDatabaseDataSet.xsc">
+      <DependentUpon>ecuSettingsDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ecuSettingsDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ecuSettingsDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ecuSettingsDatabaseDataSet.xss">
+      <DependentUpon>ecuSettingsDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="pressureGroupsDataSet.xsc">
       <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
     </None>
