@@ -273,6 +273,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ecuSettingsDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ecuSettingsDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ecuSettingsDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="pressureGroups.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -207,17 +207,6 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Sends the connected device a simulated speed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void speedSimulationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SpeedSimulationForm speedSim = new SpeedSimulationForm();
-            speedSim.ShowDialog();
-        }
-
-        /// <summary>
         /// Shows a window with a database of the pressure groups
         /// </summary>
         /// <param name="sender"></param>
@@ -249,17 +238,6 @@ namespace TractionAir
         {
             AccessCodeForm accessCode = new AccessCodeForm();
             accessCode.ShowDialog();
-        }
-
-        /// <summary>
-        /// Allows a user to enter an IP address
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void enterServerAddressToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ServerAddressForm serverAddress = new ServerAddressForm();
-            serverAddress.ShowDialog();
         }
 
         /// <summary>
@@ -308,28 +286,6 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Opens the pressure setup window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pressureSetupButton_Click(object sender, EventArgs e)
-        {
-            PressureSetupForm pressureSetup = new PressureSetupForm();
-            pressureSetup.ShowDialog();
-        }
-
-        /// <summary>
-        /// Opens the speed setup window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void speedSetupButton_Click(object sender, EventArgs e)
-        {
-            SpeedSetupForm speedSetup = new SpeedSetupForm();
-            speedSetup.ShowDialog();
-        }
-
-        /// <summary>
         /// Opens up a query window for the user to enter and save queries
         /// </summary>
         /// <param name="sender"></param>
@@ -338,32 +294,6 @@ namespace TractionAir
         {
             queryForm query = new queryForm();
             query.ShowDialog();
-        }
-
-        /// <summary>
-        /// Allows the user to change the selected entry in the setup table
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void changeButton2_Click(object sender, EventArgs e)
-        {
-            int selectedCellCount = ecuDatabase.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
-            {
-                DataGridViewRow row = setupTableDataGridView.SelectedCells[0].OwningRow;
-                setupChangeForm setupChange = new setupChangeForm(row);
-                setupChange.ShowDialog();
-            }
-        }
-
-        private void setupDataButton_Click(object sender, EventArgs e)
-        {
-            //TODO find out what this does
-        }
-
-        private void boardCodeButton_Click(object sender, EventArgs e)
-        {
-            //TODO find out what this does + when it is active
         }
         #endregion
 
@@ -521,6 +451,5 @@ namespace TractionAir
             comPortLabel.Text = SerialManager.EcuStatusText;
         }
         #endregion
-
     }
 }
