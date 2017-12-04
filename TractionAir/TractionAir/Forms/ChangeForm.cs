@@ -18,14 +18,14 @@ namespace TractionAir
         private string connectionString;
         private SqlConnection connection;
 
-        private List<Tuple<int, string>> changedBoxes; //List of boxes which have been altered
-        private HashSet<int> previouslyVisited;
+        private List<Tuple<string, string>> changedBoxes; //List of boxes which have been altered
+        private HashSet<string> previouslyVisited;
 
         public ChangeForm(int boardCode)
         {
             this.boardCode = boardCode;
-            changedBoxes = new List<Tuple<int, string>>();
-            previouslyVisited = new HashSet<int>();
+            changedBoxes = new List<Tuple<string, string>>();
+            previouslyVisited = new HashSet<string>();
 
             this.connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
 
@@ -39,6 +39,12 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.customerTable' table. You can move, or remove it, as needed.
+            this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
+            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.mainSettingsTable' table. You can move, or remove it, as needed.
+            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
             String query = "SELECT * FROM mainSettingsTable WHERE \"BoardCode\" = '" + boardCode + "'";
             String extraQuery = "SELECT * FROM extraSettingsTable WHERE \"BoardCode\" = '" + boardCode + "'";
 
@@ -96,66 +102,66 @@ namespace TractionAir
 
             for (int j = changedBoxes.Count - 1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
             {
-                int i = changedBoxes[j].Item1;
-                string s = changedBoxes[j].Item2;
+                string s1 = changedBoxes[j].Item1;
+                string s2 = changedBoxes[j].Item2;
 
-                if (previouslyVisited.Contains(i)) //Checks to make sure it only saves the most recent change to the entry
+                if (previouslyVisited.Contains(s1)) //Checks to make sure it only saves the most recent change to the entry
                 {
                     continue;
                 }
-                previouslyVisited.Add(i);
+                previouslyVisited.Add(s1);
 
-                if (i == 18) //notes
+                if (s1.Equals("Notes")) //notes
                 {
-                    //row.Cells[i].Value = s;
+
                 }
-                else if (i == 0 || i == 16) //dates
+                else if (s1.Equals("BuildDate") || s1.Equals("DateMod")) //dates
                 {
                     DateTime dt;
-                    if (DateTime.TryParse(s, out dt)) {
+                    if (DateTime.TryParse(s2, out dt)) {
                         //row.Cells[i].Value = dt.Date;
                     }
                     else
                     {
-                        MessageBox.Show("'" + s + "' should be a date", "Invalid input");
+                        MessageBox.Show("'" + s2 + "' should be a date", "Invalid input");
                         return;
                     }
                 }
-                else if (i == 12 || i == 9 || i == 10 || i == 11) //ints
+                else if (s1.Equals("PressureCell") || s1.Equals("LoadedOffRoad") || s1.Equals("UnloadedOnRoad") || s1.Equals("MaxTraction")) //ints
                 {
                     int k;
-                    if (Int32.TryParse(s, out k))
+                    if (Int32.TryParse(s2, out k))
                     {
                         //row.Cells[i].Value = k;
                     }
                     else
                     {
-                        MessageBox.Show("'" + s + "' should be an integer", "Invalid input");
+                        MessageBox.Show("'" + s2 + "' should be an integer", "Invalid input");
                         return;
                     }
                 }
-                else if (i == 2 || i == 4 || i == 5 || i == 8) //comboboxes
+                else if (s1.Equals("Version") || s1.Equals("PressureGroup") || s1.Equals("SpeedStages") || s1.Equals("Owner")) //comboboxes
                 {
                     //TODO as of now accepts any input under 50 characters. Could be changed to only accept items found in the dropdown list. Depends on spec
-                    if (s.Length <= 50)
+                    if (s2.Length <= 50)
                     {
                         //row.Cells[i].Value = s;
                     }
                     else
                     {
-                        MessageBox.Show("'" + s + "' is too long", "Invalid input");
+                        MessageBox.Show("'" + s2 + "' is too long", "Invalid input");
                         return;
                     }
                 }
                 else //strings
                 {
-                    if (s.Length <= 50)
+                    if (s2.Length <= 50)
                     {
                         //row.Cells[i].Value = s;
                     }
                     else
                     {
-                        MessageBox.Show("'" + s + "' is too long", "Invalid input");
+                        MessageBox.Show("'" + s2 + "' is too long", "Invalid input");
                         return;
                     }
                 }
@@ -186,86 +192,86 @@ namespace TractionAir
 
         private void serialNumberTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(1, serialNumberTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("SerialNumber", serialNumberTextbox.Text));
         }
 
         //Also called when its text is changed
         private void programVersionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(4, programVersionComboBox.Text));
+            changedBoxes.Add(new Tuple<string, string>("Version", programVersionComboBox.Text));
         }
 
         //Also called when its text is changed
         private void pressureGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(2, pressureGroupComboBox.Text));
+            changedBoxes.Add(new Tuple<string, string>("PressureGroup", pressureGroupComboBox.Text));
         }
 
         //Also called when its text is changed
         private void customerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(5, customerComboBox.Text));
+            changedBoxes.Add(new Tuple<string, string>("Owner", customerComboBox.Text));
         }
 
         private void buildDateTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(0, buildDateTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("BuildDate", buildDateTextbox.Text));
         }
 
         private void installDateTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(16, installDateTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("DateMod", installDateTextbox.Text));
         }
 
         private void vehicleRefTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(7, vehicleRefTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("VehicleRef", vehicleRefTextbox.Text));
         }
 
         private void pressureCellTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(12, pressureCellTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("PressureCell", pressureCellTextbox.Text));
         }
 
         private void pt1SerialTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(13, pt1SerialTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("PT1Serial", pt1SerialTextbox.Text));
         }
 
         private void pt2SerialTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(14, pt2SerialTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("PT2Serial", pt2SerialTextbox.Text));
         }
 
         private void descriptionTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(6, descriptionTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("Description", descriptionTextbox.Text));
         }
 
         private void notesRichTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(18, notesRichTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("Notes", notesRichTextbox.Text));
         }
 
         //Also called when its text is changed
         private void speedControlComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(8, speedControlComboBox.Text));
+            changedBoxes.Add(new Tuple<string, string>("SpeedStages", speedControlComboBox.Text));
         }
 
         private void loadedOffRoadTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(9, loadedOffRoadTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("LoadedOffRoad", loadedOffRoadTextbox.Text));
         }
 
         private void notLoadedTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(10, notLoadedTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("UnloadedOnRoad", notLoadedTextbox.Text));
         }
 
         private void maxTractionTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<int, string>(11, maxTractionTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("MaxTraction", maxTractionTextbox.Text));
         }
     }
 }
