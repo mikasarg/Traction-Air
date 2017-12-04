@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TractionAir.Forms;
 
 namespace TractionAir
 {
@@ -15,7 +16,7 @@ namespace TractionAir
         public queryForm()
         {
             InitializeComponent();
-            tabControl1.SelectedTab = queryTab;
+            //tabControl1.SelectedTab = queryTab; from when there was a "saved queries" tab
         }
 
         /// <summary>
@@ -45,7 +46,86 @@ namespace TractionAir
         /// <param name="e"></param>
         private void saveQueryButton_Click(object sender, EventArgs e)
         {
-            //TODO save the query
+            queryNameForm queryName = new queryNameForm();
+            queryName.ShowDialog();
         }
+
+        #region operator buttons
+        private void operatorButton1_Click(object sender, EventArgs e)
+        {
+            string text = operatorButton1.Text;
+
+            if (text.Equals("="))
+            {
+                text = ">";
+            }
+            else if (text.Equals(">"))
+            {
+                text = "<";
+            }
+            else //<
+            {
+                text = "=";
+            }
+            operatorButton1.Text = text;
+        }
+
+        private void operatorButton2_Click(object sender, EventArgs e)
+        {
+            string text = operatorButton2.Text;
+
+            if (text.Equals("="))
+            {
+                text = ">";
+            }
+            else if (text.Equals(">"))
+            {
+                text = "<";
+            }
+            else //<
+            {
+                text = "=";
+            }
+            operatorButton2.Text = text;
+        }
+
+        private void operatorButton3_Click(object sender, EventArgs e)
+        {
+            string text = operatorButton3.Text;
+
+            if (text.Equals("="))
+            {
+                text = ">";
+            }
+            else if (text.Equals(">"))
+            {
+                text = "<";
+            }
+            else //<
+            {
+                text = "=";
+            }
+            operatorButton3.Text = text;
+        }
+
+        private void operatorButton4_Click(object sender, EventArgs e)
+        {
+            string text = operatorButton4.Text;
+
+            if (text.Equals("="))
+            {
+                text = ">";
+            }
+            else if (text.Equals(">"))
+            {
+                text = "<";
+            }
+            else //<
+            {
+                text = "=";
+            }
+            operatorButton4.Text = text;
+        }
+        #endregion
     }
 }

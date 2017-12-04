@@ -209,13 +209,14 @@ namespace TractionAir
         /// <param name="e"></param>
         private void viewButton_Click(object sender, EventArgs e)
         {
-            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
+            if (mainSettingsTableDataGridView.SelectedRows.Count == 0)
             {
-                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
-                ViewForm viewEntry = new ViewForm(row);
-                viewEntry.ShowDialog();
+                return;
             }
+            DataGridViewRow selectedRow = mainSettingsTableDataGridView.SelectedRows[0];
+            int boardCode = (int)selectedRow.Cells[0].Value;
+            ViewForm viewEntry = new ViewForm(boardCode);
+            viewEntry.ShowDialog();
         }
 
         /// <summary>
@@ -225,8 +226,6 @@ namespace TractionAir
         /// <param name="e"></param>
         private void changeButton_Click(object sender, EventArgs e)
         {
-
-
             if (mainSettingsTableDataGridView.SelectedRows.Count == 0)
             {
                 return;
@@ -401,6 +400,13 @@ namespace TractionAir
         {
             comPortLabel.Text = SerialManager.EcuStatusText;
         }
+
+        private void mainSettingsTableDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            changeButton_Click(sender, e);
+        }
         #endregion
+
+
     }
 }

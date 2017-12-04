@@ -59,6 +59,7 @@ namespace TractionAir
             //Sets the text for the boxes to be their equivalents in the selected entry
             boardNumberTextbox.Text = boardCode.ToString();
             serialNumberTextbox.Text = ecu.SerialNumber;
+            bottomSerialNumberTextbox.Text = ecu.SerialCodeBot;
             programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
             pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
             customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
@@ -71,10 +72,16 @@ namespace TractionAir
             descriptionTextbox.Text = ecu.Description;
             notesRichTextbox.Text = ecu.Notes;
 
+            //Manual Database Update section
             speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
             loadedOffRoadTextbox.Text = ecu.LoadedOffRoad.ToString();
+            loadedOnRoadTextbox.Text = ecu.LoadedOnRoad.ToString();
             notLoadedTextbox.Text = ecu.UnloadedOnRoad.ToString();
             maxTractionTextbox.Text = ecu.MaxTraction.ToString();
+            stepUpDelayTextbox.Text = ecu.StepUpDelay.ToString();
+            beepCheckBox.Checked = ecu.MaxTractionBeep;
+            gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
+            gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
 
             changedBoxes.Clear();
         }
@@ -124,7 +131,7 @@ namespace TractionAir
                         return;
                     }
                 }
-                else if (s1.Equals("PressureCell") || s1.Equals("LoadedOffRoad") || s1.Equals("UnloadedOnRoad") || s1.Equals("MaxTraction")) //ints
+                else if (s1.Equals("PressureCell") || s1.Equals("LoadedOffRoad") || s1.Equals("UnloadedOnRoad") || s1.Equals("MaxTraction") || s1.Equals("LoadedOnRoad") || s1.Equals("StepUpDelay")) //ints
                 {
                     int k;
                     if (Int32.TryParse(s2, out k))
@@ -148,6 +155,17 @@ namespace TractionAir
                     {
                         MessageBox.Show("'" + s2 + "' is too long", "Invalid input");
                         return;
+                    }
+                }
+                else if (s1.Equals("MaxTractionBeep") || s1.Equals("EnableGPSButtons") || s1.Equals("EnableGPSOverride")) //checkboxes
+                {
+                    if (s2.Equals("True"))
+                    {
+                        update += s1 + " = " + 1;
+                    }
+                    else //false
+                    {
+                        update += s1 + " = " + 0;
                     }
                 }
                 else //strings
@@ -278,6 +296,36 @@ namespace TractionAir
         private void maxTractionTextbox_TextChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("MaxTraction", maxTractionTextbox.Text));
+        }
+
+        private void loadedOnRoadTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("LoadedOnRoad", loadedOnRoadTextbox.Text));
+        }
+
+        private void bottomSerialNumberTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("SerialCodeBot", bottomSerialNumberTextbox.Text));
+        }
+
+        private void stepUpDelayTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("StepUpDelay", stepUpDelayTextbox.Text));
+        }
+
+        private void beepCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("MaxTractionBeep", beepCheckBox.Checked.ToString()));
+        }
+
+        private void gpsButtonCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("EnableGPSButtons", gpsButtonCheckBox.Checked.ToString()));
+        }
+
+        private void gpsOverrideCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("EnableGPSOverride", gpsOverrideCheckBox.Checked.ToString()));
         }
     }
 }

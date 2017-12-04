@@ -57,7 +57,6 @@
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.changeButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
-            this.setupTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
             this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
@@ -71,19 +70,20 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.setupTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
             this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.boardCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pressureGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ownerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ownerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vehicleRefDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buildDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.speedStagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serialNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,11 +100,16 @@
             this.loadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unloadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialCodeBotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxTractionBeepDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.stepUpDelayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enableGPSButtonsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.enableGPSOverrideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
@@ -371,13 +376,13 @@
             this.mainSettingsTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.boardCodeDataGridViewTextBoxColumn,
             this.pressureGroupDataGridViewTextBoxColumn,
-            this.ownerDataGridViewTextBoxColumn,
             this.countryDataGridViewTextBoxColumn,
+            this.ownerDataGridViewTextBoxColumn,
             this.versionDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.vehicleRefDataGridViewTextBoxColumn,
-            this.notesColumn,
             this.buildDateDataGridViewTextBoxColumn,
+            this.notesColumn,
             this.speedStagesDataGridViewTextBoxColumn,
             this.dateModDataGridViewTextBoxColumn,
             this.serialNumberDataGridViewTextBoxColumn,
@@ -393,7 +398,12 @@
             this.loadedOffRoadDataGridViewTextBoxColumn,
             this.loadedOnRoadDataGridViewTextBoxColumn,
             this.unloadedOnRoadDataGridViewTextBoxColumn,
-            this.maxTractionDataGridViewTextBoxColumn});
+            this.maxTractionDataGridViewTextBoxColumn,
+            this.serialCodeBotDataGridViewTextBoxColumn,
+            this.maxTractionBeepDataGridViewCheckBoxColumn,
+            this.stepUpDelayDataGridViewTextBoxColumn,
+            this.enableGPSButtonsDataGridViewCheckBoxColumn,
+            this.enableGPSOverrideDataGridViewCheckBoxColumn});
             this.mainSettingsTableDataGridView.DataSource = this.mainSettingsTableBindingSource;
             this.mainSettingsTableDataGridView.Location = new System.Drawing.Point(4, 27);
             this.mainSettingsTableDataGridView.MultiSelect = false;
@@ -402,6 +412,7 @@
             this.mainSettingsTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.mainSettingsTableDataGridView.Size = new System.Drawing.Size(1044, 426);
             this.mainSettingsTableDataGridView.TabIndex = 21;
+            this.mainSettingsTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainSettingsTableDataGridView_CellDoubleClick);
             this.mainSettingsTableDataGridView.SelectionChanged += new System.EventHandler(this.mainSettingsTableDataGridView_SelectionChanged);
             // 
             // boardCodeColumn
@@ -513,19 +524,19 @@
             this.pressureGroupDataGridViewTextBoxColumn.Name = "pressureGroupDataGridViewTextBoxColumn";
             this.pressureGroupDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // ownerDataGridViewTextBoxColumn
-            // 
-            this.ownerDataGridViewTextBoxColumn.DataPropertyName = "Owner";
-            this.ownerDataGridViewTextBoxColumn.HeaderText = "Owner";
-            this.ownerDataGridViewTextBoxColumn.Name = "ownerDataGridViewTextBoxColumn";
-            this.ownerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // countryDataGridViewTextBoxColumn
             // 
             this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
             this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
             this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
             this.countryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ownerDataGridViewTextBoxColumn
+            // 
+            this.ownerDataGridViewTextBoxColumn.DataPropertyName = "Owner";
+            this.ownerDataGridViewTextBoxColumn.HeaderText = "Owner";
+            this.ownerDataGridViewTextBoxColumn.Name = "ownerDataGridViewTextBoxColumn";
+            this.ownerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // versionDataGridViewTextBoxColumn
             // 
@@ -548,6 +559,13 @@
             this.vehicleRefDataGridViewTextBoxColumn.Name = "vehicleRefDataGridViewTextBoxColumn";
             this.vehicleRefDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // buildDateDataGridViewTextBoxColumn
+            // 
+            this.buildDateDataGridViewTextBoxColumn.DataPropertyName = "BuildDate";
+            this.buildDateDataGridViewTextBoxColumn.HeaderText = "Build Date";
+            this.buildDateDataGridViewTextBoxColumn.Name = "buildDateDataGridViewTextBoxColumn";
+            this.buildDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // notesColumn
             // 
             this.notesColumn.DataPropertyName = "Notes";
@@ -555,13 +573,6 @@
             this.notesColumn.Name = "notesColumn";
             this.notesColumn.ReadOnly = true;
             this.notesColumn.Visible = false;
-            // 
-            // buildDateDataGridViewTextBoxColumn
-            // 
-            this.buildDateDataGridViewTextBoxColumn.DataPropertyName = "BuildDate";
-            this.buildDateDataGridViewTextBoxColumn.HeaderText = "Build Date";
-            this.buildDateDataGridViewTextBoxColumn.Name = "buildDateDataGridViewTextBoxColumn";
-            this.buildDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // speedStagesDataGridViewTextBoxColumn
             // 
@@ -689,6 +700,46 @@
             this.maxTractionDataGridViewTextBoxColumn.ReadOnly = true;
             this.maxTractionDataGridViewTextBoxColumn.Visible = false;
             // 
+            // serialCodeBotDataGridViewTextBoxColumn
+            // 
+            this.serialCodeBotDataGridViewTextBoxColumn.DataPropertyName = "SerialCodeBot";
+            this.serialCodeBotDataGridViewTextBoxColumn.HeaderText = "SerialCodeBot";
+            this.serialCodeBotDataGridViewTextBoxColumn.Name = "serialCodeBotDataGridViewTextBoxColumn";
+            this.serialCodeBotDataGridViewTextBoxColumn.ReadOnly = true;
+            this.serialCodeBotDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // maxTractionBeepDataGridViewCheckBoxColumn
+            // 
+            this.maxTractionBeepDataGridViewCheckBoxColumn.DataPropertyName = "MaxTractionBeep";
+            this.maxTractionBeepDataGridViewCheckBoxColumn.HeaderText = "MaxTractionBeep";
+            this.maxTractionBeepDataGridViewCheckBoxColumn.Name = "maxTractionBeepDataGridViewCheckBoxColumn";
+            this.maxTractionBeepDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.maxTractionBeepDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // stepUpDelayDataGridViewTextBoxColumn
+            // 
+            this.stepUpDelayDataGridViewTextBoxColumn.DataPropertyName = "StepUpDelay";
+            this.stepUpDelayDataGridViewTextBoxColumn.HeaderText = "StepUpDelay";
+            this.stepUpDelayDataGridViewTextBoxColumn.Name = "stepUpDelayDataGridViewTextBoxColumn";
+            this.stepUpDelayDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stepUpDelayDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // enableGPSButtonsDataGridViewCheckBoxColumn
+            // 
+            this.enableGPSButtonsDataGridViewCheckBoxColumn.DataPropertyName = "EnableGPSButtons";
+            this.enableGPSButtonsDataGridViewCheckBoxColumn.HeaderText = "EnableGPSButtons";
+            this.enableGPSButtonsDataGridViewCheckBoxColumn.Name = "enableGPSButtonsDataGridViewCheckBoxColumn";
+            this.enableGPSButtonsDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.enableGPSButtonsDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // enableGPSOverrideDataGridViewCheckBoxColumn
+            // 
+            this.enableGPSOverrideDataGridViewCheckBoxColumn.DataPropertyName = "EnableGPSOverride";
+            this.enableGPSOverrideDataGridViewCheckBoxColumn.HeaderText = "EnableGPSOverride";
+            this.enableGPSOverrideDataGridViewCheckBoxColumn.Name = "enableGPSOverrideDataGridViewCheckBoxColumn";
+            this.enableGPSOverrideDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.enableGPSOverrideDataGridViewCheckBoxColumn.Visible = false;
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,12 +761,12 @@
             this.Load += new System.EventHandler(this.TractionAirForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -772,13 +823,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn boardCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pressureGroupDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ownerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ownerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vehicleRefDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notesColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn buildDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn speedStagesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateModDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn serialNumberDataGridViewTextBoxColumn;
@@ -795,6 +846,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn loadedOnRoadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unloadedOnRoadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxTractionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serialCodeBotDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn maxTractionBeepDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stepUpDelayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn enableGPSButtonsDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn enableGPSOverrideDataGridViewCheckBoxColumn;
     }
 }
 

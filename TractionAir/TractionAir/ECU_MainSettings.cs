@@ -57,5 +57,15 @@ namespace TractionAir
         public int UnloadedOnRoad { get; set; }
 
         public int MaxTraction { get; set; }
+
+        public string SerialCodeBot { get; set; }
+
+        public bool MaxTractionBeep { get; set; }
+
+        public bool EnableGPSButtons { get; set; }
+
+        public bool EnableGPSOverride { get; set; }
+
+        public int StepUpDelay { get; set; }
     }
 }
