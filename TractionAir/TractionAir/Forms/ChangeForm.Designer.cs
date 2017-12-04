@@ -46,9 +46,13 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
+            this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
+            this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eCUdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
@@ -65,6 +69,7 @@
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
+            this.mainSettingsTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -76,28 +81,23 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.ecuSettingsDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
-            this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
             this.customerTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter();
             this.customerTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.mainSettingsTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -263,6 +263,21 @@
             this.pressureGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedIndexChanged);
             this.pressureGroupComboBox.TextChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedIndexChanged);
             // 
+            // pressureGroupsTableBindingSource
+            // 
+            this.pressureGroupsTableBindingSource.DataMember = "pressureGroupsTable";
+            this.pressureGroupsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
+            // 
+            // ecuSettingsDatabaseDataSetBindingSource
+            // 
+            this.ecuSettingsDatabaseDataSetBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            this.ecuSettingsDatabaseDataSetBindingSource.Position = 0;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tableBindingSource
             // 
             this.tableBindingSource.DataMember = "Table";
@@ -275,17 +290,22 @@
             // 
             // customerComboBox
             // 
-            this.customerComboBox.DataSource = this.mainSettingsTableBindingSource;
-            this.customerComboBox.DisplayMember = "Owner";
+            this.customerComboBox.DataSource = this.customerTableBindingSource;
+            this.customerComboBox.DisplayMember = "Company";
             this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerComboBox.FormattingEnabled = true;
             this.customerComboBox.Location = new System.Drawing.Point(103, 118);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 68;
-            this.customerComboBox.ValueMember = "Owner";
+            this.customerComboBox.ValueMember = "Company";
             this.customerComboBox.SelectedIndexChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
             this.customerComboBox.TextChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
+            // 
+            // mainSettingsTableBindingSource
+            // 
+            this.mainSettingsTableBindingSource.DataMember = "mainSettingsTable";
+            this.mainSettingsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
             // eCUdataBindingSource1
             // 
@@ -413,6 +433,11 @@
             this.speedControlComboBox.SelectedIndexChanged += new System.EventHandler(this.speedControlComboBox_SelectedIndexChanged);
             this.speedControlComboBox.TextChanged += new System.EventHandler(this.speedControlComboBox_SelectedIndexChanged);
             // 
+            // mainSettingsTableBindingSource1
+            // 
+            this.mainSettingsTableBindingSource1.DataMember = "mainSettingsTable";
+            this.mainSettingsTableBindingSource1.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -512,29 +537,9 @@
             this.label10.TabIndex = 70;
             this.label10.Text = "Manual Database Update";
             // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ecuSettingsDatabaseDataSetBindingSource
-            // 
-            this.ecuSettingsDatabaseDataSetBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            this.ecuSettingsDatabaseDataSetBindingSource.Position = 0;
-            // 
-            // mainSettingsTableBindingSource
-            // 
-            this.mainSettingsTableBindingSource.DataMember = "mainSettingsTable";
-            this.mainSettingsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
-            // 
             // mainSettingsTableTableAdapter
             // 
             this.mainSettingsTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // pressureGroupsTableBindingSource
-            // 
-            this.pressureGroupsTableBindingSource.DataMember = "pressureGroupsTable";
-            this.pressureGroupsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
             // pressureGroupsTableTableAdapter
             // 
@@ -553,11 +558,6 @@
             // 
             this.customerTableBindingSource1.DataMember = "customerTable";
             this.customerTableBindingSource1.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
-            // 
-            // mainSettingsTableBindingSource1
-            // 
-            this.mainSettingsTableBindingSource1.DataMember = "mainSettingsTable";
-            this.mainSettingsTableBindingSource1.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
             // ChangeForm
             // 
@@ -612,18 +612,18 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change";
             this.Load += new System.EventHandler(this.ChangeForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

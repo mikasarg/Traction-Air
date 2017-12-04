@@ -45,41 +45,36 @@ namespace TractionAir
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
             // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.mainSettingsTable' table. You can move, or remove it, as needed.
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
-            String query = "SELECT * FROM mainSettingsTable WHERE \"BoardCode\" = '" + boardCode + "'";
-            String extraQuery = "SELECT * FROM extraSettingsTable WHERE \"BoardCode\" = '" + boardCode + "'";
+            String query = "SELECT * FROM mainSettingsTable WHERE BoardCode = '" + boardCode + "'";
 
-            ECU_MainSettings ecuMain;
-            ECU_ExtraSettings ecuExtra;
+            ECU_MainSettings ecu;
 
             using (IDbConnection iDbCon = new SqlConnection(connectionString))
             {
-                ECU_MainSettings[] ecusMain = iDbCon.Query<ECU_MainSettings>(query).ToArray();
-                ecuMain = ecusMain[0];
-
-                ECU_ExtraSettings[] ecusExtra = iDbCon.Query<ECU_ExtraSettings>(extraQuery).ToArray();
-                ecuExtra = ecusExtra[0];
+                ECU_MainSettings[] ecus = iDbCon.Query<ECU_MainSettings>(query).ToArray();
+                ecu = ecus[0];
             }
 
 
             //Sets the text for the boxes to be their equivalents in the selected entry
             boardNumberTextbox.Text = boardCode.ToString();
-            serialNumberTextbox.Text = ecuExtra.SerialNumber;
-            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecuMain.Version);
-            pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecuMain.PressureGroup);
-            customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecuMain.Owner);
-            buildDateTextbox.Text = (ecuMain.BuildDate).ToString("dd/MM/yyyy");
-            installDateTextbox.Text = (ecuMain.DateMod).ToString();
-            vehicleRefTextbox.Text = ecuMain.VehicleRef;
-            pressureCellTextbox.Text = ecuExtra.pressureCell.ToString();
-            pt1SerialTextbox.Text = ecuExtra.PT1Serial.ToString();
-            pt2SerialTextbox.Text = ecuExtra.PT2Serial.ToString();
-            descriptionTextbox.Text = ecuMain.Description;
-            notesRichTextbox.Text = ecuMain.Notes;
+            serialNumberTextbox.Text = ecu.SerialNumber;
+            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
+            pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
+            customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
+            buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
+            installDateTextbox.Text = (ecu.DateMod).ToString();
+            vehicleRefTextbox.Text = ecu.VehicleRef;
+            pressureCellTextbox.Text = ecu.pressureCell.ToString();
+            pt1SerialTextbox.Text = ecu.PT1Serial.ToString();
+            pt2SerialTextbox.Text = ecu.PT2Serial.ToString();
+            descriptionTextbox.Text = ecu.Description;
+            notesRichTextbox.Text = ecu.Notes;
 
-            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecuMain.SpeedStages);
-            loadedOffRoadTextbox.Text = ecuExtra.LoadedOffRoad.ToString();
-            notLoadedTextbox.Text = ecuExtra.UnloadedOnRoad.ToString();
-            maxTractionTextbox.Text = ecuExtra.MaxTraction.ToString();
+            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
+            loadedOffRoadTextbox.Text = ecu.LoadedOffRoad.ToString();
+            notLoadedTextbox.Text = ecu.UnloadedOnRoad.ToString();
+            maxTractionTextbox.Text = ecu.MaxTraction.ToString();
 
             changedBoxes.Clear();
         }
@@ -100,6 +95,8 @@ namespace TractionAir
 
             previouslyVisited.Clear();
 
+            string update = "UPDATE mainSettingsTable SET ";
+
             for (int j = changedBoxes.Count - 1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
             {
                 string s1 = changedBoxes[j].Item1;
@@ -113,13 +110,13 @@ namespace TractionAir
 
                 if (s1.Equals("Notes")) //notes
                 {
-
+                    update += s1 + " = '" + s2 + "'";
                 }
                 else if (s1.Equals("BuildDate") || s1.Equals("DateMod")) //dates
                 {
                     DateTime dt;
                     if (DateTime.TryParse(s2, out dt)) {
-                        //row.Cells[i].Value = dt.Date;
+                        update +=  s1 + " = '" + dt.Date + "'";
                     }
                     else
                     {
@@ -132,7 +129,7 @@ namespace TractionAir
                     int k;
                     if (Int32.TryParse(s2, out k))
                     {
-                        //row.Cells[i].Value = k;
+                        update += s1 + " = " + k;
                     }
                     else
                     {
@@ -145,7 +142,7 @@ namespace TractionAir
                     //TODO as of now accepts any input under 50 characters. Could be changed to only accept items found in the dropdown list. Depends on spec
                     if (s2.Length <= 50)
                     {
-                        //row.Cells[i].Value = s;
+                        update += s1 + " = '" + s2 + "'";
                     }
                     else
                     {
@@ -157,7 +154,7 @@ namespace TractionAir
                 {
                     if (s2.Length <= 50)
                     {
-                        //row.Cells[i].Value = s;
+                        update += s1 + " = '" + s2 + "'";
                     }
                     else
                     {
@@ -166,6 +163,15 @@ namespace TractionAir
                     }
                 }
 
+                update += ", ";
+            }
+
+            update = update.Substring(0, update.Length - 2); //remove final ", "
+            update += " WHERE boardCode = '" + boardCode + "'";
+
+            using (IDbConnection iDbCon = new SqlConnection(connectionString))
+            {
+                iDbCon.Execute(update);
             }
 
             this.Close();

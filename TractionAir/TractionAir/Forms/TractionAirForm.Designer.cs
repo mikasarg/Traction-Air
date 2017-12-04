@@ -61,10 +61,6 @@
             this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
             this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
             this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
-            this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.mainSettingsTableDataGridView = new System.Windows.Forms.DataGridView();
             this.boardCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pressureGroupColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,24 +71,42 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
+            this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
+            this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.boardCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pressureGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ownerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vehicleRefDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buildDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.speedStagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pressureCellDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT1SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT2SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT3SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT4SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT5SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT6SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT7SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pT8SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loadedOffRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unloadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -344,32 +358,6 @@
             this.tableAdapterManager.setupTableTableAdapter = this.setupTableTableAdapter;
             this.tableAdapterManager.UpdateOrder = TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mainSettingsTableBindingSource
-            // 
-            this.mainSettingsTableBindingSource.DataMember = "mainSettingsTable";
-            this.mainSettingsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
-            // mainSettingsTableTableAdapter
-            // 
-            this.mainSettingsTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager2
-            // 
-            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager2.countryCodeTableTableAdapter = null;
-            this.tableAdapterManager2.customerTableTableAdapter = null;
-            this.tableAdapterManager2.ecuToCustomerTableAdapter = null;
-            this.tableAdapterManager2.ecuToPressureGroupTableAdapter = null;
-            this.tableAdapterManager2.extraSettingsTableTableAdapter = null;
-            this.tableAdapterManager2.mainSettingsTableTableAdapter = this.mainSettingsTableTableAdapter;
-            this.tableAdapterManager2.pressureGroupsTableTableAdapter = null;
-            this.tableAdapterManager2.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // mainSettingsTableDataGridView
             // 
             this.mainSettingsTableDataGridView.AllowUserToAddRows = false;
@@ -385,13 +373,27 @@
             this.pressureGroupDataGridViewTextBoxColumn,
             this.ownerDataGridViewTextBoxColumn,
             this.countryDataGridViewTextBoxColumn,
+            this.versionDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.vehicleRefDataGridViewTextBoxColumn,
+            this.notesColumn,
             this.buildDateDataGridViewTextBoxColumn,
-            this.versionDataGridViewTextBoxColumn,
             this.speedStagesDataGridViewTextBoxColumn,
             this.dateModDataGridViewTextBoxColumn,
-            this.notesColumn});
+            this.serialNumberDataGridViewTextBoxColumn,
+            this.pressureCellDataGridViewTextBoxColumn,
+            this.pT1SerialDataGridViewTextBoxColumn,
+            this.pT2SerialDataGridViewTextBoxColumn,
+            this.pT3SerialDataGridViewTextBoxColumn,
+            this.pT4SerialDataGridViewTextBoxColumn,
+            this.pT5SerialDataGridViewTextBoxColumn,
+            this.pT6SerialDataGridViewTextBoxColumn,
+            this.pT7SerialDataGridViewTextBoxColumn,
+            this.pT8SerialDataGridViewTextBoxColumn,
+            this.loadedOffRoadDataGridViewTextBoxColumn,
+            this.loadedOnRoadDataGridViewTextBoxColumn,
+            this.unloadedOnRoadDataGridViewTextBoxColumn,
+            this.maxTractionDataGridViewTextBoxColumn});
             this.mainSettingsTableDataGridView.DataSource = this.mainSettingsTableBindingSource;
             this.mainSettingsTableDataGridView.Location = new System.Drawing.Point(4, 27);
             this.mainSettingsTableDataGridView.MultiSelect = false;
@@ -472,6 +474,31 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
+            // mainSettingsTableBindingSource
+            // 
+            this.mainSettingsTableBindingSource.DataMember = "mainSettingsTable";
+            this.mainSettingsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mainSettingsTableTableAdapter
+            // 
+            this.mainSettingsTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager2
+            // 
+            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager2.countryCodeTableTableAdapter = null;
+            this.tableAdapterManager2.customerTableTableAdapter = null;
+            this.tableAdapterManager2.ecuToCustomerTableAdapter = null;
+            this.tableAdapterManager2.ecuToPressureGroupTableAdapter = null;
+            this.tableAdapterManager2.mainSettingsTableTableAdapter = this.mainSettingsTableTableAdapter;
+            this.tableAdapterManager2.pressureGroupsTableTableAdapter = null;
+            this.tableAdapterManager2.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // boardCodeDataGridViewTextBoxColumn
             // 
             this.boardCodeDataGridViewTextBoxColumn.DataPropertyName = "BoardCode";
@@ -500,6 +527,13 @@
             this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
             this.countryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
@@ -514,19 +548,20 @@
             this.vehicleRefDataGridViewTextBoxColumn.Name = "vehicleRefDataGridViewTextBoxColumn";
             this.vehicleRefDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // notesColumn
+            // 
+            this.notesColumn.DataPropertyName = "Notes";
+            this.notesColumn.HeaderText = "Notes";
+            this.notesColumn.Name = "notesColumn";
+            this.notesColumn.ReadOnly = true;
+            this.notesColumn.Visible = false;
+            // 
             // buildDateDataGridViewTextBoxColumn
             // 
             this.buildDateDataGridViewTextBoxColumn.DataPropertyName = "BuildDate";
             this.buildDateDataGridViewTextBoxColumn.HeaderText = "Build Date";
             this.buildDateDataGridViewTextBoxColumn.Name = "buildDateDataGridViewTextBoxColumn";
             this.buildDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // speedStagesDataGridViewTextBoxColumn
             // 
@@ -542,13 +577,117 @@
             this.dateModDataGridViewTextBoxColumn.Name = "dateModDataGridViewTextBoxColumn";
             this.dateModDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // notesColumn
+            // serialNumberDataGridViewTextBoxColumn
             // 
-            this.notesColumn.DataPropertyName = "Notes";
-            this.notesColumn.HeaderText = "Notes";
-            this.notesColumn.Name = "notesColumn";
-            this.notesColumn.ReadOnly = true;
-            this.notesColumn.Visible = false;
+            this.serialNumberDataGridViewTextBoxColumn.DataPropertyName = "SerialNumber";
+            this.serialNumberDataGridViewTextBoxColumn.HeaderText = "SerialNumber";
+            this.serialNumberDataGridViewTextBoxColumn.Name = "serialNumberDataGridViewTextBoxColumn";
+            this.serialNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.serialNumberDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pressureCellDataGridViewTextBoxColumn
+            // 
+            this.pressureCellDataGridViewTextBoxColumn.DataPropertyName = "PressureCell";
+            this.pressureCellDataGridViewTextBoxColumn.HeaderText = "PressureCell";
+            this.pressureCellDataGridViewTextBoxColumn.Name = "pressureCellDataGridViewTextBoxColumn";
+            this.pressureCellDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pressureCellDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT1SerialDataGridViewTextBoxColumn
+            // 
+            this.pT1SerialDataGridViewTextBoxColumn.DataPropertyName = "PT1Serial";
+            this.pT1SerialDataGridViewTextBoxColumn.HeaderText = "PT1Serial";
+            this.pT1SerialDataGridViewTextBoxColumn.Name = "pT1SerialDataGridViewTextBoxColumn";
+            this.pT1SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT1SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT2SerialDataGridViewTextBoxColumn
+            // 
+            this.pT2SerialDataGridViewTextBoxColumn.DataPropertyName = "PT2Serial";
+            this.pT2SerialDataGridViewTextBoxColumn.HeaderText = "PT2Serial";
+            this.pT2SerialDataGridViewTextBoxColumn.Name = "pT2SerialDataGridViewTextBoxColumn";
+            this.pT2SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT2SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT3SerialDataGridViewTextBoxColumn
+            // 
+            this.pT3SerialDataGridViewTextBoxColumn.DataPropertyName = "PT3Serial";
+            this.pT3SerialDataGridViewTextBoxColumn.HeaderText = "PT3Serial";
+            this.pT3SerialDataGridViewTextBoxColumn.Name = "pT3SerialDataGridViewTextBoxColumn";
+            this.pT3SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT3SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT4SerialDataGridViewTextBoxColumn
+            // 
+            this.pT4SerialDataGridViewTextBoxColumn.DataPropertyName = "PT4Serial";
+            this.pT4SerialDataGridViewTextBoxColumn.HeaderText = "PT4Serial";
+            this.pT4SerialDataGridViewTextBoxColumn.Name = "pT4SerialDataGridViewTextBoxColumn";
+            this.pT4SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT4SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT5SerialDataGridViewTextBoxColumn
+            // 
+            this.pT5SerialDataGridViewTextBoxColumn.DataPropertyName = "PT5Serial";
+            this.pT5SerialDataGridViewTextBoxColumn.HeaderText = "PT5Serial";
+            this.pT5SerialDataGridViewTextBoxColumn.Name = "pT5SerialDataGridViewTextBoxColumn";
+            this.pT5SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT5SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT6SerialDataGridViewTextBoxColumn
+            // 
+            this.pT6SerialDataGridViewTextBoxColumn.DataPropertyName = "PT6Serial";
+            this.pT6SerialDataGridViewTextBoxColumn.HeaderText = "PT6Serial";
+            this.pT6SerialDataGridViewTextBoxColumn.Name = "pT6SerialDataGridViewTextBoxColumn";
+            this.pT6SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT6SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT7SerialDataGridViewTextBoxColumn
+            // 
+            this.pT7SerialDataGridViewTextBoxColumn.DataPropertyName = "PT7Serial";
+            this.pT7SerialDataGridViewTextBoxColumn.HeaderText = "PT7Serial";
+            this.pT7SerialDataGridViewTextBoxColumn.Name = "pT7SerialDataGridViewTextBoxColumn";
+            this.pT7SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT7SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pT8SerialDataGridViewTextBoxColumn
+            // 
+            this.pT8SerialDataGridViewTextBoxColumn.DataPropertyName = "PT8Serial";
+            this.pT8SerialDataGridViewTextBoxColumn.HeaderText = "PT8Serial";
+            this.pT8SerialDataGridViewTextBoxColumn.Name = "pT8SerialDataGridViewTextBoxColumn";
+            this.pT8SerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pT8SerialDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // loadedOffRoadDataGridViewTextBoxColumn
+            // 
+            this.loadedOffRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOffRoad";
+            this.loadedOffRoadDataGridViewTextBoxColumn.HeaderText = "LoadedOffRoad";
+            this.loadedOffRoadDataGridViewTextBoxColumn.Name = "loadedOffRoadDataGridViewTextBoxColumn";
+            this.loadedOffRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            this.loadedOffRoadDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // loadedOnRoadDataGridViewTextBoxColumn
+            // 
+            this.loadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOnRoad";
+            this.loadedOnRoadDataGridViewTextBoxColumn.HeaderText = "LoadedOnRoad";
+            this.loadedOnRoadDataGridViewTextBoxColumn.Name = "loadedOnRoadDataGridViewTextBoxColumn";
+            this.loadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            this.loadedOnRoadDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // unloadedOnRoadDataGridViewTextBoxColumn
+            // 
+            this.unloadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "UnloadedOnRoad";
+            this.unloadedOnRoadDataGridViewTextBoxColumn.HeaderText = "UnloadedOnRoad";
+            this.unloadedOnRoadDataGridViewTextBoxColumn.Name = "unloadedOnRoadDataGridViewTextBoxColumn";
+            this.unloadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unloadedOnRoadDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // maxTractionDataGridViewTextBoxColumn
+            // 
+            this.maxTractionDataGridViewTextBoxColumn.DataPropertyName = "MaxTraction";
+            this.maxTractionDataGridViewTextBoxColumn.HeaderText = "MaxTraction";
+            this.maxTractionDataGridViewTextBoxColumn.Name = "maxTractionDataGridViewTextBoxColumn";
+            this.maxTractionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.maxTractionDataGridViewTextBoxColumn.Visible = false;
             // 
             // TractionAirForm
             // 
@@ -572,13 +711,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -635,13 +774,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pressureGroupDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ownerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vehicleRefDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn buildDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn speedStagesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateModDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notesColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serialNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pressureCellDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT1SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT2SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT3SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT4SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT5SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT6SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT7SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pT8SerialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loadedOffRoadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loadedOnRoadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unloadedOnRoadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxTractionDataGridViewTextBoxColumn;
     }
 }
 
