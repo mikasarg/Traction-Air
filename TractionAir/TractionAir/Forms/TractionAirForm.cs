@@ -39,7 +39,7 @@ namespace TractionAir
 
             InitializeUSBPort();
 
-            connectionString = ConfigurationManager.ConnectionStrings["ecuSettingsDatabase.Properties.Settings.ConnectionString"].ConnectionString;
+            connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
         }
 
         /// <summary>
@@ -51,8 +51,6 @@ namespace TractionAir
         {
             // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.mainSettingsTable' table. You can move, or remove it, as needed.
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
-            this.setupTableTableAdapter.Fill(this.sampleDBDataSet.setupTable);
-            this.eCUdataTableAdapter1.Fill(this.sampleDBDataSet1.ECUdata);
 
             int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
@@ -227,13 +225,16 @@ namespace TractionAir
         /// <param name="e"></param>
         private void changeButton_Click(object sender, EventArgs e)
         {
-            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
+
+
+            if (mainSettingsTableDataGridView.SelectedRows.Count == 0)
             {
-                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
-                ChangeForm changeEntry = new ChangeForm(row);
-                changeEntry.ShowDialog();
+                return;
             }
+            DataGridViewRow selectedRow = mainSettingsTableDataGridView.SelectedRows[0];
+            int boardCode = (int)selectedRow.Cells[0].Value;
+            ChangeForm changeEntry = new ChangeForm(boardCode);
+            changeEntry.ShowDialog();
         }
 
         /// <summary>
@@ -257,14 +258,10 @@ namespace TractionAir
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ecuDatabase_SelectionChanged(object sender, EventArgs e)
+        private void mainSettingsTableDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
-            {
-                DataGridViewRow row = mainSettingsTableDataGridView.SelectedCells[0].OwningRow;
-                notesRichTextbox.Text = row.Cells["notesColumn"].Value.ToString();
-            }
+            DataGridViewRow selectedRow = mainSettingsTableDataGridView.SelectedRows[0];
+            notesRichTextbox.Text = selectedRow.Cells["notesColumn"].Value.ToString();
         }
         #endregion
 

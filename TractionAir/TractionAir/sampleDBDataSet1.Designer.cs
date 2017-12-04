@@ -26,6 +26,8 @@ namespace TractionAir {
         
         private ECUdataDataTable tableECUdata;
         
+        private setupTableDataTable tablesetupTable;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace TractionAir {
                 if ((ds.Tables["ECUdata"] != null)) {
                     base.Tables.Add(new ECUdataDataTable(ds.Tables["ECUdata"]));
                 }
+                if ((ds.Tables["setupTable"] != null)) {
+                    base.Tables.Add(new setupTableDataTable(ds.Tables["setupTable"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace TractionAir {
         public ECUdataDataTable ECUdata {
             get {
                 return this.tableECUdata;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public setupTableDataTable setupTable {
+            get {
+                return this.tablesetupTable;
             }
         }
         
@@ -155,6 +170,9 @@ namespace TractionAir {
                 if ((ds.Tables["ECUdata"] != null)) {
                     base.Tables.Add(new ECUdataDataTable(ds.Tables["ECUdata"]));
                 }
+                if ((ds.Tables["setupTable"] != null)) {
+                    base.Tables.Add(new setupTableDataTable(ds.Tables["setupTable"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace TractionAir {
                     this.tableECUdata.InitVars();
                 }
             }
+            this.tablesetupTable = ((setupTableDataTable)(base.Tables["setupTable"]));
+            if ((initTable == true)) {
+                if ((this.tablesetupTable != null)) {
+                    this.tablesetupTable.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace TractionAir {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableECUdata = new ECUdataDataTable();
             base.Tables.Add(this.tableECUdata);
+            this.tablesetupTable = new setupTableDataTable();
+            base.Tables.Add(this.tablesetupTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeECUdata() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializesetupTable() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace TractionAir {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void ECUdataRowChangeEventHandler(object sender, ECUdataRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void setupTableRowChangeEventHandler(object sender, setupTableRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -825,6 +860,402 @@ namespace TractionAir {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class setupTableDataTable : global::System.Data.TypedTableBase<setupTableRow> {
+            
+            private global::System.Data.DataColumn columnTRT_Code;
+            
+            private global::System.Data.DataColumn columnBoard_Code;
+            
+            private global::System.Data.DataColumn columnUser_Prog;
+            
+            private global::System.Data.DataColumn columnStep_Up_Delay;
+            
+            private global::System.Data.DataColumn columnMax_Trac_Beep;
+            
+            private global::System.Data.DataColumn columnGPS_Buttons;
+            
+            private global::System.Data.DataColumn columnLCD_Contrast;
+            
+            private global::System.Data.DataColumn columnPSI_Offset;
+            
+            private global::System.Data.DataColumn columnPressure_Ref_;
+            
+            private global::System.Data.DataColumn _columnPSI_0__KPa_1_;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableDataTable() {
+                this.TableName = "setupTable";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal setupTableDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected setupTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TRT_CodeColumn {
+                get {
+                    return this.columnTRT_Code;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Board_CodeColumn {
+                get {
+                    return this.columnBoard_Code;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn User_ProgColumn {
+                get {
+                    return this.columnUser_Prog;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Step_Up_DelayColumn {
+                get {
+                    return this.columnStep_Up_Delay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Max_Trac_BeepColumn {
+                get {
+                    return this.columnMax_Trac_Beep;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn GPS_ButtonsColumn {
+                get {
+                    return this.columnGPS_Buttons;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn LCD_ContrastColumn {
+                get {
+                    return this.columnLCD_Contrast;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PSI_OffsetColumn {
+                get {
+                    return this.columnPSI_Offset;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Pressure_Ref_Column {
+                get {
+                    return this.columnPressure_Ref_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn _PSI_0__KPa_1_Column {
+                get {
+                    return this._columnPSI_0__KPa_1_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableRow this[int index] {
+                get {
+                    return ((setupTableRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event setupTableRowChangeEventHandler setupTableRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event setupTableRowChangeEventHandler setupTableRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event setupTableRowChangeEventHandler setupTableRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event setupTableRowChangeEventHandler setupTableRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddsetupTableRow(setupTableRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableRow AddsetupTableRow(string TRT_Code, int Board_Code, short User_Prog, short Step_Up_Delay, short Max_Trac_Beep, short GPS_Buttons, short LCD_Contrast, short PSI_Offset, short Pressure_Ref_, short _PSI_0__KPa_1_) {
+                setupTableRow rowsetupTableRow = ((setupTableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        TRT_Code,
+                        Board_Code,
+                        User_Prog,
+                        Step_Up_Delay,
+                        Max_Trac_Beep,
+                        GPS_Buttons,
+                        LCD_Contrast,
+                        PSI_Offset,
+                        Pressure_Ref_,
+                        _PSI_0__KPa_1_};
+                rowsetupTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowsetupTableRow);
+                return rowsetupTableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableRow FindByBoard_Code(int Board_Code) {
+                return ((setupTableRow)(this.Rows.Find(new object[] {
+                            Board_Code})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                setupTableDataTable cln = ((setupTableDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new setupTableDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnTRT_Code = base.Columns["TRT Code"];
+                this.columnBoard_Code = base.Columns["Board Code"];
+                this.columnUser_Prog = base.Columns["User Prog"];
+                this.columnStep_Up_Delay = base.Columns["Step Up Delay"];
+                this.columnMax_Trac_Beep = base.Columns["Max Trac Beep"];
+                this.columnGPS_Buttons = base.Columns["GPS Buttons"];
+                this.columnLCD_Contrast = base.Columns["LCD Contrast"];
+                this.columnPSI_Offset = base.Columns["PSI Offset"];
+                this.columnPressure_Ref_ = base.Columns["Pressure Ref_"];
+                this._columnPSI_0__KPa_1_ = base.Columns["PSI(0) KPa(1)"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnTRT_Code = new global::System.Data.DataColumn("TRT Code", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTRT_Code);
+                this.columnBoard_Code = new global::System.Data.DataColumn("Board Code", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBoard_Code);
+                this.columnUser_Prog = new global::System.Data.DataColumn("User Prog", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUser_Prog);
+                this.columnStep_Up_Delay = new global::System.Data.DataColumn("Step Up Delay", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStep_Up_Delay);
+                this.columnMax_Trac_Beep = new global::System.Data.DataColumn("Max Trac Beep", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMax_Trac_Beep);
+                this.columnGPS_Buttons = new global::System.Data.DataColumn("GPS Buttons", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGPS_Buttons);
+                this.columnLCD_Contrast = new global::System.Data.DataColumn("LCD Contrast", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLCD_Contrast);
+                this.columnPSI_Offset = new global::System.Data.DataColumn("PSI Offset", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPSI_Offset);
+                this.columnPressure_Ref_ = new global::System.Data.DataColumn("Pressure Ref_", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPressure_Ref_);
+                this._columnPSI_0__KPa_1_ = new global::System.Data.DataColumn("PSI(0) KPa(1)", typeof(short), null, global::System.Data.MappingType.Element);
+                this._columnPSI_0__KPa_1_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnPSI_0__KPa_1_");
+                this._columnPSI_0__KPa_1_.ExtendedProperties.Add("Generator_UserColumnName", "PSI(0) KPa(1)");
+                base.Columns.Add(this._columnPSI_0__KPa_1_);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnBoard_Code}, true));
+                this.columnTRT_Code.AllowDBNull = false;
+                this.columnTRT_Code.MaxLength = 50;
+                this.columnBoard_Code.AllowDBNull = false;
+                this.columnBoard_Code.Unique = true;
+                this.columnUser_Prog.AllowDBNull = false;
+                this.columnStep_Up_Delay.AllowDBNull = false;
+                this.columnMax_Trac_Beep.AllowDBNull = false;
+                this.columnGPS_Buttons.AllowDBNull = false;
+                this.columnLCD_Contrast.AllowDBNull = false;
+                this.columnPSI_Offset.AllowDBNull = false;
+                this.columnPressure_Ref_.AllowDBNull = false;
+                this._columnPSI_0__KPa_1_.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableRow NewsetupTableRow() {
+                return ((setupTableRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new setupTableRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(setupTableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.setupTableRowChanged != null)) {
+                    this.setupTableRowChanged(this, new setupTableRowChangeEvent(((setupTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.setupTableRowChanging != null)) {
+                    this.setupTableRowChanging(this, new setupTableRowChangeEvent(((setupTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.setupTableRowDeleted != null)) {
+                    this.setupTableRowDeleted(this, new setupTableRowChangeEvent(((setupTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.setupTableRowDeleting != null)) {
+                    this.setupTableRowDeleting(this, new setupTableRowChangeEvent(((setupTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemovesetupTableRow(setupTableRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                sampleDBDataSet1 ds = new sampleDBDataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "setupTableDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ECUdataRow : global::System.Data.DataRow {
@@ -1168,6 +1599,131 @@ namespace TractionAir {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class setupTableRow : global::System.Data.DataRow {
+            
+            private setupTableDataTable tablesetupTable;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal setupTableRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablesetupTable = ((setupTableDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string TRT_Code {
+                get {
+                    return ((string)(this[this.tablesetupTable.TRT_CodeColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.TRT_CodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Board_Code {
+                get {
+                    return ((int)(this[this.tablesetupTable.Board_CodeColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.Board_CodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short User_Prog {
+                get {
+                    return ((short)(this[this.tablesetupTable.User_ProgColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.User_ProgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short Step_Up_Delay {
+                get {
+                    return ((short)(this[this.tablesetupTable.Step_Up_DelayColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.Step_Up_DelayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short Max_Trac_Beep {
+                get {
+                    return ((short)(this[this.tablesetupTable.Max_Trac_BeepColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.Max_Trac_BeepColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short GPS_Buttons {
+                get {
+                    return ((short)(this[this.tablesetupTable.GPS_ButtonsColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.GPS_ButtonsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short LCD_Contrast {
+                get {
+                    return ((short)(this[this.tablesetupTable.LCD_ContrastColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.LCD_ContrastColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short PSI_Offset {
+                get {
+                    return ((short)(this[this.tablesetupTable.PSI_OffsetColumn]));
+                }
+                set {
+                    this[this.tablesetupTable.PSI_OffsetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short Pressure_Ref_ {
+                get {
+                    return ((short)(this[this.tablesetupTable.Pressure_Ref_Column]));
+                }
+                set {
+                    this[this.tablesetupTable.Pressure_Ref_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short _PSI_0__KPa_1_ {
+                get {
+                    return ((short)(this[this.tablesetupTable._PSI_0__KPa_1_Column]));
+                }
+                set {
+                    this[this.tablesetupTable._PSI_0__KPa_1_Column] = value;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1187,6 +1743,40 @@ namespace TractionAir {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ECUdataRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class setupTableRowChangeEvent : global::System.EventArgs {
+            
+            private setupTableRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableRowChangeEvent(setupTableRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public setupTableRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2051,6 +2641,437 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class setupTableTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public setupTableTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "setupTable";
+            tableMapping.ColumnMappings.Add("TRT Code", "TRT Code");
+            tableMapping.ColumnMappings.Add("Board Code", "Board Code");
+            tableMapping.ColumnMappings.Add("User Prog", "User Prog");
+            tableMapping.ColumnMappings.Add("Step Up Delay", "Step Up Delay");
+            tableMapping.ColumnMappings.Add("Max Trac Beep", "Max Trac Beep");
+            tableMapping.ColumnMappings.Add("GPS Buttons", "GPS Buttons");
+            tableMapping.ColumnMappings.Add("LCD Contrast", "LCD Contrast");
+            tableMapping.ColumnMappings.Add("PSI Offset", "PSI Offset");
+            tableMapping.ColumnMappings.Add("Pressure Ref.", "Pressure Ref_");
+            tableMapping.ColumnMappings.Add("PSI(0) KPa(1)", "PSI(0) KPa(1)");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[setupTable] WHERE (([TRT Code] = @Original_TRT_Code) AND ([Board Code] = @Original_Board_Code) AND ([User Prog] = @Original_User_Prog) AND ([Step Up Delay] = @Original_Step_Up_Delay) AND ([Max Trac Beep] = @Original_Max_Trac_Beep) AND ([GPS Buttons] = @Original_GPS_Buttons) AND ([LCD Contrast] = @Original_LCD_Contrast) AND ([PSI Offset] = @Original_PSI_Offset) AND ([Pressure Ref.] = @p2) AND ([PSI(0) KPa(1)] = @p4))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TRT_Code", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRT Code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Board_Code", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Board Code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User_Prog", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User Prog", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Step_Up_Delay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Step Up Delay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Max_Trac_Beep", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Max Trac Beep", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GPS_Buttons", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS Buttons", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LCD_Contrast", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LCD Contrast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PSI_Offset", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI Offset", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pressure Ref.", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p4", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI(0) KPa(1)", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[setupTable] ([TRT Code], [Board Code], [User Prog], [Step Up Delay], [Max Trac Beep], [GPS Buttons], [LCD Contrast], [PSI Offset], [Pressure Ref.], [PSI(0) KPa(1)]) VALUES (@TRT_Code, @Board_Code, @User_Prog, @Step_Up_Delay, @Max_Trac_Beep, @GPS_Buttons, @LCD_Contrast, @PSI_Offset, @p1, @p3);
+SELECT [TRT Code], [Board Code], [User Prog], [Step Up Delay], [Max Trac Beep], [GPS Buttons], [LCD Contrast], [PSI Offset], [Pressure Ref.], [PSI(0) KPa(1)] FROM setupTable WHERE ([Board Code] = @Board_Code)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRT_Code", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRT Code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Board_Code", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Board Code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User_Prog", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User Prog", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Step_Up_Delay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Step Up Delay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Max_Trac_Beep", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Max Trac Beep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GPS_Buttons", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS Buttons", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LCD_Contrast", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LCD Contrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PSI_Offset", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI Offset", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pressure Ref.", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p3", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI(0) KPa(1)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[setupTable] SET [TRT Code] = @TRT_Code, [Board Code] = @Board_Code, [User Prog] = @User_Prog, [Step Up Delay] = @Step_Up_Delay, [Max Trac Beep] = @Max_Trac_Beep, [GPS Buttons] = @GPS_Buttons, [LCD Contrast] = @LCD_Contrast, [PSI Offset] = @PSI_Offset, [Pressure Ref.] = @p1, [PSI(0) KPa(1)] = @p3 WHERE (([TRT Code] = @Original_TRT_Code) AND ([Board Code] = @Original_Board_Code) AND ([User Prog] = @Original_User_Prog) AND ([Step Up Delay] = @Original_Step_Up_Delay) AND ([Max Trac Beep] = @Original_Max_Trac_Beep) AND ([GPS Buttons] = @Original_GPS_Buttons) AND ([LCD Contrast] = @Original_LCD_Contrast) AND ([PSI Offset] = @Original_PSI_Offset) AND ([Pressure Ref.] = @p2) AND ([PSI(0) KPa(1)] = @p4));
+SELECT [TRT Code], [Board Code], [User Prog], [Step Up Delay], [Max Trac Beep], [GPS Buttons], [LCD Contrast], [PSI Offset], [Pressure Ref.], [PSI(0) KPa(1)] FROM setupTable WHERE ([Board Code] = @Board_Code)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRT_Code", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRT Code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Board_Code", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Board Code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User_Prog", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User Prog", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Step_Up_Delay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Step Up Delay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Max_Trac_Beep", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Max Trac Beep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GPS_Buttons", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS Buttons", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LCD_Contrast", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LCD Contrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PSI_Offset", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI Offset", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pressure Ref.", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p3", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI(0) KPa(1)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TRT_Code", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRT Code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Board_Code", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Board Code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User_Prog", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User Prog", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Step_Up_Delay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Step Up Delay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Max_Trac_Beep", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Max Trac Beep", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GPS_Buttons", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS Buttons", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LCD_Contrast", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LCD Contrast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PSI_Offset", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI Offset", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pressure Ref.", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p4", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PSI(0) KPa(1)", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::TractionAir.Properties.Settings.Default.sampleDBConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT [TRT Code], [Board Code], [User Prog], [Step Up Delay], [Max Trac Beep], [" +
+                "GPS Buttons], [LCD Contrast], [PSI Offset], [Pressure Ref.], [PSI(0) KPa(1)] FRO" +
+                "M dbo.setupTable";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(sampleDBDataSet1.setupTableDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual sampleDBDataSet1.setupTableDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            sampleDBDataSet1.setupTableDataTable dataTable = new sampleDBDataSet1.setupTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(sampleDBDataSet1.setupTableDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(sampleDBDataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "setupTable");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_TRT_Code, int Original_Board_Code, short Original_User_Prog, short Original_Step_Up_Delay, short Original_Max_Trac_Beep, short Original_GPS_Buttons, short Original_LCD_Contrast, short Original_PSI_Offset, short p2, short p4) {
+            if ((Original_TRT_Code == null)) {
+                throw new global::System.ArgumentNullException("Original_TRT_Code");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_TRT_Code));
+            }
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Board_Code));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((short)(Original_User_Prog));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((short)(Original_Step_Up_Delay));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((short)(Original_Max_Trac_Beep));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_GPS_Buttons));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_LCD_Contrast));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((short)(Original_PSI_Offset));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((short)(p2));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((short)(p4));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string TRT_Code, int Board_Code, short User_Prog, short Step_Up_Delay, short Max_Trac_Beep, short GPS_Buttons, short LCD_Contrast, short PSI_Offset, short p1, short p3) {
+            if ((TRT_Code == null)) {
+                throw new global::System.ArgumentNullException("TRT_Code");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(TRT_Code));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Board_Code));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((short)(User_Prog));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((short)(Step_Up_Delay));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((short)(Max_Trac_Beep));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((short)(GPS_Buttons));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((short)(LCD_Contrast));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((short)(PSI_Offset));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((short)(p1));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((short)(p3));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string TRT_Code, 
+                    int Board_Code, 
+                    short User_Prog, 
+                    short Step_Up_Delay, 
+                    short Max_Trac_Beep, 
+                    short GPS_Buttons, 
+                    short LCD_Contrast, 
+                    short PSI_Offset, 
+                    short p1, 
+                    short p3, 
+                    string Original_TRT_Code, 
+                    int Original_Board_Code, 
+                    short Original_User_Prog, 
+                    short Original_Step_Up_Delay, 
+                    short Original_Max_Trac_Beep, 
+                    short Original_GPS_Buttons, 
+                    short Original_LCD_Contrast, 
+                    short Original_PSI_Offset, 
+                    short p2, 
+                    short p4) {
+            if ((TRT_Code == null)) {
+                throw new global::System.ArgumentNullException("TRT_Code");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(TRT_Code));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Board_Code));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((short)(User_Prog));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(Step_Up_Delay));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((short)(Max_Trac_Beep));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((short)(GPS_Buttons));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((short)(LCD_Contrast));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(PSI_Offset));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((short)(p1));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((short)(p3));
+            if ((Original_TRT_Code == null)) {
+                throw new global::System.ArgumentNullException("Original_TRT_Code");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_TRT_Code));
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Board_Code));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_User_Prog));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_Step_Up_Delay));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((short)(Original_Max_Trac_Beep));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((short)(Original_GPS_Buttons));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((short)(Original_LCD_Contrast));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((short)(Original_PSI_Offset));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((short)(p2));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((short)(p4));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string TRT_Code, 
+                    short User_Prog, 
+                    short Step_Up_Delay, 
+                    short Max_Trac_Beep, 
+                    short GPS_Buttons, 
+                    short LCD_Contrast, 
+                    short PSI_Offset, 
+                    short p1, 
+                    short p3, 
+                    string Original_TRT_Code, 
+                    int Original_Board_Code, 
+                    short Original_User_Prog, 
+                    short Original_Step_Up_Delay, 
+                    short Original_Max_Trac_Beep, 
+                    short Original_GPS_Buttons, 
+                    short Original_LCD_Contrast, 
+                    short Original_PSI_Offset, 
+                    short p2, 
+                    short p4) {
+            return this.Update(TRT_Code, Original_Board_Code, User_Prog, Step_Up_Delay, Max_Trac_Beep, GPS_Buttons, LCD_Contrast, PSI_Offset, p1, p3, Original_TRT_Code, Original_Board_Code, Original_User_Prog, Original_Step_Up_Delay, Original_Max_Trac_Beep, Original_GPS_Buttons, Original_LCD_Contrast, Original_PSI_Offset, p2, p4);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2063,6 +3084,8 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
         private UpdateOrderOption _updateOrder;
         
         private ECUdataTableAdapter _eCUdataTableAdapter;
+        
+        private setupTableTableAdapter _setupTableTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -2095,6 +3118,20 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public setupTableTableAdapter setupTableTableAdapter {
+            get {
+                return this._setupTableTableAdapter;
+            }
+            set {
+                this._setupTableTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -2116,6 +3153,10 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
                             && (this._eCUdataTableAdapter.Connection != null))) {
                     return this._eCUdataTableAdapter.Connection;
                 }
+                if (((this._setupTableTableAdapter != null) 
+                            && (this._setupTableTableAdapter.Connection != null))) {
+                    return this._setupTableTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -2130,6 +3171,9 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
             get {
                 int count = 0;
                 if ((this._eCUdataTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._setupTableTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -2152,6 +3196,15 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._setupTableTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.setupTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._setupTableTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -2170,6 +3223,14 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._setupTableTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.setupTable.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._setupTableTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -2180,6 +3241,14 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(sampleDBDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._setupTableTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.setupTable.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._setupTableTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._eCUdataTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ECUdata.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -2232,6 +3301,11 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._setupTableTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._setupTableTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -2271,6 +3345,15 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
                     if (this._eCUdataTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._eCUdataTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._eCUdataTableAdapter.Adapter);
+                    }
+                }
+                if ((this._setupTableTableAdapter != null)) {
+                    revertConnections.Add(this._setupTableTableAdapter, this._setupTableTableAdapter.Connection);
+                    this._setupTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._setupTableTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._setupTableTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._setupTableTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._setupTableTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2334,6 +3417,10 @@ SELECT [Build Date], [TRT Code], [Pressure Group], [Board Code], Version, Owner,
                 if ((this._eCUdataTableAdapter != null)) {
                     this._eCUdataTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._eCUdataTableAdapter]));
                     this._eCUdataTableAdapter.Transaction = null;
+                }
+                if ((this._setupTableTableAdapter != null)) {
+                    this._setupTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._setupTableTableAdapter]));
+                    this._setupTableTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

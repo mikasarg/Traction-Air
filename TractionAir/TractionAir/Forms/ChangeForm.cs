@@ -7,20 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
+using System.Data.SqlClient;
 
 namespace TractionAir
 {
     public partial class ChangeForm : Form
     {
-        DataGridViewRow row;
-        List<Tuple<int, string>> changedBoxes; //List of boxes which have been altered
-        HashSet<int> previouslyVisited;
+        private int boardCode;
+        private string connectionString;
+        private SqlConnection connection;
 
-        public ChangeForm(DataGridViewRow row)
+        private List<Tuple<int, string>> changedBoxes; //List of boxes which have been altered
+        private HashSet<int> previouslyVisited;
+
+        public ChangeForm(int boardCode)
         {
-            this.row = row;
+            this.boardCode = boardCode;
             changedBoxes = new List<Tuple<int, string>>();
             previouslyVisited = new HashSet<int>();
+
+            this.connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
 
             InitializeComponent();
         }
@@ -31,29 +38,42 @@ namespace TractionAir
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
-        { 
-            this.eCUdataTableAdapter.Fill(this.sampleDBDataSet1.ECUdata);
-            this.tableTableAdapter.Fill(this.pressureGroupsDataSet.Table);
+        {
+            String query = "SELECT * FROM mainSettingsTable WHERE \"BoardCode\" = '" + boardCode + "'";
+            String extraQuery = "SELECT * FROM extraSettingsTable WHERE \"BoardCode\" = '" + boardCode + "'";
+
+            ECU_MainSettings ecuMain;
+            ECU_ExtraSettings ecuExtra;
+
+            using (IDbConnection iDbCon = new SqlConnection(connectionString))
+            {
+                ECU_MainSettings[] ecusMain = iDbCon.Query<ECU_MainSettings>(query).ToArray();
+                ecuMain = ecusMain[0];
+
+                ECU_ExtraSettings[] ecusExtra = iDbCon.Query<ECU_ExtraSettings>(extraQuery).ToArray();
+                ecuExtra = ecusExtra[0];
+            }
+
 
             //Sets the text for the boxes to be their equivalents in the selected entry
-            boardNumberTextbox.Text = row.Cells[3].Value.ToString();
-            serialNumberTextbox.Text = row.Cells[1].Value.ToString();
-            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(row.Cells[4].Value.ToString());
-            pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(row.Cells[2].Value.ToString());
-            customerComboBox.SelectedIndex = customerComboBox.FindStringExact(row.Cells[5].Value.ToString());
-            buildDateTextbox.Text = ((DateTime)row.Cells[0].Value).ToString("dd/MM/yyyy");
-            installDateTextbox.Text = ((DateTime)row.Cells[16].Value).ToString("dd/MM/yyyy");
-            vehicleRefTextbox.Text = row.Cells[7].Value.ToString();
-            pressureCellTextbox.Text = row.Cells[12].Value.ToString();
-            pt1SerialTextbox.Text = row.Cells[13].Value.ToString();
-            pt2SerialTextbox.Text = row.Cells[14].Value.ToString();
-            descriptionTextbox.Text = row.Cells[6].Value.ToString();
-            notesRichTextbox.Text = row.Cells[18].Value.ToString();
+            boardNumberTextbox.Text = boardCode.ToString();
+            serialNumberTextbox.Text = ecuExtra.SerialNumber;
+            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecuMain.Version);
+            pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecuMain.PressureGroup);
+            customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecuMain.Owner);
+            buildDateTextbox.Text = (ecuMain.BuildDate).ToString("dd/MM/yyyy");
+            installDateTextbox.Text = (ecuMain.DateMod).ToString();
+            vehicleRefTextbox.Text = ecuMain.VehicleRef;
+            pressureCellTextbox.Text = ecuExtra.pressureCell.ToString();
+            pt1SerialTextbox.Text = ecuExtra.PT1Serial.ToString();
+            pt2SerialTextbox.Text = ecuExtra.PT2Serial.ToString();
+            descriptionTextbox.Text = ecuMain.Description;
+            notesRichTextbox.Text = ecuMain.Notes;
 
-            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(row.Cells[8].Value.ToString());
-            loadedOffRoadTextbox.Text = row.Cells[9].Value.ToString();
-            notLoadedTextbox.Text = row.Cells[10].Value.ToString();
-            maxTractionTextbox.Text = row.Cells[11].Value.ToString();
+            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecuMain.SpeedStages);
+            loadedOffRoadTextbox.Text = ecuExtra.LoadedOffRoad.ToString();
+            notLoadedTextbox.Text = ecuExtra.UnloadedOnRoad.ToString();
+            maxTractionTextbox.Text = ecuExtra.MaxTraction.ToString();
 
             changedBoxes.Clear();
         }
@@ -87,13 +107,13 @@ namespace TractionAir
 
                 if (i == 18) //notes
                 {
-                    row.Cells[i].Value = s;
+                    //row.Cells[i].Value = s;
                 }
                 else if (i == 0 || i == 16) //dates
                 {
                     DateTime dt;
                     if (DateTime.TryParse(s, out dt)) {
-                        row.Cells[i].Value = dt.Date;
+                        //row.Cells[i].Value = dt.Date;
                     }
                     else
                     {
@@ -106,7 +126,7 @@ namespace TractionAir
                     int k;
                     if (Int32.TryParse(s, out k))
                     {
-                        row.Cells[i].Value = k;
+                        //row.Cells[i].Value = k;
                     }
                     else
                     {
@@ -119,7 +139,7 @@ namespace TractionAir
                     //TODO as of now accepts any input under 50 characters. Could be changed to only accept items found in the dropdown list. Depends on spec
                     if (s.Length <= 50)
                     {
-                        row.Cells[i].Value = s;
+                        //row.Cells[i].Value = s;
                     }
                     else
                     {
@@ -131,7 +151,7 @@ namespace TractionAir
                 {
                     if (s.Length <= 50)
                     {
-                        row.Cells[i].Value = s;
+                        //row.Cells[i].Value = s;
                     }
                     else
                     {

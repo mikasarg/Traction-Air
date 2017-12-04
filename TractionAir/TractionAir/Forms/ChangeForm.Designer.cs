@@ -50,8 +50,8 @@
             this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
+            //this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            //this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
             this.installDateTextbox = new System.Windows.Forms.TextBox();
             this.boardNumberTextbox = new System.Windows.Forms.TextBox();
@@ -65,7 +65,7 @@
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
+            //this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -82,8 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -278,17 +278,17 @@
             // eCUdataBindingSource
             // 
             this.eCUdataBindingSource.DataMember = "ECUdata";
-            this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
+           // this.eCUdataBindingSource.DataSource = this.sampleDBDataSet1BindingSource;
             // 
             // sampleDBDataSet1BindingSource
             // 
-            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
-            this.sampleDBDataSet1BindingSource.Position = 0;
+            //this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
+            //this.sampleDBDataSet1BindingSource.Position = 0;
             // 
             // sampleDBDataSet1
             // 
-            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
-            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           // this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
+            //this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // programVersionComboBox
             // 
@@ -396,7 +396,7 @@
             // 
             // eCUdataTableAdapter
             // 
-            this.eCUdataTableAdapter.ClearBeforeFill = true;
+            //this.eCUdataTableAdapter.ClearBeforeFill = true;
             // 
             // speedControlComboBox
             // 
@@ -516,7 +516,7 @@
             // eCUdataBindingSource1
             // 
             this.eCUdataBindingSource1.DataMember = "ECUdata";
-            this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1BindingSource;
+           // this.eCUdataBindingSource1.DataSource = this.sampleDBDataSet1BindingSource;
             // 
             // ChangeForm
             // 
@@ -574,8 +574,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
+           // ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
+           // ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -616,10 +616,10 @@
         private System.Windows.Forms.BindingSource tableBindingSource;
         private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
         private System.Windows.Forms.BindingSource tableBindingSource1;
-        private System.Windows.Forms.BindingSource sampleDBDataSet1BindingSource;
-        private sampleDBDataSet1 sampleDBDataSet1;
+       // private System.Windows.Forms.BindingSource sampleDBDataSet1BindingSource;
+       // private sampleDBDataSet1 sampleDBDataSet1;
         private System.Windows.Forms.BindingSource eCUdataBindingSource;
-        private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
+      //  private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
         private System.Windows.Forms.ComboBox speedControlComboBox;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
