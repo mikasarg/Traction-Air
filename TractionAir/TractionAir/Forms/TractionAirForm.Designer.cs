@@ -61,20 +61,6 @@
             this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
             this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
             this.mainSettingsTableDataGridView = new System.Windows.Forms.DataGridView();
-            this.boardCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pressureGroupColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buildDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vehicleRefColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedStagesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateModColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.setupTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
-            this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.boardCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pressureGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,13 +91,27 @@
             this.stepUpDelayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enableGPSButtonsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.enableGPSOverrideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
+            this.boardCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pressureGroupColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buildDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleRefColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speedStagesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateModColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.setupTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
+            this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -232,6 +232,7 @@
             this.manualUploadToolStripMenuItem.Name = "manualUploadToolStripMenuItem";
             this.manualUploadToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.manualUploadToolStripMenuItem.Text = "Manual Upload";
+            this.manualUploadToolStripMenuItem.Click += new System.EventHandler(this.manualUploadToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -414,101 +415,6 @@
             this.mainSettingsTableDataGridView.TabIndex = 21;
             this.mainSettingsTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainSettingsTableDataGridView_CellDoubleClick);
             this.mainSettingsTableDataGridView.SelectionChanged += new System.EventHandler(this.mainSettingsTableDataGridView_SelectionChanged);
-            // 
-            // boardCodeColumn
-            // 
-            this.boardCodeColumn.DataPropertyName = "Board Code";
-            this.boardCodeColumn.HeaderText = "Board Code";
-            this.boardCodeColumn.Name = "boardCodeColumn";
-            this.boardCodeColumn.ReadOnly = true;
-            // 
-            // pressureGroupColumn
-            // 
-            this.pressureGroupColumn.DataPropertyName = "Pressure Group";
-            this.pressureGroupColumn.HeaderText = "Pressure Group";
-            this.pressureGroupColumn.Name = "pressureGroupColumn";
-            this.pressureGroupColumn.ReadOnly = true;
-            // 
-            // buildDateColumn
-            // 
-            this.buildDateColumn.DataPropertyName = "Build Date";
-            this.buildDateColumn.HeaderText = "Build Date";
-            this.buildDateColumn.Name = "buildDateColumn";
-            this.buildDateColumn.ReadOnly = true;
-            // 
-            // vehicleRefColumn
-            // 
-            this.vehicleRefColumn.DataPropertyName = "Vehicle Ref";
-            this.vehicleRefColumn.HeaderText = "Vehicle Ref";
-            this.vehicleRefColumn.Name = "vehicleRefColumn";
-            this.vehicleRefColumn.ReadOnly = true;
-            // 
-            // speedStagesColumn
-            // 
-            this.speedStagesColumn.DataPropertyName = "Speed Stages";
-            this.speedStagesColumn.HeaderText = "Speed Stages";
-            this.speedStagesColumn.Name = "speedStagesColumn";
-            this.speedStagesColumn.ReadOnly = true;
-            // 
-            // dateModColumn
-            // 
-            this.dateModColumn.DataPropertyName = "Date Mod";
-            this.dateModColumn.HeaderText = "Date Mod";
-            this.dateModColumn.Name = "dateModColumn";
-            this.dateModColumn.ReadOnly = true;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 603);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1054, 22);
-            this.statusStrip1.TabIndex = 22;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.conncectedBoardLabel);
-            this.groupBox1.Controls.Add(this.ecuCountLabel);
-            this.groupBox1.Controls.Add(this.changeButton);
-            this.groupBox1.Controls.Add(this.viewButton);
-            this.groupBox1.Location = new System.Drawing.Point(441, 457);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(298, 141);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
-            // 
-            // mainSettingsTableBindingSource
-            // 
-            this.mainSettingsTableBindingSource.DataMember = "mainSettingsTable";
-            this.mainSettingsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mainSettingsTableTableAdapter
-            // 
-            this.mainSettingsTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager2
-            // 
-            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager2.countryCodeTableTableAdapter = null;
-            this.tableAdapterManager2.customerTableTableAdapter = null;
-            this.tableAdapterManager2.ecuToCustomerTableAdapter = null;
-            this.tableAdapterManager2.ecuToPressureGroupTableAdapter = null;
-            this.tableAdapterManager2.mainSettingsTableTableAdapter = this.mainSettingsTableTableAdapter;
-            this.tableAdapterManager2.pressureGroupsTableTableAdapter = null;
-            this.tableAdapterManager2.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // boardCodeDataGridViewTextBoxColumn
             // 
@@ -740,6 +646,101 @@
             this.enableGPSOverrideDataGridViewCheckBoxColumn.ReadOnly = true;
             this.enableGPSOverrideDataGridViewCheckBoxColumn.Visible = false;
             // 
+            // mainSettingsTableBindingSource
+            // 
+            this.mainSettingsTableBindingSource.DataMember = "mainSettingsTable";
+            this.mainSettingsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // boardCodeColumn
+            // 
+            this.boardCodeColumn.DataPropertyName = "Board Code";
+            this.boardCodeColumn.HeaderText = "Board Code";
+            this.boardCodeColumn.Name = "boardCodeColumn";
+            this.boardCodeColumn.ReadOnly = true;
+            // 
+            // pressureGroupColumn
+            // 
+            this.pressureGroupColumn.DataPropertyName = "Pressure Group";
+            this.pressureGroupColumn.HeaderText = "Pressure Group";
+            this.pressureGroupColumn.Name = "pressureGroupColumn";
+            this.pressureGroupColumn.ReadOnly = true;
+            // 
+            // buildDateColumn
+            // 
+            this.buildDateColumn.DataPropertyName = "Build Date";
+            this.buildDateColumn.HeaderText = "Build Date";
+            this.buildDateColumn.Name = "buildDateColumn";
+            this.buildDateColumn.ReadOnly = true;
+            // 
+            // vehicleRefColumn
+            // 
+            this.vehicleRefColumn.DataPropertyName = "Vehicle Ref";
+            this.vehicleRefColumn.HeaderText = "Vehicle Ref";
+            this.vehicleRefColumn.Name = "vehicleRefColumn";
+            this.vehicleRefColumn.ReadOnly = true;
+            // 
+            // speedStagesColumn
+            // 
+            this.speedStagesColumn.DataPropertyName = "Speed Stages";
+            this.speedStagesColumn.HeaderText = "Speed Stages";
+            this.speedStagesColumn.Name = "speedStagesColumn";
+            this.speedStagesColumn.ReadOnly = true;
+            // 
+            // dateModColumn
+            // 
+            this.dateModColumn.DataPropertyName = "Date Mod";
+            this.dateModColumn.HeaderText = "Date Mod";
+            this.dateModColumn.Name = "dateModColumn";
+            this.dateModColumn.ReadOnly = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 603);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1054, 22);
+            this.statusStrip1.TabIndex = 22;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.conncectedBoardLabel);
+            this.groupBox1.Controls.Add(this.ecuCountLabel);
+            this.groupBox1.Controls.Add(this.changeButton);
+            this.groupBox1.Controls.Add(this.viewButton);
+            this.groupBox1.Location = new System.Drawing.Point(441, 457);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(298, 141);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            // 
+            // mainSettingsTableTableAdapter
+            // 
+            this.mainSettingsTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager2
+            // 
+            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager2.countryCodeTableTableAdapter = null;
+            this.tableAdapterManager2.customerTableTableAdapter = null;
+            this.tableAdapterManager2.ecuToCustomerTableAdapter = null;
+            this.tableAdapterManager2.ecuToPressureGroupTableAdapter = null;
+            this.tableAdapterManager2.mainSettingsTableTableAdapter = this.mainSettingsTableTableAdapter;
+            this.tableAdapterManager2.pressureGroupsTableTableAdapter = null;
+            this.tableAdapterManager2.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,13 +763,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setupTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

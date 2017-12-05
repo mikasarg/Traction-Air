@@ -43,7 +43,7 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Loads the data into the sampleDB table
+        /// Loads the data into the datagridview
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -259,6 +259,10 @@ namespace TractionAir
         /// <param name="e"></param>
         private void mainSettingsTableDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            if (mainSettingsTableDataGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
             DataGridViewRow selectedRow = mainSettingsTableDataGridView.SelectedRows[0];
             notesRichTextbox.Text = selectedRow.Cells["notesColumn"].Value.ToString();
         }
@@ -405,8 +409,16 @@ namespace TractionAir
         {
             changeButton_Click(sender, e);
         }
+
         #endregion
 
-
+        private void manualUploadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManualUploadForm manualUpload = new ManualUploadForm();
+            manualUpload.ShowDialog();
+            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+            mainSettingsTableDataGridView.Update();
+            mainSettingsTableDataGridView.Refresh();
+        }
     }
 }

@@ -39,6 +39,10 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.programVersionTable' table. You can move, or remove it, as needed.
+            this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
+            this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
             // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.customerTable' table. You can move, or remove it, as needed.
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
             // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
@@ -55,35 +59,55 @@ namespace TractionAir
                 ecu = ecus[0];
             }
 
-
             //Sets the text for the boxes to be their equivalents in the selected entry
             boardNumberTextbox.Text = boardCode.ToString();
-            serialNumberTextbox.Text = ecu.SerialNumber;
-            bottomSerialNumberTextbox.Text = ecu.SerialCodeBot;
+            serialNumberTextbox.Text = stringNullCheck(ecu.SerialNumber);
+            bottomSerialNumberTextbox.Text = stringNullCheck(ecu.SerialCodeBot);
             programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
             pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
             customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
             buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
             installDateTextbox.Text = (ecu.DateMod).ToString();
             vehicleRefTextbox.Text = ecu.VehicleRef;
-            pressureCellTextbox.Text = ecu.pressureCell.ToString();
-            pt1SerialTextbox.Text = ecu.PT1Serial.ToString();
-            pt2SerialTextbox.Text = ecu.PT2Serial.ToString();
-            descriptionTextbox.Text = ecu.Description;
-            notesRichTextbox.Text = ecu.Notes;
+            pressureCellTextbox.Text = stringNullCheck(ecu.PressureCell);
+            pt1SerialTextbox.Text = stringNullCheck(ecu.PT1Serial);
+            pt2SerialTextbox.Text = stringNullCheck(ecu.PT2Serial);
+            pt3SerialTextbox.Text = stringNullCheck(ecu.PT3Serial);
+            pt4SerialTextbox.Text = stringNullCheck(ecu.PT4Serial);
+            pt5SerialTextbox.Text = stringNullCheck(ecu.PT5Serial);
+            pt6SerialTextbox.Text = stringNullCheck(ecu.PT6Serial);
+            pt7SerialTextbox.Text = stringNullCheck(ecu.PT7Serial);
+            pt8SerialTextbox.Text = stringNullCheck(ecu.PT8Serial);
+            descriptionTextbox.Text = stringNullCheck(ecu.Description);
+            notesRichTextbox.Text = stringNullCheck(ecu.Notes);
+            countryComboBox.SelectedIndex = countryComboBox.FindStringExact(ecu.Country);
 
             //Manual Database Update section
             speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
-            loadedOffRoadTextbox.Text = ecu.LoadedOffRoad.ToString();
-            loadedOnRoadTextbox.Text = ecu.LoadedOnRoad.ToString();
-            notLoadedTextbox.Text = ecu.UnloadedOnRoad.ToString();
-            maxTractionTextbox.Text = ecu.MaxTraction.ToString();
-            stepUpDelayTextbox.Text = ecu.StepUpDelay.ToString();
+            loadedOffRoadTextbox.Text = stringNullCheck(ecu.LoadedOffRoad);
+            loadedOnRoadTextbox.Text = stringNullCheck(ecu.LoadedOnRoad);
+            notLoadedTextbox.Text = stringNullCheck(ecu.UnloadedOnRoad);
+            maxTractionTextbox.Text = stringNullCheck(ecu.MaxTraction);
+            stepUpDelayTextbox.Text = stringNullCheck(ecu.StepUpDelay);
             beepCheckBox.Checked = ecu.MaxTractionBeep;
             gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
             gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
 
             changedBoxes.Clear();
+        }
+
+        /// <summary>
+        /// Returns a string version of the object and makes it "" instead of null
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private string stringNullCheck(object s)
+        {
+            if (s == null)
+            {
+                return "";
+            }
+            return s.ToString();
         }
 
         /// <summary>
@@ -93,11 +117,10 @@ namespace TractionAir
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //TODO save the changes made to the actual database
-
             if (changedBoxes.Count == 0) //No changes were made, so exit
             {
                 this.Close();
+                return;
             }
 
             previouslyVisited.Clear();
@@ -213,25 +236,22 @@ namespace TractionAir
         }
 
         //All methods below add tuples to the list when a textbox is altered, with the relevant column number and the altered text.
-
+        #region eventListeners
         private void serialNumberTextbox_TextChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("SerialNumber", serialNumberTextbox.Text));
         }
 
-        //Also called when its text is changed
         private void programVersionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("Version", programVersionComboBox.Text));
         }
 
-        //Also called when its text is changed
         private void pressureGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("PressureGroup", pressureGroupComboBox.Text));
         }
 
-        //Also called when its text is changed
         private void customerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("Owner", customerComboBox.Text));
@@ -267,6 +287,36 @@ namespace TractionAir
             changedBoxes.Add(new Tuple<string, string>("PT2Serial", pt2SerialTextbox.Text));
         }
 
+        private void pt3SerialTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("PT3Serial", pt3SerialTextbox.Text));
+        }
+
+        private void pt4SerialTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("PT4Serial", pt4SerialTextbox.Text));
+        }
+
+        private void pt5SerialTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("PT5Serial", pt5SerialTextbox.Text));
+        }
+
+        private void pt6SerialTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("PT6Serial", pt6SerialTextbox.Text));
+        }
+
+        private void pt7SerialTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("PT7Serial", pt7SerialTextbox.Text));
+        }
+
+        private void pt8SerialTextbox_TextChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("PT8Serial", pt8SerialTextbox.Text));
+        }
+
         private void descriptionTextbox_TextChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("Description", descriptionTextbox.Text));
@@ -277,7 +327,6 @@ namespace TractionAir
             changedBoxes.Add(new Tuple<string, string>("Notes", notesRichTextbox.Text));
         }
 
-        //Also called when its text is changed
         private void speedControlComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("SpeedStages", speedControlComboBox.Text));
@@ -327,5 +376,11 @@ namespace TractionAir
         {
             changedBoxes.Add(new Tuple<string, string>("EnableGPSOverride", gpsOverrideCheckBox.Checked.ToString()));
         }
+
+        private void countryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changedBoxes.Add(new Tuple<string, string>("Country", countryComboBox.Text));
+        }
+        #endregion
     }
 }

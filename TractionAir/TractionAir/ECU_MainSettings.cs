@@ -32,7 +32,7 @@ namespace TractionAir
 
         public string SerialNumber { get; set; }
 
-        public int pressureCell { get; set; }
+        public int PressureCell { get; set; }
 
         public string PT1Serial { get; set; }
 
