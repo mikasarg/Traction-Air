@@ -93,6 +93,7 @@
             this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.programVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.installDateTextbox = new System.Windows.Forms.TextBox();
             this.boardNumberTextbox = new System.Windows.Forms.TextBox();
             this.descriptionTextbox = new System.Windows.Forms.TextBox();
@@ -116,8 +117,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.programVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.programVersionTableTableAdapter();
+            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -132,6 +134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // saveButton
@@ -499,15 +502,15 @@
             // 
             // speedControlComboBox
             // 
-            this.speedControlComboBox.DataSource = this.mainSettingsTableBindingSource1;
-            this.speedControlComboBox.DisplayMember = "SpeedStages";
+            this.speedControlComboBox.DataSource = this.speedControlTableBindingSource;
+            this.speedControlComboBox.DisplayMember = "SpeedControl";
             this.speedControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.speedControlComboBox.FormattingEnabled = true;
             this.speedControlComboBox.Location = new System.Drawing.Point(438, 204);
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
             this.speedControlComboBox.TabIndex = 20;
-            this.speedControlComboBox.ValueMember = "SpeedStages";
+            this.speedControlComboBox.ValueMember = "SpeedControl";
             this.speedControlComboBox.TextChanged += new System.EventHandler(this.speedControlComboBox_SelectedIndexChanged);
             // 
             // label21
@@ -647,6 +650,11 @@
             this.programVersionComboBox.TabIndex = 3;
             this.programVersionComboBox.ValueMember = "Version";
             this.programVersionComboBox.SelectedIndexChanged += new System.EventHandler(this.programVersionComboBox_SelectedIndexChanged);
+            // 
+            // programVersionTableBindingSource
+            // 
+            this.programVersionTableBindingSource.DataMember = "programVersionTable";
+            this.programVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
             // installDateTextbox
             // 
@@ -858,14 +866,18 @@
             this.label1.TabIndex = 139;
             this.label1.Text = "Build Date";
             // 
-            // programVersionTableBindingSource
-            // 
-            this.programVersionTableBindingSource.DataMember = "programVersionTable";
-            this.programVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
-            // 
             // programVersionTableTableAdapter
             // 
             this.programVersionTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // speedControlTableBindingSource
+            // 
+            this.speedControlTableBindingSource.DataMember = "speedControlTable";
+            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
+            // 
+            // speedControlTableTableAdapter
+            // 
+            this.speedControlTableTableAdapter.ClearBeforeFill = true;
             // 
             // ChangeForm
             // 
@@ -962,6 +974,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1058,5 +1071,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource programVersionTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.programVersionTableTableAdapter programVersionTableTableAdapter;
+        private System.Windows.Forms.BindingSource speedControlTableBindingSource;
+        private ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter speedControlTableTableAdapter;
     }
 }

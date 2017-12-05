@@ -32,6 +32,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.speedControlTable' table. You can move, or remove it, as needed.
+            this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
             // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.programVersionTable' table. You can move, or remove it, as needed.
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
             // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
@@ -69,7 +71,7 @@ namespace TractionAir
             {
                 if (iDbCon.Query<ECU_MainSettings>(query).ToArray().Length != 0)
                 {
-                    MessageBox.Show("Board with code " + bc + " already exists", "Invalid input");
+                    MessageBox.Show("Board with code '" + bc + "' already exists", "Invalid input");
                     return;
                 }
             }
@@ -136,7 +138,7 @@ namespace TractionAir
 
                 insert += checkValidBit(gpsButtonCheckBox.Text, true) + ", ";
 
-                insert += checkValidBit(gpsOverrideCheckBox.Text, true) + ");";
+                insert += checkValidBit(gpsOverrideCheckBox.Text, true) + ");"; //TODO TESTING
             }
             catch(InvalidOperationException ioex)
             {
@@ -146,7 +148,15 @@ namespace TractionAir
 
             using (IDbConnection iDbCon = new SqlConnection(connectionString))
             {
-                iDbCon.Execute(insert);
+                try
+                {
+                    iDbCon.Execute(insert);
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("An error occurred when trying to manually upload: " + sqlex.Message, "Error");
+                    return;
+                }
             }
             
             this.Close();
@@ -165,7 +175,7 @@ namespace TractionAir
             }
             if (s.Length > 50)
             {
-                throw new InvalidOperationException("Input " + s + " is too long!");
+                throw new InvalidOperationException("Input '" + s + "' is too long!");
             }
             return "'" + s + "'";
         }
@@ -184,7 +194,7 @@ namespace TractionAir
             int i;
             if (!Int32.TryParse(s, out i))
             {
-                throw new InvalidOperationException("Input " + s + " is not a valid integer");
+                throw new InvalidOperationException("Input '" + s + "' is not a valid integer");
             }
             return i;
         }
@@ -203,7 +213,7 @@ namespace TractionAir
             DateTime dt;
             if (!DateTime.TryParse(s, out dt))
             {
-                throw new InvalidOperationException("Input " + dt + " is not a valid date");
+                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
             }
             return "'" + dt.Date.ToString() + "'";
         }
@@ -222,7 +232,7 @@ namespace TractionAir
             DateTime dt;
             if (!DateTime.TryParse(s, out dt))
             {
-                throw new InvalidOperationException("Input " + dt + " is not a valid date");
+                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
             }
             return "'" + dt.ToString() + "'";
         }

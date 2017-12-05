@@ -70,6 +70,7 @@
             this.tableAdapterManager.mainSettingsTableTableAdapter = null;
             this.tableAdapterManager.pressureGroupsTableTableAdapter = null;
             this.tableAdapterManager.programVersionTableTableAdapter = null;
+            this.tableAdapterManager.speedControlTableTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // countryCodeTableDataGridView
@@ -89,6 +90,7 @@
             this.countryCodeTableDataGridView.Location = new System.Drawing.Point(7, 5);
             this.countryCodeTableDataGridView.Name = "countryCodeTableDataGridView";
             this.countryCodeTableDataGridView.ReadOnly = true;
+            this.countryCodeTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.countryCodeTableDataGridView.Size = new System.Drawing.Size(302, 213);
             this.countryCodeTableDataGridView.TabIndex = 1;
             // 

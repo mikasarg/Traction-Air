@@ -32,6 +32,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void PressureGroupsForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
+            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
             this.tableTableAdapter.Fill(this.pressureGroupsDataSet.Table);
         }
 
