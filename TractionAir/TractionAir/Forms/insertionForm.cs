@@ -55,7 +55,11 @@ namespace TractionAir
         /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (ECU_Manager.wishToCancel())
+            {
+                this.Close();
+            }
+            return;
         }
     }
 }

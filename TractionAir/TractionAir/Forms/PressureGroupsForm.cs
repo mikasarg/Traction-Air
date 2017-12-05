@@ -55,11 +55,13 @@ namespace TractionAir
         /// <param name="e"></param>
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            int selectedCellCount = tableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
+            if (ECU_Manager.wishToDelete())
             {
-                DataGridViewRow row = tableDataGridView.SelectedCells[0].OwningRow;
-                tableDataGridView.Rows.RemoveAt(row.Index);
+                //TODO delete the selected entry
+            }
+            else
+            {
+                return;
             }
         }
 

@@ -55,55 +55,48 @@ namespace TractionAir
                 ecu = ecus[0];
             }
 
-            //Sets the text for the boxes to be their equivalents in the selected entry
-            boardNumberTextbox.Text = boardCode.ToString();
-            serialNumberTextbox.Text = stringNullCheck(ecu.SerialNumber);
-            bottomSerialNumberTextbox.Text = stringNullCheck(ecu.SerialCodeBot);
-            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
-            pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
-            customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
-            buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
-            installDateTextbox.Text = (ecu.DateMod).ToString();
-            vehicleRefTextbox.Text = ecu.VehicleRef;
-            pressureCellTextbox.Text = stringNullCheck(ecu.PressureCell);
-            pt1SerialTextbox.Text = stringNullCheck(ecu.PT1Serial);
-            pt2SerialTextbox.Text = stringNullCheck(ecu.PT2Serial);
-            pt3SerialTextbox.Text = stringNullCheck(ecu.PT3Serial);
-            pt4SerialTextbox.Text = stringNullCheck(ecu.PT4Serial);
-            pt5SerialTextbox.Text = stringNullCheck(ecu.PT5Serial);
-            pt6SerialTextbox.Text = stringNullCheck(ecu.PT6Serial);
-            pt7SerialTextbox.Text = stringNullCheck(ecu.PT7Serial);
-            pt8SerialTextbox.Text = stringNullCheck(ecu.PT8Serial);
-            descriptionTextbox.Text = stringNullCheck(ecu.Description);
-            notesRichTextbox.Text = stringNullCheck(ecu.Notes);
-            countryComboBox.SelectedIndex = countryComboBox.FindStringExact(ecu.Country);
+            try
+            {
+                //Sets the text for the boxes to be their equivalents in the selected entry
+                boardNumberTextbox.Text = boardCode.ToString();
+                serialNumberTextbox.Text = ECU_Manager.stringNullCheck(ecu.SerialNumber);
+                bottomSerialNumberTextbox.Text = ECU_Manager.stringNullCheck(ecu.SerialCodeBot);
+                programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
+                pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
+                customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
+                buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
+                installDateTextbox.Text = (ecu.DateMod).ToString();
+                vehicleRefTextbox.Text = ecu.VehicleRef;
+                pressureCellTextbox.Text = ECU_Manager.stringNullCheck(ecu.PressureCell);
+                pt1SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT1Serial);
+                pt2SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT2Serial);
+                pt3SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT3Serial);
+                pt4SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT4Serial);
+                pt5SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT5Serial);
+                pt6SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT6Serial);
+                pt7SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT7Serial);
+                pt8SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT8Serial);
+                descriptionTextbox.Text = ECU_Manager.stringNullCheck(ecu.Description);
+                notesRichTextbox.Text = ECU_Manager.stringNullCheck(ecu.Notes);
+                countryComboBox.SelectedIndex = countryComboBox.FindStringExact(ecu.Country);
 
-            //Manual Database Update section
-            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
-            loadedOffRoadTextbox.Text = stringNullCheck(ecu.LoadedOffRoad);
-            loadedOnRoadTextbox.Text = stringNullCheck(ecu.LoadedOnRoad);
-            notLoadedTextbox.Text = stringNullCheck(ecu.UnloadedOnRoad);
-            maxTractionTextbox.Text = stringNullCheck(ecu.MaxTraction);
-            stepUpDelayTextbox.Text = stringNullCheck(ecu.StepUpDelay);
-            beepCheckBox.Checked = ecu.MaxTractionBeep;
-            gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
-            gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
+                //Manual Database Update section
+                speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
+                loadedOffRoadTextbox.Text = ECU_Manager.stringNullCheck(ecu.LoadedOffRoad);
+                loadedOnRoadTextbox.Text = ECU_Manager.stringNullCheck(ecu.LoadedOnRoad);
+                notLoadedTextbox.Text = ECU_Manager.stringNullCheck(ecu.UnloadedOnRoad);
+                maxTractionTextbox.Text = ECU_Manager.stringNullCheck(ecu.MaxTraction);
+                stepUpDelayTextbox.Text = ECU_Manager.stringNullCheck(ecu.StepUpDelay);
+                beepCheckBox.Checked = ecu.MaxTractionBeep;
+                gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
+                gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
+            }
+            catch (NullReferenceException nrex)
+            {
+                MessageBox.Show("An error occurred when trying to load the selected entry: " + nrex.Message, "Error");
+            }
 
             changedBoxes.Clear();
-        }
-
-        /// <summary>
-        /// Returns a string version of the object and makes it "" instead of null
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private string stringNullCheck(object s)
-        {
-            if (s == null)
-            {
-                return "";
-            }
-            return s.ToString();
         }
     }
 }

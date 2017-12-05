@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,7 +41,9 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            //TODO insert a new country
+            insertCountryForm insertCountry = new insertCountryForm();
+            insertCountry.ShowDialog();
+            refreshTable();
         }
 
         /// <summary>
@@ -49,20 +53,59 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure you wish to delete the selected row?", "Are You Sure?", MessageBoxButtons.YesNo);
-            if (dr.Equals(DialogResult.Yes))
+            if (ECU_Manager.wishToDelete())
             {
-                //TODO delete the selected entry
+                if (countryCodeTableDataGridView.SelectedRows.Count == 0)
+                {
+                    return;
+                }
+                DataGridViewRow selectedRow = countryCodeTableDataGridView.SelectedRows[0];
+                String code = selectedRow.Cells["codeColumn"].Value.ToString();
+                delete(code);
             }
             else
             {
                 return;
+            }
+            refreshTable();
+        }
+
+        /// <summary>
+        /// Deletes the selected entry
+        /// </summary>
+        /// <param name="code"></param>
+        private void delete(string code)
+        {
+            string delete = "DELETE FROM countryCodeTable WHERE Code = '" + code + "'";
+            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+            {
+                try
+                {
+                    iDbCon.Execute(delete);
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("An error occurred when trying to delete: " + sqlex.Message, "Error");
+                    return;
+                }
             }
         }
 
         private void changeButton_Click(object sender, EventArgs e)
         {
             //TODO open up a change form
+
+            refreshTable();
+        }
+
+        /// <summary>
+        /// Refreshes the table
+        /// </summary>
+        private void refreshTable()
+        {
+            this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
+            countryCodeTableDataGridView.Update();
+            countryCodeTableDataGridView.Refresh();
         }
     }
 }

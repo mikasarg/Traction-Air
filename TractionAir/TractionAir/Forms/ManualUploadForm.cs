@@ -262,12 +262,11 @@ namespace TractionAir
         /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you wish to cancel?", "Are you sure?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-            this.Close();
+            if (ECU_Manager.wishToCancel())
+            {
+                this.Close();
+            }
+            return;
         }
     }
 }

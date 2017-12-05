@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(insertionForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.insertButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.loadedOnRoadTextbox = new System.Windows.Forms.TextBox();
-            this.loadedOffRoadTextbox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.unloadedOnRoadTextbox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.maxTractionTextbox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.descriptionTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.maxTractionTextbox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.unloadedOnRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.loadedOffRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.loadedOnRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.insertButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,90 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // descriptionTextbox
+            // 
+            this.descriptionTextbox.Location = new System.Drawing.Point(121, 19);
+            this.descriptionTextbox.Name = "descriptionTextbox";
+            this.descriptionTextbox.Size = new System.Drawing.Size(286, 20);
+            this.descriptionTextbox.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(52, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Description:";
+            // 
+            // maxTractionTextbox
+            // 
+            this.maxTractionTextbox.Location = new System.Drawing.Point(121, 123);
+            this.maxTractionTextbox.Name = "maxTractionTextbox";
+            this.maxTractionTextbox.Size = new System.Drawing.Size(100, 20);
+            this.maxTractionTextbox.TabIndex = 7;
+            this.maxTractionTextbox.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(43, 126);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Max Traction:";
+            // 
+            // unloadedOnRoadTextbox
+            // 
+            this.unloadedOnRoadTextbox.Location = new System.Drawing.Point(121, 97);
+            this.unloadedOnRoadTextbox.Name = "unloadedOnRoadTextbox";
+            this.unloadedOnRoadTextbox.Size = new System.Drawing.Size(100, 20);
+            this.unloadedOnRoadTextbox.TabIndex = 5;
+            this.unloadedOnRoadTextbox.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Unloaded On Road:";
+            // 
+            // loadedOffRoadTextbox
+            // 
+            this.loadedOffRoadTextbox.Location = new System.Drawing.Point(121, 71);
+            this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
+            this.loadedOffRoadTextbox.Size = new System.Drawing.Size(100, 20);
+            this.loadedOffRoadTextbox.TabIndex = 3;
+            this.loadedOffRoadTextbox.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Loaded Off Road:";
+            // 
+            // loadedOnRoadTextbox
+            // 
+            this.loadedOnRoadTextbox.Location = new System.Drawing.Point(121, 45);
+            this.loadedOnRoadTextbox.Name = "loadedOnRoadTextbox";
+            this.loadedOnRoadTextbox.Size = new System.Drawing.Size(100, 20);
+            this.loadedOnRoadTextbox.TabIndex = 1;
+            this.loadedOnRoadTextbox.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Loaded On Road:";
+            // 
             // insertButton
             // 
             this.insertButton.Location = new System.Drawing.Point(133, 187);
@@ -82,90 +166,6 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Loaded On Road:";
-            // 
-            // loadedOnRoadTextbox
-            // 
-            this.loadedOnRoadTextbox.Location = new System.Drawing.Point(121, 45);
-            this.loadedOnRoadTextbox.Name = "loadedOnRoadTextbox";
-            this.loadedOnRoadTextbox.Size = new System.Drawing.Size(100, 20);
-            this.loadedOnRoadTextbox.TabIndex = 1;
-            this.loadedOnRoadTextbox.Text = "0";
-            // 
-            // loadedOffRoadTextbox
-            // 
-            this.loadedOffRoadTextbox.Location = new System.Drawing.Point(121, 71);
-            this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
-            this.loadedOffRoadTextbox.Size = new System.Drawing.Size(100, 20);
-            this.loadedOffRoadTextbox.TabIndex = 3;
-            this.loadedOffRoadTextbox.Text = "0";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Loaded Off Road:";
-            // 
-            // unloadedOnRoadTextbox
-            // 
-            this.unloadedOnRoadTextbox.Location = new System.Drawing.Point(121, 97);
-            this.unloadedOnRoadTextbox.Name = "unloadedOnRoadTextbox";
-            this.unloadedOnRoadTextbox.Size = new System.Drawing.Size(100, 20);
-            this.unloadedOnRoadTextbox.TabIndex = 5;
-            this.unloadedOnRoadTextbox.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Unloaded On Road:";
-            // 
-            // maxTractionTextbox
-            // 
-            this.maxTractionTextbox.Location = new System.Drawing.Point(121, 123);
-            this.maxTractionTextbox.Name = "maxTractionTextbox";
-            this.maxTractionTextbox.Size = new System.Drawing.Size(100, 20);
-            this.maxTractionTextbox.TabIndex = 7;
-            this.maxTractionTextbox.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 126);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Max Traction:";
-            // 
-            // descriptionTextbox
-            // 
-            this.descriptionTextbox.Location = new System.Drawing.Point(121, 19);
-            this.descriptionTextbox.Name = "descriptionTextbox";
-            this.descriptionTextbox.Size = new System.Drawing.Size(286, 20);
-            this.descriptionTextbox.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(52, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Description:";
             // 
             // insertionForm
             // 

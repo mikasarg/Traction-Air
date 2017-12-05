@@ -73,6 +73,16 @@ namespace TractionAir
         {
             SerialManager.Update(timer_update.Interval);
         }
+
+        /// <summary>
+        /// Refreshes the datagridview
+        /// </summary>
+        private void refreshTable()
+        {
+            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+            mainSettingsTableDataGridView.Update();
+            mainSettingsTableDataGridView.Refresh();
+        }
         #endregion
 
         #region Menu
@@ -417,9 +427,7 @@ namespace TractionAir
         {
             ManualUploadForm manualUpload = new ManualUploadForm();
             manualUpload.ShowDialog();
-            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
-            mainSettingsTableDataGridView.Update();
-            mainSettingsTableDataGridView.Refresh();
+            refreshTable();
         }
 
         private void countriesToolStripMenuItem_Click(object sender, EventArgs e)
