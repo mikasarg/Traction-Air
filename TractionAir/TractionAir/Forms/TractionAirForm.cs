@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using TractionAir.Serial_Classes;
 using System.Data.SqlClient;
 using System.Configuration;
+using TractionAir.Forms;
 
 namespace TractionAir
 {
@@ -419,6 +420,12 @@ namespace TractionAir
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
             mainSettingsTableDataGridView.Update();
             mainSettingsTableDataGridView.Refresh();
+        }
+
+        private void countriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CountriesListForm countriesList = new CountriesListForm();
+            countriesList.Show();
         }
     }
 }

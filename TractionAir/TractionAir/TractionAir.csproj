@@ -78,6 +78,12 @@
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DevBroadcastVolume.cs" />
+    <Compile Include="Forms\CountriesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CountriesListForm.Designer.cs">
+      <DependentUpon>CountriesListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ManualUploadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <EmbeddedResource Include="Forms\AccessCodeForm.resx">
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CountriesListForm.resx">
+      <DependentUpon>CountriesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManualUploadForm.resx">
       <DependentUpon>ManualUploadForm.cs</DependentUpon>
