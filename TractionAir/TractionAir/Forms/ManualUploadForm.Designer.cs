@@ -837,7 +837,8 @@
             // 
             // buildDateTimePicker
             // 
-            this.buildDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.buildDateTimePicker.CustomFormat = "dd/MM/yyyy";
+            this.buildDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.buildDateTimePicker.Location = new System.Drawing.Point(404, 42);
             this.buildDateTimePicker.Name = "buildDateTimePicker";
             this.buildDateTimePicker.Size = new System.Drawing.Size(108, 20);
@@ -846,11 +847,11 @@
             // 
             // installDateTimePicker
             // 
-            this.installDateTimePicker.CustomFormat = "";
-            this.installDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.installDateTimePicker.CustomFormat = "dd/MM/yyyy hh:mm";
+            this.installDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.installDateTimePicker.Location = new System.Drawing.Point(405, 67);
             this.installDateTimePicker.Name = "installDateTimePicker";
-            this.installDateTimePicker.Size = new System.Drawing.Size(107, 20);
+            this.installDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.installDateTimePicker.TabIndex = 111;
             // 
             // ManualUploadForm

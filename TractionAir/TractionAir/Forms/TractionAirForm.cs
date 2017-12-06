@@ -245,6 +245,7 @@ namespace TractionAir
             int boardCode = (int)selectedRow.Cells[0].Value;
             ChangeForm changeEntry = new ChangeForm(boardCode);
             changeEntry.ShowDialog();
+            refreshTable();
         }
 
         /// <summary>

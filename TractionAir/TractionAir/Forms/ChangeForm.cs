@@ -33,36 +33,31 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Loads data from the database and assigns values for the boxes in the window
+        /// Loads data from the database
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.speedControlTable' table. You can move, or remove it, as needed.
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.programVersionTable' table. You can move, or remove it, as needed.
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.customerTable' table. You can move, or remove it, as needed.
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.mainSettingsTable' table. You can move, or remove it, as needed.
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
-            String query = "SELECT * FROM mainSettingsTable WHERE BoardCode = '" + boardCode + "'";
 
-            ECU_MainSettings ecu;
+            loadValues();
+        }
 
-            using (IDbConnection iDbCon = new SqlConnection(connectionString))
-            {
-                ECU_MainSettings[] ecus = iDbCon.Query<ECU_MainSettings>(query).ToArray();
-                ecu = ecus[0];
-            }
-
+        /// <summary>
+        /// Loads the table values into the boxes
+        /// </summary>
+        private void loadValues()
+        {
             try
             {
+                ECU_MainSettings ecu = ECU_Manager.getECUByBC(boardCode);
+
                 //Sets the text for the boxes to be their equivalents in the selected entry
                 boardNumberTextbox.Text = boardCode.ToString();
                 serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, true);
@@ -70,10 +65,10 @@ namespace TractionAir
                 programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
                 pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
                 customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
-                buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
-                installDateTextbox.Text = (ecu.DateMod).ToString();
+                buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
+                installDateTimePicker.Value = DateTime.Now; //current time
                 vehicleRefTextbox.Text = ecu.VehicleRef;
-                pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), true);
+                pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), true).ToString();
                 pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, true);
                 pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, true);
                 pt3SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT3Serial, true);
@@ -119,105 +114,7 @@ namespace TractionAir
 
             previouslyVisited.Clear();
 
-            string update = "UPDATE mainSettingsTable SET ";
-
-            for (int j = changedBoxes.Count - 1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
-            {
-                string s1 = changedBoxes[j].Item1;
-                string s2 = changedBoxes[j].Item2;
-
-                if (previouslyVisited.Contains(s1)) //Checks to make sure it only saves the most recent change to the entry
-                {
-                    continue;
-                }
-                previouslyVisited.Add(s1);
-
-                if (s1.Equals("Notes")) //notes
-                {
-                    update += s1 + " = '" + s2 + "'";
-                }
-                else if (s1.Equals("BuildDate") || s1.Equals("DateMod")) //dates
-                {
-                    DateTime dt;
-                    if (DateTime.TryParse(s2, out dt)) {
-                        update +=  s1 + " = '" + dt.Date + "'";
-                    }
-                    else
-                    {
-                        MessageBox.Show("'" + s2 + "' should be a date", "Invalid input");
-                        return;
-                    }
-                }
-                else if (s1.Equals("PressureCell") || s1.Equals("LoadedOffRoad") || s1.Equals("UnloadedOnRoad") || s1.Equals("MaxTraction") || s1.Equals("LoadedOnRoad") || s1.Equals("StepUpDelay")) //ints
-                {
-                    int k;
-                    if (Int32.TryParse(s2, out k))
-                    {
-                        update += s1 + " = " + k;
-                    }
-                    else
-                    {
-                        MessageBox.Show("'" + s2 + "' should be an integer", "Invalid input");
-                        return;
-                    }
-                }
-                else if (s1.Equals("Version") || s1.Equals("PressureGroup") || s1.Equals("SpeedStages") || s1.Equals("Owner")) //comboboxes
-                {
-                    //TODO as of now accepts any input under 50 characters. Could be changed to only accept items found in the dropdown list. Depends on spec
-                    if (s2.Length <= 50)
-                    {
-                        update += s1 + " = '" + s2 + "'";
-                    }
-                    else
-                    {
-                        MessageBox.Show("'" + s2 + "' is too long", "Invalid input");
-                        return;
-                    }
-                }
-                else if (s1.Equals("MaxTractionBeep") || s1.Equals("EnableGPSButtons") || s1.Equals("EnableGPSOverride")) //checkboxes
-                {
-                    if (s2.Equals("True"))
-                    {
-                        update += s1 + " = " + 1;
-                    }
-                    else //false
-                    {
-                        update += s1 + " = " + 0;
-                    }
-                }
-                else //strings
-                {
-                    if (s2.Length <= 50)
-                    {
-                        update += s1 + " = '" + s2 + "'";
-                    }
-                    else
-                    {
-                        MessageBox.Show("'" + s2 + "' is too long", "Invalid input");
-                        return;
-                    }
-                }
-
-                update += ", ";
-            }
-
-            update = update.Substring(0, update.Length - 2); //remove final ", "
-            update += " WHERE boardCode = '" + boardCode + "'";
-
-            using (IDbConnection iDbCon = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    iDbCon.Execute(update);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when trying to change the entry: " + sqlex.Message, "Error");
-                    return;
-                }
-            }
-
-            this.Close();
+            save();
         }
 
         /// <summary>
@@ -237,7 +134,93 @@ namespace TractionAir
             this.Close();
         }
 
-        //All methods below add tuples to the list when a textbox is altered, with the relevant column number and the altered text.
+        /// <summary>
+        /// Creates the SQL command for the update
+        /// This class was one I made very early on and as such it has a lot of unnecessary functionality,
+        /// such as knowing which boxes have been altered and recording all changes made. I've kept it in as
+        /// it works, and as such there's no reason to forcibly simplify it which would be time consuming
+        /// </summary>
+        private void save()
+        {
+            string update = "UPDATE mainSettingsTable SET ";
+
+            for (int j = changedBoxes.Count - 1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
+            {
+                string s1 = changedBoxes[j].Item1;
+                string s2 = changedBoxes[j].Item2;
+
+                if (previouslyVisited.Contains(s1)) //Checks to make sure it only saves the most recent change to the entry
+                {
+                    continue;
+                }
+                previouslyVisited.Add(s1);
+
+                try
+                {
+                    if (s1.Equals("Notes")) //notes
+                    {
+                        s2 = ECU_Manager.CheckLongString(s2, true);
+                        update += s1 + " = " + ECU_Manager.enclose(s2);
+                    }
+                    else if (s1.Equals("BuildDate")) //date
+                    {
+                        s2 = ECU_Manager.CheckDate(s2, false);
+                        update += s1 + " = " + ECU_Manager.enclose(s2);
+                    }
+                    else if (s1.Equals("DateMod")) //dateTime
+                    {
+                        s2 = ECU_Manager.CheckDateTime(s2, false);
+                        update += s1 + " = " + ECU_Manager.enclose(s2);
+                    }
+                    else if (s1.Equals("PressureCell") || s1.Equals("LoadedOffRoad") || s1.Equals("UnloadedOnRoad") || s1.Equals("MaxTraction") || s1.Equals("LoadedOnRoad") || s1.Equals("StepUpDelay")) //ints
+                    {
+                        int i = ECU_Manager.CheckInt(s2, true);
+                        update += s1 + " = " + i;
+                    }
+                    else if (s1.Equals("Version") || s1.Equals("PressureGroup") || s1.Equals("SpeedStages") || s1.Equals("Owner") || s1.Equals("Country")) //comboboxes
+                    {
+                        //TODO behaves the same as strings atm, also no need for check as can only select from dropdowns
+                        update += s1 + " = " + ECU_Manager.enclose(s2);
+                    }
+                    else if (s1.Equals("MaxTractionBeep") || s1.Equals("EnableGPSButtons") || s1.Equals("EnableGPSOverride")) //checkboxes
+                    {
+                        if (s2.Equals("True"))
+                        {
+                            update += s1 + " = " + 1;
+                        }
+                        else //false
+                        {
+                            update += s1 + " = " + 0;
+                        }
+                    }
+                    else if (s1.Equals("VehicleRef")) //strings that cannot be null
+                    {
+                        s2 = ECU_Manager.CheckString(s2, false);
+                        update += s1 + " = " + ECU_Manager.enclose(s2);
+                    }
+                    else //strings that can be null
+                    {
+                        s2 = ECU_Manager.CheckString(s2, true);
+                        update += s1 + " = " + ECU_Manager.enclose(s2);
+                    }
+                }
+                catch (InvalidOperationException ioex)
+                {
+                    MessageBox.Show(ioex.Message, "Error");
+                }
+
+                update += ", ";
+            }
+
+            update = update.Substring(0, update.Length - 2); //remove final ", "
+            update += " WHERE boardCode = '" + boardCode + "'";
+
+            ECU_Manager.update(update); //ECU manager handles sql execution
+
+            this.Close();
+        }
+
+        //All methods below add tuples to the list when a textbox is altered, with the relevant column name and the altered text.
         #region eventListeners
         private void serialNumberTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -261,12 +244,12 @@ namespace TractionAir
 
         private void buildDateTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<string, string>("BuildDate", buildDateTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("BuildDate", buildDateTimePicker.Text));
         }
 
         private void installDateTextbox_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<string, string>("DateMod", installDateTextbox.Text));
+            changedBoxes.Add(new Tuple<string, string>("DateMod", installDateTimePicker.Text));
         }
 
         private void vehicleRefTextbox_TextChanged(object sender, EventArgs e)

@@ -16,33 +16,28 @@ namespace TractionAir
     {
         private int boardCode;
         private string connectionString;
-        private SqlConnection connection;
 
         public ManualUploadForm()
         {
             this.connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
 
             InitializeComponent();
+            buildDateTimePicker.Value = DateTime.Now; //Set the datetimepickers to have a default value of the current time
+            installDateTimePicker.Value = DateTime.Now;
         }
 
         /// <summary>
-        /// Loads data from the database and assigns values for the boxes in the window
+        /// Loads data from the database
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.speedControlTable' table. You can move, or remove it, as needed.
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.programVersionTable' table. You can move, or remove it, as needed.
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.customerTable' table. You can move, or remove it, as needed.
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.mainSettingsTable' table. You can move, or remove it, as needed.
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
         }
 
@@ -53,19 +48,9 @@ namespace TractionAir
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            int bc;
-            if (Int32.TryParse(boardNumberTextbox.Text, out bc))
-            {
-                boardCode = bc;
-            }
-            else
-            {
-                MessageBox.Show("Board Code " + boardNumberTextbox.Text + " is invalid", "Invalid input");
-                return;
-            }
-
             try
             {
+                boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
                 ECU_Manager.CheckForDuplicates(boardCode.ToString(), "BoardCode", "mainSettingsTable", -1);
             }
             catch (InvalidOperationException ioex)
@@ -78,66 +63,91 @@ namespace TractionAir
 
             try
             {
-                //IMPORTANT: This order must be exact
+                //IMPORTANT: This order must be exact. Code is messy and long, but couldn't think of a more efficient way to do it.
+                //Makes liberal use of the helper methods in ECU_Manager.cs
+                //A loop with the values in a list is not feasible as each textbox/combobox etc requires different parsing
+                //Creating if statements to detect the intended type of each string is possible, but seemed unwieldy - and even then,
+                //some values need to be allowed to be null, and some must not be null. 
+                //This seemed cleaner than lines and lines of if statements
                 insert += boardCode + ", ";
 
-                insert += checkValidString(pressureGroupComboBox.Text, false) + ", ";
+                string pressureGroup = ECU_Manager.CheckString(pressureGroupComboBox.Text, false);
+                insert += ECU_Manager.enclose(pressureGroup) + ", ";
 
-                insert += checkValidString(customerComboBox.Text, false) + ", ";
+                string customer = ECU_Manager.CheckString(customerComboBox.Text, false);
+                insert += ECU_Manager.enclose(customer) + ", ";
 
-                insert += checkValidString(countryComboBox.Text, false) + ", ";
+                string country = ECU_Manager.CheckString(countryComboBox.Text, false);
+                insert += ECU_Manager.enclose(country) + ", ";
 
-                insert += checkValidDate(buildDateTimePicker.Text, false) + ", ";
+                string buildDate = ECU_Manager.CheckDate(buildDateTimePicker.Text, false);
+                insert += ECU_Manager.enclose(buildDate) + ", ";
 
-                insert += checkValidString(programVersionComboBox.Text, false) + ", ";
+                string programVersion = ECU_Manager.CheckString(programVersionComboBox.Text, false);
+                insert += ECU_Manager.enclose(programVersion) + ", ";
 
-                insert += checkValidString(descriptionTextbox.Text, true) + ", ";
+                string description = ECU_Manager.CheckString(descriptionTextbox.Text, true);
+                insert += ECU_Manager.enclose(description) + ", ";
 
-                insert += checkValidString(vehicleRefTextbox.Text, false) + ", ";
+                string vehicleRef = ECU_Manager.CheckString(vehicleRefTextbox.Text, false);
+                insert += ECU_Manager.enclose(vehicleRef) + ", ";
 
-                insert += checkValidString(speedControlComboBox.Text, true) + ", ";
+                string speedControl = ECU_Manager.CheckString(speedControlComboBox.Text, true);
+                insert += ECU_Manager.enclose(speedControl) + ", ";
 
-                insert += checkValidDateTime(installDateTimePicker.Text, false) + ", ";
+                string installDate = ECU_Manager.CheckDateTime(installDateTimePicker.Text, false);
+                insert += ECU_Manager.enclose(installDate) + ", ";
 
-                insert += checkValidLongString(notesRichTextbox.Text, true) + ", ";
+                string notes = ECU_Manager.CheckLongString(notesRichTextbox.Text, true);
+                insert += ECU_Manager.enclose(notes) + ", ";
 
-                insert += checkValidString(serialNumberTextbox.Text, true) + ", ";
+                string serialNumber = ECU_Manager.CheckString(serialNumberTextbox.Text, true);
+                insert += ECU_Manager.enclose(serialNumber) + ", ";
 
-                insert += checkValidInt(pressureCellTextbox.Text, true) + ", ";
+                insert += ECU_Manager.CheckInt(pressureCellTextbox.Text, true) + ", ";
 
-                insert += checkValidString(pt1SerialTextbox.Text, true) + ", ";
+                string pt1Serial = ECU_Manager.CheckString(pt1SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt1Serial) + ", ";
 
-                insert += checkValidString(pt2SerialTextbox.Text, true) + ", ";
+                string pt2Serial = ECU_Manager.CheckString(pt2SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt2Serial) + ", ";
 
-                insert += checkValidString(pt3SerialTextbox.Text, true) + ", ";
+                string pt3Serial = ECU_Manager.CheckString(pt3SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt3Serial) + ", ";
 
-                insert += checkValidString(pt4SerialTextbox.Text, true) + ", ";
+                string pt4Serial = ECU_Manager.CheckString(pt4SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt4Serial) + ", ";
 
-                insert += checkValidString(pt5SerialTextbox.Text, true) + ", ";
+                string pt5Serial = ECU_Manager.CheckString(pt5SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt5Serial) + ", ";
 
-                insert += checkValidString(pt6SerialTextbox.Text, true) + ", ";
+                string pt6Serial = ECU_Manager.CheckString(pt6SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt6Serial) + ", ";
 
-                insert += checkValidString(pt7SerialTextbox.Text, true) + ", ";
+                string pt7Serial = ECU_Manager.CheckString(pt7SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt7Serial) + ", ";
 
-                insert += checkValidString(pt8SerialTextbox.Text, true) + ", ";
+                string pt8Serial = ECU_Manager.CheckString(pt8SerialTextbox.Text, true);
+                insert += ECU_Manager.enclose(pt8Serial) + ", ";
 
-                insert += checkValidInt(loadedOffRoadTextbox.Text, true) + ", ";
+                insert += ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, true) + ", ";
 
-                insert += checkValidInt(loadedOnRoadTextbox.Text, true) + ", ";
+                insert += ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, true) + ", ";
 
-                insert += checkValidInt(notLoadedTextbox.Text, true) + ", ";
+                insert += ECU_Manager.CheckInt(notLoadedTextbox.Text, true) + ", ";
 
-                insert += checkValidInt(maxTractionTextbox.Text, true) + ", ";
+                insert += ECU_Manager.CheckInt(maxTractionTextbox.Text, true) + ", ";
 
-                insert += checkValidString(bottomSerialNumberTextbox.Text, true) + ", ";
+                string bottomSerialNumber = ECU_Manager.CheckString(bottomSerialNumberTextbox.Text, true);
+                insert += ECU_Manager.enclose(bottomSerialNumber) + ", ";
 
-                insert += checkValidBit(beepCheckBox.Text, true) + ", ";
+                insert += ECU_Manager.CheckBit(beepCheckBox.Checked) + ", ";
 
-                insert += checkValidInt(stepUpDelayTextbox.Text, true) + ", ";
+                insert += ECU_Manager.CheckInt(stepUpDelayTextbox.Text, true) + ", ";
 
-                insert += checkValidBit(gpsButtonCheckBox.Text, true) + ", ";
+                insert += ECU_Manager.CheckBit(gpsButtonCheckBox.Checked) + ", ";
 
-                insert += checkValidBit(gpsOverrideCheckBox.Text, true) + ");";
+                insert += ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked) + ");";
             }
             catch(InvalidOperationException ioex)
             {
@@ -145,127 +155,9 @@ namespace TractionAir
                 return;
             }
 
-            using (IDbConnection iDbCon = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    iDbCon.Execute(insert);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when trying to manually upload: " + sqlex.Message, "Error");
-                    return;
-                }
-            }
+            ECU_Manager.Insert(insert); //this methiod handles the errors
             
             this.Close();
-        }
-
-        /// <summary>
-        /// Checks the string is valid and encloses it in ''
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private string checkValidString(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            if (s.Length > 50)
-            {
-                throw new InvalidOperationException("Input '" + s + "' is too long!");
-            }
-            return "'" + s + "'";
-        }
-
-        /// <summary>
-        /// Checks the string is valid and encloses it in ''
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private string checkValidLongString(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            return "'" + s + "'";
-        }
-
-        /// <summary>
-        /// Checks the int is valid
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private int checkValidInt(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            int i;
-            if (!Int32.TryParse(s, out i))
-            {
-                throw new InvalidOperationException("Input '" + s + "' is not a valid integer");
-            }
-            return i;
-        }
-
-        /// <summary>
-        /// Checks the date is valid and encloses it in ''
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private string checkValidDate(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            DateTime dt;
-            if (!DateTime.TryParse(s, out dt))
-            {
-                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
-            }
-            return "'" + dt.Date.ToString() + "'";
-        }
-
-        /// <summary>
-        /// Checks the date is valid and encloses it in ''
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private string checkValidDateTime(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            DateTime dt;
-            if (!DateTime.TryParse(s, out dt))
-            {
-                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
-            }
-            return "'" + dt.ToString() + "'";
-        }
-
-        /// <summary>
-        /// Checks the bit is valid
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private int checkValidBit(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            if (s.Equals("true"))
-            {
-                return 1;
-            }
-            return 0;
         }
 
         /// <summary>

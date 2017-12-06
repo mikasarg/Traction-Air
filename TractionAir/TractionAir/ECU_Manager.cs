@@ -29,6 +29,7 @@ namespace TractionAir
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
+        #region messageBoxes
         /// <summary>
         /// Checks to make sure the user wishes to cancel out of an operation
         /// </summary>
@@ -56,7 +57,9 @@ namespace TractionAir
             }
             return false;
         }
+        #endregion
 
+        #region sql commands
         /// <summary>
         /// Inserts the new entry into the table
         /// </summary>
@@ -76,6 +79,96 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Updates the selected entry from the given database
+        /// </summary>
+        /// <param name="update"></param>
+        public static void update(string update)
+        {
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                try
+                {
+                    iDbCon.Execute(update);
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("An error occurred when attempting to update: " + sqlex.Message, "Error");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes the selected entry from the given database
+        /// </summary>
+        /// <param name="s"></param>
+        public static void delete(string s, string column, string table)
+        {
+            string delete = "DELETE FROM " + table + " WHERE " + column + " = '" + s + "'";
+            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+            {
+                try
+                {
+                    iDbCon.Execute(delete);
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("An error occurred when trying to delete: " + sqlex.Message, "Error");
+                    return;
+                }
+            }
+        }
+        #endregion
+
+        #region get object methods
+        /// <summary>
+        /// Returns an ecu object based on the given boardCode
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
+        public static ECU_MainSettings getECUByBC(int boardCode)
+        {
+            String query = "SELECT * FROM mainSettingsTable WHERE BoardCode = '" + boardCode + "'";
+
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                ECU_MainSettings[] ecus = iDbCon.Query<ECU_MainSettings>(query).ToArray();
+                if (ecus.Length != 0)
+                {
+                    return ecus[0];
+                }
+                else
+                {
+                    throw new InvalidOperationException("ECU with board code " + boardCode + " not found");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns a countryObject based on the given ID
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
+        public static CountryObject getCountryByID(int id)
+        {
+            String query = "SELECT * FROM countryCodeTable WHERE Id = '" + id + "'";
+
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                CountryObject[] countries = iDbCon.Query<CountryObject>(query).ToArray();
+                if (countries.Length != 0)
+                {
+                    return countries[0];
+                }
+                else
+                {
+                    throw new InvalidOperationException("Country with ID " + id + " not found");
+                }
+            }
+        }
+        #endregion
+
+        #region check methods
         /// <summary>
         /// Checks that the string is valid and returns it
         /// </summary>
@@ -121,22 +214,74 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static string CheckInt(string s, bool allowNull)
+        public static int CheckInt(string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
                 throw new InvalidOperationException("Country cannot be null!");
-            }
-            if (s == null && allowNull)
-            {
-                return null;
             }
             int i;
             if (!Int32.TryParse(s, out i))
             {
                 throw new InvalidOperationException("Input '" + s + "' is not an integer");
             }
-            return i.ToString();
+            return i;
+        }
+
+        /// <summary>
+        /// Doesn't check anything, just wanted to keep naming consistent.
+        /// Returns 1 if true, 0 if false
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int CheckBit(bool check)
+        {
+            if (check)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Checks the date is valid
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string CheckDate(string s, bool allowNulls)
+        {
+            if (s == null && !allowNulls)
+            {
+                throw new InvalidOperationException("One or more required fields were left empty");
+            }
+            DateTime dt;
+            if (!DateTime.TryParse(s, out dt))
+            {
+                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
+            }
+            return dt.Date.ToString("MM/dd/yyyy");
+        }
+
+        /// <summary>
+        /// Checks the dateTime is valid
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string CheckDateTime(string s, bool allowNulls)
+        {
+            if (s == null && !allowNulls)
+            {
+                throw new InvalidOperationException("One or more required fields were left empty");
+            }
+            DateTime dt;
+            if (!DateTime.TryParse(s, out dt))
+            {
+                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
+            }
+            return dt.ToString("MM/dd/yyyy hh:mm");
         }
 
         /// <summary>
@@ -187,46 +332,6 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Updates the selected entry from the given database
-        /// </summary>
-        /// <param name="update"></param>
-        public static void update(string update)
-        {
-            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
-            {
-                try
-                {
-                    iDbCon.Execute(update);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when attempting to update: " + sqlex.Message, "Error");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Deletes the selected entry from the given database
-        /// </summary>
-        /// <param name="s"></param>
-        public static void delete(string s, string column, string table)
-        {
-            string delete = "DELETE FROM " + table + " WHERE " + column + " = '" + s + "'";
-            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
-            {
-                try
-                {
-                    iDbCon.Execute(delete);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when trying to delete: " + sqlex.Message, "Error");
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
         /// Checks that the country code is valid and returns it
         /// This must be used instead of the regular CheckString method as the code must be 3 characters
         /// </summary>
@@ -244,23 +349,6 @@ namespace TractionAir
             }
             return code;
         }
-
-        public static CountryObject getCountryByID(int id)
-        {
-            String query = "SELECT * FROM countryCodeTable WHERE Id = '" + id + "'";
-
-            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
-            {
-                CountryObject[] countries = iDbCon.Query<CountryObject>(query).ToArray();
-                if (countries.Length != 0)
-                {
-                    return countries[0];
-                }
-                else
-                {
-                    throw new InvalidOperationException("Country with ID " + id + " not found");
-                }
-            }
-        }
+        #endregion
     }
 }

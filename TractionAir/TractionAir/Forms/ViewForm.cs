@@ -38,25 +38,24 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ViewForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.programVersionTable' table. You can move, or remove it, as needed.
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
-            String query = "SELECT * FROM mainSettingsTable WHERE BoardCode = '" + boardCode + "'";
 
-            ECU_MainSettings ecu;
+            loadValues();
+        }
 
-            using (IDbConnection iDbCon = new SqlConnection(connectionString))
-            {
-                ECU_MainSettings[] ecus = iDbCon.Query<ECU_MainSettings>(query).ToArray();
-                ecu = ecus[0];
-            }
-
+        /// <summary>
+        /// Loads the table values into the boxes
+        /// </summary>
+        private void loadValues()
+        {
             try
             {
+                ECU_MainSettings ecu = ECU_Manager.getECUByBC(boardCode);
+
                 //Sets the text for the boxes to be their equivalents in the selected entry
                 boardNumberTextbox.Text = boardCode.ToString();
                 serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, true);
@@ -64,10 +63,10 @@ namespace TractionAir
                 programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
                 pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
                 customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
-                buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
-                installDateTextbox.Text = (ecu.DateMod).ToString();
+                buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
+                installDateTimePicker.Text = (ecu.DateMod).ToString();
                 vehicleRefTextbox.Text = ecu.VehicleRef;
-                pressureCellTextbox.Text = ECU_Manager.CheckString(ecu.PressureCell.ToString(), true);
+                pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), true).ToString();
                 pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, true);
                 pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, true);
                 pt3SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT3Serial, true);
@@ -95,8 +94,6 @@ namespace TractionAir
             {
                 MessageBox.Show("An error occurred when trying to load the selected entry: " + ioex.Message, "Error");
             }
-
-            changedBoxes.Clear();
         }
     }
 }
