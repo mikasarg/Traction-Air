@@ -63,23 +63,22 @@ namespace TractionAir
                 MessageBox.Show("Board Code " + boardNumberTextbox.Text + " is invalid", "Invalid input");
                 return;
             }
-            String query = "SELECT * FROM mainSettingsTable WHERE BoardCode = '" + boardCode + "'";
 
-            ECU_MainSettings ecu;
-
-            using (IDbConnection iDbCon = new SqlConnection(connectionString))
+            try
             {
-                if (iDbCon.Query<ECU_MainSettings>(query).ToArray().Length != 0)
-                {
-                    MessageBox.Show("Board with code '" + bc + "' already exists", "Invalid input");
-                    return;
-                }
+                ECU_Manager.CheckForDuplicates(boardCode.ToString(), "BoardCode", "mainSettingsTable", -1);
+            }
+            catch (InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Invalid input");
+                return;
             }
 
             string insert = "INSERT INTO mainSettingsTable VALUES(";
 
             try
             {
+                //IMPORTANT: This order must be exact
                 insert += boardCode + ", ";
 
                 insert += checkValidString(pressureGroupComboBox.Text, false) + ", ";
@@ -88,7 +87,7 @@ namespace TractionAir
 
                 insert += checkValidString(countryComboBox.Text, false) + ", ";
 
-                insert += checkValidDate(buildDateTextbox.Text, false) + ", ";
+                insert += checkValidDate(buildDateTimePicker.Text, false) + ", ";
 
                 insert += checkValidString(programVersionComboBox.Text, false) + ", ";
 
@@ -98,9 +97,9 @@ namespace TractionAir
 
                 insert += checkValidString(speedControlComboBox.Text, true) + ", ";
 
-                insert += checkValidDateTime(installDateTextbox.Text, false) + ", ";
+                insert += checkValidDateTime(installDateTimePicker.Text, false) + ", ";
 
-                insert += checkValidString(notesRichTextbox.Text, true) + ", ";
+                insert += checkValidLongString(notesRichTextbox.Text, true) + ", ";
 
                 insert += checkValidString(serialNumberTextbox.Text, true) + ", ";
 
@@ -138,7 +137,7 @@ namespace TractionAir
 
                 insert += checkValidBit(gpsButtonCheckBox.Text, true) + ", ";
 
-                insert += checkValidBit(gpsOverrideCheckBox.Text, true) + ");"; //TODO TESTING
+                insert += checkValidBit(gpsOverrideCheckBox.Text, true) + ");";
             }
             catch(InvalidOperationException ioex)
             {
@@ -176,6 +175,20 @@ namespace TractionAir
             if (s.Length > 50)
             {
                 throw new InvalidOperationException("Input '" + s + "' is too long!");
+            }
+            return "'" + s + "'";
+        }
+
+        /// <summary>
+        /// Checks the string is valid and encloses it in ''
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private string checkValidLongString(string s, bool allowNulls)
+        {
+            if (s == null && !allowNulls)
+            {
+                throw new InvalidOperationException("One or more required fields were left empty");
             }
             return "'" + s + "'";
         }

@@ -65,41 +65,41 @@ namespace TractionAir
             {
                 //Sets the text for the boxes to be their equivalents in the selected entry
                 boardNumberTextbox.Text = boardCode.ToString();
-                serialNumberTextbox.Text = ECU_Manager.stringNullCheck(ecu.SerialNumber);
-                bottomSerialNumberTextbox.Text = ECU_Manager.stringNullCheck(ecu.SerialCodeBot);
+                serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, true);
+                bottomSerialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialCodeBot, true);
                 programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
                 pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
                 customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
                 buildDateTextbox.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
                 installDateTextbox.Text = (ecu.DateMod).ToString();
                 vehicleRefTextbox.Text = ecu.VehicleRef;
-                pressureCellTextbox.Text = ECU_Manager.stringNullCheck(ecu.PressureCell);
-                pt1SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT1Serial);
-                pt2SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT2Serial);
-                pt3SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT3Serial);
-                pt4SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT4Serial);
-                pt5SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT5Serial);
-                pt6SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT6Serial);
-                pt7SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT7Serial);
-                pt8SerialTextbox.Text = ECU_Manager.stringNullCheck(ecu.PT8Serial);
-                descriptionTextbox.Text = ECU_Manager.stringNullCheck(ecu.Description);
-                notesRichTextbox.Text = ECU_Manager.stringNullCheck(ecu.Notes);
+                pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), true);
+                pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, true);
+                pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, true);
+                pt3SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT3Serial, true);
+                pt4SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT4Serial, true);
+                pt5SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT5Serial, true);
+                pt6SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT6Serial, true);
+                pt7SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT7Serial, true);
+                pt8SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT8Serial, true);
+                descriptionTextbox.Text = ECU_Manager.CheckString(ecu.Description, true);
+                notesRichTextbox.Text = ECU_Manager.CheckString(ecu.Notes, true);
                 countryComboBox.SelectedIndex = countryComboBox.FindStringExact(ecu.Country);
 
                 //Manual Database Update section
                 speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
-                loadedOffRoadTextbox.Text = ECU_Manager.stringNullCheck(ecu.LoadedOffRoad);
-                loadedOnRoadTextbox.Text = ECU_Manager.stringNullCheck(ecu.LoadedOnRoad);
-                notLoadedTextbox.Text = ECU_Manager.stringNullCheck(ecu.UnloadedOnRoad);
-                maxTractionTextbox.Text = ECU_Manager.stringNullCheck(ecu.MaxTraction);
-                stepUpDelayTextbox.Text = ECU_Manager.stringNullCheck(ecu.StepUpDelay);
+                loadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOffRoad.ToString(), true);
+                loadedOnRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOnRoad.ToString(), true);
+                notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), true);
+                maxTractionTextbox.Text = ECU_Manager.CheckString(ecu.MaxTraction.ToString(), true);
+                stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), true);
                 beepCheckBox.Checked = ecu.MaxTractionBeep;
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
                 gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
             }
-            catch (NullReferenceException nrex)
+            catch (InvalidOperationException ioex)
             {
-                MessageBox.Show("An error occurred when trying to load the selected entry: " + nrex.Message, "Error");
+                MessageBox.Show("An error occurred when trying to load the selected entry: " + ioex.Message, "Error");
             }
             changedBoxes.Clear();
         }

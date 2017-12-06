@@ -32,17 +32,19 @@ namespace TractionAir.Forms
             string update = "UPDATE countryCodeTable SET ";
             try
             {
-                update += "Code = " + ECU_Manager.CheckCountryCode(codeTextbox.Text, id) + ", ";
+                string code = ECU_Manager.CheckCountryCode(codeTextbox.Text);
+                ECU_Manager.CheckForDuplicates(code, "Code", "countryCodeTable", id); //checks for no duplicates - unless they have the same ID
+                update += "Code = " + ECU_Manager.enclose(code) + ", "; 
                 string country = ECU_Manager.CheckString(countryTextbox.Text, false);
-                country = ECU_Manager.CheckForDuplicates(country, "Country", "countryCodeTable", id);
-                update += "Country = " + country + " WHERE Id = " + id;
+                ECU_Manager.CheckForDuplicates(country, "Country", "countryCodeTable", id);
+                update += "Country = " + ECU_Manager.enclose(country) + " WHERE Id = " + id; 
             }
             catch (InvalidOperationException ioex)
             {
                 MessageBox.Show(ioex.Message, "Invalid Input");
                 return;
             }
-            ECU_Manager.update(update);
+            ECU_Manager.update(update); //ecu manager handles sql command
             this.Close();
         }
 
@@ -60,21 +62,25 @@ namespace TractionAir.Forms
             return;
         }
 
+        /// <summary>
+        /// loads the values from the selected row into the textboxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changeCountryForm_Load(object sender, EventArgs e)
         {
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-
-            String query = "SELECT * FROM countryCodeTable WHERE Id = '" + id + "'";
-
-            CountryObject country;
-
-            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+            try
             {
-                CountryObject[] countries = iDbCon.Query<CountryObject>(query).ToArray();
-                country = countries[0];
+                CountryObject country = ECU_Manager.getCountryByID(id); //Obtains a countryObject
+                codeTextbox.Text = country.Code;
+                countryTextbox.Text = country.Country;
             }
-            codeTextbox.Text = country.Code;
-            countryTextbox.Text = country.Country;
+            catch (InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Error");
+            }
+
         }
     }
 }

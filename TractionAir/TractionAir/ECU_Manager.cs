@@ -19,23 +19,14 @@ namespace TractionAir
     {
         public static SerialPort ECU_SerialPort;
 
+        /// <summary>
+        /// Returns the connection string based on the name given
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static string connection(string name)
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
-        }
-
-        /// <summary>
-        /// Returns a string version of the object and makes it "" instead of null
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string stringNullCheck(object s)
-        {
-            if (s == null)
-            {
-                return "";
-            }
-            return s.ToString();
         }
 
         /// <summary>
@@ -98,7 +89,7 @@ namespace TractionAir
             }
             if (s == null && allowNull)
             {
-                return "''";
+                return null;
             }
             if (s.Length > 50)
             {
@@ -108,28 +99,91 @@ namespace TractionAir
         }
 
         /// <summary>
+        /// Checks that the string is valid and returns it
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static string CheckLongString(string s, bool allowNull)
+        {
+            if (s == null && !allowNull)
+            {
+                throw new InvalidOperationException("Country cannot be null!");
+            }
+            if (s == null && allowNull)
+            {
+                return null;
+            }
+            return s;
+        }
+
+        /// <summary>
+        /// Checks that the string is valid and returns it
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static string CheckInt(string s, bool allowNull)
+        {
+            if (s == null && !allowNull)
+            {
+                throw new InvalidOperationException("Country cannot be null!");
+            }
+            if (s == null && allowNull)
+            {
+                return null;
+            }
+            int i;
+            if (!Int32.TryParse(s, out i))
+            {
+                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+            }
+            return i.ToString();
+        }
+
+        /// <summary>
+        /// Returns the given string enclosed in ''
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string enclose(string s)
+        {
+            return "'" + s + "'";
+        }
+
+        /// <summary>
         /// Checks for duplicates of the given string in the given table's given column
-        /// then returns it enclosed in ''
         /// </summary>
         /// <param name="s"></param>
         /// <param name="column"></param>
         /// <param name="table"></param>
         /// <returns></returns>
-        public static string CheckForDuplicates(string s, string column, string table, int id)
+        public static void CheckForDuplicates(string s, string column, string table, int id)
         {
             SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM " + table + " WHERE " + column + " = '" + s + "' AND Id != " + id, con);
-
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read()) //Duplicates were found
+            SqlCommand cmd;
+            if (id == -1) //find ALL duplicates
             {
-                throw new InvalidOperationException(column + " '" + s + "' already exists in the table");
+                cmd = new SqlCommand("SELECT * FROM " + table + " WHERE " + column + " = '" + s + "'");
             }
-            con.Close();
-            return "'" + s + "'";
+            else //find where the IDs do not match
+            {
+                cmd = new SqlCommand("SELECT * FROM " + table + " WHERE " + column + " = '" + s + "' AND Id != " + id, con);
+            }
+            cmd.Connection = con;
+
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException(column + " '" + s + "' already exists in the table");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message ,"Error");
+            }
         }
 
         /// <summary>
@@ -178,7 +232,7 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static string CheckCountryCode(string code, int id)
+        public static string CheckCountryCode(string code)
         {
             if (code == null)
             {
@@ -188,8 +242,25 @@ namespace TractionAir
             {
                 throw new InvalidOperationException("Code '" + code + "' is the incorrect length (needs to be 3 characters)");
             }
-            code = ECU_Manager.CheckForDuplicates(code, "Code", "countryCodeTable", id);
             return code;
+        }
+
+        public static CountryObject getCountryByID(int id)
+        {
+            String query = "SELECT * FROM countryCodeTable WHERE Id = '" + id + "'";
+
+            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+            {
+                CountryObject[] countries = iDbCon.Query<CountryObject>(query).ToArray();
+                if (countries.Length != 0)
+                {
+                    return countries[0];
+                }
+                else
+                {
+                    throw new InvalidOperationException("Country with ID " + id + " not found");
+                }
+            }
         }
     }
 }

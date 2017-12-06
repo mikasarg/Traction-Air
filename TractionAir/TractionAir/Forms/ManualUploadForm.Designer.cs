@@ -58,7 +58,6 @@
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
             this.programVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.installDateTextbox = new System.Windows.Forms.TextBox();
             this.boardNumberTextbox = new System.Windows.Forms.TextBox();
             this.descriptionTextbox = new System.Windows.Forms.TextBox();
             this.pt2SerialTextbox = new System.Windows.Forms.TextBox();
@@ -66,11 +65,11 @@
             this.pressureCellTextbox = new System.Windows.Forms.TextBox();
             this.vehicleRefTextbox = new System.Windows.Forms.TextBox();
             this.serialNumberTextbox = new System.Windows.Forms.TextBox();
-            this.buildDateTextbox = new System.Windows.Forms.TextBox();
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
+            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainSettingsTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -118,8 +117,9 @@
             this.label36 = new System.Windows.Forms.Label();
             this.countryCodeTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.countryCodeTableTableAdapter();
             this.programVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.programVersionTableTableAdapter();
-            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
+            this.buildDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.installDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -131,10 +131,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -268,7 +268,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(210, 550);
+            this.saveButton.Location = new System.Drawing.Point(209, 550);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 55;
@@ -278,7 +278,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(300, 550);
+            this.cancelButton.Location = new System.Drawing.Point(299, 550);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 56;
@@ -370,13 +370,6 @@
             this.programVersionTableBindingSource.DataMember = "programVersionTable";
             this.programVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
-            // installDateTextbox
-            // 
-            this.installDateTextbox.Location = new System.Drawing.Point(404, 67);
-            this.installDateTextbox.Name = "installDateTextbox";
-            this.installDateTextbox.Size = new System.Drawing.Size(160, 20);
-            this.installDateTextbox.TabIndex = 17;
-            // 
             // boardNumberTextbox
             // 
             this.boardNumberTextbox.Location = new System.Drawing.Point(127, 17);
@@ -426,13 +419,6 @@
             this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.serialNumberTextbox.TabIndex = 1;
             // 
-            // buildDateTextbox
-            // 
-            this.buildDateTextbox.Location = new System.Drawing.Point(404, 42);
-            this.buildDateTextbox.Name = "buildDateTextbox";
-            this.buildDateTextbox.Size = new System.Drawing.Size(160, 20);
-            this.buildDateTextbox.TabIndex = 16;
-            // 
             // notesRichTextbox
             // 
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 419);
@@ -461,6 +447,11 @@
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
             this.speedControlComboBox.TabIndex = 20;
             this.speedControlComboBox.ValueMember = "SpeedControl";
+            // 
+            // speedControlTableBindingSource
+            // 
+            this.speedControlTableBindingSource.DataMember = "speedControlTable";
+            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
             // mainSettingsTableBindingSource1
             // 
@@ -840,20 +831,35 @@
             // 
             this.programVersionTableTableAdapter.ClearBeforeFill = true;
             // 
-            // speedControlTableBindingSource
-            // 
-            this.speedControlTableBindingSource.DataMember = "speedControlTable";
-            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
-            // 
             // speedControlTableTableAdapter
             // 
             this.speedControlTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // buildDateTimePicker
+            // 
+            this.buildDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.buildDateTimePicker.Location = new System.Drawing.Point(404, 42);
+            this.buildDateTimePicker.Name = "buildDateTimePicker";
+            this.buildDateTimePicker.Size = new System.Drawing.Size(108, 20);
+            this.buildDateTimePicker.TabIndex = 110;
+            this.buildDateTimePicker.Value = new System.DateTime(2017, 12, 6, 15, 43, 45, 0);
+            // 
+            // installDateTimePicker
+            // 
+            this.installDateTimePicker.CustomFormat = "";
+            this.installDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.installDateTimePicker.Location = new System.Drawing.Point(405, 67);
+            this.installDateTimePicker.Name = "installDateTimePicker";
+            this.installDateTimePicker.Size = new System.Drawing.Size(107, 20);
+            this.installDateTimePicker.TabIndex = 111;
             // 
             // ManualUploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 584);
+            this.ClientSize = new System.Drawing.Size(582, 584);
+            this.Controls.Add(this.installDateTimePicker);
+            this.Controls.Add(this.buildDateTimePicker);
             this.Controls.Add(this.pt8SerialTextbox);
             this.Controls.Add(this.pt7SerialTextbox);
             this.Controls.Add(this.label35);
@@ -897,7 +903,6 @@
             this.Controls.Add(this.pressureGroupComboBox);
             this.Controls.Add(this.customerComboBox);
             this.Controls.Add(this.programVersionComboBox);
-            this.Controls.Add(this.installDateTextbox);
             this.Controls.Add(this.boardNumberTextbox);
             this.Controls.Add(this.descriptionTextbox);
             this.Controls.Add(this.pt2SerialTextbox);
@@ -905,7 +910,6 @@
             this.Controls.Add(this.pressureCellTextbox);
             this.Controls.Add(this.vehicleRefTextbox);
             this.Controls.Add(this.serialNumberTextbox);
-            this.Controls.Add(this.buildDateTextbox);
             this.Controls.Add(this.notesRichTextbox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
@@ -941,10 +945,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -969,7 +973,6 @@
         private System.Windows.Forms.ComboBox pressureGroupComboBox;
         private System.Windows.Forms.ComboBox customerComboBox;
         private System.Windows.Forms.ComboBox programVersionComboBox;
-        private System.Windows.Forms.TextBox installDateTextbox;
         private System.Windows.Forms.TextBox boardNumberTextbox;
         private System.Windows.Forms.TextBox descriptionTextbox;
         private System.Windows.Forms.TextBox pt2SerialTextbox;
@@ -977,7 +980,6 @@
         private System.Windows.Forms.TextBox pressureCellTextbox;
         private System.Windows.Forms.TextBox vehicleRefTextbox;
         private System.Windows.Forms.TextBox serialNumberTextbox;
-        private System.Windows.Forms.TextBox buildDateTextbox;
         private System.Windows.Forms.RichTextBox notesRichTextbox;
         private pressureGroupsDataSet pressureGroupsDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
@@ -1044,5 +1046,7 @@
         private ecuSettingsDatabaseDataSetTableAdapters.programVersionTableTableAdapter programVersionTableTableAdapter;
         private System.Windows.Forms.BindingSource speedControlTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter speedControlTableTableAdapter;
+        private System.Windows.Forms.DateTimePicker buildDateTimePicker;
+        private System.Windows.Forms.DateTimePicker installDateTimePicker;
     }
 }

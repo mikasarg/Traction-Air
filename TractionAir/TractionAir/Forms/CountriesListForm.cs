@@ -19,21 +19,17 @@ namespace TractionAir.Forms
             InitializeComponent();
         }
 
-        private void countryCodeTableBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.countryCodeTableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.ecuSettingsDatabaseDataSet);
-
-        }
-
+        /// <summary>
+        /// Loads the data into the table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CountriesListForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-
         }
 
+        #region buttons
         /// <summary>
         /// Inserts a new country code into the table
         /// </summary>
@@ -41,7 +37,7 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            insertCountryForm insertCountry = new insertCountryForm();
+            insertCountryForm insertCountry = new insertCountryForm(); //loads a form to insert an entry
             insertCountry.ShowDialog();
             refreshTable();
         }
@@ -55,7 +51,7 @@ namespace TractionAir.Forms
         {
             if (ECU_Manager.wishToDelete())
             {
-                if (countryCodeTableDataGridView.SelectedRows.Count == 0)
+                if (countryCodeTableDataGridView.SelectedRows.Count == 0) //no selected rows
                 {
                     return;
                 }
@@ -63,23 +59,28 @@ namespace TractionAir.Forms
                 int id;
                 if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
                 {
-                    ECU_Manager.delete(id.ToString(), "Id", "countryCodeTable");
+                    ECU_Manager.delete(id.ToString(), "Id", "countryCodeTable"); //ecu manager deletes via sql command
                 }
                 else
                 {
                     MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.");
                 }
             }
-            else
+            else //do not wish to delete
             {
                 return;
             }
             refreshTable();
         }
 
+        /// <summary>
+        /// Loads a change form to alter the selected entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changeButton_Click(object sender, EventArgs e)
         {
-            if (countryCodeTableDataGridView.SelectedRows.Count == 0)
+            if (countryCodeTableDataGridView.SelectedRows.Count == 0) //no selected rows
             {
                 return;
             }
@@ -87,7 +88,7 @@ namespace TractionAir.Forms
             int id;
             if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
             {
-                changeCountryForm changeCountry = new changeCountryForm(id);
+                changeCountryForm changeCountry = new changeCountryForm(id); //loads a form to change the entry
                 changeCountry.ShowDialog();
             }
             else
@@ -96,6 +97,7 @@ namespace TractionAir.Forms
             }
             refreshTable();
         }
+        #endregion
 
         /// <summary>
         /// Refreshes the table
