@@ -60,8 +60,15 @@ namespace TractionAir.Forms
                     return;
                 }
                 DataGridViewRow selectedRow = countryCodeTableDataGridView.SelectedRows[0];
-                String code = selectedRow.Cells["codeColumn"].Value.ToString();
-                delete(code);
+                int id;
+                if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+                {
+                    ECU_Manager.delete(id.ToString(), "Id", "countryCodeTable");
+                }
+                else
+                {
+                    MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.");
+                }
             }
             else
             {
@@ -70,31 +77,23 @@ namespace TractionAir.Forms
             refreshTable();
         }
 
-        /// <summary>
-        /// Deletes the selected entry
-        /// </summary>
-        /// <param name="code"></param>
-        private void delete(string code)
-        {
-            string delete = "DELETE FROM countryCodeTable WHERE Code = '" + code + "'";
-            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
-            {
-                try
-                {
-                    iDbCon.Execute(delete);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when trying to delete: " + sqlex.Message, "Error");
-                    return;
-                }
-            }
-        }
-
         private void changeButton_Click(object sender, EventArgs e)
         {
-            //TODO open up a change form
-
+            if (countryCodeTableDataGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            DataGridViewRow selectedRow = countryCodeTableDataGridView.SelectedRows[0];
+            int id;
+            if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+            {
+                changeCountryForm changeCountry = new changeCountryForm(id);
+                changeCountry.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Could not change selected entry as its ID was in the incorrect format.");
+            }
             refreshTable();
         }
 

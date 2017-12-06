@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,8 +21,21 @@ namespace TractionAir.Forms
 
         private void insertButton_Click(object sender, EventArgs e)
         {
-            //TODO insert a country
-
+            string insert = "INSERT INTO countryCodeTable VALUES (";
+            try
+            {
+                insert += ECU_Manager.CheckCountryCode(codeTextbox.Text, -1) + ", ";
+                string country = ECU_Manager.CheckString(countryTextbox.Text, false);
+                country = ECU_Manager.CheckForDuplicates(country, "Country", "countryCodeTable", -1);
+                insert += country + ")";
+            }
+            catch(InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Invalid Input");
+                return;
+            }
+            ECU_Manager.Insert(insert);
+            this.Close();
         }
 
         /// <summary>

@@ -35,9 +35,6 @@
             this.customerTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter();
             this.tableAdapterManager = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.customerTableDataGridView = new System.Windows.Forms.DataGridView();
-            this.changeButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.insertButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +43,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.insertButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableDataGridView)).BeginInit();
@@ -70,8 +70,12 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.countryCodeTableTableAdapter = null;
             this.tableAdapterManager.customerTableTableAdapter = this.customerTableTableAdapter;
+            this.tableAdapterManager.customerToCountryTableAdapter = null;
+            this.tableAdapterManager.ecuToCountryTableAdapter = null;
             this.tableAdapterManager.ecuToCustomerTableAdapter = null;
             this.tableAdapterManager.ecuToPressureGroupTableAdapter = null;
+            this.tableAdapterManager.ecuToSpeedControlTableAdapter = null;
+            this.tableAdapterManager.ecuToVersionTableAdapter = null;
             this.tableAdapterManager.ecuToVersionTableTableAdapter = null;
             this.tableAdapterManager.mainSettingsTableTableAdapter = null;
             this.tableAdapterManager.pressureGroupsTableTableAdapter = null;
@@ -100,44 +104,12 @@
             this.dataGridViewTextBoxColumn8});
             this.customerTableDataGridView.DataSource = this.customerTableBindingSource;
             this.customerTableDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.customerTableDataGridView.MultiSelect = false;
             this.customerTableDataGridView.Name = "customerTableDataGridView";
             this.customerTableDataGridView.ReadOnly = true;
             this.customerTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customerTableDataGridView.Size = new System.Drawing.Size(830, 425);
             this.customerTableDataGridView.TabIndex = 1;
-            // 
-            // changeButton
-            // 
-            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.changeButton.Location = new System.Drawing.Point(380, 441);
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(75, 23);
-            this.changeButton.TabIndex = 7;
-            this.changeButton.Text = "Change";
-            this.changeButton.UseVisualStyleBackColor = true;
-            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.deleteButton.Location = new System.Drawing.Point(479, 441);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 6;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // insertButton
-            // 
-            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.insertButton.Location = new System.Drawing.Point(276, 441);
-            this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(75, 23);
-            this.insertButton.TabIndex = 5;
-            this.insertButton.Text = "Insert";
-            this.insertButton.UseVisualStyleBackColor = true;
-            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -195,6 +167,39 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
+            // changeButton
+            // 
+            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.changeButton.Location = new System.Drawing.Point(380, 441);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(75, 23);
+            this.changeButton.TabIndex = 7;
+            this.changeButton.Text = "Change";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(479, 441);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // insertButton
+            // 
+            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.insertButton.Location = new System.Drawing.Point(276, 441);
+            this.insertButton.Name = "insertButton";
+            this.insertButton.Size = new System.Drawing.Size(75, 23);
+            this.insertButton.TabIndex = 5;
+            this.insertButton.Text = "Insert";
+            this.insertButton.UseVisualStyleBackColor = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
             // 
             // OwnerListForm
             // 
