@@ -31,32 +31,30 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(queryForm));
             this.queryButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.pt8CodeTextbox = new System.Windows.Forms.TextBox();
+            this.pt7CodeTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.pt6CodeTextbox = new System.Windows.Forms.TextBox();
+            this.pt5CodeTextbox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.pt4CodeTextbox = new System.Windows.Forms.TextBox();
+            this.pt3CodeTextbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.operatorButton3 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.distanceTextbox = new System.Windows.Forms.TextBox();
+            this.pt2CodeTextbox = new System.Windows.Forms.TextBox();
+            this.pt1CodeTextbox = new System.Windows.Forms.TextBox();
             this.operatorButton4 = new System.Windows.Forms.Button();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.pressureCellTextbox = new System.Windows.Forms.TextBox();
+            this.vehicleRefTextbox = new System.Windows.Forms.TextBox();
+            this.descriptionTextbox = new System.Windows.Forms.TextBox();
+            this.ownerTextbox = new System.Windows.Forms.TextBox();
             this.operatorButton1 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.boardCodeTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.operatorButton2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -65,11 +63,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.gpsComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // queryButton
             // 
-            this.queryButton.Location = new System.Drawing.Point(101, 447);
+            this.queryButton.Location = new System.Drawing.Point(63, 447);
             this.queryButton.Name = "queryButton";
             this.queryButton.Size = new System.Drawing.Size(75, 23);
             this.queryButton.TabIndex = 19;
@@ -79,7 +79,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(200, 447);
+            this.cancelButton.Location = new System.Drawing.Point(239, 447);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 20;
@@ -87,19 +87,19 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // textBox5
+            // pt8CodeTextbox
             // 
-            this.textBox5.Location = new System.Drawing.Point(126, 402);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(174, 20);
-            this.textBox5.TabIndex = 18;
+            this.pt8CodeTextbox.Location = new System.Drawing.Point(126, 402);
+            this.pt8CodeTextbox.Name = "pt8CodeTextbox";
+            this.pt8CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt8CodeTextbox.TabIndex = 18;
             // 
-            // textBox9
+            // pt7CodeTextbox
             // 
-            this.textBox9.Location = new System.Drawing.Point(126, 375);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(174, 20);
-            this.textBox9.TabIndex = 17;
+            this.pt7CodeTextbox.Location = new System.Drawing.Point(126, 375);
+            this.pt7CodeTextbox.Name = "pt7CodeTextbox";
+            this.pt7CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt7CodeTextbox.TabIndex = 17;
             // 
             // label5
             // 
@@ -119,19 +119,19 @@
             this.label9.TabIndex = 127;
             this.label9.Text = "PT7 Code";
             // 
-            // textBox10
+            // pt6CodeTextbox
             // 
-            this.textBox10.Location = new System.Drawing.Point(126, 348);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(174, 20);
-            this.textBox10.TabIndex = 16;
+            this.pt6CodeTextbox.Location = new System.Drawing.Point(126, 348);
+            this.pt6CodeTextbox.Name = "pt6CodeTextbox";
+            this.pt6CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt6CodeTextbox.TabIndex = 16;
             // 
-            // textBox11
+            // pt5CodeTextbox
             // 
-            this.textBox11.Location = new System.Drawing.Point(126, 321);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(174, 20);
-            this.textBox11.TabIndex = 15;
+            this.pt5CodeTextbox.Location = new System.Drawing.Point(126, 321);
+            this.pt5CodeTextbox.Name = "pt5CodeTextbox";
+            this.pt5CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt5CodeTextbox.TabIndex = 15;
             // 
             // label10
             // 
@@ -151,19 +151,19 @@
             this.label11.TabIndex = 121;
             this.label11.Text = "PT5 Code";
             // 
-            // textBox2
+            // pt4CodeTextbox
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 294);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(174, 20);
-            this.textBox2.TabIndex = 14;
+            this.pt4CodeTextbox.Location = new System.Drawing.Point(126, 294);
+            this.pt4CodeTextbox.Name = "pt4CodeTextbox";
+            this.pt4CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt4CodeTextbox.TabIndex = 14;
             // 
-            // textBox3
+            // pt3CodeTextbox
             // 
-            this.textBox3.Location = new System.Drawing.Point(126, 267);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(174, 20);
-            this.textBox3.TabIndex = 13;
+            this.pt3CodeTextbox.Location = new System.Drawing.Point(126, 267);
+            this.pt3CodeTextbox.Name = "pt3CodeTextbox";
+            this.pt3CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt3CodeTextbox.TabIndex = 13;
             // 
             // label2
             // 
@@ -193,26 +193,26 @@
             this.operatorButton3.UseVisualStyleBackColor = true;
             this.operatorButton3.Click += new System.EventHandler(this.operatorButton3_Click);
             // 
-            // textBox16
+            // distanceTextbox
             // 
-            this.textBox16.Location = new System.Drawing.Point(126, 159);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(174, 20);
-            this.textBox16.TabIndex = 7;
+            this.distanceTextbox.Location = new System.Drawing.Point(126, 159);
+            this.distanceTextbox.Name = "distanceTextbox";
+            this.distanceTextbox.Size = new System.Drawing.Size(174, 20);
+            this.distanceTextbox.TabIndex = 7;
             // 
-            // textBox15
+            // pt2CodeTextbox
             // 
-            this.textBox15.Location = new System.Drawing.Point(126, 240);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(174, 20);
-            this.textBox15.TabIndex = 12;
+            this.pt2CodeTextbox.Location = new System.Drawing.Point(126, 240);
+            this.pt2CodeTextbox.Name = "pt2CodeTextbox";
+            this.pt2CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt2CodeTextbox.TabIndex = 12;
             // 
-            // textBox14
+            // pt1CodeTextbox
             // 
-            this.textBox14.Location = new System.Drawing.Point(126, 213);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(174, 20);
-            this.textBox14.TabIndex = 11;
+            this.pt1CodeTextbox.Location = new System.Drawing.Point(126, 213);
+            this.pt1CodeTextbox.Name = "pt1CodeTextbox";
+            this.pt1CodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pt1CodeTextbox.TabIndex = 11;
             // 
             // operatorButton4
             // 
@@ -224,33 +224,33 @@
             this.operatorButton4.UseVisualStyleBackColor = true;
             this.operatorButton4.Click += new System.EventHandler(this.operatorButton4_Click);
             // 
-            // textBox13
+            // pressureCellTextbox
             // 
-            this.textBox13.Location = new System.Drawing.Point(126, 186);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(174, 20);
-            this.textBox13.TabIndex = 9;
+            this.pressureCellTextbox.Location = new System.Drawing.Point(126, 186);
+            this.pressureCellTextbox.Name = "pressureCellTextbox";
+            this.pressureCellTextbox.Size = new System.Drawing.Size(174, 20);
+            this.pressureCellTextbox.TabIndex = 9;
             // 
-            // textBox8
+            // vehicleRefTextbox
             // 
-            this.textBox8.Location = new System.Drawing.Point(126, 105);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(174, 20);
-            this.textBox8.TabIndex = 4;
+            this.vehicleRefTextbox.Location = new System.Drawing.Point(126, 105);
+            this.vehicleRefTextbox.Name = "vehicleRefTextbox";
+            this.vehicleRefTextbox.Size = new System.Drawing.Size(174, 20);
+            this.vehicleRefTextbox.TabIndex = 4;
             // 
-            // textBox7
+            // descriptionTextbox
             // 
-            this.textBox7.Location = new System.Drawing.Point(126, 78);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(174, 20);
-            this.textBox7.TabIndex = 3;
+            this.descriptionTextbox.Location = new System.Drawing.Point(126, 78);
+            this.descriptionTextbox.Name = "descriptionTextbox";
+            this.descriptionTextbox.Size = new System.Drawing.Size(174, 20);
+            this.descriptionTextbox.TabIndex = 3;
             // 
-            // textBox6
+            // ownerTextbox
             // 
-            this.textBox6.Location = new System.Drawing.Point(126, 51);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(174, 20);
-            this.textBox6.TabIndex = 2;
+            this.ownerTextbox.Location = new System.Drawing.Point(126, 51);
+            this.ownerTextbox.Name = "ownerTextbox";
+            this.ownerTextbox.Size = new System.Drawing.Size(174, 20);
+            this.ownerTextbox.TabIndex = 2;
             // 
             // operatorButton1
             // 
@@ -262,38 +262,21 @@
             this.operatorButton1.UseVisualStyleBackColor = true;
             this.operatorButton1.Click += new System.EventHandler(this.operatorButton1_Click);
             // 
-            // textBox4
+            // boardCodeTextbox
             // 
-            this.textBox4.Location = new System.Drawing.Point(126, 24);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(174, 20);
-            this.textBox4.TabIndex = 0;
+            this.boardCodeTextbox.Location = new System.Drawing.Point(126, 24);
+            this.boardCodeTextbox.Name = "boardCodeTextbox";
+            this.boardCodeTextbox.Size = new System.Drawing.Size(174, 20);
+            this.boardCodeTextbox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 135);
+            this.label1.Location = new System.Drawing.Point(37, 136);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 88;
-            this.label1.Text = "GPS";
-            // 
-            // operatorButton2
-            // 
-            this.operatorButton2.Location = new System.Drawing.Point(316, 130);
-            this.operatorButton2.Name = "operatorButton2";
-            this.operatorButton2.Size = new System.Drawing.Size(23, 23);
-            this.operatorButton2.TabIndex = 6;
-            this.operatorButton2.Text = "=";
-            this.operatorButton2.UseVisualStyleBackColor = true;
-            this.operatorButton2.Click += new System.EventHandler(this.operatorButton2_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(126, 132);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 5;
+            this.label1.Text = "GPS Override";
             // 
             // label16
             // 
@@ -367,37 +350,60 @@
             this.label4.TabIndex = 89;
             this.label4.Text = "Board Code";
             // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(151, 447);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 129;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // gpsComboBox
+            // 
+            this.gpsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gpsComboBox.FormattingEnabled = true;
+            this.gpsComboBox.Items.AddRange(new object[] {
+            "",
+            "Yes",
+            "No"});
+            this.gpsComboBox.Location = new System.Drawing.Point(126, 132);
+            this.gpsComboBox.Name = "gpsComboBox";
+            this.gpsComboBox.Size = new System.Drawing.Size(46, 21);
+            this.gpsComboBox.TabIndex = 130;
+            // 
             // queryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 491);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.gpsComboBox);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.pt8CodeTextbox);
+            this.Controls.Add(this.pt7CodeTextbox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.pt6CodeTextbox);
+            this.Controls.Add(this.pt5CodeTextbox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.pt4CodeTextbox);
+            this.Controls.Add(this.pt3CodeTextbox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.operatorButton3);
-            this.Controls.Add(this.textBox16);
-            this.Controls.Add(this.textBox15);
-            this.Controls.Add(this.textBox14);
+            this.Controls.Add(this.distanceTextbox);
+            this.Controls.Add(this.pt2CodeTextbox);
+            this.Controls.Add(this.pt1CodeTextbox);
             this.Controls.Add(this.operatorButton4);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.pressureCellTextbox);
+            this.Controls.Add(this.vehicleRefTextbox);
+            this.Controls.Add(this.descriptionTextbox);
+            this.Controls.Add(this.ownerTextbox);
             this.Controls.Add(this.operatorButton1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.boardCodeTextbox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.operatorButton2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -423,32 +429,30 @@
         #endregion
         private System.Windows.Forms.Button queryButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox pt8CodeTextbox;
+        private System.Windows.Forms.TextBox pt7CodeTextbox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox pt6CodeTextbox;
+        private System.Windows.Forms.TextBox pt5CodeTextbox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox pt4CodeTextbox;
+        private System.Windows.Forms.TextBox pt3CodeTextbox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button operatorButton3;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox distanceTextbox;
+        private System.Windows.Forms.TextBox pt2CodeTextbox;
+        private System.Windows.Forms.TextBox pt1CodeTextbox;
         private System.Windows.Forms.Button operatorButton4;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox pressureCellTextbox;
+        private System.Windows.Forms.TextBox vehicleRefTextbox;
+        private System.Windows.Forms.TextBox descriptionTextbox;
+        private System.Windows.Forms.TextBox ownerTextbox;
         private System.Windows.Forms.Button operatorButton1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox boardCodeTextbox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button operatorButton2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -457,5 +461,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.ComboBox gpsComboBox;
     }
 }
