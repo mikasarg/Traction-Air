@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountryObject.cs" />
+    <Compile Include="customerObject.cs" />
     <Compile Include="ECU_MainSettings.cs" />
     <Compile Include="ecuSettingsDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,6 +85,18 @@
     </Compile>
     <Compile Include="Forms\changeCountryForm.Designer.cs">
       <DependentUpon>changeCountryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\changeOwnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\changeOwnerForm.Designer.cs">
+      <DependentUpon>changeOwnerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\changePressureGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\changePressureGroupForm.Designer.cs">
+      <DependentUpon>changePressureGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CountriesListForm.cs">
       <SubType>Form</SubType>
@@ -115,11 +128,11 @@
     <Compile Include="Forms\helpForm.Designer.cs">
       <DependentUpon>helpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\insertionForm.cs">
+    <Compile Include="Forms\insertPressureGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\insertionForm.Designer.cs">
-      <DependentUpon>insertionForm.cs</DependentUpon>
+    <Compile Include="Forms\insertPressureGroupForm.Designer.cs">
+      <DependentUpon>insertPressureGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\queryForm.cs">
       <SubType>Form</SubType>
@@ -127,12 +140,7 @@
     <Compile Include="Forms\queryForm.Designer.cs">
       <DependentUpon>queryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\queryNameForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\queryNameForm.Designer.cs">
-      <DependentUpon>queryNameForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="PressureGroupObject.cs" />
     <Compile Include="sampleDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,6 +209,12 @@
     <EmbeddedResource Include="Forms\changeCountryForm.resx">
       <DependentUpon>changeCountryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\changeOwnerForm.resx">
+      <DependentUpon>changeOwnerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\changePressureGroupForm.resx">
+      <DependentUpon>changePressureGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountriesListForm.resx">
       <DependentUpon>CountriesListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,8 +233,8 @@
     <EmbeddedResource Include="Forms\helpForm.resx">
       <DependentUpon>helpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\insertionForm.resx">
-      <DependentUpon>insertionForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\insertPressureGroupForm.resx">
+      <DependentUpon>insertPressureGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OwnerListForm.resx">
       <DependentUpon>OwnerListForm.cs</DependentUpon>
@@ -230,9 +244,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\queryForm.resx">
       <DependentUpon>queryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\queryNameForm.resx">
-      <DependentUpon>queryNameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectPressureForm.resx">
       <DependentUpon>SelectPressureForm.cs</DependentUpon>

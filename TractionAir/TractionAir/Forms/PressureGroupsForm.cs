@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TractionAir.Forms;
 
 namespace TractionAir
 {
@@ -32,9 +33,7 @@ namespace TractionAir
         /// <param name="e"></param>
         private void PressureGroupsForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            this.tableTableAdapter.Fill(this.pressureGroupsDataSet.Table);
         }
 
         /// <summary>
@@ -44,8 +43,9 @@ namespace TractionAir
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            insertionForm insertion = new insertionForm(tableDataGridView);
+            insertPressureGroupForm insertion = new insertPressureGroupForm();
             insertion.ShowDialog();
+            refreshTable();
         }
 
         /// <summary>
@@ -57,12 +57,26 @@ namespace TractionAir
         {
             if (ECU_Manager.wishToDelete())
             {
-                //TODO delete the selected entry
+                if (pressureGroupsTableDataGridView.SelectedRows.Count == 0) //no selected rows
+                {
+                    return;
+                }
+                DataGridViewRow selectedRow = pressureGroupsTableDataGridView.SelectedRows[0];
+                int id;
+                if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+                {
+                    ECU_Manager.delete(id.ToString(), "Id", "pressureGroupsTable"); //ecu manager deletes via sql command
+                }
+                else
+                {
+                    MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.");
+                }
             }
             else
             {
                 return;
             }
+            refreshTable();
         }
 
         /// <summary>
@@ -72,7 +86,37 @@ namespace TractionAir
         /// <param name="e"></param>
         private void changeButton_Click(object sender, EventArgs e)
         {
-            //TODO open a change dialog window
+            if (pressureGroupsTableDataGridView.SelectedRows.Count == 0) //no selected rows
+            {
+                return;
+            }
+            DataGridViewRow selectedRow = pressureGroupsTableDataGridView.SelectedRows[0];
+            int id;
+            if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+            {
+                changePressureGroupForm changePressureGroup = new changePressureGroupForm(id); //loads a form to change the entry
+                changePressureGroup.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Could not change selected entry as its ID was in the incorrect format.");
+            }
+            refreshTable();
+        }
+
+        /// <summary>
+        /// Refreshes the datagridview
+        /// </summary>
+        private void refreshTable()
+        {
+            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            pressureGroupsTableDataGridView.Update();
+            pressureGroupsTableDataGridView.Refresh();
+        }
+
+        private void pressureGroupsTableDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            changeButton_Click(sender, e);
         }
     }
 }

@@ -135,7 +135,6 @@
             this.tableAdapterManager.ecuToPressureGroupTableAdapter = null;
             this.tableAdapterManager.ecuToSpeedControlTableAdapter = null;
             this.tableAdapterManager.ecuToVersionTableAdapter = null;
-            this.tableAdapterManager.ecuToVersionTableTableAdapter = null;
             this.tableAdapterManager.mainSettingsTableTableAdapter = null;
             this.tableAdapterManager.pressureGroupsTableTableAdapter = null;
             this.tableAdapterManager.programVersionTableTableAdapter = null;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TractionAir.Forms;
 
 namespace TractionAir
 {
@@ -17,29 +18,37 @@ namespace TractionAir
             InitializeComponent();
         }
 
-        private void customerTableBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.customerTableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.ecuSettingsDatabaseDataSet);
-
-        }
-
         private void OwnerListForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.customerTable' table. You can move, or remove it, as needed.
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
 
         }
 
         private void insertButton_Click(object sender, EventArgs e)
         {
-
+            insertOwnerForm insertOwner = new insertOwnerForm();
+            insertOwner.ShowDialog();
+            refreshTable();
         }
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-
+            if (customerTableDataGridView.SelectedRows.Count == 0) //no selected rows
+            {
+                return;
+            }
+            DataGridViewRow selectedRow = customerTableDataGridView.SelectedRows[0];
+            int id;
+            if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+            {
+                changeOwnerForm changeOwner = new changeOwnerForm(id); //loads a form to change the entry
+                changeOwner.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Could not change selected entry as its ID was in the incorrect format.");
+            }
+            refreshTable();
         }
 
         /// <summary>
@@ -51,12 +60,41 @@ namespace TractionAir
         {
             if (ECU_Manager.wishToDelete())
             {
-                //TODO delete the selected entry
+                if (customerTableDataGridView.SelectedRows.Count == 0) //no selected rows
+                {
+                    return;
+                }
+                DataGridViewRow selectedRow = customerTableDataGridView.SelectedRows[0];
+                int id;
+                if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+                {
+                    ECU_Manager.delete(id.ToString(), "Id", "customerTable"); //ecu manager deletes via sql command
+                }
+                else
+                {
+                    MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.");
+                }
             }
             else
             {
                 return;
             }
+            refreshTable();
+        }
+
+        /// <summary>
+        /// Refreshes the datagridview
+        /// </summary>
+        private void refreshTable()
+        {
+            this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
+            customerTableDataGridView.Update();
+            customerTableDataGridView.Refresh();
+        }
+
+        private void customerTableDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            changeButton_Click(sender, e);
         }
     }
 }

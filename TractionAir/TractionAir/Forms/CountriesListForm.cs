@@ -108,5 +108,10 @@ namespace TractionAir.Forms
             countryCodeTableDataGridView.Update();
             countryCodeTableDataGridView.Refresh();
         }
+
+        private void countryCodeTableDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            changeButton_Click(sender, e);
+        }
     }
 }

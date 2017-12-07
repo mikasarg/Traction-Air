@@ -145,6 +145,53 @@ namespace TractionAir
         }
 
         /// <summary>
+        /// Returns pressureGroup object based on the given id
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
+        public static PressureGroupObject getPGByID(int Id)
+        {
+            String query = "SELECT * FROM pressureGroupsTable WHERE Id = '" + Id + "'";
+
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                PressureGroupObject[] pgs = iDbCon.Query<PressureGroupObject>(query).ToArray();
+                if (pgs.Length != 0)
+                {
+                    return pgs[0];
+                }
+                else
+                {
+                    throw new InvalidOperationException("Pressure Group with ID " + Id + " not found");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns a customer object based on the given id
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
+        public static customerObject getCustomerByID(int Id)
+        {
+            String query = "SELECT * FROM customerTable WHERE Id = '" + Id + "'";
+
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                customerObject[] customers = iDbCon.Query<customerObject>(query).ToArray();
+                if (customers.Length != 0)
+                {
+                    return customers[0];
+                }
+                else
+                {
+                    throw new InvalidOperationException("Customer with ID " + Id + " not found");
+                }
+            }
+        }
+
+
+        /// <summary>
         /// Returns a countryObject based on the given ID
         /// </summary>
         /// <param name="boardCode"></param>
@@ -281,7 +328,7 @@ namespace TractionAir
             {
                 throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
             }
-            return dt.ToString("MM/dd/yyyy hh:mm");
+            return dt.ToString("MM/dd/yyyy HH:mm");
         }
 
         /// <summary>

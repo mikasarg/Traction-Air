@@ -871,6 +871,7 @@
             this.installDateTimePicker.Name = "installDateTimePicker";
             this.installDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.installDateTimePicker.TabIndex = 245;
+            this.installDateTimePicker.ValueChanged += new System.EventHandler(this.installDateTimePicker_TextChanged);
             // 
             // buildDateTimePicker
             // 
@@ -881,6 +882,7 @@
             this.buildDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.buildDateTimePicker.TabIndex = 244;
             this.buildDateTimePicker.Value = new System.DateTime(2017, 12, 6, 15, 43, 45, 0);
+            this.buildDateTimePicker.ValueChanged += new System.EventHandler(this.buildDateTimePicker_TextChanged);
             // 
             // ChangeForm
             // 

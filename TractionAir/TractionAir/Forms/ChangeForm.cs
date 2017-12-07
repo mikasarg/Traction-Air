@@ -114,6 +114,7 @@ namespace TractionAir
 
             previouslyVisited.Clear();
 
+            installDateTimePicker.Value = DateTime.Now; //current time
             save();
         }
 
@@ -242,14 +243,14 @@ namespace TractionAir
             changedBoxes.Add(new Tuple<string, string>("Owner", customerComboBox.Text));
         }
 
-        private void buildDateTextbox_TextChanged(object sender, EventArgs e)
+        private void buildDateTimePicker_TextChanged(object sender, EventArgs e)
         {
             changedBoxes.Add(new Tuple<string, string>("BuildDate", buildDateTimePicker.Text));
         }
 
-        private void installDateTextbox_TextChanged(object sender, EventArgs e)
+        private void installDateTimePicker_TextChanged(object sender, EventArgs e)
         {
-            changedBoxes.Add(new Tuple<string, string>("DateMod", installDateTimePicker.Text));
+            changedBoxes.Add(new Tuple<string, string>("DateMod", installDateTimePicker.Value.ToString("dd/MM/yyyy HH:mm")));
         }
 
         private void vehicleRefTextbox_TextChanged(object sender, EventArgs e)

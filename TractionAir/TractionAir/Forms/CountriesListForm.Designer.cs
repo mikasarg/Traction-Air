@@ -35,12 +35,12 @@
             this.countryCodeTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.countryCodeTableTableAdapter();
             this.tableAdapterManager = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.countryCodeTableDataGridView = new System.Windows.Forms.DataGridView();
-            this.insertButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.changeButton = new System.Windows.Forms.Button();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insertButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableDataGridView)).BeginInit();
@@ -71,7 +71,6 @@
             this.tableAdapterManager.ecuToPressureGroupTableAdapter = null;
             this.tableAdapterManager.ecuToSpeedControlTableAdapter = null;
             this.tableAdapterManager.ecuToVersionTableAdapter = null;
-            this.tableAdapterManager.ecuToVersionTableTableAdapter = null;
             this.tableAdapterManager.mainSettingsTableTableAdapter = null;
             this.tableAdapterManager.pressureGroupsTableTableAdapter = null;
             this.tableAdapterManager.programVersionTableTableAdapter = null;
@@ -93,13 +92,36 @@
             this.countryDataGridViewTextBoxColumn,
             this.idColumn});
             this.countryCodeTableDataGridView.DataSource = this.countryCodeTableBindingSource;
-            this.countryCodeTableDataGridView.Location = new System.Drawing.Point(7, 5);
+            this.countryCodeTableDataGridView.Location = new System.Drawing.Point(0, 0);
             this.countryCodeTableDataGridView.MultiSelect = false;
             this.countryCodeTableDataGridView.Name = "countryCodeTableDataGridView";
             this.countryCodeTableDataGridView.ReadOnly = true;
             this.countryCodeTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.countryCodeTableDataGridView.Size = new System.Drawing.Size(302, 213);
+            this.countryCodeTableDataGridView.Size = new System.Drawing.Size(314, 217);
             this.countryCodeTableDataGridView.TabIndex = 1;
+            this.countryCodeTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countryCodeTableDataGridView_CellDoubleClick);
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countryDataGridViewTextBoxColumn
+            // 
+            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
+            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
+            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idColumn
+            // 
+            this.idColumn.DataPropertyName = "Id";
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
             // 
             // insertButton
             // 
@@ -133,28 +155,6 @@
             this.changeButton.Text = "Change";
             this.changeButton.UseVisualStyleBackColor = true;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countryDataGridViewTextBoxColumn
-            // 
-            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
-            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
-            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
-            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idColumn
-            // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
             // 
             // CountriesListForm
             // 

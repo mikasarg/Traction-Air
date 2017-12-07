@@ -36,8 +36,6 @@ namespace TractionAir {
         
         private ecuToPressureGroupDataTable tableecuToPressureGroup;
         
-        private ecuToVersionTableDataTable tableecuToVersionTable;
-        
         private programVersionTableDataTable tableprogramVersionTable;
         
         private speedControlTableDataTable tablespeedControlTable;
@@ -63,10 +61,6 @@ namespace TractionAir {
         private global::System.Data.DataRelation relationecuToPressureGroupBoardCodeFK;
         
         private global::System.Data.DataRelation relationecuToPressureGroupPGIDFK;
-        
-        private global::System.Data.DataRelation relationFK_ecuToVersionTable_ToECU;
-        
-        private global::System.Data.DataRelation relationFK_ecuToVersionTable_ToVersion;
         
         private global::System.Data.DataRelation relationFK_customerToCountry_ToCountry;
         
@@ -129,9 +123,6 @@ namespace TractionAir {
                 }
                 if ((ds.Tables["ecuToPressureGroup"] != null)) {
                     base.Tables.Add(new ecuToPressureGroupDataTable(ds.Tables["ecuToPressureGroup"]));
-                }
-                if ((ds.Tables["ecuToVersionTable"] != null)) {
-                    base.Tables.Add(new ecuToVersionTableDataTable(ds.Tables["ecuToVersionTable"]));
                 }
                 if ((ds.Tables["programVersionTable"] != null)) {
                     base.Tables.Add(new programVersionTableDataTable(ds.Tables["programVersionTable"]));
@@ -226,16 +217,6 @@ namespace TractionAir {
         public ecuToPressureGroupDataTable ecuToPressureGroup {
             get {
                 return this.tableecuToPressureGroup;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ecuToVersionTableDataTable ecuToVersionTable {
-            get {
-                return this.tableecuToVersionTable;
             }
         }
         
@@ -384,9 +365,6 @@ namespace TractionAir {
                 if ((ds.Tables["ecuToPressureGroup"] != null)) {
                     base.Tables.Add(new ecuToPressureGroupDataTable(ds.Tables["ecuToPressureGroup"]));
                 }
-                if ((ds.Tables["ecuToVersionTable"] != null)) {
-                    base.Tables.Add(new ecuToVersionTableDataTable(ds.Tables["ecuToVersionTable"]));
-                }
                 if ((ds.Tables["programVersionTable"] != null)) {
                     base.Tables.Add(new programVersionTableDataTable(ds.Tables["programVersionTable"]));
                 }
@@ -474,12 +452,6 @@ namespace TractionAir {
                     this.tableecuToPressureGroup.InitVars();
                 }
             }
-            this.tableecuToVersionTable = ((ecuToVersionTableDataTable)(base.Tables["ecuToVersionTable"]));
-            if ((initTable == true)) {
-                if ((this.tableecuToVersionTable != null)) {
-                    this.tableecuToVersionTable.InitVars();
-                }
-            }
             this.tableprogramVersionTable = ((programVersionTableDataTable)(base.Tables["programVersionTable"]));
             if ((initTable == true)) {
                 if ((this.tableprogramVersionTable != null)) {
@@ -523,8 +495,6 @@ namespace TractionAir {
             this.relationecuToCustomerCustomerIDFK = this.Relations["ecuToCustomerCustomerIDFK"];
             this.relationecuToPressureGroupBoardCodeFK = this.Relations["ecuToPressureGroupBoardCodeFK"];
             this.relationecuToPressureGroupPGIDFK = this.Relations["ecuToPressureGroupPGIDFK"];
-            this.relationFK_ecuToVersionTable_ToECU = this.Relations["FK_ecuToVersionTable_ToECU"];
-            this.relationFK_ecuToVersionTable_ToVersion = this.Relations["FK_ecuToVersionTable_ToVersion"];
             this.relationFK_customerToCountry_ToCountry = this.Relations["FK_customerToCountry_ToCountry"];
             this.relationFK_customerToCountry_ToCustomer = this.Relations["FK_customerToCountry_ToCustomer"];
             this.relationFK_ecuToCountry_ToCountry = this.Relations["FK_ecuToCountry_ToCountry"];
@@ -555,8 +525,6 @@ namespace TractionAir {
             base.Tables.Add(this.tableecuToCustomer);
             this.tableecuToPressureGroup = new ecuToPressureGroupDataTable();
             base.Tables.Add(this.tableecuToPressureGroup);
-            this.tableecuToVersionTable = new ecuToVersionTableDataTable();
-            base.Tables.Add(this.tableecuToVersionTable);
             this.tableprogramVersionTable = new programVersionTableDataTable();
             base.Tables.Add(this.tableprogramVersionTable);
             this.tablespeedControlTable = new speedControlTableDataTable();
@@ -597,14 +565,6 @@ namespace TractionAir {
                         this.tablepressureGroupsTable.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableecuToPressureGroup.PressureGroupIDColumn}, false);
             this.Relations.Add(this.relationecuToPressureGroupPGIDFK);
-            this.relationFK_ecuToVersionTable_ToECU = new global::System.Data.DataRelation("FK_ecuToVersionTable_ToECU", new global::System.Data.DataColumn[] {
-                        this.tablemainSettingsTable.BoardCodeColumn}, new global::System.Data.DataColumn[] {
-                        this.tableecuToVersionTable.BoardCodeColumn}, false);
-            this.Relations.Add(this.relationFK_ecuToVersionTable_ToECU);
-            this.relationFK_ecuToVersionTable_ToVersion = new global::System.Data.DataRelation("FK_ecuToVersionTable_ToVersion", new global::System.Data.DataColumn[] {
-                        this.tableprogramVersionTable.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableecuToVersionTable.VersionIDColumn}, false);
-            this.Relations.Add(this.relationFK_ecuToVersionTable_ToVersion);
             this.relationFK_customerToCountry_ToCountry = new global::System.Data.DataRelation("FK_customerToCountry_ToCountry", new global::System.Data.DataColumn[] {
                         this.tablecountryCodeTable.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tablecustomerToCountry.CountryIDColumn}, false);
@@ -672,12 +632,6 @@ namespace TractionAir {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeecuToPressureGroup() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeecuToVersionTable() {
             return false;
         }
         
@@ -789,9 +743,6 @@ namespace TractionAir {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void ecuToPressureGroupRowChangeEventHandler(object sender, ecuToPressureGroupRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void ecuToVersionTableRowChangeEventHandler(object sender, ecuToVersionTableRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void programVersionTableRowChangeEventHandler(object sender, programVersionTableRowChangeEvent e);
@@ -1265,7 +1216,7 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public customerTableRow AddcustomerTableRow(string Company, string City, countryCodeTableRow parentcountryCodeTableRowBycountryCodeFK1, int Phone, System.DateTime Date, string Address1, string Address2) {
+            public customerTableRow AddcustomerTableRow(string Company, string City, countryCodeTableRow parentcountryCodeTableRowBycountryCodeFK1, string Phone, System.DateTime Date, string Address1, string Address2) {
                 customerTableRow rowcustomerTableRow = ((customerTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Company,
@@ -1327,7 +1278,7 @@ namespace TractionAir {
                 base.Columns.Add(this.columnCity);
                 this.columnCountry = new global::System.Data.DataColumn("Country", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCountry);
-                this.columnPhone = new global::System.Data.DataColumn("Phone", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnPhone = new global::System.Data.DataColumn("Phone", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhone);
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
@@ -3120,304 +3071,6 @@ namespace TractionAir {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ecuToPressureGroupDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ecuToVersionTableDataTable : global::System.Data.TypedTableBase<ecuToVersionTableRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnBoardCode;
-            
-            private global::System.Data.DataColumn columnVersionID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableDataTable() {
-                this.TableName = "ecuToVersionTable";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ecuToVersionTableDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected ecuToVersionTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn BoardCodeColumn {
-                get {
-                    return this.columnBoardCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn VersionIDColumn {
-                get {
-                    return this.columnVersionID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow this[int index] {
-                get {
-                    return ((ecuToVersionTableRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ecuToVersionTableRowChangeEventHandler ecuToVersionTableRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ecuToVersionTableRowChangeEventHandler ecuToVersionTableRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ecuToVersionTableRowChangeEventHandler ecuToVersionTableRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ecuToVersionTableRowChangeEventHandler ecuToVersionTableRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddecuToVersionTableRow(ecuToVersionTableRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow AddecuToVersionTableRow(mainSettingsTableRow parentmainSettingsTableRowByFK_ecuToVersionTable_ToECU, programVersionTableRow parentprogramVersionTableRowByFK_ecuToVersionTable_ToVersion) {
-                ecuToVersionTableRow rowecuToVersionTableRow = ((ecuToVersionTableRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null,
-                        null};
-                if ((parentmainSettingsTableRowByFK_ecuToVersionTable_ToECU != null)) {
-                    columnValuesArray[1] = parentmainSettingsTableRowByFK_ecuToVersionTable_ToECU[5];
-                }
-                if ((parentprogramVersionTableRowByFK_ecuToVersionTable_ToVersion != null)) {
-                    columnValuesArray[2] = parentprogramVersionTableRowByFK_ecuToVersionTable_ToVersion[0];
-                }
-                rowecuToVersionTableRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowecuToVersionTableRow);
-                return rowecuToVersionTableRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow FindById(int Id) {
-                return ((ecuToVersionTableRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ecuToVersionTableDataTable cln = ((ecuToVersionTableDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ecuToVersionTableDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnBoardCode = base.Columns["BoardCode"];
-                this.columnVersionID = base.Columns["VersionID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnBoardCode = new global::System.Data.DataColumn("BoardCode", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBoardCode);
-                this.columnVersionID = new global::System.Data.DataColumn("VersionID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVersionID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
-                this.columnId.Unique = true;
-                this.columnBoardCode.AllowDBNull = false;
-                this.columnVersionID.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow NewecuToVersionTableRow() {
-                return ((ecuToVersionTableRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ecuToVersionTableRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ecuToVersionTableRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ecuToVersionTableRowChanged != null)) {
-                    this.ecuToVersionTableRowChanged(this, new ecuToVersionTableRowChangeEvent(((ecuToVersionTableRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ecuToVersionTableRowChanging != null)) {
-                    this.ecuToVersionTableRowChanging(this, new ecuToVersionTableRowChangeEvent(((ecuToVersionTableRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ecuToVersionTableRowDeleted != null)) {
-                    this.ecuToVersionTableRowDeleted(this, new ecuToVersionTableRowChangeEvent(((ecuToVersionTableRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ecuToVersionTableRowDeleting != null)) {
-                    this.ecuToVersionTableRowDeleting(this, new ecuToVersionTableRowChangeEvent(((ecuToVersionTableRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveecuToVersionTableRow(ecuToVersionTableRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ecuSettingsDatabaseDataSet ds = new ecuSettingsDatabaseDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ecuToVersionTableDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5352,10 +5005,10 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Phone {
+            public string Phone {
                 get {
                     try {
-                        return ((int)(this[this.tablecustomerTable.PhoneColumn]));
+                        return ((string)(this[this.tablecustomerTable.PhoneColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Phone\' in table \'customerTable\' is DBNull.", e);
@@ -6260,17 +5913,6 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow[] GetecuToVersionTableRows() {
-                if ((this.Table.ChildRelations["FK_ecuToVersionTable_ToECU"] == null)) {
-                    return new ecuToVersionTableRow[0];
-                }
-                else {
-                    return ((ecuToVersionTableRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecuToVersionTable_ToECU"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ecuToCountryRow[] GetecuToCountryRows() {
                 if ((this.Table.ChildRelations["FK_ecuToCountry_ToECU"] == null)) {
                     return new ecuToCountryRow[0];
@@ -6549,76 +6191,6 @@ namespace TractionAir {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ecuToVersionTableRow : global::System.Data.DataRow {
-            
-            private ecuToVersionTableDataTable tableecuToVersionTable;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ecuToVersionTableRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableecuToVersionTable = ((ecuToVersionTableDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableecuToVersionTable.IdColumn]));
-                }
-                set {
-                    this[this.tableecuToVersionTable.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int BoardCode {
-                get {
-                    return ((int)(this[this.tableecuToVersionTable.BoardCodeColumn]));
-                }
-                set {
-                    this[this.tableecuToVersionTable.BoardCodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int VersionID {
-                get {
-                    return ((int)(this[this.tableecuToVersionTable.VersionIDColumn]));
-                }
-                set {
-                    this[this.tableecuToVersionTable.VersionIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public mainSettingsTableRow mainSettingsTableRow {
-                get {
-                    return ((mainSettingsTableRow)(this.GetParentRow(this.Table.ParentRelations["FK_ecuToVersionTable_ToECU"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ecuToVersionTable_ToECU"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public programVersionTableRow programVersionTableRow {
-                get {
-                    return ((programVersionTableRow)(this.GetParentRow(this.Table.ParentRelations["FK_ecuToVersionTable_ToVersion"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ecuToVersionTable_ToVersion"]);
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class programVersionTableRow : global::System.Data.DataRow {
             
             private programVersionTableDataTable tableprogramVersionTable;
@@ -6649,17 +6221,6 @@ namespace TractionAir {
                 }
                 set {
                     this[this.tableprogramVersionTable.VersionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow[] GetecuToVersionTableRows() {
-                if ((this.Table.ChildRelations["FK_ecuToVersionTable_ToVersion"] == null)) {
-                    return new ecuToVersionTableRow[0];
-                }
-                else {
-                    return ((ecuToVersionTableRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecuToVersionTable_ToVersion"])));
                 }
             }
             
@@ -7193,40 +6754,6 @@ namespace TractionAir {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ecuToPressureGroupRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class ecuToVersionTableRowChangeEvent : global::System.EventArgs {
-            
-            private ecuToVersionTableRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRowChangeEvent(ecuToVersionTableRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ecuToVersionTableRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10739,313 +10266,6 @@ SELECT Id, BoardCode, PressureGroupID FROM ecuToPressureGroup WHERE (Id = @Id)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ecuToVersionTableTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public ecuToVersionTableTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ecuToVersionTable";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("BoardCode", "BoardCode");
-            tableMapping.ColumnMappings.Add("VersionID", "VersionID");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ecuToVersionTable] WHERE (([Id] = @Original_Id) AND ([BoardCod" +
-                "e] = @Original_BoardCode) AND ([VersionID] = @Original_VersionID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ecuToVersionTable] ([BoardCode], [VersionID]) VALUES (@BoardCo" +
-                "de, @VersionID);\r\nSELECT Id, BoardCode, VersionID FROM ecuToVersionTable WHERE (" +
-                "Id = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ecuToVersionTable] SET [BoardCode] = @BoardCode, [VersionID] = @VersionID WHERE (([Id] = @Original_Id) AND ([BoardCode] = @Original_BoardCode) AND ([VersionID] = @Original_VersionID));
-SELECT Id, BoardCode, VersionID FROM ecuToVersionTable WHERE (Id = @Id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TractionAir.Properties.Settings.Default.ecuSettingsDatabaseConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, BoardCode, VersionID FROM dbo.ecuToVersionTable";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ecuSettingsDatabaseDataSet.ecuToVersionTableDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ecuSettingsDatabaseDataSet.ecuToVersionTableDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            ecuSettingsDatabaseDataSet.ecuToVersionTableDataTable dataTable = new ecuSettingsDatabaseDataSet.ecuToVersionTableDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ecuSettingsDatabaseDataSet.ecuToVersionTableDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ecuSettingsDatabaseDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ecuToVersionTable");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_BoardCode, int Original_VersionID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_BoardCode));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_VersionID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int BoardCode, int VersionID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(BoardCode));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(VersionID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int BoardCode, int VersionID, int Original_Id, int Original_BoardCode, int Original_VersionID, int Id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(BoardCode));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(VersionID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_BoardCode));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_VersionID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int BoardCode, int VersionID, int Original_Id, int Original_BoardCode, int Original_VersionID) {
-            return this.Update(BoardCode, VersionID, Original_Id, Original_BoardCode, Original_VersionID, Original_Id);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class programVersionTableTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -12925,8 +12145,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
         
         private ecuToPressureGroupTableAdapter _ecuToPressureGroupTableAdapter;
         
-        private ecuToVersionTableTableAdapter _ecuToVersionTableTableAdapter;
-        
         private programVersionTableTableAdapter _programVersionTableTableAdapter;
         
         private speedControlTableTableAdapter _speedControlTableTableAdapter;
@@ -13035,20 +12253,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
             }
             set {
                 this._ecuToPressureGroupTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public ecuToVersionTableTableAdapter ecuToVersionTableTableAdapter {
-            get {
-                return this._ecuToVersionTableTableAdapter;
-            }
-            set {
-                this._ecuToVersionTableTableAdapter = value;
             }
         }
         
@@ -13179,10 +12383,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                             && (this._ecuToPressureGroupTableAdapter.Connection != null))) {
                     return this._ecuToPressureGroupTableAdapter.Connection;
                 }
-                if (((this._ecuToVersionTableTableAdapter != null) 
-                            && (this._ecuToVersionTableTableAdapter.Connection != null))) {
-                    return this._ecuToVersionTableTableAdapter.Connection;
-                }
                 if (((this._programVersionTableTableAdapter != null) 
                             && (this._programVersionTableTableAdapter.Connection != null))) {
                     return this._programVersionTableTableAdapter.Connection;
@@ -13236,9 +12436,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     count = (count + 1);
                 }
                 if ((this._ecuToPressureGroupTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._ecuToVersionTableTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._programVersionTableTableAdapter != null)) {
@@ -13339,15 +12536,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._ecuToPressureGroupTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._ecuToVersionTableTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ecuToVersionTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._ecuToVersionTableTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13461,14 +12649,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._ecuToVersionTableTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ecuToVersionTable.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._ecuToVersionTableTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._customerToCountryTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.customerToCountry.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -13540,14 +12720,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._customerToCountryTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._ecuToVersionTableTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ecuToVersionTable.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._ecuToVersionTableTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13684,11 +12856,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._ecuToVersionTableTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._ecuToVersionTableTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             if (((this._programVersionTableTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._programVersionTableTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -13803,15 +12970,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     if (this._ecuToPressureGroupTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._ecuToPressureGroupTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._ecuToPressureGroupTableAdapter.Adapter);
-                    }
-                }
-                if ((this._ecuToVersionTableTableAdapter != null)) {
-                    revertConnections.Add(this._ecuToVersionTableTableAdapter, this._ecuToVersionTableTableAdapter.Connection);
-                    this._ecuToVersionTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._ecuToVersionTableTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._ecuToVersionTableTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._ecuToVersionTableTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._ecuToVersionTableTableAdapter.Adapter);
                     }
                 }
                 if ((this._programVersionTableTableAdapter != null)) {
@@ -13949,10 +13107,6 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 if ((this._ecuToPressureGroupTableAdapter != null)) {
                     this._ecuToPressureGroupTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ecuToPressureGroupTableAdapter]));
                     this._ecuToPressureGroupTableAdapter.Transaction = null;
-                }
-                if ((this._ecuToVersionTableTableAdapter != null)) {
-                    this._ecuToVersionTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ecuToVersionTableTableAdapter]));
-                    this._ecuToVersionTableTableAdapter.Transaction = null;
                 }
                 if ((this._programVersionTableTableAdapter != null)) {
                     this._programVersionTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._programVersionTableTableAdapter]));

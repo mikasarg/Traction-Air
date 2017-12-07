@@ -739,7 +739,6 @@
             this.tableAdapterManager2.customerTableTableAdapter = null;
             this.tableAdapterManager2.ecuToCustomerTableAdapter = null;
             this.tableAdapterManager2.ecuToPressureGroupTableAdapter = null;
-            this.tableAdapterManager2.ecuToVersionTableTableAdapter = null;
             this.tableAdapterManager2.mainSettingsTableTableAdapter = this.mainSettingsTableTableAdapter;
             this.tableAdapterManager2.pressureGroupsTableTableAdapter = null;
             this.tableAdapterManager2.programVersionTableTableAdapter = null;

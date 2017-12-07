@@ -95,7 +95,7 @@ namespace TractionAir
                 string speedControl = ECU_Manager.CheckString(speedControlComboBox.Text, true);
                 insert += ECU_Manager.enclose(speedControl) + ", ";
 
-                string installDate = ECU_Manager.CheckDateTime(installDateTimePicker.Text, false);
+                string installDate = ECU_Manager.CheckDateTime(installDateTimePicker.Value.ToString("dd/MM/yyyy HH:mm"), false);
                 insert += ECU_Manager.enclose(installDate) + ", ";
 
                 string notes = ECU_Manager.CheckLongString(notesRichTextbox.Text, true);

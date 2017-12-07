@@ -34,26 +34,26 @@
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableAdapterManager = new TractionAir.pressureGroupsDataSetTableAdapters.TableAdapterManager();
-            this.tableDataGridView = new System.Windows.Forms.DataGridView();
-            this.insertButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.changeButton = new System.Windows.Forms.Button();
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
-            this.tableAdapterManager1 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
+            this.pressureGroupsTableDataGridView = new System.Windows.Forms.DataGridView();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loadedOffRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unloadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
+            this.insertButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
+            this.tableAdapterManager1 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pressureGroupsDataSet
@@ -76,93 +76,33 @@
             this.tableAdapterManager.TableTableAdapter = this.tableTableAdapter;
             this.tableAdapterManager.UpdateOrder = TractionAir.pressureGroupsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // tableDataGridView
+            // pressureGroupsTableDataGridView
             // 
-            this.tableDataGridView.AllowUserToAddRows = false;
-            this.tableDataGridView.AllowUserToDeleteRows = false;
-            this.tableDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pressureGroupsTableDataGridView.AllowUserToAddRows = false;
+            this.pressureGroupsTableDataGridView.AllowUserToDeleteRows = false;
+            this.pressureGroupsTableDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableDataGridView.AutoGenerateColumns = false;
-            this.tableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.pressureGroupsTableDataGridView.AutoGenerateColumns = false;
+            this.pressureGroupsTableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.pressureGroupsTableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pressureGroupsTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.descriptionDataGridViewTextBoxColumn,
             this.loadedOnRoadDataGridViewTextBoxColumn,
             this.loadedOffRoadDataGridViewTextBoxColumn,
             this.unloadedOnRoadDataGridViewTextBoxColumn,
             this.maxTractionDataGridViewTextBoxColumn,
             this.dateModDataGridViewTextBoxColumn,
-            this.idDataGridViewTextBoxColumn});
-            this.tableDataGridView.DataSource = this.pressureGroupsTableBindingSource;
-            this.tableDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.tableDataGridView.MultiSelect = false;
-            this.tableDataGridView.Name = "tableDataGridView";
-            this.tableDataGridView.ReadOnly = true;
-            this.tableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableDataGridView.Size = new System.Drawing.Size(898, 479);
-            this.tableDataGridView.TabIndex = 1;
-            // 
-            // insertButton
-            // 
-            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.insertButton.Location = new System.Drawing.Point(304, 485);
-            this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(75, 23);
-            this.insertButton.TabIndex = 2;
-            this.insertButton.Text = "Insert";
-            this.insertButton.UseVisualStyleBackColor = true;
-            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.deleteButton.Location = new System.Drawing.Point(507, 485);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 3;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // changeButton
-            // 
-            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.changeButton.Location = new System.Drawing.Point(408, 485);
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(75, 23);
-            this.changeButton.TabIndex = 4;
-            this.changeButton.Text = "Change";
-            this.changeButton.UseVisualStyleBackColor = true;
-            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
-            // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pressureGroupsTableBindingSource
-            // 
-            this.pressureGroupsTableBindingSource.DataMember = "pressureGroupsTable";
-            this.pressureGroupsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
-            // pressureGroupsTableTableAdapter
-            // 
-            this.pressureGroupsTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.countryCodeTableTableAdapter = null;
-            this.tableAdapterManager1.customerTableTableAdapter = null;
-            this.tableAdapterManager1.ecuToCustomerTableAdapter = null;
-            this.tableAdapterManager1.ecuToPressureGroupTableAdapter = null;
-            this.tableAdapterManager1.ecuToVersionTableTableAdapter = null;
-            this.tableAdapterManager1.mainSettingsTableTableAdapter = null;
-            this.tableAdapterManager1.pressureGroupsTableTableAdapter = this.pressureGroupsTableTableAdapter;
-            this.tableAdapterManager1.programVersionTableTableAdapter = null;
-            this.tableAdapterManager1.speedControlTableTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.idColumn});
+            this.pressureGroupsTableDataGridView.DataSource = this.pressureGroupsTableBindingSource;
+            this.pressureGroupsTableDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.pressureGroupsTableDataGridView.MultiSelect = false;
+            this.pressureGroupsTableDataGridView.Name = "pressureGroupsTableDataGridView";
+            this.pressureGroupsTableDataGridView.ReadOnly = true;
+            this.pressureGroupsTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.pressureGroupsTableDataGridView.Size = new System.Drawing.Size(898, 479);
+            this.pressureGroupsTableDataGridView.TabIndex = 1;
+            this.pressureGroupsTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pressureGroupsTableDataGridView_CellDoubleClick);
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
@@ -206,13 +146,77 @@
             this.dateModDataGridViewTextBoxColumn.Name = "dateModDataGridViewTextBoxColumn";
             this.dateModDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idDataGridViewTextBoxColumn
+            // idColumn
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idColumn.DataPropertyName = "Id";
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
+            // pressureGroupsTableBindingSource
+            // 
+            this.pressureGroupsTableBindingSource.DataMember = "pressureGroupsTable";
+            this.pressureGroupsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // insertButton
+            // 
+            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.insertButton.Location = new System.Drawing.Point(304, 485);
+            this.insertButton.Name = "insertButton";
+            this.insertButton.Size = new System.Drawing.Size(75, 23);
+            this.insertButton.TabIndex = 2;
+            this.insertButton.Text = "Insert";
+            this.insertButton.UseVisualStyleBackColor = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(507, 485);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 3;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // changeButton
+            // 
+            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.changeButton.Location = new System.Drawing.Point(408, 485);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(75, 23);
+            this.changeButton.TabIndex = 4;
+            this.changeButton.Text = "Change";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
+            // pressureGroupsTableTableAdapter
+            // 
+            this.pressureGroupsTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.countryCodeTableTableAdapter = null;
+            this.tableAdapterManager1.customerTableTableAdapter = null;
+            this.tableAdapterManager1.customerToCountryTableAdapter = null;
+            this.tableAdapterManager1.ecuToCountryTableAdapter = null;
+            this.tableAdapterManager1.ecuToCustomerTableAdapter = null;
+            this.tableAdapterManager1.ecuToPressureGroupTableAdapter = null;
+            this.tableAdapterManager1.ecuToSpeedControlTableAdapter = null;
+            this.tableAdapterManager1.ecuToVersionTableAdapter = null;
+            this.tableAdapterManager1.mainSettingsTableTableAdapter = null;
+            this.tableAdapterManager1.pressureGroupsTableTableAdapter = this.pressureGroupsTableTableAdapter;
+            this.tableAdapterManager1.programVersionTableTableAdapter = null;
+            this.tableAdapterManager1.speedControlTableTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // PressureGroupsForm
             // 
@@ -222,7 +226,7 @@
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.insertButton);
-            this.Controls.Add(this.tableDataGridView);
+            this.Controls.Add(this.pressureGroupsTableDataGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PressureGroupsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -230,9 +234,9 @@
             this.Load += new System.EventHandler(this.PressureGroupsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,7 +247,7 @@
         private System.Windows.Forms.BindingSource tableBindingSource;
         private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
         private pressureGroupsDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView tableDataGridView;
+        private System.Windows.Forms.DataGridView pressureGroupsTableDataGridView;
         private System.Windows.Forms.Button insertButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button changeButton;
@@ -257,6 +261,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unloadedOnRoadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxTractionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateModDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
     }
 }
