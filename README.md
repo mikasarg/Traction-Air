@@ -1,8 +1,8 @@
 # projectWD
 
-##TRACTIONAIR DESKTOP
+## TRACTIONAIR DESKTOP
 
-######Desktop application for viewing the database of ECU settings, customers and pressure groups.
+###### Desktop application for viewing the database of ECU settings, customers and pressure groups.
 
 The entry point of the application is the TractionAirForm.cs class, which shows the mainSettings table.
 There are two main aspects to the app - the database, and interacting with the ECU through the USB port.
