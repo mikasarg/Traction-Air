@@ -153,9 +153,8 @@ namespace TractionAir.Serial_Classes
             }
             #endregion
 
-            #region Update UI           
-
-            // Update status message          
+            #region Update UI
+            // Update status message
             UpdateConnections();
             if (Properties.Settings.Default.EcuConnected)
             {
@@ -169,6 +168,8 @@ namespace TractionAir.Serial_Classes
             }
             #endregion          
         }
+
+
         private static void UpdateConnections()
         {
             // Check ports for plugged/unplugged connections

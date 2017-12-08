@@ -38,6 +38,8 @@
             this.address2Textbox = new System.Windows.Forms.TextBox();
             this.address1Textbox = new System.Windows.Forms.TextBox();
             this.countryComboBox = new System.Windows.Forms.ComboBox();
+            this.countryCodeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.label6 = new System.Windows.Forms.Label();
             this.companyTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,12 +47,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.countryCodeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countryCodeTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.countryCodeTableTableAdapter();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // cancelButton
@@ -125,12 +125,23 @@
             // 
             this.countryComboBox.DataSource = this.countryCodeTableBindingSource;
             this.countryComboBox.DisplayMember = "Code";
+            this.countryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.countryComboBox.FormattingEnabled = true;
             this.countryComboBox.Location = new System.Drawing.Point(87, 135);
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(68, 21);
             this.countryComboBox.TabIndex = 4;
             this.countryComboBox.ValueMember = "Id";
+            // 
+            // countryCodeTableBindingSource
+            // 
+            this.countryCodeTableBindingSource.DataMember = "countryCodeTable";
+            this.countryCodeTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label6
             // 
@@ -193,16 +204,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Address 1:";
             // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // countryCodeTableBindingSource
-            // 
-            this.countryCodeTableBindingSource.DataMember = "countryCodeTable";
-            this.countryCodeTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
             // countryCodeTableTableAdapter
             // 
             this.countryCodeTableTableAdapter.ClearBeforeFill = true;
@@ -225,8 +226,8 @@
             this.Load += new System.EventHandler(this.changeOwnerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -125,6 +125,7 @@
             // 
             this.countryComboBox.DataSource = this.countryCodeTableBindingSource;
             this.countryComboBox.DisplayMember = "Code";
+            this.countryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.countryComboBox.FormattingEnabled = true;
             this.countryComboBox.Location = new System.Drawing.Point(87, 135);
             this.countryComboBox.Name = "countryComboBox";

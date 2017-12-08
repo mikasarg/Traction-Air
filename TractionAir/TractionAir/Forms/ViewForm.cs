@@ -38,6 +38,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ViewForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.speedControlTable' table. You can move, or remove it, as needed.
+            this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);

@@ -403,7 +403,7 @@ namespace TractionAir
         /// Converts an array of strings after turning it into a string of decimals
         /// </summary>
         /// <param name="input"></param>
-        public static string convertToDecimal(string[] input)
+        public static string convertToDecimal(List<string> input)
         {
             string output = "";
             foreach (string item in input)

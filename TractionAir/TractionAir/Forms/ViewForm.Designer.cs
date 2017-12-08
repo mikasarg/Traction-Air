@@ -119,6 +119,8 @@
             this.buildDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.distanceTextbox = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
+            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
@@ -133,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // eCUdataBindingSource
@@ -334,7 +337,7 @@
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(70, 21);
             this.countryComboBox.TabIndex = 15;
-            this.countryComboBox.ValueMember = "Code";
+            this.countryComboBox.ValueMember = "Id";
             // 
             // countryCodeTableBindingSource
             // 
@@ -482,8 +485,8 @@
             // 
             // speedControlComboBox
             // 
-            this.speedControlComboBox.DataSource = this.mainSettingsTableBindingSource1;
-            this.speedControlComboBox.DisplayMember = "SpeedStages";
+            this.speedControlComboBox.DataSource = this.speedControlTableBindingSource;
+            this.speedControlComboBox.DisplayMember = "SpeedControl";
             this.speedControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.speedControlComboBox.Enabled = false;
             this.speedControlComboBox.FormattingEnabled = true;
@@ -491,7 +494,7 @@
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
             this.speedControlComboBox.TabIndex = 21;
-            this.speedControlComboBox.ValueMember = "SpeedStages";
+            this.speedControlComboBox.ValueMember = "Id";
             // 
             // label21
             // 
@@ -603,7 +606,7 @@
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 4;
-            this.pressureGroupComboBox.ValueMember = "Description";
+            this.pressureGroupComboBox.ValueMember = "Id";
             // 
             // customerComboBox
             // 
@@ -616,7 +619,7 @@
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 5;
-            this.customerComboBox.ValueMember = "Company";
+            this.customerComboBox.ValueMember = "Id";
             // 
             // programVersionComboBox
             // 
@@ -629,7 +632,7 @@
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
             this.programVersionComboBox.TabIndex = 3;
-            this.programVersionComboBox.ValueMember = "Version";
+            this.programVersionComboBox.ValueMember = "Id";
             // 
             // programVersionTableBindingSource
             // 
@@ -877,6 +880,15 @@
             this.label37.TabIndex = 245;
             this.label37.Text = "Distance (km)";
             // 
+            // speedControlTableBindingSource
+            // 
+            this.speedControlTableBindingSource.DataMember = "speedControlTable";
+            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // speedControlTableTableAdapter
+            // 
+            this.speedControlTableTableAdapter.ClearBeforeFill = true;
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -973,6 +985,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1068,5 +1081,7 @@
         private System.Windows.Forms.DateTimePicker buildDateTimePicker;
         private System.Windows.Forms.TextBox distanceTextbox;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.BindingSource speedControlTableBindingSource;
+        private ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter speedControlTableTableAdapter;
     }
 }

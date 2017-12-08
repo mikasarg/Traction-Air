@@ -360,7 +360,7 @@
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(70, 21);
             this.countryComboBox.TabIndex = 15;
-            this.countryComboBox.ValueMember = "Code";
+            this.countryComboBox.ValueMember = "Id";
             this.countryComboBox.SelectedIndexChanged += new System.EventHandler(this.countryComboBox_SelectedIndexChanged);
             // 
             // label30
@@ -512,7 +512,7 @@
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
             this.speedControlComboBox.TabIndex = 21;
-            this.speedControlComboBox.ValueMember = "SpeedControl";
+            this.speedControlComboBox.ValueMember = "Id";
             this.speedControlComboBox.TextChanged += new System.EventHandler(this.speedControlComboBox_SelectedIndexChanged);
             // 
             // speedControlTableBindingSource
@@ -629,7 +629,7 @@
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 4;
-            this.pressureGroupComboBox.ValueMember = "Description";
+            this.pressureGroupComboBox.ValueMember = "Id";
             this.pressureGroupComboBox.SelectionChangeCommitted += new System.EventHandler(this.pressureGroupComboBox_SelectedIndexChanged);
             // 
             // customerComboBox
@@ -642,7 +642,7 @@
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 5;
-            this.customerComboBox.ValueMember = "Company";
+            this.customerComboBox.ValueMember = "Id";
             this.customerComboBox.SelectedIndexChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
             // 
             // programVersionComboBox
@@ -655,7 +655,7 @@
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
             this.programVersionComboBox.TabIndex = 3;
-            this.programVersionComboBox.ValueMember = "Version";
+            this.programVersionComboBox.ValueMember = "Id";
             this.programVersionComboBox.SelectedIndexChanged += new System.EventHandler(this.programVersionComboBox_SelectedIndexChanged);
             // 
             // programVersionTableBindingSource
