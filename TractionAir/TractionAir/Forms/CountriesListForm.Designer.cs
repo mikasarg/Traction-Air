@@ -98,7 +98,7 @@
             this.countryCodeTableDataGridView.ReadOnly = true;
             this.countryCodeTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.countryCodeTableDataGridView.Size = new System.Drawing.Size(314, 217);
-            this.countryCodeTableDataGridView.TabIndex = 1;
+            this.countryCodeTableDataGridView.TabIndex = 0;
             this.countryCodeTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.countryCodeTableDataGridView_CellDoubleClick);
             // 
             // codeDataGridViewTextBoxColumn
@@ -129,7 +129,7 @@
             this.insertButton.Location = new System.Drawing.Point(39, 224);
             this.insertButton.Name = "insertButton";
             this.insertButton.Size = new System.Drawing.Size(75, 23);
-            this.insertButton.TabIndex = 2;
+            this.insertButton.TabIndex = 1;
             this.insertButton.Text = "Insert";
             this.insertButton.UseVisualStyleBackColor = true;
             this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
@@ -151,7 +151,7 @@
             this.changeButton.Location = new System.Drawing.Point(120, 224);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(75, 23);
-            this.changeButton.TabIndex = 4;
+            this.changeButton.TabIndex = 2;
             this.changeButton.Text = "Change";
             this.changeButton.UseVisualStyleBackColor = true;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);

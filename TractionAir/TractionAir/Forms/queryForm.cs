@@ -30,7 +30,6 @@ namespace TractionAir
         /// <param name="e"></param>
         private void queryButton_Click(object sender, EventArgs e)
         {
-            //TODO query the database
             bool conditions = false;
             string query = "SELECT * FROM mainSettingsTable WHERE ";
 
@@ -117,7 +116,7 @@ namespace TractionAir
                 query += "PT8Serial LIKE '%" + pt8CodeTextbox.Text + "%' AND ";
             }
 
-            if (!conditions)
+            if (!conditions) //nothing entered
             {
                 clearButton_Click(null, null);
             }
@@ -164,7 +163,6 @@ namespace TractionAir
                 MessageBox.Show(sqlex.Message, "Error");
                 return;
             }
-            dgv.DataSource = mainSettingsTable;
 
             this.Close();
         }

@@ -397,5 +397,27 @@ namespace TractionAir
             return code;
         }
         #endregion
+
+        #region ASCII Conversion
+        /// <summary>
+        /// Converts an array of strings after turning it into a string of decimals
+        /// </summary>
+        /// <param name="input"></param>
+        public static string convertToDecimal(string[] input)
+        {
+            string output = "";
+            foreach (string item in input)
+            {
+                char[] itemAsChars = item.ToCharArray();
+                foreach (var value in itemAsChars)
+                {
+                    output += (decimal)value;
+                }
+                output += ",";
+            }
+            output += "13";
+            return output;
+        }
+        #endregion
     }
 }

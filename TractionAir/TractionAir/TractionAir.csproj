@@ -104,6 +104,12 @@
     <Compile Include="Forms\CountriesListForm.Designer.cs">
       <DependentUpon>CountriesListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ecuConnectedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ecuConnectedForm.Designer.cs">
+      <DependentUpon>ecuConnectedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\insertCountryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountriesListForm.resx">
       <DependentUpon>CountriesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ecuConnectedForm.resx">
+      <DependentUpon>ecuConnectedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\insertCountryForm.resx">
       <DependentUpon>insertCountryForm.cs</DependentUpon>

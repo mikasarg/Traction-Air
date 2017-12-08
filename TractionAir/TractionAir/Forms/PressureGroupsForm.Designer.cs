@@ -101,7 +101,7 @@
             this.pressureGroupsTableDataGridView.ReadOnly = true;
             this.pressureGroupsTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.pressureGroupsTableDataGridView.Size = new System.Drawing.Size(898, 479);
-            this.pressureGroupsTableDataGridView.TabIndex = 1;
+            this.pressureGroupsTableDataGridView.TabIndex = 0;
             this.pressureGroupsTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pressureGroupsTableDataGridView_CellDoubleClick);
             // 
             // descriptionDataGridViewTextBoxColumn
@@ -170,7 +170,7 @@
             this.insertButton.Location = new System.Drawing.Point(304, 485);
             this.insertButton.Name = "insertButton";
             this.insertButton.Size = new System.Drawing.Size(75, 23);
-            this.insertButton.TabIndex = 2;
+            this.insertButton.TabIndex = 1;
             this.insertButton.Text = "Insert";
             this.insertButton.UseVisualStyleBackColor = true;
             this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
@@ -192,7 +192,7 @@
             this.changeButton.Location = new System.Drawing.Point(408, 485);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(75, 23);
-            this.changeButton.TabIndex = 4;
+            this.changeButton.TabIndex = 2;
             this.changeButton.Text = "Change";
             this.changeButton.UseVisualStyleBackColor = true;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);

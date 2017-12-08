@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq.Expressions;
 using System.Threading;
+using TractionAir.Forms;
 
 namespace TractionAir.Serial_Classes
 {
@@ -159,6 +160,8 @@ namespace TractionAir.Serial_Classes
             if (Properties.Settings.Default.EcuConnected)
             {
                 EcuStatusText = "ECU connected on " + Properties.Settings.Default.ConnectionPort;
+                ecuConnectedForm ecuConnected = new ecuConnectedForm();
+                ecuConnected.ShowDialog();
             }
             else //ECU disconnected
             {

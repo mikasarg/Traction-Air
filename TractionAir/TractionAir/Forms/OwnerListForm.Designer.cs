@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OwnerListForm));
             this.customerTableDataGridView = new System.Windows.Forms.DataGridView();
-            this.changeButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.insertButton = new System.Windows.Forms.Button();
-            this.customerTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.customerTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter();
-            this.tableAdapterManager = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.companyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +39,13 @@
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.insertButton = new System.Windows.Forms.Button();
+            this.customerTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter();
+            this.tableAdapterManager = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -77,72 +77,8 @@
             this.customerTableDataGridView.ReadOnly = true;
             this.customerTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customerTableDataGridView.Size = new System.Drawing.Size(830, 425);
-            this.customerTableDataGridView.TabIndex = 1;
+            this.customerTableDataGridView.TabIndex = 0;
             this.customerTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customerTableDataGridView_CellDoubleClick);
-            // 
-            // changeButton
-            // 
-            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.changeButton.Location = new System.Drawing.Point(380, 441);
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(75, 23);
-            this.changeButton.TabIndex = 7;
-            this.changeButton.Text = "Change";
-            this.changeButton.UseVisualStyleBackColor = true;
-            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.deleteButton.Location = new System.Drawing.Point(479, 441);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 6;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // insertButton
-            // 
-            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.insertButton.Location = new System.Drawing.Point(276, 441);
-            this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(75, 23);
-            this.insertButton.TabIndex = 5;
-            this.insertButton.Text = "Insert";
-            this.insertButton.UseVisualStyleBackColor = true;
-            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
-            // 
-            // customerTableBindingSource
-            // 
-            this.customerTableBindingSource.DataMember = "customerTable";
-            this.customerTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customerTableTableAdapter
-            // 
-            this.customerTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.countryCodeTableTableAdapter = null;
-            this.tableAdapterManager.customerTableTableAdapter = this.customerTableTableAdapter;
-            this.tableAdapterManager.customerToCountryTableAdapter = null;
-            this.tableAdapterManager.ecuToCountryTableAdapter = null;
-            this.tableAdapterManager.ecuToCustomerTableAdapter = null;
-            this.tableAdapterManager.ecuToPressureGroupTableAdapter = null;
-            this.tableAdapterManager.ecuToSpeedControlTableAdapter = null;
-            this.tableAdapterManager.ecuToVersionTableAdapter = null;
-            this.tableAdapterManager.mainSettingsTableTableAdapter = null;
-            this.tableAdapterManager.pressureGroupsTableTableAdapter = null;
-            this.tableAdapterManager.programVersionTableTableAdapter = null;
-            this.tableAdapterManager.speedControlTableTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // companyDataGridViewTextBoxColumn
             // 
@@ -200,6 +136,70 @@
             this.idColumn.Name = "idColumn";
             this.idColumn.ReadOnly = true;
             this.idColumn.Visible = false;
+            // 
+            // customerTableBindingSource
+            // 
+            this.customerTableBindingSource.DataMember = "customerTable";
+            this.customerTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // changeButton
+            // 
+            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.changeButton.Location = new System.Drawing.Point(380, 441);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(75, 23);
+            this.changeButton.TabIndex = 2;
+            this.changeButton.Text = "Change";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(479, 441);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 3;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // insertButton
+            // 
+            this.insertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.insertButton.Location = new System.Drawing.Point(276, 441);
+            this.insertButton.Name = "insertButton";
+            this.insertButton.Size = new System.Drawing.Size(75, 23);
+            this.insertButton.TabIndex = 1;
+            this.insertButton.Text = "Insert";
+            this.insertButton.UseVisualStyleBackColor = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
+            // 
+            // customerTableTableAdapter
+            // 
+            this.customerTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.countryCodeTableTableAdapter = null;
+            this.tableAdapterManager.customerTableTableAdapter = this.customerTableTableAdapter;
+            this.tableAdapterManager.customerToCountryTableAdapter = null;
+            this.tableAdapterManager.ecuToCountryTableAdapter = null;
+            this.tableAdapterManager.ecuToCustomerTableAdapter = null;
+            this.tableAdapterManager.ecuToPressureGroupTableAdapter = null;
+            this.tableAdapterManager.ecuToSpeedControlTableAdapter = null;
+            this.tableAdapterManager.ecuToVersionTableAdapter = null;
+            this.tableAdapterManager.mainSettingsTableTableAdapter = null;
+            this.tableAdapterManager.pressureGroupsTableTableAdapter = null;
+            this.tableAdapterManager.programVersionTableTableAdapter = null;
+            this.tableAdapterManager.speedControlTableTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // OwnerListForm
             // 
