@@ -67,5 +67,7 @@ namespace TractionAir
         public bool EnableGPSOverride { get; set; }
 
         public int StepUpDelay { get; set; }
+
+        public int Distance { get; set; }
     }
 }

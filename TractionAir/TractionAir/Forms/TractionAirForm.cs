@@ -254,7 +254,7 @@ namespace TractionAir
         /// <param name="e"></param>
         private void queryButton_Click(object sender, EventArgs e)
         {
-            queryForm query = new queryForm();
+            queryForm query = new queryForm(mainSettingsTableDataGridView);
             query.ShowDialog();
         }
         #endregion

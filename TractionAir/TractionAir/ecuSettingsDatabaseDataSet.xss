@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:countryCodeTable" ZOrder="27" X="392" Y="70" Height="115" Width="250" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
     <Shape ID="DesignTable:customerTable" ZOrder="26" X="392" Y="255" Height="210" Width="230" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:mainSettingsTable" ZOrder="25" X="70" Y="70" Height="286" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
+    <Shape ID="DesignTable:mainSettingsTable" ZOrder="25" X="70" Y="70" Height="305" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:pressureGroupsTable" ZOrder="24" X="392" Y="535" Height="191" Width="267" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:ecuToCustomer" ZOrder="20" X="729" Y="70" Height="134" Width="235" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:ecuToPressureGroup" ZOrder="19" X="1034" Y="70" Height="134" Width="265" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />

@@ -147,7 +147,9 @@ namespace TractionAir
 
                 insert += ECU_Manager.CheckBit(gpsButtonCheckBox.Checked) + ", ";
 
-                insert += ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked) + ");";
+                insert += ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked) + ", ";
+
+                insert += ECU_Manager.CheckInt(distanceTextbox.Text, true) + ");";
             }
             catch(InvalidOperationException ioex)
             {

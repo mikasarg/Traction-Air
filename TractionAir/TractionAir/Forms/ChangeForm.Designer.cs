@@ -120,6 +120,8 @@
             this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
             this.installDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.buildDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.distanceTextbox = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -884,11 +886,30 @@
             this.buildDateTimePicker.Value = new System.DateTime(2017, 12, 6, 15, 43, 45, 0);
             this.buildDateTimePicker.ValueChanged += new System.EventHandler(this.buildDateTimePicker_TextChanged);
             // 
+            // distanceTextbox
+            // 
+            this.distanceTextbox.Location = new System.Drawing.Point(404, 144);
+            this.distanceTextbox.Name = "distanceTextbox";
+            this.distanceTextbox.Size = new System.Drawing.Size(160, 20);
+            this.distanceTextbox.TabIndex = 246;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(326, 147);
+            this.label37.Name = "label37";
+            this.label37.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label37.Size = new System.Drawing.Size(72, 13);
+            this.label37.TabIndex = 247;
+            this.label37.Text = "Distance (km)";
+            // 
             // ChangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 584);
+            this.Controls.Add(this.distanceTextbox);
+            this.Controls.Add(this.label37);
             this.Controls.Add(this.installDateTimePicker);
             this.Controls.Add(this.buildDateTimePicker);
             this.Controls.Add(this.pt8SerialTextbox);
@@ -1078,5 +1099,7 @@
         private ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter speedControlTableTableAdapter;
         private System.Windows.Forms.DateTimePicker installDateTimePicker;
         private System.Windows.Forms.DateTimePicker buildDateTimePicker;
+        private System.Windows.Forms.TextBox distanceTextbox;
+        private System.Windows.Forms.Label label37;
     }
 }

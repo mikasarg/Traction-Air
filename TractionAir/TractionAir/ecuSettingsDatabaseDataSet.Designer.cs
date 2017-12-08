@@ -1500,6 +1500,8 @@ namespace TractionAir {
             
             private global::System.Data.DataColumn columnEnableGPSOverride;
             
+            private global::System.Data.DataColumn columnDistance;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mainSettingsTableDataTable() {
@@ -1775,6 +1777,14 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DistanceColumn {
+                get {
+                    return this.columnDistance;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1840,7 +1850,8 @@ namespace TractionAir {
                         bool MaxTractionBeep, 
                         short StepUpDelay, 
                         bool EnableGPSButtons, 
-                        bool EnableGPSOverride) {
+                        bool EnableGPSOverride, 
+                        int Distance) {
                 mainSettingsTableRow rowmainSettingsTableRow = ((mainSettingsTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1872,7 +1883,8 @@ namespace TractionAir {
                         MaxTractionBeep,
                         StepUpDelay,
                         EnableGPSButtons,
-                        EnableGPSOverride};
+                        EnableGPSOverride,
+                        Distance};
                 if ((parentcustomerTableRowBycustomerFK != null)) {
                     columnValuesArray[0] = parentcustomerTableRowBycustomerFK[0];
                 }
@@ -1938,6 +1950,7 @@ namespace TractionAir {
                 this.columnStepUpDelay = base.Columns["StepUpDelay"];
                 this.columnEnableGPSButtons = base.Columns["EnableGPSButtons"];
                 this.columnEnableGPSOverride = base.Columns["EnableGPSOverride"];
+                this.columnDistance = base.Columns["Distance"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2003,6 +2016,8 @@ namespace TractionAir {
                 base.Columns.Add(this.columnEnableGPSButtons);
                 this.columnEnableGPSOverride = new global::System.Data.DataColumn("EnableGPSOverride", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnableGPSOverride);
+                this.columnDistance = new global::System.Data.DataColumn("Distance", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDistance);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnBoardCode}, true));
                 this.columnOwner.AllowDBNull = false;
@@ -5617,6 +5632,22 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Distance {
+                get {
+                    try {
+                        return ((int)(this[this.tablemainSettingsTable.DistanceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Distance\' in table \'mainSettingsTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainSettingsTable.DistanceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public countryCodeTableRow countryCodeTableRow {
                 get {
                     return ((countryCodeTableRow)(this.GetParentRow(this.Table.ParentRelations["countryCodeFK"])));
@@ -5887,6 +5918,18 @@ namespace TractionAir {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetEnableGPSOverrideNull() {
                 this[this.tablemainSettingsTable.EnableGPSOverrideColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDistanceNull() {
+                return this.IsNull(this.tablemainSettingsTable.DistanceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDistanceNull() {
+                this[this.tablemainSettingsTable.DistanceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7985,6 +8028,7 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
             tableMapping.ColumnMappings.Add("StepUpDelay", "StepUpDelay");
             tableMapping.ColumnMappings.Add("EnableGPSButtons", "EnableGPSButtons");
             tableMapping.ColumnMappings.Add("EnableGPSOverride", "EnableGPSOverride");
+            tableMapping.ColumnMappings.Add("Distance", "Distance");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -8018,7 +8062,8 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
                 "ractionBeep] IS NULL) OR ([MaxTractionBeep] = @Original_MaxTractionBeep)) AND ((" +
                 "@IsNull_SerialCodeBot = 1 AND [SerialCodeBot] IS NULL) OR ([SerialCodeBot] = @Or" +
                 "iginal_SerialCodeBot)) AND ((@IsNull_StepUpDelay = 1 AND [StepUpDelay] IS NULL) " +
-                "OR ([StepUpDelay] = @Original_StepUpDelay)))";
+                "OR ([StepUpDelay] = @Original_StepUpDelay)) AND ((@IsNull_Distance = 1 AND [Dist" +
+                "ance] IS NULL) OR ([Distance] = @Original_Distance)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8069,10 +8114,12 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StepUpDelay", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [mainSettingsTable] ([Owner], [Country], [Version], [Description], [Notes], [BoardCode], [BuildDate], [DateMod], [PressureGroup], [SpeedStages], [VehicleRef], [LoadedOffRoad], [LoadedOnRoad], [MaxTraction], [PT1Serial], [PT2Serial], [PT3Serial], [PT4Serial], [PT5Serial], [PT6Serial], [PT7Serial], [PT8Serial], [PressureCell], [SerialNumber], [UnloadedOnRoad], [EnableGPSButtons], [EnableGPSOverride], [MaxTractionBeep], [SerialCodeBot], [StepUpDelay]) VALUES (@Owner, @Country, @Version, @Description, @Notes, @BoardCode, @BuildDate, @DateMod, @PressureGroup, @SpeedStages, @VehicleRef, @LoadedOffRoad, @LoadedOnRoad, @MaxTraction, @PT1Serial, @PT2Serial, @PT3Serial, @PT4Serial, @PT5Serial, @PT6Serial, @PT7Serial, @PT8Serial, @PressureCell, @SerialNumber, @UnloadedOnRoad, @EnableGPSButtons, @EnableGPSOverride, @MaxTractionBeep, @SerialCodeBot, @StepUpDelay);
-SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay FROM mainSettingsTable WHERE (BoardCode = @BoardCode)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [mainSettingsTable] ([Owner], [Country], [Version], [Description], [Notes], [BoardCode], [BuildDate], [DateMod], [PressureGroup], [SpeedStages], [VehicleRef], [LoadedOffRoad], [LoadedOnRoad], [MaxTraction], [PT1Serial], [PT2Serial], [PT3Serial], [PT4Serial], [PT5Serial], [PT6Serial], [PT7Serial], [PT8Serial], [PressureCell], [SerialNumber], [UnloadedOnRoad], [EnableGPSButtons], [EnableGPSOverride], [MaxTractionBeep], [SerialCodeBot], [StepUpDelay], [Distance]) VALUES (@Owner, @Country, @Version, @Description, @Notes, @BoardCode, @BuildDate, @DateMod, @PressureGroup, @SpeedStages, @VehicleRef, @LoadedOffRoad, @LoadedOnRoad, @MaxTraction, @PT1Serial, @PT2Serial, @PT3Serial, @PT4Serial, @PT5Serial, @PT6Serial, @PT7Serial, @PT8Serial, @PressureCell, @SerialNumber, @UnloadedOnRoad, @EnableGPSButtons, @EnableGPSOverride, @MaxTractionBeep, @SerialCodeBot, @StepUpDelay, @Distance);
+SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance FROM mainSettingsTable WHERE (BoardCode = @BoardCode)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8104,6 +8151,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxTractionBeep", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTractionBeep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [mainSettingsTable] SET [Owner] = @Owner, [Country] = @Country, [Version] " +
@@ -8117,42 +8165,44 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                 ", [SerialNumber] = @SerialNumber, [UnloadedOnRoad] = @UnloadedOnRoad, [EnableGPS" +
                 "Buttons] = @EnableGPSButtons, [EnableGPSOverride] = @EnableGPSOverride, [MaxTrac" +
                 "tionBeep] = @MaxTractionBeep, [SerialCodeBot] = @SerialCodeBot, [StepUpDelay] = " +
-                "@StepUpDelay WHERE (([Owner] = @Original_Owner) AND ([Country] = @Original_Count" +
-                "ry) AND ([Version] = @Original_Version) AND ((@IsNull_Description = 1 AND [Descr" +
-                "iption] IS NULL) OR ([Description] = @Original_Description)) AND ([BoardCode] = " +
-                "@Original_BoardCode) AND ([BuildDate] = @Original_BuildDate) AND ([DateMod] = @O" +
-                "riginal_DateMod) AND ([PressureGroup] = @Original_PressureGroup) AND ([SpeedStag" +
-                "es] = @Original_SpeedStages) AND ([VehicleRef] = @Original_VehicleRef) AND ((@Is" +
-                "Null_LoadedOffRoad = 1 AND [LoadedOffRoad] IS NULL) OR ([LoadedOffRoad] = @Origi" +
-                "nal_LoadedOffRoad)) AND ((@IsNull_LoadedOnRoad = 1 AND [LoadedOnRoad] IS NULL) O" +
-                "R ([LoadedOnRoad] = @Original_LoadedOnRoad)) AND ((@IsNull_MaxTraction = 1 AND [" +
-                "MaxTraction] IS NULL) OR ([MaxTraction] = @Original_MaxTraction)) AND ((@IsNull_" +
-                "PT1Serial = 1 AND [PT1Serial] IS NULL) OR ([PT1Serial] = @Original_PT1Serial)) A" +
-                "ND ((@IsNull_PT2Serial = 1 AND [PT2Serial] IS NULL) OR ([PT2Serial] = @Original_" +
-                "PT2Serial)) AND ((@IsNull_PT3Serial = 1 AND [PT3Serial] IS NULL) OR ([PT3Serial]" +
-                " = @Original_PT3Serial)) AND ((@IsNull_PT4Serial = 1 AND [PT4Serial] IS NULL) OR" +
-                " ([PT4Serial] = @Original_PT4Serial)) AND ((@IsNull_PT5Serial = 1 AND [PT5Serial" +
-                "] IS NULL) OR ([PT5Serial] = @Original_PT5Serial)) AND ((@IsNull_PT6Serial = 1 A" +
-                "ND [PT6Serial] IS NULL) OR ([PT6Serial] = @Original_PT6Serial)) AND ((@IsNull_PT" +
-                "7Serial = 1 AND [PT7Serial] IS NULL) OR ([PT7Serial] = @Original_PT7Serial)) AND" +
-                " ((@IsNull_PT8Serial = 1 AND [PT8Serial] IS NULL) OR ([PT8Serial] = @Original_PT" +
-                "8Serial)) AND ((@IsNull_PressureCell = 1 AND [PressureCell] IS NULL) OR ([Pressu" +
-                "reCell] = @Original_PressureCell)) AND ((@IsNull_SerialNumber = 1 AND [SerialNum" +
-                "ber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Unload" +
-                "edOnRoad = 1 AND [UnloadedOnRoad] IS NULL) OR ([UnloadedOnRoad] = @Original_Unlo" +
-                "adedOnRoad)) AND ((@IsNull_EnableGPSButtons = 1 AND [EnableGPSButtons] IS NULL) " +
-                "OR ([EnableGPSButtons] = @Original_EnableGPSButtons)) AND ((@IsNull_EnableGPSOve" +
-                "rride = 1 AND [EnableGPSOverride] IS NULL) OR ([EnableGPSOverride] = @Original_E" +
-                "nableGPSOverride)) AND ((@IsNull_MaxTractionBeep = 1 AND [MaxTractionBeep] IS NU" +
-                "LL) OR ([MaxTractionBeep] = @Original_MaxTractionBeep)) AND ((@IsNull_SerialCode" +
-                "Bot = 1 AND [SerialCodeBot] IS NULL) OR ([SerialCodeBot] = @Original_SerialCodeB" +
-                "ot)) AND ((@IsNull_StepUpDelay = 1 AND [StepUpDelay] IS NULL) OR ([StepUpDelay] " +
-                "= @Original_StepUpDelay)));\r\nSELECT Owner, Country, Version, Description, Notes," +
-                " BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOf" +
-                "fRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT" +
-                "5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOn" +
-                "Road, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepU" +
-                "pDelay FROM mainSettingsTable WHERE (BoardCode = @BoardCode)";
+                "@StepUpDelay, [Distance] = @Distance WHERE (([Owner] = @Original_Owner) AND ([Co" +
+                "untry] = @Original_Country) AND ([Version] = @Original_Version) AND ((@IsNull_De" +
+                "scription = 1 AND [Description] IS NULL) OR ([Description] = @Original_Descripti" +
+                "on)) AND ([BoardCode] = @Original_BoardCode) AND ([BuildDate] = @Original_BuildD" +
+                "ate) AND ([DateMod] = @Original_DateMod) AND ([PressureGroup] = @Original_Pressu" +
+                "reGroup) AND ([SpeedStages] = @Original_SpeedStages) AND ([VehicleRef] = @Origin" +
+                "al_VehicleRef) AND ((@IsNull_LoadedOffRoad = 1 AND [LoadedOffRoad] IS NULL) OR (" +
+                "[LoadedOffRoad] = @Original_LoadedOffRoad)) AND ((@IsNull_LoadedOnRoad = 1 AND [" +
+                "LoadedOnRoad] IS NULL) OR ([LoadedOnRoad] = @Original_LoadedOnRoad)) AND ((@IsNu" +
+                "ll_MaxTraction = 1 AND [MaxTraction] IS NULL) OR ([MaxTraction] = @Original_MaxT" +
+                "raction)) AND ((@IsNull_PT1Serial = 1 AND [PT1Serial] IS NULL) OR ([PT1Serial] =" +
+                " @Original_PT1Serial)) AND ((@IsNull_PT2Serial = 1 AND [PT2Serial] IS NULL) OR (" +
+                "[PT2Serial] = @Original_PT2Serial)) AND ((@IsNull_PT3Serial = 1 AND [PT3Serial] " +
+                "IS NULL) OR ([PT3Serial] = @Original_PT3Serial)) AND ((@IsNull_PT4Serial = 1 AND" +
+                " [PT4Serial] IS NULL) OR ([PT4Serial] = @Original_PT4Serial)) AND ((@IsNull_PT5S" +
+                "erial = 1 AND [PT5Serial] IS NULL) OR ([PT5Serial] = @Original_PT5Serial)) AND (" +
+                "(@IsNull_PT6Serial = 1 AND [PT6Serial] IS NULL) OR ([PT6Serial] = @Original_PT6S" +
+                "erial)) AND ((@IsNull_PT7Serial = 1 AND [PT7Serial] IS NULL) OR ([PT7Serial] = @" +
+                "Original_PT7Serial)) AND ((@IsNull_PT8Serial = 1 AND [PT8Serial] IS NULL) OR ([P" +
+                "T8Serial] = @Original_PT8Serial)) AND ((@IsNull_PressureCell = 1 AND [PressureCe" +
+                "ll] IS NULL) OR ([PressureCell] = @Original_PressureCell)) AND ((@IsNull_SerialN" +
+                "umber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumbe" +
+                "r)) AND ((@IsNull_UnloadedOnRoad = 1 AND [UnloadedOnRoad] IS NULL) OR ([Unloaded" +
+                "OnRoad] = @Original_UnloadedOnRoad)) AND ((@IsNull_EnableGPSButtons = 1 AND [Ena" +
+                "bleGPSButtons] IS NULL) OR ([EnableGPSButtons] = @Original_EnableGPSButtons)) AN" +
+                "D ((@IsNull_EnableGPSOverride = 1 AND [EnableGPSOverride] IS NULL) OR ([EnableGP" +
+                "SOverride] = @Original_EnableGPSOverride)) AND ((@IsNull_MaxTractionBeep = 1 AND" +
+                " [MaxTractionBeep] IS NULL) OR ([MaxTractionBeep] = @Original_MaxTractionBeep)) " +
+                "AND ((@IsNull_SerialCodeBot = 1 AND [SerialCodeBot] IS NULL) OR ([SerialCodeBot]" +
+                " = @Original_SerialCodeBot)) AND ((@IsNull_StepUpDelay = 1 AND [StepUpDelay] IS " +
+                "NULL) OR ([StepUpDelay] = @Original_StepUpDelay)) AND ((@IsNull_Distance = 1 AND" +
+                " [Distance] IS NULL) OR ([Distance] = @Original_Distance)));\r\nSELECT Owner, Coun" +
+                "try, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, " +
+                "SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT" +
+                "2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, Press" +
+                "ureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxT" +
+                "ractionBeep, SerialCodeBot, StepUpDelay, Distance FROM mainSettingsTable WHERE (" +
+                "BoardCode = @BoardCode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8184,6 +8234,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxTractionBeep", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTractionBeep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Version", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8233,6 +8284,8 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StepUpDelay", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8248,7 +8301,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay FROM mainSettingsTable";
+            this._commandCollection[0].CommandText = @"SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance FROM mainSettingsTable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8338,7 +8391,8 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     global::System.Nullable<bool> Original_EnableGPSOverride, 
                     global::System.Nullable<bool> Original_MaxTractionBeep, 
                     string Original_SerialCodeBot, 
-                    global::System.Nullable<short> Original_StepUpDelay) {
+                    global::System.Nullable<short> Original_StepUpDelay, 
+                    global::System.Nullable<int> Original_Distance) {
             if ((Original_Owner == null)) {
                 throw new global::System.ArgumentNullException("Original_Owner");
             }
@@ -8538,6 +8592,14 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                 this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
+            if ((Original_Distance.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((int)(Original_Distance.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8588,7 +8650,8 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     global::System.Nullable<bool> EnableGPSOverride, 
                     global::System.Nullable<bool> MaxTractionBeep, 
                     string SerialCodeBot, 
-                    global::System.Nullable<short> StepUpDelay) {
+                    global::System.Nullable<short> StepUpDelay, 
+                    global::System.Nullable<int> Distance) {
             if ((Owner == null)) {
                 throw new global::System.ArgumentNullException("Owner");
             }
@@ -8754,6 +8817,12 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             else {
                 this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
+            if ((Distance.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((int)(Distance.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8805,6 +8874,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     global::System.Nullable<bool> MaxTractionBeep, 
                     string SerialCodeBot, 
                     global::System.Nullable<short> StepUpDelay, 
+                    global::System.Nullable<int> Distance, 
                     string Original_Owner, 
                     string Original_Country, 
                     string Original_Version, 
@@ -8833,7 +8903,8 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     global::System.Nullable<bool> Original_EnableGPSOverride, 
                     global::System.Nullable<bool> Original_MaxTractionBeep, 
                     string Original_SerialCodeBot, 
-                    global::System.Nullable<short> Original_StepUpDelay) {
+                    global::System.Nullable<short> Original_StepUpDelay, 
+                    global::System.Nullable<int> Original_Distance) {
             if ((Owner == null)) {
                 throw new global::System.ArgumentNullException("Owner");
             }
@@ -8999,204 +9070,218 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             else {
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
+            if ((Distance.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Distance.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
             if ((Original_Owner == null)) {
                 throw new global::System.ArgumentNullException("Original_Owner");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Owner));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Owner));
             }
             if ((Original_Country == null)) {
                 throw new global::System.ArgumentNullException("Original_Country");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Country));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Country));
             }
             if ((Original_Version == null)) {
                 throw new global::System.ArgumentNullException("Original_Version");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Version));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Version));
             }
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_Description));
             }
-            this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(Original_BoardCode));
-            this.Adapter.UpdateCommand.Parameters[36].Value = ((System.DateTime)(Original_BuildDate));
-            this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(Original_DateMod));
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_BoardCode));
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(Original_BuildDate));
+            this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(Original_DateMod));
             if ((Original_PressureGroup == null)) {
                 throw new global::System.ArgumentNullException("Original_PressureGroup");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_PressureGroup));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_PressureGroup));
             }
             if ((Original_SpeedStages == null)) {
                 throw new global::System.ArgumentNullException("Original_SpeedStages");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_SpeedStages));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_SpeedStages));
             }
             if ((Original_VehicleRef == null)) {
                 throw new global::System.ArgumentNullException("Original_VehicleRef");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_VehicleRef));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_VehicleRef));
             }
             if ((Original_LoadedOffRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((short)(Original_LoadedOffRoad.Value));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((short)(Original_LoadedOffRoad.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_LoadedOnRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((short)(Original_LoadedOnRoad.Value));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((short)(Original_LoadedOnRoad.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             if ((Original_MaxTraction.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((short)(Original_MaxTraction.Value));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((short)(Original_MaxTraction.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
             if ((Original_PT1Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_PT1Serial));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_PT1Serial));
             }
             if ((Original_PT2Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((string)(Original_PT2Serial));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_PT2Serial));
             }
             if ((Original_PT3Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_PT3Serial));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((string)(Original_PT3Serial));
             }
             if ((Original_PT4Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(Original_PT4Serial));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_PT4Serial));
             }
             if ((Original_PT5Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_PT5Serial));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((string)(Original_PT5Serial));
             }
             if ((Original_PT6Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_PT6Serial));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(Original_PT6Serial));
             }
             if ((Original_PT7Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_PT7Serial));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((string)(Original_PT7Serial));
             }
             if ((Original_PT8Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(Original_PT8Serial));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((string)(Original_PT8Serial));
             }
             if ((Original_PressureCell.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((short)(Original_PressureCell.Value));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((short)(Original_PressureCell.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
             }
             if ((Original_SerialNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((string)(Original_SerialNumber));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((string)(Original_SerialNumber));
             }
             if ((Original_UnloadedOnRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((short)(Original_UnloadedOnRoad.Value));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((short)(Original_UnloadedOnRoad.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
             }
             if ((Original_EnableGPSButtons.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((bool)(Original_EnableGPSButtons.Value));
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((bool)(Original_EnableGPSButtons.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
             }
             if ((Original_EnableGPSOverride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((bool)(Original_EnableGPSOverride.Value));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((bool)(Original_EnableGPSOverride.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
             }
             if ((Original_MaxTractionBeep.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((bool)(Original_MaxTractionBeep.Value));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((bool)(Original_MaxTractionBeep.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
             }
             if ((Original_SerialCodeBot == null)) {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((string)(Original_SerialCodeBot));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((string)(Original_SerialCodeBot));
             }
             if ((Original_StepUpDelay.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((short)(Original_StepUpDelay.Value));
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((short)(Original_StepUpDelay.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Distance.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((int)(Original_Distance.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9248,6 +9333,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     global::System.Nullable<bool> MaxTractionBeep, 
                     string SerialCodeBot, 
                     global::System.Nullable<short> StepUpDelay, 
+                    global::System.Nullable<int> Distance, 
                     string Original_Owner, 
                     string Original_Country, 
                     string Original_Version, 
@@ -9276,8 +9362,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     global::System.Nullable<bool> Original_EnableGPSOverride, 
                     global::System.Nullable<bool> Original_MaxTractionBeep, 
                     string Original_SerialCodeBot, 
-                    global::System.Nullable<short> Original_StepUpDelay) {
-            return this.Update(Owner, Country, Version, Description, Notes, Original_BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Original_Owner, Original_Country, Original_Version, Original_Description, Original_BoardCode, Original_BuildDate, Original_DateMod, Original_PressureGroup, Original_SpeedStages, Original_VehicleRef, Original_LoadedOffRoad, Original_LoadedOnRoad, Original_MaxTraction, Original_PT1Serial, Original_PT2Serial, Original_PT3Serial, Original_PT4Serial, Original_PT5Serial, Original_PT6Serial, Original_PT7Serial, Original_PT8Serial, Original_PressureCell, Original_SerialNumber, Original_UnloadedOnRoad, Original_EnableGPSButtons, Original_EnableGPSOverride, Original_MaxTractionBeep, Original_SerialCodeBot, Original_StepUpDelay);
+                    global::System.Nullable<short> Original_StepUpDelay, 
+                    global::System.Nullable<int> Original_Distance) {
+            return this.Update(Owner, Country, Version, Description, Notes, Original_BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance, Original_Owner, Original_Country, Original_Version, Original_Description, Original_BoardCode, Original_BuildDate, Original_DateMod, Original_PressureGroup, Original_SpeedStages, Original_VehicleRef, Original_LoadedOffRoad, Original_LoadedOnRoad, Original_MaxTraction, Original_PT1Serial, Original_PT2Serial, Original_PT3Serial, Original_PT4Serial, Original_PT5Serial, Original_PT6Serial, Original_PT7Serial, Original_PT8Serial, Original_PressureCell, Original_SerialNumber, Original_UnloadedOnRoad, Original_EnableGPSButtons, Original_EnableGPSOverride, Original_MaxTractionBeep, Original_SerialCodeBot, Original_StepUpDelay, Original_Distance);
         }
     }
     

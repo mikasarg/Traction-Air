@@ -15,13 +15,16 @@ namespace TractionAir
 {
     public partial class queryForm : Form
     {
-        public queryForm()
+        private DataGridView dgv;
+
+        public queryForm(DataGridView dgv)
         {
             InitializeComponent();
+            this.dgv = dgv;
         }
 
         /// <summary>
-        /// Queries the database with the given values and conditions
+        /// Queries the main settings table with the given values and conditions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,7 +69,7 @@ namespace TractionAir
             if (!distanceTextbox.Text.Equals(""))
             {
                 conditions = true;
-                //query += "Distance " + operatorButton3.Text + " " + distanceTextbox.Text + " AND ";
+                query += "Distance " + operatorButton3.Text + " " + distanceTextbox.Text + " AND ";
             }
             if (!pressureCellTextbox.Text.Equals(""))
             {
@@ -116,23 +119,27 @@ namespace TractionAir
 
             if (!conditions)
             {
-                //TODO revert the datagridview back to normal???
+                clearButton_Click(null, null);
             }
 
             query = query.Substring(0, query.Length - 5); //removes the last " AND "
 
             try
             {
-                using (IDbConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS"))))
                 {
-                    List<ECU_MainSettings> ecus = connection.Query<ECU_MainSettings>(query).ToList();
-                    MessageBox.Show(ecus[0].BoardCode.ToString());
+                    DataTable ecus = new DataTable();
+                    adapter.Fill(ecus);
+                    dgv.DataSource = ecus;
                 }
             }
             catch (SqlException sqlex)
             {
                 MessageBox.Show(sqlex.Message, "Error");
+                return;
             }
+
+            this.Close();
         }
 
         /// <summary>
@@ -142,7 +149,24 @@ namespace TractionAir
         /// <param name="e"></param>
         private void clearButton_Click(object sender, EventArgs e)
         {
-            //TODO clear the inputs and close the window and put everything back to normal
+            DataTable mainSettingsTable = new DataTable();
+
+            try
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM mainSettingsTable", new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS"))))
+                {
+                    adapter.Fill(mainSettingsTable);
+                    dgv.DataSource = mainSettingsTable;
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+                return;
+            }
+            dgv.DataSource = mainSettingsTable;
+
+            this.Close();
         }
 
         /// <summary>

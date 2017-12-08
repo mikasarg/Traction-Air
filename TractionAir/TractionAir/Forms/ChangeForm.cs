@@ -91,6 +91,7 @@ namespace TractionAir
                 beepCheckBox.Checked = ecu.MaxTractionBeep;
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
                 gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
+                distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), true).ToString();
             }
             catch (InvalidOperationException ioex)
             {
