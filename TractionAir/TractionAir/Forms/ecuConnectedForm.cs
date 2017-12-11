@@ -17,7 +17,7 @@ namespace TractionAir.Forms
         {
             InitializeComponent();
             //TODO contact the ecu and ask it for values? or do that somewhere else?
-            //SerialManager.WriteLine("getData");
+            SerialManager.WriteLine(readWriteHelper.appendCRC("GET,"));
             loadValues();
         }
 
@@ -28,9 +28,9 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            List<string> inputs = new List<string>();
+            saveECU();
 
-            string input = ECU_Manager.convertToDecimal(inputs);
+
             //SerialManager.WriteLine("setData");
             //SerialManager.WriteLine(input); TODO don't want to output anything yet
             this.Close();
@@ -50,25 +50,46 @@ namespace TractionAir.Forms
             return;
         }
 
+        private void saveECU()
+        {
+            //TODO save to mainSettingsTable
+
+            int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
+            string topSerial = ECU_Manager.CheckString(serialNumberTextbox.Text, false); //TODO are these ok to be null?
+            string botSerial = ECU_Manager.CheckString(bottomSerialNumberTextbox.Text, false);
+            string speedControl = speedControlComboBox.Text;
+            int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
+            int loadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+            int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+            int maxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+            int stepUpDelay = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, false);
+            bool maxTractionBeep = beepCheckBox.Checked;
+            bool enableGPSButtons = gpsButtonCheckBox.Checked;
+            bool enableGPSOverride = gpsOverrideCheckBox.Checked;
+
+            string output = readWriteHelper.generateOutput(boardCode, topSerial, botSerial, speedControl, notLoaded, loadedOnRoad, loadedOffRoad, maxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
+            SerialManager.WriteLine(output);
+        }
+
         /// <summary>
         /// Loads values read from the ecu into the relevant controls
         /// </summary>
         private void loadValues()
         {
-            //TODO put values in controls
+            //TODO read data from ecu and put values in controls
         }
 
+        /// <summary>
+        /// Loads data from the database tables
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ecuConnectedForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.speedControlTable' table. You can move, or remove it, as needed.
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.customerTable' table. You can move, or remove it, as needed.
             this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.pressureGroupsTable' table. You can move, or remove it, as needed.
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.programVersionTable' table. You can move, or remove it, as needed.
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.countryCodeTable' table. You can move, or remove it, as needed.
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
 
         }

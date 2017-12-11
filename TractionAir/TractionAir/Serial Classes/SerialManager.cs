@@ -143,7 +143,7 @@ namespace TractionAir.Serial_Classes
                         timeSinceLastLineReceived = 0;
                     }
 
-                    //TODO Determine if download has finished somehow             
+                    //TODO Determine if download has finished somehow
                     if (false)  //TODO fix condition
                     {
                         ProcessDownloadCompletion();
@@ -159,8 +159,6 @@ namespace TractionAir.Serial_Classes
             if (Properties.Settings.Default.EcuConnected)
             {
                 EcuStatusText = "ECU connected on " + Properties.Settings.Default.ConnectionPort;
-                ecuConnectedForm ecuConnected = new ecuConnectedForm();
-                ecuConnected.ShowDialog();
             }
             else //ECU disconnected
             {
@@ -276,11 +274,11 @@ namespace TractionAir.Serial_Classes
             }
             catch (InvalidOperationException invalidOpEx)
             {
-                //TODO throw exception serial port is closed
+                MessageBox.Show(invalidOpEx.Message,"Error");
             }
             catch (IOException ioEx)
             {
-                //TODO throw error serial port name is invalid
+                MessageBox.Show(ioEx.Message, "Error");
             }
         }
         private static void ResetDownloadProgress()
@@ -363,12 +361,12 @@ namespace TractionAir.Serial_Classes
             }
             catch (InvalidOperationException invalidOpEx)
             {
-                //TODO throw error port is closed
+                MessageBox.Show(invalidOpEx.Message, "Error");
             }
 
             catch (Exception e)
             {
-                //TODO throw error
+                MessageBox.Show(e.Message, "Error");
                 uploadError = true;
                 return;
             }
@@ -394,7 +392,7 @@ namespace TractionAir.Serial_Classes
                 //Check comport is open and ready           
                 int status = OpenSerialPort();
 
-                SerialManager.ClearSerialBuffers();
+                ClearSerialBuffers();
 
                 if (status != 0)    //Check there were no exceptions thrown by opening the serial port (when status = 0)
                 {
@@ -408,7 +406,7 @@ namespace TractionAir.Serial_Classes
             }
             catch
             {
-                //TODO error ECU might not be turned on
+                MessageBox.Show("An error occurred. Please ensure the ECU is connected properly and powered on.", "Error");
                 return 0;
             }
 
@@ -453,27 +451,26 @@ namespace TractionAir.Serial_Classes
             }
             catch (InvalidOperationException invalidOpEx)
             {
-                //TODO error serial port already opened
                 return 0;   //Return as normal. Serial port already being open is not a problem.
             }
             catch (ArgumentException argEx)
             {
-                //TODO error a property of the serial port was invalid
+                MessageBox.Show(argEx.Message, "Error");
                 return 2;
             }
             catch (UnauthorizedAccessException unAEx)
             {
-                //TODO error access to serialport was denied
+                MessageBox.Show(unAEx.Message, "Error");
                 return 3;
             }
             catch (IOException ioex)
             {
-                //TODO error serial port in invalid state
+                MessageBox.Show(ioex.Message, "Error");
                 return 4;
             }
             catch (Exception e)
             {
-                //TODO error serial port in invalid state
+                MessageBox.Show(e.Message, "Error");
                 return 5;
             }
 
@@ -488,7 +485,7 @@ namespace TractionAir.Serial_Classes
             }
             catch (Exception e)
             {
-                //TODO error tried to close serialport but didn't work
+                MessageBox.Show(e.Message, "Error");
             }
         }
 

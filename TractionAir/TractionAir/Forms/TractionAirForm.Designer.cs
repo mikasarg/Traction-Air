@@ -106,6 +106,7 @@
             this.setupTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
             this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
+            this.serialPortECU = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
@@ -868,6 +869,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn enableGPSButtonsDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn enableGPSOverrideDataGridViewCheckBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem countriesToolStripMenuItem;
+        private System.IO.Ports.SerialPort serialPortECU;
     }
 }
 

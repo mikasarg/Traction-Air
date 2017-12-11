@@ -47,6 +47,8 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.countryComboBox = new System.Windows.Forms.ComboBox();
+            this.countryCodeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.label30 = new System.Windows.Forms.Label();
             this.gpsButtonCheckBox = new System.Windows.Forms.CheckBox();
             this.gpsOverrideCheckBox = new System.Windows.Forms.CheckBox();
@@ -63,6 +65,7 @@
             this.bottomSerialNumberTextbox = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
+            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -75,8 +78,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pressureGroupComboBox = new System.Windows.Forms.ComboBox();
+            this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerComboBox = new System.Windows.Forms.ComboBox();
+            this.customerTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.programVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.boardNumberTextbox = new System.Windows.Forms.TextBox();
             this.descriptionTextbox = new System.Windows.Forms.TextBox();
             this.pt2SerialTextbox = new System.Windows.Forms.TextBox();
@@ -100,23 +106,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
-            this.countryCodeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countryCodeTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.countryCodeTableTableAdapter();
-            this.programVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.programVersionTableTableAdapter();
-            this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
-            this.customerTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter();
-            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // distanceTextbox
@@ -269,6 +269,16 @@
             this.countryComboBox.TabIndex = 263;
             this.countryComboBox.ValueMember = "Id";
             // 
+            // countryCodeTableBindingSource
+            // 
+            this.countryCodeTableBindingSource.DataMember = "countryCodeTable";
+            this.countryCodeTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // ecuSettingsDatabaseDataSet
+            // 
+            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
+            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -414,6 +424,11 @@
             this.speedControlComboBox.TabIndex = 269;
             this.speedControlComboBox.ValueMember = "Id";
             // 
+            // speedControlTableBindingSource
+            // 
+            this.speedControlTableBindingSource.DataMember = "speedControlTable";
+            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -522,6 +537,11 @@
             this.pressureGroupComboBox.TabIndex = 252;
             this.pressureGroupComboBox.ValueMember = "Id";
             // 
+            // pressureGroupsTableBindingSource
+            // 
+            this.pressureGroupsTableBindingSource.DataMember = "pressureGroupsTable";
+            this.pressureGroupsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
             // customerComboBox
             // 
             this.customerComboBox.DataSource = this.customerTableBindingSource;
@@ -533,6 +553,11 @@
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 253;
             this.customerComboBox.ValueMember = "Id";
+            // 
+            // customerTableBindingSource
+            // 
+            this.customerTableBindingSource.DataMember = "customerTable";
+            this.customerTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
             // 
             // programVersionComboBox
             // 
@@ -546,6 +571,11 @@
             this.programVersionComboBox.TabIndex = 251;
             this.programVersionComboBox.ValueMember = "Id";
             // 
+            // programVersionTableBindingSource
+            // 
+            this.programVersionTableBindingSource.DataMember = "programVersionTable";
+            this.programVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
             // boardNumberTextbox
             // 
             this.boardNumberTextbox.Location = new System.Drawing.Point(136, 14);
@@ -553,6 +583,7 @@
             this.boardNumberTextbox.ReadOnly = true;
             this.boardNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.boardNumberTextbox.TabIndex = 248;
+            this.boardNumberTextbox.Text = "1000";
             // 
             // descriptionTextbox
             // 
@@ -753,51 +784,21 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // ecuSettingsDatabaseDataSet
-            // 
-            this.ecuSettingsDatabaseDataSet.DataSetName = "ecuSettingsDatabaseDataSet";
-            this.ecuSettingsDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // countryCodeTableBindingSource
-            // 
-            this.countryCodeTableBindingSource.DataMember = "countryCodeTable";
-            this.countryCodeTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
             // countryCodeTableTableAdapter
             // 
             this.countryCodeTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // programVersionTableBindingSource
-            // 
-            this.programVersionTableBindingSource.DataMember = "programVersionTable";
-            this.programVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
             // 
             // programVersionTableTableAdapter
             // 
             this.programVersionTableTableAdapter.ClearBeforeFill = true;
             // 
-            // pressureGroupsTableBindingSource
-            // 
-            this.pressureGroupsTableBindingSource.DataMember = "pressureGroupsTable";
-            this.pressureGroupsTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
             // pressureGroupsTableTableAdapter
             // 
             this.pressureGroupsTableTableAdapter.ClearBeforeFill = true;
             // 
-            // customerTableBindingSource
-            // 
-            this.customerTableBindingSource.DataMember = "customerTable";
-            this.customerTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
             // customerTableTableAdapter
             // 
             this.customerTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // speedControlTableBindingSource
-            // 
-            this.speedControlTableBindingSource.DataMember = "speedControlTable";
-            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
             // 
             // speedControlTableTableAdapter
             // 
@@ -886,12 +887,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ECU Connected";
             this.Load += new System.EventHandler(this.ecuConnectedForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

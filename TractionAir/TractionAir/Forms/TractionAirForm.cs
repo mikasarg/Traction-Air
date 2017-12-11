@@ -34,6 +34,8 @@ namespace TractionAir
         {
             InitializeComponent();
 
+            ECU_Manager.Initialise(ref serialPortECU);
+
             SerialManager.Initialize();
 
             SerialManager.Event_ECU_StatusChange += new EventHandler(OnECUStatusChange);
@@ -310,7 +312,9 @@ namespace TractionAir
             USBPort.RegisterForDeviceChange(true, this.Handle);
 
             //Check if ECU is already connected
-            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            //TODO if statement below is correct but had to be replaced for testing serial comms
+            //if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            if (true)
             {
                 //ECU is connected
                 Properties.Settings.Default.EcuConnected = true;
@@ -326,6 +330,8 @@ namespace TractionAir
                         }
                     }
                 }
+                ecuConnectedForm ecuConnected = new ecuConnectedForm();
+                ecuConnected.ShowDialog();
                 //TODO ECU autoconnected on " + Properties.Settings.Default.ConnectionPort
             }
         }
@@ -356,6 +362,8 @@ namespace TractionAir
                         }
                     }
                 }
+                ecuConnectedForm ecuConnected = new ecuConnectedForm();
+                ecuConnected.ShowDialog();
                 //TODO ECU connected on Properties.Settings.Default.ConnectionPort
             }
         }
@@ -406,6 +414,11 @@ namespace TractionAir
                     }
                 }
             }
+            //TODO REMOVE line below it was for comm testing
+            return new List<String>
+            {
+                "COM1"
+            };
             return comports;
         }
         #endregion

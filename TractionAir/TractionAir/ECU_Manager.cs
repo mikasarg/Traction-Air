@@ -19,6 +19,11 @@ namespace TractionAir
     {
         public static SerialPort ECU_SerialPort;
 
+        public static void Initialise(ref SerialPort serialPort)
+        {
+            ECU_SerialPort = serialPort;
+        }
+
         /// <summary>
         /// Returns the connection string based on the name given
         /// </summary>
