@@ -19,7 +19,7 @@ namespace TractionAir
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            //TODO send the access code somewhere
+            //not implemented yet
             this.Close();
         }
 

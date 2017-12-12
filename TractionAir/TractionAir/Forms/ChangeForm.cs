@@ -181,7 +181,6 @@ namespace TractionAir
                     }
                     else if (s1.Equals("Version") || s1.Equals("PressureGroup") || s1.Equals("SpeedStages") || s1.Equals("Owner") || s1.Equals("Country")) //comboboxes
                     {
-                        //TODO behaves the same as strings atm, also no need for check as can only select from dropdowns
                         update += s1 + " = " + ECU_Manager.enclose(s2);
                     }
                     else if (s1.Equals("MaxTractionBeep") || s1.Equals("EnableGPSButtons") || s1.Equals("EnableGPSOverride")) //checkboxes

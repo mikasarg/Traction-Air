@@ -18,7 +18,14 @@ namespace TractionAir.Forms
         public ecuConnectedForm()
         {
             InitializeComponent();
-            loadValuesFromECU();
+            try
+            {
+                loadValuesFromECU();
+            }
+            catch (InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Error");
+            }
 
             alreadyExists = false;
             try
@@ -85,7 +92,14 @@ namespace TractionAir.Forms
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
             bool enableGPSOverride = gpsOverrideCheckBox.Checked;
             string output = readWriteHelper.generateOutput(ECU_Manager.connectedBoard, speedControl, notLoaded, loadedOnRoad, loadedOffRoad, maxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
-            SerialManager.WriteLine(output);
+            try
+            {
+                SerialManager.WriteLine(output);
+            }
+            catch(System.IO.IOException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Error");
+            }
         }
 
         /// <summary>
@@ -286,11 +300,30 @@ namespace TractionAir.Forms
         private void loadValuesFromECU()
         {
             //TODO read data from ecu and put values in controls
-            SerialManager.WriteLine(readWriteHelper.appendCRC("GET,"));
+            try
+            {
+                SerialManager.WriteLine(readWriteHelper.appendCRC("GET,"));
+            }
+            catch (System.IO.IOException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Error");
+                return;
+            }
             //TODO code below is correct but ECU does not respond yet
             /*string input = SerialManager.ReadLine();
-            settingsFromECU settings = readWriteHelper.readInput(input);
-            ECU_Manager.connectedBoard = settings.boardCode;*/
+            try
+            {
+                settingsFromECU settings = readWriteHelper.readInput(input);
+            }
+            catch (InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Error");
+            }
+            ECU_Manager.connectedBoard = settings.boardCode;
+            
+            TODO fill controls with the data
+             
+            */
             ECU_Manager.connectedBoard = 1000;
         }
 

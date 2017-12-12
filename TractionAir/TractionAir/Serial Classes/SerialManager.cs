@@ -244,7 +244,7 @@ namespace TractionAir.Serial_Classes
             // reset line counter
             ResetDownloadProgress();
 
-            //TODO Check data is invalid
+            //TODO Check data is valid
             if (false)//TODO !SerialDataProcessor.FinalDataIsValid())
             {
                 //Fire invalid data alert event

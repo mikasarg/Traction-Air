@@ -186,7 +186,6 @@ namespace TractionAir
         {
             OwnerListForm ownerList = new OwnerListForm();
             ownerList.ShowDialog();
-            //TODO link the owner list form to a database of owners
         }
 
         /// <summary>
@@ -332,7 +331,6 @@ namespace TractionAir
                 ecuConnectedForm ecuConnected = new ecuConnectedForm();
                 ecuConnected.ShowDialog();
                 connectedBoardLabel.Text = "Connected Board: " + ECU_Manager.connectedBoard;
-                //TODO ECU autoconnected on " + Properties.Settings.Default.ConnectionPort
             }
         }
 
@@ -365,7 +363,6 @@ namespace TractionAir
                 ecuConnectedForm ecuConnected = new ecuConnectedForm();
                 ecuConnected.ShowDialog();
                 connectedBoardLabel.Text = "Connected Board: " + ECU_Manager.connectedBoard;
-                //TODO ECU connected on Properties.Settings.Default.ConnectionPort
             }
         }
         private void USBPort_USBDeviceRemoved(object sender, USBClass.USBDeviceEventArgs e)
@@ -381,7 +378,6 @@ namespace TractionAir
                 //ECU is disconnected
                 Properties.Settings.Default.EcuConnected = false;
                 connectedBoardLabel.Text = "Connected Board: Disconnected";
-                //TODO Console.WriteLine("ECU disconnected from usb");
             }
         }
 
@@ -417,10 +413,7 @@ namespace TractionAir
                 }
             }
             //TODO REMOVE line below it was for comm testing
-            return new List<String>
-            {
-                "COM1"
-            };
+            return new List<String>{ "COM1" };
             return comports;
         }
         #endregion
