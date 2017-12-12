@@ -157,7 +157,7 @@ namespace TractionAir
                 return;
             }
 
-            ECU_Manager.Insert(insert); //this methiod handles the errors
+            ECU_Manager.Insert(insert); //this method handles the errors
             
             this.Close();
         }

@@ -215,7 +215,7 @@ namespace TractionAir
             }
 
             update = update.Substring(0, update.Length - 2); //remove final ", "
-            update += " WHERE boardCode = '" + boardCode + "'";
+            update += " WHERE BoardCode = '" + boardCode + "'";
 
             ECU_Manager.update(update); //ECU manager handles sql execution
 

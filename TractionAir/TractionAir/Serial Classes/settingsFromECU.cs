@@ -10,10 +10,6 @@ namespace TractionAir.Serial_Classes
     {
         public int boardCode { get; set; }
 
-        public string topSerial { get; set; }
-
-        public string botSerial { get; set; }
-
         public string speedControl { get; set; }
 
         public int notLoaded { get; set; }

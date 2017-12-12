@@ -54,7 +54,7 @@
             this.timer_update = new System.Windows.Forms.Timer(this.components);
             this.queryButton = new System.Windows.Forms.Button();
             this.ecuCountLabel = new System.Windows.Forms.Label();
-            this.conncectedBoardLabel = new System.Windows.Forms.Label();
+            this.connectedBoardLabel = new System.Windows.Forms.Label();
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.changeButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
@@ -313,15 +313,15 @@
             this.ecuCountLabel.TabIndex = 20;
             this.ecuCountLabel.Text = "ECU Count:";
             // 
-            // conncectedBoardLabel
+            // connectedBoardLabel
             // 
-            this.conncectedBoardLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.conncectedBoardLabel.AutoSize = true;
-            this.conncectedBoardLabel.Location = new System.Drawing.Point(21, 77);
-            this.conncectedBoardLabel.Name = "conncectedBoardLabel";
-            this.conncectedBoardLabel.Size = new System.Drawing.Size(162, 13);
-            this.conncectedBoardLabel.TabIndex = 19;
-            this.conncectedBoardLabel.Text = "Connected Board: Disconnected";
+            this.connectedBoardLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.connectedBoardLabel.AutoSize = true;
+            this.connectedBoardLabel.Location = new System.Drawing.Point(21, 77);
+            this.connectedBoardLabel.Name = "connectedBoardLabel";
+            this.connectedBoardLabel.Size = new System.Drawing.Size(162, 13);
+            this.connectedBoardLabel.TabIndex = 19;
+            this.connectedBoardLabel.Text = "Connected Board: Disconnected";
             // 
             // notesRichTextbox
             // 
@@ -726,7 +726,7 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.conncectedBoardLabel);
+            this.groupBox1.Controls.Add(this.connectedBoardLabel);
             this.groupBox1.Controls.Add(this.ecuCountLabel);
             this.groupBox1.Controls.Add(this.changeButton);
             this.groupBox1.Controls.Add(this.viewButton);
@@ -820,7 +820,7 @@
         private System.Windows.Forms.ToolStripMenuItem manualUploadToolStripMenuItem;
         private System.Windows.Forms.Button queryButton;
         private System.Windows.Forms.Label ecuCountLabel;
-        private System.Windows.Forms.Label conncectedBoardLabel;
+        private System.Windows.Forms.Label connectedBoardLabel;
         private System.Windows.Forms.RichTextBox notesRichTextbox;
         private System.Windows.Forms.Button changeButton;
         private System.Windows.Forms.Button viewButton;

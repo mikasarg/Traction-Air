@@ -18,6 +18,7 @@ namespace TractionAir
     static class ECU_Manager
     {
         public static SerialPort ECU_SerialPort;
+        public static int connectedBoard;
 
         public static void Initialise(ref SerialPort serialPort)
         {

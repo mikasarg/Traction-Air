@@ -22,7 +22,6 @@ namespace TractionAir
     public partial class TractionAirForm : Form
     {
         //TODO make the progress bar work
-        //TODO make the connected board text work
         //TODO all menu functions
         //TODO retrieve and send data via USB
         //TODO connect to and edit the real database (online or offline)
@@ -332,6 +331,7 @@ namespace TractionAir
                 }
                 ecuConnectedForm ecuConnected = new ecuConnectedForm();
                 ecuConnected.ShowDialog();
+                connectedBoardLabel.Text = "Connected Board: " + ECU_Manager.connectedBoard;
                 //TODO ECU autoconnected on " + Properties.Settings.Default.ConnectionPort
             }
         }
@@ -364,6 +364,7 @@ namespace TractionAir
                 }
                 ecuConnectedForm ecuConnected = new ecuConnectedForm();
                 ecuConnected.ShowDialog();
+                connectedBoardLabel.Text = "Connected Board: " + ECU_Manager.connectedBoard;
                 //TODO ECU connected on Properties.Settings.Default.ConnectionPort
             }
         }
@@ -379,6 +380,7 @@ namespace TractionAir
             {
                 //ECU is disconnected
                 Properties.Settings.Default.EcuConnected = false;
+                connectedBoardLabel.Text = "Connected Board: Disconnected";
                 //TODO Console.WriteLine("ECU disconnected from usb");
             }
         }

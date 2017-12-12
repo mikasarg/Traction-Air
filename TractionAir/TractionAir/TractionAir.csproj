@@ -202,6 +202,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serial Classes\readWriteHelper.cs" />
     <Compile Include="Serial Classes\SerialManager.cs" />
+    <Compile Include="Serial Classes\settingsFromECU.cs" />
     <Compile Include="USBClass.cs" />
     <Compile Include="Forms\ViewForm.cs">
       <SubType>Form</SubType>
