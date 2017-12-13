@@ -146,6 +146,12 @@
     <Compile Include="Forms\queryForm.Designer.cs">
       <DependentUpon>queryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\splashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\splashForm.Designer.cs">
+      <DependentUpon>splashForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PressureGroupObject.cs" />
     <Compile Include="sampleDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\queryForm.resx">
       <DependentUpon>queryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\splashForm.resx">
+      <DependentUpon>splashForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TractionAirForm.resx">
       <DependentUpon>TractionAirForm.cs</DependentUpon>

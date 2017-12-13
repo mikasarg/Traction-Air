@@ -25,21 +25,23 @@ namespace TractionAir
         //TODO all menu functions
         //TODO retrieve and send data via USB
         //TODO connect to and edit the real database (online or offline)
+        private splashForm splash;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public TractionAirForm()
+        public TractionAirForm(splashForm splash)
         {
+            this.splash = splash;
             InitializeComponent();
 
             ECU_Manager.Initialise(ref serialPortECU);
 
+            InitializeUSBPort();
+
             SerialManager.Initialize();
 
             SerialManager.Event_ECU_StatusChange += new EventHandler(OnECUStatusChange);
-
-            InitializeUSBPort();
 
             connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
         }
@@ -50,7 +52,7 @@ namespace TractionAir
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TractionAirForm_Load(object sender, EventArgs e)
-        {
+        { 
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
 
             int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
@@ -61,6 +63,15 @@ namespace TractionAir
             }
 
             ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
+
+            //Closes the spalsh/loading screen
+            splash.Close();
+
+            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            {
+                ecuConnectedForm ecuConnected = new ecuConnectedForm();
+                ecuConnected.ShowDialog();
+            }
         }
 
         #region System Methods
@@ -209,6 +220,19 @@ namespace TractionAir
             helpForm help = new helpForm();
             help.Show();
         }
+
+        private void manualUploadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManualUploadForm manualUpload = new ManualUploadForm();
+            manualUpload.ShowDialog();
+            refreshTable();
+        }
+
+        private void countriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CountriesListForm countriesList = new CountriesListForm();
+            countriesList.Show();
+        }
         #endregion
 
         #region Buttons
@@ -310,9 +334,7 @@ namespace TractionAir
             USBPort.RegisterForDeviceChange(true, this.Handle);
 
             //Check if ECU is already connected
-            //TODO if statement below is correct but had to be replaced for testing serial comms
-            //if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
-            if (true)
+            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
             {
                 //ECU is connected
                 Properties.Settings.Default.EcuConnected = true;
@@ -325,11 +347,10 @@ namespace TractionAir
                         if (names.Contains(s))
                         {
                             Properties.Settings.Default.ConnectionPort = s;
+                            serialPortECU.PortName = s;
                         }
                     }
                 }
-                ecuConnectedForm ecuConnected = new ecuConnectedForm();
-                ecuConnected.ShowDialog();
                 connectedBoardLabel.Text = "Connected Board: " + ECU_Manager.connectedBoard;
             }
         }
@@ -357,6 +378,7 @@ namespace TractionAir
                         if (names.Contains(s))
                         {
                             Properties.Settings.Default.ConnectionPort = s;
+                            serialPortECU.PortName = s;
                         }
                     }
                 }
@@ -413,7 +435,7 @@ namespace TractionAir
                 }
             }
             //TODO REMOVE line below it was for comm testing
-            return new List<String>{ "COM1" };
+            return new List<String>{ "COM2" };
             return comports;
         }
         #endregion
@@ -431,17 +453,6 @@ namespace TractionAir
 
         #endregion
 
-        private void manualUploadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ManualUploadForm manualUpload = new ManualUploadForm();
-            manualUpload.ShowDialog();
-            refreshTable();
-        }
 
-        private void countriesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CountriesListForm countriesList = new CountriesListForm();
-            countriesList.Show();
-        }
     }
 }

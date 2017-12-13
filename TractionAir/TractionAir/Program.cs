@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TractionAir.Forms;
 
 namespace TractionAir
 {
@@ -16,7 +17,9 @@ namespace TractionAir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TractionAirForm());
+            splashForm splash = new splashForm();
+            splash.Show();
+            Application.Run(new TractionAirForm(splash));
         }
     }
 }

@@ -18,13 +18,29 @@ namespace TractionAir.Forms
         public ecuConnectedForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Loads data from the database tables
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ecuConnectedForm_Load(object sender, EventArgs e)
+        {
+            this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
+            this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
+            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
+            this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
+
             try
             {
                 loadValuesFromECU();
             }
             catch (InvalidOperationException ioex)
             {
-                MessageBox.Show(ioex.Message, "Error");
+                MessageBox.Show(ioex.Message, "Failed to Load Values from ECU");
+                Close();
             }
 
             alreadyExists = false;
@@ -60,7 +76,7 @@ namespace TractionAir.Forms
             }
             catch (InvalidOperationException ioex)
             {
-                MessageBox.Show(ioex.Message, "Invalid Input");
+                MessageBox.Show(ioex.Message, "Invalid Input/Failed to Write to ECU");
                 return;
             }
             this.Close();
@@ -98,7 +114,7 @@ namespace TractionAir.Forms
             }
             catch(System.IO.IOException ioex)
             {
-                MessageBox.Show(ioex.Message, "Error");
+                throw new InvalidOperationException("Error when saving data to ECU: " + ioex.Message);
             }
         }
 
@@ -306,8 +322,7 @@ namespace TractionAir.Forms
             }
             catch (System.IO.IOException ioex)
             {
-                MessageBox.Show(ioex.Message, "Error");
-                return;
+                throw new InvalidOperationException("Error when asking for data from ECU: " + ioex.Message);
             }
             //TODO code below is correct but ECU does not respond yet
             /*string input = SerialManager.ReadLine();
@@ -368,21 +383,6 @@ namespace TractionAir.Forms
             gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
             gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
             distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), true).ToString();
-        }
-
-        /// <summary>
-        /// Loads data from the database tables
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ecuConnectedForm_Load(object sender, EventArgs e)
-        {
-            this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
-            this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
-            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-
         }
     }
 }
