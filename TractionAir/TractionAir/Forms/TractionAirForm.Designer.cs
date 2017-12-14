@@ -757,6 +757,11 @@
             this.tableAdapterManager2.speedControlTableTableAdapter = null;
             this.tableAdapterManager2.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // serialPortECU
+            // 
+            this.serialPortECU.ReadTimeout = 1000;
+            this.serialPortECU.WriteTimeout = 1000;
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

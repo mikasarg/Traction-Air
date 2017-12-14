@@ -116,6 +116,10 @@ namespace TractionAir.Forms
             {
                 throw new InvalidOperationException("Error when saving data to ECU: " + ioex.Message);
             }
+            catch (TimeoutException toex)
+            {
+                throw new InvalidOperationException("Error when saving data to ECU: " + toex.Message);
+            }
         }
 
         /// <summary>
@@ -324,6 +328,10 @@ namespace TractionAir.Forms
             {
                 throw new InvalidOperationException("Error when asking for data from ECU: " + ioex.Message);
             }
+            catch (TimeoutException toex)
+            {
+                throw new InvalidOperationException("Error when asking for data from ECU: " + toex.Message);
+            }
             //TODO code below is correct but ECU does not respond yet
             /*string input = SerialManager.ReadLine();
             try
@@ -332,7 +340,11 @@ namespace TractionAir.Forms
             }
             catch (InvalidOperationException ioex)
             {
-                MessageBox.Show(ioex.Message, "Error");
+                throw new InvalidOperationException("Error when reading data from ECU: " + ioex.Message);
+            }
+            catch (TimeoutException toex)
+            {
+                throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
             }
             ECU_Manager.connectedBoard = settings.boardCode;
             

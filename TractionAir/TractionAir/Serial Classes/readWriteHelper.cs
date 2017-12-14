@@ -8,6 +8,20 @@ namespace TractionAir.Serial_Classes
 {
     public static class readWriteHelper
     {
+        /// <summary>
+        /// Generates output based on the given values
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <param name="speedControl"></param>
+        /// <param name="notLoaded"></param>
+        /// <param name="loadedOnRoad"></param>
+        /// <param name="loadedOffRoad"></param>
+        /// <param name="maxTraction"></param>
+        /// <param name="stepUpDelay"></param>
+        /// <param name="maxTractionBeep"></param>
+        /// <param name="enableGPSButtons"></param>
+        /// <param name="enableGPSOverride"></param>
+        /// <returns></returns>
         public static string generateOutput(int boardCode, string speedControl, int notLoaded, int loadedOnRoad, 
             int loadedOffRoad, int maxTraction, int stepUpDelay, bool maxTractionBeep, 
             bool enableGPSButtons, bool enableGPSOverride)
@@ -73,8 +87,26 @@ namespace TractionAir.Serial_Classes
             return appendCRC(output);
         }
 
+        /// <summary>
+        /// Reads the input and converts it to an object
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static settingsFromECU readInput(string input)
         {
+            if (!checkCRCsMatch(input))
+            {
+                try
+                {
+                    SerialManager.WriteLine(appendCRC("ERR,")); //Send an error message to the ECU to let it know there was a mismatch in the CRCs
+                }
+                catch (TimeoutException toex)
+                {
+                    throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
+                }
+                throw new InvalidOperationException("CRCs did not match - could be caused by noise in the connection. Please try again.");
+            }
+
             settingsFromECU sfe = new settingsFromECU();
             List<string> values = input.Split(',').ToList();
 
@@ -113,11 +145,22 @@ namespace TractionAir.Serial_Classes
             return sfe;
         }
 
+        /// <summary>
+        /// Appends a value to the end of the given string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string appendValue(string input, string value)
         {
             return input + value + ",";
         }
 
+        /// <summary>
+        /// Appends the CRC to the end of the string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string appendCRC(string input)
         {
             string output = "";
@@ -132,12 +175,17 @@ namespace TractionAir.Serial_Classes
             }
             return output + string.Format("{0:000}", CRC) + ",13"; //carraige return
         }
-
-        public static string addChar(char c, string s)
+        
+        /// <summary>
+        /// Checks that our calculated CRC matches the CRC in the input string
+        /// </summary>
+        /// <returns></returns>
+        public static bool checkCRCsMatch(string input)
         {
-            s += c;
-
-            return s;
+            if (input.Equals(appendCRC(input.Substring(0, input.Length - 7)))){ //Manually appends the CRC and checks if the 2 strings match
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
