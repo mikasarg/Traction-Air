@@ -68,6 +68,7 @@ namespace TractionAir
                 int id;
                 if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
                 {
+                    ECU_Manager.delete(id.ToString(), "CustomerID", "customerToCountry"); //must delete the connection table row first
                     ECU_Manager.delete(id.ToString(), "Id", "customerTable"); //ecu manager deletes via sql command
                 }
                 else

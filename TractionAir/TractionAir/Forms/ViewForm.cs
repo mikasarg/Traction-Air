@@ -78,7 +78,7 @@ namespace TractionAir
                 pt8SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT8Serial, true);
                 descriptionTextbox.Text = ECU_Manager.CheckString(ecu.Description, true);
                 notesRichTextbox.Text = ECU_Manager.CheckString(ecu.Notes, true);
-                countryComboBox.SelectedIndex = countryComboBox.FindStringExact(ecu.Country);
+                countryComboBox.SelectedValue = ECU_Manager.getChildIdByParentId(boardCode, "ecuToCountry");
 
                 //Manual Database Update section
                 speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);

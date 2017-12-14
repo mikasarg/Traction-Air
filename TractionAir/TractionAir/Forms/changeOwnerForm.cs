@@ -18,21 +18,6 @@ namespace TractionAir.Forms
         {
             InitializeComponent();
             this.id = id;
-
-            try
-            {
-                customerObject customer = ECU_Manager.getCustomerByID(id); //Obtains a customerObject
-                companyTextbox.Text = customer.Company;
-                address1Textbox.Text = customer.Address1;
-                address2Textbox.Text = customer.Address2;
-                cityTextbox.Text = customer.City;
-                countryComboBox.SelectedValue = countryComboBox.FindStringExact(customer.Country);
-                phoneTextbox.Text = customer.Phone;
-            }
-            catch (InvalidOperationException ioex)
-            {
-                MessageBox.Show(ioex.Message, "Error");
-            }
         }
 
         /// <summary>
@@ -66,6 +51,8 @@ namespace TractionAir.Forms
 
                 string date = ECU_Manager.CheckDate(DateTime.Now.ToString("dd/MM/yyyy"), false);
                 update += "Date = " + ECU_Manager.enclose(date) + " WHERE Id = " + id;
+
+                ECU_Manager.updateChildID(id, (int)countryComboBox.SelectedValue, "customerToCountry");
             }
             catch (InvalidOperationException ioex)
             {
@@ -93,7 +80,20 @@ namespace TractionAir.Forms
         private void changeOwnerForm_Load(object sender, EventArgs e)
         {
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-
+            try
+            {
+                customerObject customer = ECU_Manager.getCustomerByID(id); //Obtains a customerObject
+                companyTextbox.Text = customer.Company;
+                address1Textbox.Text = customer.Address1;
+                address2Textbox.Text = customer.Address2;
+                cityTextbox.Text = customer.City;
+                countryComboBox.SelectedValue = ECU_Manager.getChildIdByParentId(id, "customerToCountry");
+                phoneTextbox.Text = customer.Phone;
+            }
+            catch (InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Error");
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO customerTable VALUES (";
+            string insert = "INSERT INTO customerTable OUTPUT INSERTED.ID VALUES (";
             try
             {
                 //Check the values are valid
@@ -48,15 +48,19 @@ namespace TractionAir.Forms
                 insert += ECU_Manager.enclose(phone) + ", ";
 
                 string date = ECU_Manager.CheckDate(DateTime.Now.ToString("dd/MM/yyyy"), false);
-                insert += ECU_Manager.enclose(date) + ")";
+                insert += ECU_Manager.enclose(date) + ");";
+
+                MessageBox.Show(insert);
+
+                int id = ECU_Manager.Insert(insert); //ECU manager handles the sql command
+                ECU_Manager.insertChildId(id, (int)countryComboBox.SelectedValue, "customerToCountry");
+                Close();
             }
             catch (InvalidOperationException ioex)
             {
                 MessageBox.Show(ioex.Message, "Invalid Input");
                 return;
             }
-            ECU_Manager.Insert(insert); //ECU manager handles the sql command
-            this.Close();
         }
 
         /// <summary>

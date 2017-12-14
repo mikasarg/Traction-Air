@@ -35,6 +35,68 @@ namespace TractionAir
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
+        #region table connection methods
+        public static int getChildIdByParentId(int parentId, string table)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "";
+                if (table.Equals("ecuToCountry"))
+                {
+                    query = "SELECT CountryID FROM " + table + " WHERE BoardCode = " + parentId;
+                }
+                else if (table.Equals("customerToCountry"))
+                {
+                    query = "SELECT CountryID FROM " + table + " WHERE CustomerID = " + parentId;
+                }
+                SqlCommand command = new SqlCommand(query, con);
+                Int32 countryID = (Int32)command.ExecuteScalar();
+                con.Close();
+                return countryID;
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
+            }
+        }
+
+        public static void updateChildID(int parentId, int childId, string table)
+        {
+            try
+            {
+                string updateString = "";
+                if (table.Equals("ecuToCountry"))
+                {
+                    updateString = "UPDATE " + table + " SET CountryID = " + childId + " WHERE BoardCode = " + parentId;
+                }
+                else if (table.Equals("customerToCountry"))
+                {
+                    updateString = "UPDATE " + table + " SET CountryID = " + childId + " WHERE CustomerID = " + parentId;
+                }
+                update(updateString);
+            }
+            catch (InvalidOperationException ioex)
+            {
+                throw new InvalidOperationException("Unable to update connections between tables: " + ioex.Message);
+            }
+        }
+
+
+        public static void insertChildId(int parentId, int childId, string table)
+        {
+            try
+            {
+                Insert("INSERT " + table + "VALUES (" + parentId + ", " + childId + ")");
+            }
+            catch (InvalidOperationException ioex)
+            {
+                throw new InvalidOperationException("Unable to new connection between tables: " + ioex.Message);
+            }
+        }
+        #endregion
+
         #region messageBoxes
         /// <summary>
         /// Checks to make sure the user wishes to cancel out of an operation
@@ -70,9 +132,9 @@ namespace TractionAir
         /// Inserts the new entry into the table
         /// </summary>
         /// <param name="insert"></param>
-        public static void Insert(string insert)
+        public static int Insert(string insert)
         {
-            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            /*using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
             {
                 try
                 {
@@ -82,6 +144,20 @@ namespace TractionAir
                 {
                     MessageBox.Show("An error occurred when attempting to insert: " + sqlex.Message, "Error");
                 }
+            }*/
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            using (SqlCommand cmd = new SqlCommand(insert, con))
+            {
+                con.Open();
+
+                int modified = (int)cmd.ExecuteScalar();
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                return modified;
             }
         }
 
