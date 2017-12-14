@@ -88,7 +88,7 @@ namespace TractionAir
         {
             try
             {
-                Insert("INSERT " + table + "VALUES (" + parentId + ", " + childId + ")");
+                Insert("INSERT INTO " + table + " OUTPUT INSERTED.ID VALUES (" + parentId + ", " + childId + ");");
             }
             catch (InvalidOperationException ioex)
             {
