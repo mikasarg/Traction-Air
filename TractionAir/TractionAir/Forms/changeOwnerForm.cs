@@ -69,38 +69,12 @@ namespace TractionAir.Forms
                         MessageBox.Show(ex.Message, "Error");
                     }
                 }
-                    /*
-                    string company = ECU_Manager.CheckString(companyTextbox.Text, false);
-                    ECU_Manager.CheckForDuplicates(company, "Company", "customerTable", id); //checks for no duplicates - unless they have the same ID
-                    update += "Company = " + ECU_Manager.enclose(company) + ", ";
-
-                    string address1 = ECU_Manager.CheckString(address1Textbox.Text, false);
-                    update += "Address1 = " + ECU_Manager.enclose(address1) + ", ";
-
-                    string address2 = ECU_Manager.CheckString(address2Textbox.Text, false);
-                    update += "Address2 = " + ECU_Manager.enclose(address2) + ", ";
-
-                    string city = ECU_Manager.CheckString(cityTextbox.Text, false);
-                    update += "City = " + ECU_Manager.enclose(city) + ", ";
-
-                    string country = ECU_Manager.CheckString(countryComboBox.Text, false);
-                    update += "Country = " + ECU_Manager.enclose(country) + ", ";
-
-                    string phone = ECU_Manager.CheckString(phoneTextbox.Text, false);
-                    update += "Phone = " + ECU_Manager.enclose(phone) + ", ";
-
-                    string date = ECU_Manager.CheckDate(DateTime.Now.ToString("dd/MM/yyyy"), false);
-                    update += "Date = " + ECU_Manager.enclose(date) + " WHERE Id = " + id;
-
-                    ECU_Manager.updateChildID(id, (int)countryComboBox.SelectedValue, "customerToCountry");
-                    */
-                }
+            }
             catch (InvalidOperationException ioex)
             {
                 MessageBox.Show(ioex.Message, "Invalid Input");
                 return;
             }
-            //ECU_Manager.update(update); //ecu manager handles sql command
             this.Close();
         }
 

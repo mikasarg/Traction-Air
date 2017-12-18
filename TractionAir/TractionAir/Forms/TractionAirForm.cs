@@ -186,6 +186,7 @@ namespace TractionAir
         {
             PressureGroupsForm pressureGroups = new PressureGroupsForm();
             pressureGroups.ShowDialog();
+            refreshTable();
         }
 
         /// <summary>
@@ -197,6 +198,7 @@ namespace TractionAir
         {
             OwnerListForm ownerList = new OwnerListForm();
             ownerList.ShowDialog();
+            refreshTable();
         }
 
         /// <summary>
@@ -232,6 +234,7 @@ namespace TractionAir
         {
             CountriesListForm countriesList = new CountriesListForm();
             countriesList.Show();
+            refreshTable();
         }
         #endregion
 

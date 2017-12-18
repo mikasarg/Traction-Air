@@ -26,24 +26,33 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO countryCodeTable VALUES (";
+            string insert = "INSERT INTO countryCodeTable VALUES (@code, @country);";
             try
             {
-                //Check the values are valid
-                string code = ECU_Manager.CheckCountryCode(codeTextbox.Text);
-                ECU_Manager.CheckForDuplicates(code, "Code", "countryCodeTable", -1); //given ID is -1 as we want to find any and all duplicates
-                insert += ECU_Manager.enclose(code) + ", ";
-                string country = ECU_Manager.CheckString(countryTextbox.Text, false);
-                ECU_Manager.CheckForDuplicates(country, "Country", "countryCodeTable", -1);
-                insert += ECU_Manager.enclose(country) + ")";
+                using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+                {
+                    SqlCommand command = new SqlCommand(insert, connection);
+                    command.Parameters.Add("@code", SqlDbType.NVarChar);
+                    command.Parameters["@code"].Value = ECU_Manager.CheckCountryCode(codeTextbox.Text);
+                    command.Parameters.Add("@country", SqlDbType.NVarChar);
+                    command.Parameters["@country"].Value = ECU_Manager.CheckString(countryTextbox.Text, false);
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error");
+                    }
+                }
+                Close();
             }
-            catch(InvalidOperationException ioex)
+            catch (InvalidOperationException ioex)
             {
                 MessageBox.Show(ioex.Message, "Invalid Input");
                 return;
             }
-            ECU_Manager.Insert(insert); //ECU manager handles the sql command
-            this.Close();
         }
 
         /// <summary>

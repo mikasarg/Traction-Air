@@ -29,22 +29,34 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE countryCodeTable SET ";
+            string update = "UPDATE countryCodeTable SET Code = @code, Country = @country WHERE Id = @id;";
             try
             {
-                string code = ECU_Manager.CheckCountryCode(codeTextbox.Text);
-                ECU_Manager.CheckForDuplicates(code, "Code", "countryCodeTable", id); //checks for no duplicates - unless they have the same ID
-                update += "Code = " + ECU_Manager.enclose(code) + ", "; 
-                string country = ECU_Manager.CheckString(countryTextbox.Text, false);
-                ECU_Manager.CheckForDuplicates(country, "Country", "countryCodeTable", id);
-                update += "Country = " + ECU_Manager.enclose(country) + " WHERE Id = " + id; 
+                using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+                {
+                    SqlCommand command = new SqlCommand(update, connection);
+                    command.Parameters.Add("@code", SqlDbType.NVarChar);
+                    command.Parameters["@code"].Value = ECU_Manager.CheckCountryCode(codeTextbox.Text);
+                    command.Parameters.Add("@country", SqlDbType.NVarChar);
+                    command.Parameters["@country"].Value = ECU_Manager.CheckString(countryTextbox.Text, false);
+                    command.Parameters.Add("@id", SqlDbType.Int);
+                    command.Parameters["@id"].Value = id;
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error");
+                    }
+                }
             }
             catch (InvalidOperationException ioex)
             {
                 MessageBox.Show(ioex.Message, "Invalid Input");
                 return;
             }
-            ECU_Manager.update(update); //ecu manager handles sql command
             this.Close();
         }
 

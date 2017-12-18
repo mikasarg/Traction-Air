@@ -49,6 +49,61 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if (!ECU_Manager.wishToDelete())
+            {
+                return;
+            }
+            if (countryCodeTableDataGridView.SelectedRows.Count == 0) //no selected rows
+            {
+                return;
+            }
+            DataGridViewRow selectedRow = countryCodeTableDataGridView.SelectedRows[0];
+            if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out int id))
+            {
+                string delete1 = "DELETE FROM customerToCountry WHERE CountryID = @countryId;";
+                string delete2 = "DELETE FROM ecuToCountry WHERE CountryID = @countryId;";
+                string delete3 = "DELETE FROM countryCodeTable WHERE Id = @countryId;";
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+                    {
+                        SqlCommand command1 = new SqlCommand(delete1, connection);
+                        command1.Parameters.Add("@countryId", SqlDbType.Int);
+                        command1.Parameters["@countryId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+
+                        SqlCommand command2 = new SqlCommand(delete2, connection);
+                        command2.Parameters.Add("@countryId", SqlDbType.Int);
+                        command2.Parameters["@countryId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+
+                        SqlCommand command3 = new SqlCommand(delete3, connection);
+                        command3.Parameters.Add("@countryId", SqlDbType.Int);
+                        command3.Parameters["@countryId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+
+                        try
+                        {
+                            connection.Open();
+                            command1.ExecuteScalar(); //Must first delete connections in connecting tables
+                            command2.ExecuteScalar(); //Must first delete connections in connecting tables
+                            command3.ExecuteScalar();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error");
+                        }
+                    }
+                }
+                catch (InvalidOperationException ioex)
+                {
+                    MessageBox.Show(ioex.Message, "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.", "Error");
+            }
+            refreshTable();
+
+            /*
             if (ECU_Manager.wishToDelete())
             {
                 if (countryCodeTableDataGridView.SelectedRows.Count == 0) //no selected rows
@@ -71,6 +126,7 @@ namespace TractionAir.Forms
                 return;
             }
             refreshTable();
+            */
         }
 
         /// <summary>
