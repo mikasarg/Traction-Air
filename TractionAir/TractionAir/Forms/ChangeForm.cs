@@ -107,7 +107,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (changedBoxes.Count == 0) //No changes were made, so exit
+            save();
+            /*if (changedBoxes.Count == 0) //No changes were made, so exit
             {
                 this.Close();
                 return;
@@ -116,7 +117,7 @@ namespace TractionAir
             previouslyVisited.Clear();
 
             installDateTimePicker.Value = DateTime.Now; //current time
-            save();
+            save();*/
         }
 
         /// <summary>
@@ -138,86 +139,135 @@ namespace TractionAir
 
         /// <summary>
         /// Creates the SQL command for the update
-        /// This class was one I made very early on and as such it has a lot of unnecessary functionality,
-        /// such as knowing which boxes have been altered and recording all changes made. I've kept it in as
-        /// it works, and as such there's no reason to forcibly simplify it which would be time consuming
         /// </summary>
         private void save()
         {
-            string update = "UPDATE mainSettingsTable SET ";
+            string update1 = "UPDATE mainSettingsTable SET BoardCode = @boardCode, PressureGroup = @pressureGroup, Owner = @owner, " +
+                "Country = @country, BuildDate = @buildDate, Version = @version, Description = @description, VehicleRef = @vehicleRef, " +
+                "SpeedStages = @speedStages, DateMod = @dateMod, Notes = @notes, SerialNumber = @serialNumber, PressureCell = @pressureCell, " +
+                "PT1Serial = @pt1Serial, PT2Serial = @pt2Serial, PT3Serial = @pt3Serial, PT4Serial = @pt4Serial, PT5Serial = @pt5Serial, " +
+                "PT6Serial = @pt6Serial, PT7Serial = @pt7Serial, PT8Serial = @pt8Serial, LoadedOffRoad = @loadedOffRoad, LoadedOnRoad = @loadedOnRoad, " +
+                "UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, SerialCodeBot = @serialCodeBot, MaxTractionBeep = @maxTractionBeep, " +
+                "StepUpDelay = @stepUpDelay, EnableGPSButtons = @enableGpsButtons, EnableGPSOverride = @enableGpsOverride, Distance = @distance " +
+                "WHERE BoardCode = @boardCode;";
+            string update2 = "UPDATE ecuToCountry SET CountryID = @countryId WHERE BoardCode = @boardCode;"; //Have to update the connections as well
+            string update3 = "UPDATE ecuToCustomer SET CustomerID = @customerId WHERE BoardCode = @boardCode;";
+            string update4 = "UPDATE ecuToPressureGroup SET PressureGroupID = @pressureGroupId WHERE BoardCode = @boardCode;";
+            string update5 = "UPDATE ecuToVersion SET VersionID = @versionId WHERE BoardCode = @boardCode;";
 
-            for (int j = changedBoxes.Count - 1; j >= 0; j--) //Decrements through the list to obtain the most recent changes first
+            try
             {
-                string s1 = changedBoxes[j].Item1;
-                string s2 = changedBoxes[j].Item2;
-
-                if (previouslyVisited.Contains(s1)) //Checks to make sure it only saves the most recent change to the entry
+                int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
+                using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
-                    continue;
-                }
-                previouslyVisited.Add(s1);
+                    SqlCommand command1 = new SqlCommand(update1, connection);
+                    command1.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command1.Parameters["@boardCode"].Value = boardCode;
+                    command1.Parameters.Add("@pressureGroup", SqlDbType.NVarChar);
+                    command1.Parameters["@pressureGroup"].Value = ECU_Manager.CheckString(pressureGroupComboBox.Text, false);
+                    command1.Parameters.Add("@owner", SqlDbType.NVarChar);
+                    command1.Parameters["@owner"].Value = ECU_Manager.CheckString(customerComboBox.Text, false);
+                    command1.Parameters.Add("@country", SqlDbType.NVarChar);
+                    command1.Parameters["@country"].Value = ECU_Manager.CheckCountryCode(countryComboBox.Text);
+                    command1.Parameters.Add("@buildDate", SqlDbType.Date);
+                    command1.Parameters["@buildDate"].Value = buildDateTimePicker.Value;
+                    command1.Parameters.Add("@version", SqlDbType.NVarChar);
+                    command1.Parameters["@version"].Value = ECU_Manager.CheckString(programVersionComboBox.Text, false);
+                    command1.Parameters.Add("@description", SqlDbType.NVarChar);
+                    command1.Parameters["@description"].Value = ECU_Manager.CheckString(descriptionTextbox.Text, true);
+                    command1.Parameters.Add("@vehicleRef", SqlDbType.NVarChar);
+                    command1.Parameters["@vehicleRef"].Value = ECU_Manager.CheckString(vehicleRefTextbox.Text, false);
+                    command1.Parameters.Add("@speedStages", SqlDbType.NVarChar);
+                    command1.Parameters["@speedStages"].Value = ECU_Manager.CheckString(speedControlComboBox.Text, false);
+                    command1.Parameters.Add("@dateMod", SqlDbType.DateTime);
+                    command1.Parameters["@dateMod"].Value = DateTime.Now;
+                    command1.Parameters.Add("@notes", SqlDbType.NVarChar);
+                    command1.Parameters["@notes"].Value = ECU_Manager.CheckLongString(notesRichTextbox.Text, true);
+                    command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
+                    command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString(serialNumberTextbox.Text, true);
+                    command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
+                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckString(pressureCellTextbox.Text, true);
+                    command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString(pt1SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt2Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt2Serial"].Value = ECU_Manager.CheckString(pt2SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt3Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt3Serial"].Value = ECU_Manager.CheckString(pt3SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt4Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt4Serial"].Value = ECU_Manager.CheckString(pt4SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt5Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt5Serial"].Value = ECU_Manager.CheckString(pt5SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt6Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt6Serial"].Value = ECU_Manager.CheckString(pt6SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt7Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt7Serial"].Value = ECU_Manager.CheckString(pt7SerialTextbox.Text, true);
+                    command1.Parameters.Add("@pt8Serial", SqlDbType.NVarChar);
+                    command1.Parameters["@pt8Serial"].Value = ECU_Manager.CheckString(pt8SerialTextbox.Text, true);
+                    command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
+                    command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, true);
+                    command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
+                    command1.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, true);
+                    command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
+                    command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, true);
+                    command1.Parameters.Add("@maxTraction", SqlDbType.Int);
+                    command1.Parameters["@maxTraction"].Value = ECU_Manager.CheckInt(maxTractionTextbox.Text, true);
+                    command1.Parameters.Add("@serialCodeBot", SqlDbType.NVarChar);
+                    command1.Parameters["@serialCodeBot"].Value = ECU_Manager.CheckString(bottomSerialNumberTextbox.Text, true);
+                    command1.Parameters.Add("@maxTractionBeep", SqlDbType.Bit);
+                    command1.Parameters["@maxTractionBeep"].Value = ECU_Manager.CheckBit(beepCheckBox.Checked);
+                    command1.Parameters.Add("@stepUpDelay", SqlDbType.Int);
+                    command1.Parameters["@stepUpDelay"].Value = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, true);
+                    command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
+                    command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
+                    command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
+                    command1.Parameters["@enableGpsOverride"].Value = ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked);
+                    command1.Parameters.Add("@distance", SqlDbType.Int);
+                    command1.Parameters["@distance"].Value = ECU_Manager.CheckInt(distanceTextbox.Text, true);
 
-                try
-                {
-                    if (s1.Equals("Notes")) //notes
-                    {
-                        s2 = ECU_Manager.CheckLongString(s2, true);
-                        update += s1 + " = " + ECU_Manager.enclose(s2);
-                    }
-                    else if (s1.Equals("BuildDate")) //date
-                    {
-                        s2 = ECU_Manager.CheckDate(s2, false);
-                        update += s1 + " = " + ECU_Manager.enclose(s2);
-                    }
-                    else if (s1.Equals("DateMod")) //dateTime
-                    {
-                        s2 = ECU_Manager.CheckDateTime(s2, false);
-                        update += s1 + " = " + ECU_Manager.enclose(s2);
-                    }
-                    else if (s1.Equals("PressureCell") || s1.Equals("LoadedOffRoad") || s1.Equals("UnloadedOnRoad") || s1.Equals("MaxTraction") || s1.Equals("LoadedOnRoad") || s1.Equals("StepUpDelay")) //ints
-                    {
-                        int i = ECU_Manager.CheckInt(s2, true);
-                        update += s1 + " = " + i;
-                    }
-                    else if (s1.Equals("Version") || s1.Equals("PressureGroup") || s1.Equals("SpeedStages") || s1.Equals("Owner") || s1.Equals("Country")) //comboboxes
-                    {
-                        update += s1 + " = " + ECU_Manager.enclose(s2);
-                    }
-                    else if (s1.Equals("MaxTractionBeep") || s1.Equals("EnableGPSButtons") || s1.Equals("EnableGPSOverride")) //checkboxes
-                    {
-                        if (s2.Equals("True"))
-                        {
-                            update += s1 + " = " + 1;
-                        }
-                        else //false
-                        {
-                            update += s1 + " = " + 0;
-                        }
-                    }
-                    else if (s1.Equals("VehicleRef")) //strings that cannot be null
-                    {
-                        s2 = ECU_Manager.CheckString(s2, false);
-                        update += s1 + " = " + ECU_Manager.enclose(s2);
-                    }
-                    else //strings that can be null
-                    {
-                        s2 = ECU_Manager.CheckString(s2, true);
-                        update += s1 + " = " + ECU_Manager.enclose(s2);
-                    }
-                }
-                catch (InvalidOperationException ioex)
-                {
-                    MessageBox.Show(ioex.Message, "Error");
-                }
+                    SqlCommand command2 = new SqlCommand(update2, connection);
+                    command2.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command2.Parameters["@boardCode"].Value = boardCode;
+                    command2.Parameters.Add("@countryId", SqlDbType.Int);
+                    command2.Parameters["@countryId"].Value = countryComboBox.SelectedValue;
 
-                update += ", ";
+                    SqlCommand command3 = new SqlCommand(update3, connection);
+                    command3.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command3.Parameters["@boardCode"].Value = boardCode;
+                    command3.Parameters.Add("@customerId", SqlDbType.Int);
+                    command3.Parameters["@customerId"].Value = customerComboBox.SelectedValue;
+
+                    SqlCommand command4 = new SqlCommand(update4, connection);
+                    command4.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command4.Parameters["@boardCode"].Value = boardCode;
+                    command4.Parameters.Add("@pressureGroupId", SqlDbType.Int);
+                    command4.Parameters["@pressureGroupId"].Value = pressureGroupComboBox.SelectedValue;
+
+                    SqlCommand command5 = new SqlCommand(update5, connection);
+                    command5.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command5.Parameters["@boardCode"].Value = boardCode;
+                    command5.Parameters.Add("@versionId", SqlDbType.Int);
+                    command5.Parameters["@versionId"].Value = programVersionComboBox.SelectedValue;
+
+                    try
+                    {
+                        connection.Open();
+                        command1.ExecuteScalar();
+                        command2.ExecuteScalar();
+                        command3.ExecuteScalar();
+                        command4.ExecuteScalar();
+                        command5.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error");
+                    }
+                }
             }
-
-            update = update.Substring(0, update.Length - 2); //remove final ", "
-            update += " WHERE BoardCode = '" + boardCode + "'";
-
-            ECU_Manager.update(update); //ECU manager handles sql execution
-
+            catch (InvalidOperationException ioex)
+            {
+                MessageBox.Show(ioex.Message, "Invalid Input");
+                return;
+            }
             this.Close();
         }
 
