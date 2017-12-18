@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,34 +28,43 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE pressureGroupsTable SET ";
+            string update = "UPDATE pressureGroupsTable SET Description = @description, LoadedOnRoad = @loadedOnRoad, LoadedOffRoad = @loadedOffRoad, UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, DateMod = @dateMod WHERE Id = @id;";
             try
             {
-                string description = ECU_Manager.CheckString(descriptionTextbox.Text, false);
-                ECU_Manager.CheckForDuplicates(description, "Description", "pressureGroupsTable", id); //checks for no duplicates - unless they have the same ID
-                update += "Description = " + ECU_Manager.enclose(description) + ", ";
+                using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+                {
+                    SqlCommand command = new SqlCommand(update, connection);
+                    command.Parameters.Add("@description", SqlDbType.NVarChar);
+                    command.Parameters["@description"].Value = ECU_Manager.CheckString(descriptionTextbox.Text, false);
+                    command.Parameters.Add("@loadedOnRoad", SqlDbType.SmallInt);
+                    command.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+                    command.Parameters.Add("@loadedOffRoad", SqlDbType.SmallInt);
+                    command.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+                    command.Parameters.Add("@unloadedOnRoad", SqlDbType.SmallInt);
+                    command.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(unloadedOnRoadTextbox.Text, false);
+                    command.Parameters.Add("@maxTraction", SqlDbType.SmallInt);
+                    command.Parameters["@maxTraction"].Value = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+                    command.Parameters.Add("@dateMod", SqlDbType.DateTime);
+                    command.Parameters["@dateMod"].Value = DateTime.Now;
+                    command.Parameters.Add("@id", SqlDbType.Int);
+                    command.Parameters["@id"].Value = id;
 
-                int loadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, true);
-                update += "LoadedOnRoad = " + loadedOnRoad + ", ";
-
-                int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, true);
-                update += "LoadedOffRoad = " + loadedOffRoad + ", ";
-
-                int unloadedOnRoad = ECU_Manager.CheckInt(unloadedOnRoadTextbox.Text, true);
-                update += "UnloadedOnRoad = " + unloadedOnRoad + ", ";
-
-                int maxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, true);
-                update += "MaxTraction = " + maxTraction + ", ";
-
-                string dateMod = ECU_Manager.CheckDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm"), false);
-                update += "DateMod = " + ECU_Manager.enclose(dateMod) + " WHERE Id = " + id;
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error");
+                    }
+                }
             }
             catch (InvalidOperationException ioex)
             {
                 MessageBox.Show(ioex.Message, "Invalid Input");
                 return;
             }
-            ECU_Manager.update(update); //ecu manager handles sql command
             this.Close();
         }
 
