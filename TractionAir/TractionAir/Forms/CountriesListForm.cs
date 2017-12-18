@@ -102,31 +102,6 @@ namespace TractionAir.Forms
                 MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.", "Error");
             }
             refreshTable();
-
-            /*
-            if (ECU_Manager.wishToDelete())
-            {
-                if (countryCodeTableDataGridView.SelectedRows.Count == 0) //no selected rows
-                {
-                    return;
-                }
-                DataGridViewRow selectedRow = countryCodeTableDataGridView.SelectedRows[0];
-                int id;
-                if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
-                {
-                    ECU_Manager.delete(id.ToString(), "Id", "countryCodeTable"); //ecu manager deletes via sql command
-                }
-                else
-                {
-                    MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.");
-                }
-            }
-            else //do not wish to delete
-            {
-                return;
-            }
-            refreshTable();
-            */
         }
 
         /// <summary>

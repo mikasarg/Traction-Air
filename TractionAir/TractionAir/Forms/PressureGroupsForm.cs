@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -55,26 +56,51 @@ namespace TractionAir
         /// <param name="e"></param>
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (ECU_Manager.wishToDelete())
+            if (!ECU_Manager.wishToDelete())
             {
-                if (pressureGroupsTableDataGridView.SelectedRows.Count == 0) //no selected rows
+                return;
+            }
+            if (pressureGroupsTableDataGridView.SelectedRows.Count == 0) //no selected rows
+            {
+                return;
+            }
+            DataGridViewRow selectedRow = pressureGroupsTableDataGridView.SelectedRows[0];
+            if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out int id))
+            {
+                string delete1 = "DELETE FROM ecuToPressureGroup WHERE PressureGroupID = @pressureGroupId;";
+                string delete2 = "DELETE FROM pressureGroupsTable WHERE Id = @pressureGroupId;";
+                try
                 {
-                    return;
+                    using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
+                    {
+                        SqlCommand command1 = new SqlCommand(delete1, connection);
+                        command1.Parameters.Add("@pressureGroupId", SqlDbType.Int);
+                        command1.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+
+                        SqlCommand command2 = new SqlCommand(delete2, connection);
+                        command2.Parameters.Add("@pressureGroupId", SqlDbType.Int);
+                        command2.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+
+                        try
+                        {
+                            connection.Open();
+                            command1.ExecuteScalar(); //Must first delete connections in connecting table
+                            command2.ExecuteScalar(); 
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error");
+                        }
+                    }
                 }
-                DataGridViewRow selectedRow = pressureGroupsTableDataGridView.SelectedRows[0];
-                int id;
-                if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out id))
+                catch (InvalidOperationException ioex)
                 {
-                    ECU_Manager.delete(id.ToString(), "Id", "pressureGroupsTable"); //ecu manager deletes via sql command
-                }
-                else
-                {
-                    MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.");
+                    MessageBox.Show(ioex.Message, "Error");
                 }
             }
             else
             {
-                return;
+                MessageBox.Show("Could not delete selected entry as its ID was in the incorrect format.", "Error");
             }
             refreshTable();
         }
