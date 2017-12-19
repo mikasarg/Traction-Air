@@ -36,25 +36,19 @@ namespace TractionAir
         }
 
         #region table connection methods
-        public static int getChildIdByParentId(int parentId, string table)
+        public static int EcuToVersion(int boardCode)
         {
             try
             {
                 SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
                 con.Open();
-                string query = "";
-                if (table.Equals("ecuToCountry"))
-                {
-                    query = "SELECT CountryID FROM " + table + " WHERE BoardCode = " + parentId;
-                }
-                else if (table.Equals("customerToCountry"))
-                {
-                    query = "SELECT CountryID FROM " + table + " WHERE CustomerID = " + parentId;
-                }
+                string query = "SELECT VersionID FROM ecuToVersion WHERE BoardCode = @bc";
                 SqlCommand command = new SqlCommand(query, con);
-                Int32 countryID = (Int32)command.ExecuteScalar();
+                command.Parameters.Add("@bc", SqlDbType.Int);
+                command.Parameters["@bc"].Value = boardCode;
+                Int32 versionId = (Int32)command.ExecuteScalar();
                 con.Close();
-                return countryID;
+                return versionId;
             }
             catch (Exception e)
             {
@@ -62,37 +56,103 @@ namespace TractionAir
             }
         }
 
-        public static void updateChildID(int parentId, int childId, string table)
+        public static int EcuToCountry(int boardCode)
         {
             try
             {
-                string updateString = "";
-                if (table.Equals("ecuToCountry"))
-                {
-                    updateString = "UPDATE " + table + " SET CountryID = " + childId + " WHERE BoardCode = " + parentId;
-                }
-                else if (table.Equals("customerToCountry"))
-                {
-                    updateString = "UPDATE " + table + " SET CountryID = " + childId + " WHERE CustomerID = " + parentId;
-                }
-                update(updateString);
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "SELECT CountryID FROM ecuToCountry WHERE BoardCode = @bc";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@bc", SqlDbType.Int);
+                command.Parameters["@bc"].Value = boardCode;
+                Int32 countryId = (Int32)command.ExecuteScalar();
+                con.Close();
+                return countryId;
             }
-            catch (InvalidOperationException ioex)
+            catch (Exception e)
             {
-                throw new InvalidOperationException("Unable to update connections between tables: " + ioex.Message);
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
             }
         }
 
-
-        public static void insertChildId(int parentId, int childId, string table)
+        public static int EcuToSpeedControl(int boardCode)
         {
             try
             {
-                Insert("INSERT INTO " + table + " OUTPUT INSERTED.ID VALUES (" + parentId + ", " + childId + ");");
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "SELECT SpeedControlID FROM ecuToSpeedControl WHERE BoardCode = @bc";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@bc", SqlDbType.Int);
+                command.Parameters["@bc"].Value = boardCode;
+                Int32 speedControlId = (Int32)command.ExecuteScalar();
+                con.Close();
+                return speedControlId;
             }
-            catch (InvalidOperationException ioex)
+            catch (Exception e)
             {
-                throw new InvalidOperationException("Unable to new connection between tables: " + ioex.Message);
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
+            }
+        }
+
+        public static int EcuToPressureGroup(int boardCode)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "SELECT PressureGroupID FROM ecuToPressureGroup WHERE BoardCode = @bc";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@bc", SqlDbType.Int);
+                command.Parameters["@bc"].Value = boardCode;
+                Int32 pressureGroupId = (Int32)command.ExecuteScalar();
+                con.Close();
+                return pressureGroupId;
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
+            }
+        }
+
+        public static int EcuToCustomer(int boardCode)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "SELECT CustomerID FROM ecuToCustomer WHERE BoardCode = @bc";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@bc", SqlDbType.Int);
+                command.Parameters["@bc"].Value = boardCode;
+                Int32 customerId = (Int32)command.ExecuteScalar();
+                con.Close();
+                return customerId;
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
+            }
+        }
+
+        public static int CustomerToCountry(int id)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "SELECT CountryID FROM customerToCountry WHERE CustomerID = @id";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = id;
+                Int32 countryId = (Int32)command.ExecuteScalar();
+                con.Close();
+                return countryId;
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
             }
         }
         #endregion
@@ -127,81 +187,6 @@ namespace TractionAir
         }
         #endregion
 
-        #region sql commands
-        /// <summary>
-        /// Inserts the new entry into the table
-        /// </summary>
-        /// <param name="insert"></param>
-        public static int Insert(string insert)
-        {
-            /*using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
-            {
-                try
-                {
-                    iDbCon.Execute(insert);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when attempting to insert: " + sqlex.Message, "Error");
-                }
-            }*/
-            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
-            using (SqlCommand cmd = new SqlCommand(insert, con))
-            {
-                con.Open();
-
-                int modified = (int)cmd.ExecuteScalar();
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-
-                return modified;
-            }
-        }
-
-        /// <summary>
-        /// Updates the selected entry from the given database
-        /// </summary>
-        /// <param name="update"></param>
-        public static void update(string update)
-        {
-            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
-            {
-                try
-                {
-                    iDbCon.Execute(update);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when attempting to update: " + sqlex.Message, "Error");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Deletes the selected entry from the given database
-        /// </summary>
-        /// <param name="s"></param>
-        public static void delete(string s, string column, string table)
-        {
-            string delete = "DELETE FROM " + table + " WHERE " + column + " = '" + s + "'";
-            using (IDbConnection iDbCon = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
-            {
-                try
-                {
-                    iDbCon.Execute(delete);
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("An error occurred when trying to delete: " + sqlex.Message, "Error");
-                    return;
-                }
-            }
-        }
-        #endregion
-
         #region get object methods
         /// <summary>
         /// Returns an ecu object based on the given boardCode
@@ -210,7 +195,7 @@ namespace TractionAir
         /// <returns></returns>
         public static ECU_MainSettings getECUByBC(int boardCode)
         {
-            String query = "SELECT * FROM mainSettingsTable WHERE BoardCode = '" + boardCode + "'";
+            String query = $"SELECT * FROM mainSettingsTable WHERE BoardCode = '{ boardCode }'";
 
             using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
             {
@@ -233,7 +218,7 @@ namespace TractionAir
         /// <returns></returns>
         public static PressureGroupObject getPGByID(int Id)
         {
-            String query = "SELECT * FROM pressureGroupsTable WHERE Id = '" + Id + "'";
+            String query = $"SELECT * FROM pressureGroupsTable WHERE Id = '{ Id }'";
 
             using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
             {
@@ -256,7 +241,7 @@ namespace TractionAir
         /// <returns></returns>
         public static customerObject getCustomerByID(int Id)
         {
-            String query = "SELECT * FROM customerTable WHERE Id = '" + Id + "'";
+            String query = $"SELECT * FROM customerTable WHERE Id = '{ Id }'";
 
             using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
             {
@@ -280,7 +265,7 @@ namespace TractionAir
         /// <returns></returns>
         public static CountryObject getCountryByID(int id)
         {
-            String query = "SELECT * FROM countryCodeTable WHERE Id = '" + id + "'";
+            String query = $"SELECT * FROM countryCodeTable WHERE Id = '{ id }'";
 
             using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
             {
@@ -372,91 +357,6 @@ namespace TractionAir
             else
             {
                 return 0;
-            }
-        }
-
-        /// <summary>
-        /// Checks the date is valid
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string CheckDate(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            DateTime dt;
-            if (!DateTime.TryParse(s, out dt))
-            {
-                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
-            }
-            return dt.Date.ToString("MM/dd/yyyy");
-        }
-
-        /// <summary>
-        /// Checks the dateTime is valid
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string CheckDateTime(string s, bool allowNulls)
-        {
-            if (s == null && !allowNulls)
-            {
-                throw new InvalidOperationException("One or more required fields were left empty");
-            }
-            DateTime dt;
-            if (!DateTime.TryParse(s, out dt))
-            {
-                throw new InvalidOperationException("Input '" + dt + "' is not a valid date");
-            }
-            return dt.ToString("MM/dd/yyyy HH:mm");
-        }
-
-        /// <summary>
-        /// Returns the given string enclosed in ''
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string enclose(string s)
-        {
-            return "'" + s + "'";
-        }
-
-        /// <summary>
-        /// Checks for duplicates of the given string in the given table's given column
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="column"></param>
-        /// <param name="table"></param>
-        /// <returns></returns>
-        public static void CheckForDuplicates(string s, string column, string table, int id)
-        {
-            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
-            SqlCommand cmd;
-            if (id == -1) //find ALL duplicates
-            {
-                cmd = new SqlCommand("SELECT * FROM " + table + " WHERE " + column + " = '" + s + "'");
-            }
-            else //find where the IDs do not match
-            {
-                cmd = new SqlCommand("SELECT * FROM " + table + " WHERE " + column + " = '" + s + "' AND Id != " + id, con);
-            }
-            cmd.Connection = con;
-
-            try
-            {
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read()) //Duplicates were found
-                {
-                    throw new InvalidOperationException(column + " '" + s + "' already exists in the table");
-                }
-                con.Close();
-            }
-            catch (SqlException sqlex)
-            {
-                MessageBox.Show(sqlex.Message ,"Error");
             }
         }
 

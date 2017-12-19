@@ -15,19 +15,10 @@ namespace TractionAir
     public partial class ViewForm : Form
     {
         private int boardCode;
-        private string connectionString;
-        private SqlConnection connection;
-
-        private List<Tuple<string, string>> changedBoxes; //List of boxes which have been altered
-        private HashSet<string> previouslyVisited;
 
         public ViewForm(int boardCode)
         {
             this.boardCode = boardCode;
-            changedBoxes = new List<Tuple<string, string>>();
-            previouslyVisited = new HashSet<string>();
-
-            this.connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
 
             InitializeComponent();
         }
@@ -61,12 +52,12 @@ namespace TractionAir
                 boardNumberTextbox.Text = boardCode.ToString();
                 serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, true);
                 bottomSerialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialCodeBot, true);
-                programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
-                pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
-                customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
+                programVersionComboBox.SelectedValue = ECU_Manager.EcuToVersion(boardCode);
+                pressureGroupComboBox.SelectedValue = ECU_Manager.EcuToPressureGroup(boardCode);
+                customerComboBox.SelectedValue = ECU_Manager.EcuToCustomer(boardCode);
                 buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
-                installDateTimePicker.Text = (ecu.DateMod).ToString();
-                vehicleRefTextbox.Text = ecu.VehicleRef;
+                installDateTimePicker.Value = DateTime.Now; //current time
+                vehicleRefTextbox.Text = ECU_Manager.CheckString(ecu.VehicleRef, false);
                 pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), true).ToString();
                 pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, true);
                 pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, true);
@@ -78,10 +69,10 @@ namespace TractionAir
                 pt8SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT8Serial, true);
                 descriptionTextbox.Text = ECU_Manager.CheckString(ecu.Description, true);
                 notesRichTextbox.Text = ECU_Manager.CheckString(ecu.Notes, true);
-                countryComboBox.SelectedValue = ECU_Manager.getChildIdByParentId(boardCode, "ecuToCountry");
+                countryComboBox.SelectedValue = ECU_Manager.EcuToCountry(boardCode);
 
                 //Manual Database Update section
-                speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
+                speedControlComboBox.SelectedValue = ECU_Manager.EcuToSpeedControl(boardCode);
                 loadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOffRoad.ToString(), true);
                 loadedOnRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOnRoad.ToString(), true);
                 notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), true);
@@ -97,5 +88,6 @@ namespace TractionAir
                 MessageBox.Show("An error occurred when trying to load the selected entry: " + ioex.Message, "Error");
             }
         }
+
     }
 }

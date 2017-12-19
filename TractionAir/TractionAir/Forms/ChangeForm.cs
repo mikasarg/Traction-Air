@@ -15,19 +15,10 @@ namespace TractionAir
     public partial class ChangeForm : Form
     {
         private int boardCode;
-        private string connectionString;
-        private SqlConnection connection;
-
-        private List<Tuple<string, string>> changedBoxes; //List of boxes which have been altered
-        private HashSet<string> previouslyVisited;
 
         public ChangeForm(int boardCode)
         {
             this.boardCode = boardCode;
-            changedBoxes = new List<Tuple<string, string>>();
-            previouslyVisited = new HashSet<string>();
-
-            this.connectionString = ECU_Manager.connection("ecuSettingsDB_CS");
 
             InitializeComponent();
         }
@@ -62,12 +53,12 @@ namespace TractionAir
                 boardNumberTextbox.Text = boardCode.ToString();
                 serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, true);
                 bottomSerialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialCodeBot, true);
-                programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact(ecu.Version);
-                pressureGroupComboBox.SelectedIndex = pressureGroupComboBox.FindStringExact(ecu.PressureGroup);
-                customerComboBox.SelectedIndex = customerComboBox.FindStringExact(ecu.Owner);
+                programVersionComboBox.SelectedValue = ECU_Manager.EcuToVersion(boardCode);
+                pressureGroupComboBox.SelectedValue = ECU_Manager.EcuToPressureGroup(boardCode);
+                customerComboBox.SelectedValue = ECU_Manager.EcuToCustomer(boardCode);
                 buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
                 installDateTimePicker.Value = DateTime.Now; //current time
-                vehicleRefTextbox.Text = ecu.VehicleRef;
+                vehicleRefTextbox.Text = ECU_Manager.CheckString(ecu.VehicleRef, false);
                 pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), true).ToString();
                 pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, true);
                 pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, true);
@@ -79,10 +70,10 @@ namespace TractionAir
                 pt8SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT8Serial, true);
                 descriptionTextbox.Text = ECU_Manager.CheckString(ecu.Description, true);
                 notesRichTextbox.Text = ECU_Manager.CheckString(ecu.Notes, true);
-                countryComboBox.SelectedValue = ECU_Manager.getChildIdByParentId(boardCode, "ecuToCountry");
+                countryComboBox.SelectedValue = ECU_Manager.EcuToCountry(boardCode);
 
                 //Manual Database Update section
-                speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(ecu.SpeedStages);
+                speedControlComboBox.SelectedValue = ECU_Manager.EcuToSpeedControl(boardCode);
                 loadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOffRoad.ToString(), true);
                 loadedOnRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOnRoad.ToString(), true);
                 notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), true);
@@ -97,7 +88,6 @@ namespace TractionAir
             {
                 MessageBox.Show("An error occurred when trying to load the selected entry: " + ioex.Message, "Error");
             }
-            changedBoxes.Clear();
         }
 
         /// <summary>
@@ -108,16 +98,6 @@ namespace TractionAir
         private void saveButton_Click(object sender, EventArgs e)
         {
             save();
-            /*if (changedBoxes.Count == 0) //No changes were made, so exit
-            {
-                this.Close();
-                return;
-            }
-
-            previouslyVisited.Clear();
-
-            installDateTimePicker.Value = DateTime.Now; //current time
-            save();*/
         }
 
         /// <summary>
@@ -127,14 +107,11 @@ namespace TractionAir
         /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            if (changedBoxes.Count > 0) { //Changes have been made
-                DialogResult dialogResult = MessageBox.Show("You have made changes that will not be saved if you cancel. Cancel without saving?", "Are you sure?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
+            if (ECU_Manager.wishToCancel())
+            {
+                this.Close();
             }
-            this.Close();
+            return;
         }
 
         /// <summary>
@@ -154,6 +131,7 @@ namespace TractionAir
             string update3 = "UPDATE ecuToCustomer SET CustomerID = @customerId WHERE BoardCode = @boardCode;";
             string update4 = "UPDATE ecuToPressureGroup SET PressureGroupID = @pressureGroupId WHERE BoardCode = @boardCode;";
             string update5 = "UPDATE ecuToVersion SET VersionID = @versionId WHERE BoardCode = @boardCode;";
+            string update6 = "UPDATE ecuToSpeedControl SET SpeedControlID = @speedControlId WHERE BoardCode = @boardCode;";
 
             try
             {
@@ -248,6 +226,12 @@ namespace TractionAir
                     command5.Parameters.Add("@versionId", SqlDbType.Int);
                     command5.Parameters["@versionId"].Value = programVersionComboBox.SelectedValue;
 
+                    SqlCommand command6 = new SqlCommand(update6, connection);
+                    command6.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command6.Parameters["@boardCode"].Value = boardCode;
+                    command6.Parameters.Add("@speedControlId", SqlDbType.Int);
+                    command6.Parameters["@speedControlId"].Value = speedControlComboBox.SelectedValue;
+
                     try
                     {
                         connection.Open();
@@ -256,6 +240,7 @@ namespace TractionAir
                         command3.ExecuteScalar();
                         command4.ExecuteScalar();
                         command5.ExecuteScalar();
+                        command6.ExecuteScalar();
                     }
                     catch (Exception ex)
                     {
@@ -270,153 +255,5 @@ namespace TractionAir
             }
             this.Close();
         }
-
-        //All methods below add tuples to the list when a textbox is altered, with the relevant column name and the altered text.
-        #region eventListeners
-        private void serialNumberTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("SerialNumber", serialNumberTextbox.Text));
-        }
-
-        private void programVersionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("Version", programVersionComboBox.Text));
-        }
-
-        private void pressureGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PressureGroup", pressureGroupComboBox.Text));
-        }
-
-        private void customerComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("Owner", customerComboBox.Text));
-        }
-
-        private void buildDateTimePicker_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("BuildDate", buildDateTimePicker.Text));
-        }
-
-        private void installDateTimePicker_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("DateMod", installDateTimePicker.Value.ToString("dd/MM/yyyy HH:mm")));
-        }
-
-        private void vehicleRefTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("VehicleRef", vehicleRefTextbox.Text));
-        }
-
-        private void pressureCellTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PressureCell", pressureCellTextbox.Text));
-        }
-
-        private void pt1SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT1Serial", pt1SerialTextbox.Text));
-        }
-
-        private void pt2SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT2Serial", pt2SerialTextbox.Text));
-        }
-
-        private void pt3SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT3Serial", pt3SerialTextbox.Text));
-        }
-
-        private void pt4SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT4Serial", pt4SerialTextbox.Text));
-        }
-
-        private void pt5SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT5Serial", pt5SerialTextbox.Text));
-        }
-
-        private void pt6SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT6Serial", pt6SerialTextbox.Text));
-        }
-
-        private void pt7SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT7Serial", pt7SerialTextbox.Text));
-        }
-
-        private void pt8SerialTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("PT8Serial", pt8SerialTextbox.Text));
-        }
-
-        private void descriptionTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("Description", descriptionTextbox.Text));
-        }
-
-        private void notesRichTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("Notes", notesRichTextbox.Text));
-        }
-
-        private void speedControlComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("SpeedStages", speedControlComboBox.Text));
-        }
-
-        private void loadedOffRoadTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("LoadedOffRoad", loadedOffRoadTextbox.Text));
-        }
-
-        private void notLoadedTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("UnloadedOnRoad", notLoadedTextbox.Text));
-        }
-
-        private void maxTractionTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("MaxTraction", maxTractionTextbox.Text));
-        }
-
-        private void loadedOnRoadTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("LoadedOnRoad", loadedOnRoadTextbox.Text));
-        }
-
-        private void bottomSerialNumberTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("SerialCodeBot", bottomSerialNumberTextbox.Text));
-        }
-
-        private void stepUpDelayTextbox_TextChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("StepUpDelay", stepUpDelayTextbox.Text));
-        }
-
-        private void beepCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("MaxTractionBeep", beepCheckBox.Checked.ToString()));
-        }
-
-        private void gpsButtonCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("EnableGPSButtons", gpsButtonCheckBox.Checked.ToString()));
-        }
-
-        private void gpsOverrideCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("EnableGPSOverride", gpsOverrideCheckBox.Checked.ToString()));
-        }
-
-        private void countryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            changedBoxes.Add(new Tuple<string, string>("Country", countryComboBox.Text));
-        }
-        #endregion
     }
 }

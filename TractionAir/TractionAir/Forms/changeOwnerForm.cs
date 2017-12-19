@@ -102,7 +102,7 @@ namespace TractionAir.Forms
                 address1Textbox.Text = customer.Address1;
                 address2Textbox.Text = customer.Address2;
                 cityTextbox.Text = customer.City;
-                countryComboBox.SelectedValue = ECU_Manager.getChildIdByParentId(id, "customerToCountry");
+                countryComboBox.SelectedValue = ECU_Manager.CustomerToCountry(id);
                 phoneTextbox.Text = customer.Phone;
             }
             catch (InvalidOperationException ioex)
