@@ -14,7 +14,6 @@ namespace TractionAir
 {
     public partial class ManualUploadForm : Form
     {
-        private int boardCode;
         private string connectionString;
 
         public ManualUploadForm()
@@ -66,6 +65,9 @@ namespace TractionAir
                 int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
+                    //TEST TO SEE IF BOARD ALREADY EXISTS
+                    ECU_Manager.CheckDuplicateECU(boardCode);
+
                     SqlCommand command1 = new SqlCommand(insert1, connection);
                     command1.Parameters.Add("@boardCode", SqlDbType.Int);
                     command1.Parameters["@boardCode"].Value = boardCode;
@@ -92,7 +94,7 @@ namespace TractionAir
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString(serialNumberTextbox.Text, true);
                     command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
-                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckString(pressureCellTextbox.Text, true);
+                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckInt(pressureCellTextbox.Text, true);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString(pt1SerialTextbox.Text, true);
                     command1.Parameters.Add("@pt2Serial", SqlDbType.NVarChar);

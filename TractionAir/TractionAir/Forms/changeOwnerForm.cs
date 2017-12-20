@@ -32,6 +32,8 @@ namespace TractionAir.Forms
             string update2 = "UPDATE customerToCountry SET CountryID = @countryId WHERE CustomerID = @companyId;";
             try
             {
+                string company = ECU_Manager.CheckString(companyTextbox.Text, false);
+                ECU_Manager.CheckDuplicateCustomer(company, id); //check for a duplicate company
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command1 = new SqlCommand(update1, connection);

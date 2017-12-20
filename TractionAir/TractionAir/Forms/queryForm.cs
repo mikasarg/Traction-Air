@@ -36,22 +36,22 @@ namespace TractionAir
             if (!boardCodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "BoardCode " + operatorButton1.Text + " " + boardCodeTextbox.Text + " AND ";
+                query += "BoardCode " + operatorButton1.Text + " @boardCode AND ";
             }
             if (!ownerTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "Owner LIKE '%" + ownerTextbox.Text + "%' AND ";
+                query += "Owner LIKE '%@owner%' AND ";
             }
             if (!descriptionTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "Description LIKE '%" + descriptionTextbox.Text + "%' AND ";
+                query += "Description LIKE '%@description%' AND ";
             }
             if (!vehicleRefTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "VehicleRef LIKE '%" + vehicleRefTextbox.Text + "%' AND ";
+                query += "VehicleRef LIKE '%@vehicleRef%' AND ";
             }
             if (!gpsComboBox.Text.Equals(""))
             {
@@ -68,52 +68,52 @@ namespace TractionAir
             if (!distanceTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "Distance " + operatorButton3.Text + " " + distanceTextbox.Text + " AND ";
+                query += "Distance " + operatorButton3.Text + " @distance AND ";
             }
             if (!pressureCellTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PresureCell " + operatorButton4.Text + " " + pressureCellTextbox.Text + " AND ";
+                query += "PressureCell " + operatorButton4.Text + " @pressureCell AND ";
             }
             if (!pt1CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT1Serial LIKE '%" + pt1CodeTextbox.Text + "%' AND ";
+                query += "PT1Serial LIKE '%@pt1Code%' AND ";
             }
             if (!pt2CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT2Serial LIKE '%" + pt2CodeTextbox.Text + "%' AND ";
+                query += "PT2Serial LIKE '%@pt2Code%' AND ";
             }
             if (!pt3CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT3Serial LIKE '%" + pt3CodeTextbox.Text + "%' AND ";
+                query += "PT3Serial LIKE '%@pt3Code%' AND ";
             }
             if (!pt4CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT4Serial LIKE '%" + pt4CodeTextbox.Text + "%' AND ";
+                query += "PT4Serial LIKE '%@pt4Code%' AND ";
             }
             if (!pt5CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT5Serial LIKE '%" + pt5CodeTextbox.Text + "%' AND ";
+                query += "PT5Serial LIKE '%@pt5Code%' AND ";
             }
             if (!pt6CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT6Serial LIKE '%" + pt6CodeTextbox.Text + "%' AND ";
+                query += "PT6Serial LIKE '%@pt6Code%' AND ";
             }
             if (!pt7CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT7Serial LIKE '%" + pt7CodeTextbox.Text + "%' AND ";
+                query += "PT7Serial LIKE '%@pt7Code%' AND ";
             }
             if (!pt8CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT8Serial LIKE '%" + pt8CodeTextbox.Text + "%' AND ";
+                query += "PT8Serial LIKE '%@pt8Code%' AND ";
             }
 
             if (!conditions) //nothing entered
@@ -125,10 +125,91 @@ namespace TractionAir
 
             try
             {
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS"))))
+                SqlConnection con = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS"));
+                SqlCommand command = new SqlCommand(query, con);
+
+                //ADDING PARAMETERS
+
+                if (!boardCodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command.Parameters["@boardCode"].Value = boardCodeTextbox.Text;
+                }
+                if (!ownerTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@owner", SqlDbType.NVarChar);
+                    command.Parameters["@owner"].Value = ownerTextbox.Text;
+                }
+                if (!descriptionTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@description", SqlDbType.NVarChar);
+                    command.Parameters["@description"].Value = descriptionTextbox.Text;
+                }
+                if (!vehicleRefTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@vehicleRef", SqlDbType.NVarChar);
+                    command.Parameters["@vehicleRef"].Value = vehicleRefTextbox.Text;
+                }
+                if (!distanceTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@distance", SqlDbType.Int);
+                    command.Parameters["@distance"].Value = distanceTextbox.Text;
+                }
+                if (!pressureCellTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pressureCell", SqlDbType.Int);
+                    command.Parameters["@pressureCell"].Value = pressureCellTextbox.Text;
+                }
+                if (!pt1CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt1Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt1Code"].Value = pt1CodeTextbox.Text;
+                }
+                if (!pt2CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt2Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt2Code"].Value = pt2CodeTextbox.Text;
+                }
+                if (!pt3CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt3Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt3Code"].Value = pt3CodeTextbox.Text;
+                }
+                if (!pt4CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt4Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt4Code"].Value = pt4CodeTextbox.Text;
+                }
+                if (!pt5CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt5Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt5Code"].Value = pt5CodeTextbox.Text;
+                }
+                if (!pt6CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt6Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt6Code"].Value = pt6CodeTextbox.Text;
+                }
+                if (!pt7CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt7Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt7Code"].Value = pt7CodeTextbox.Text;
+                }
+                if (!pt8CodeTextbox.Text.Equals(""))
+                {
+                    command.Parameters.Add("@pt8Code", SqlDbType.NVarChar);
+                    command.Parameters["@pt8Code"].Value = pt8CodeTextbox.Text;
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
                     DataTable ecus = new DataTable();
                     adapter.Fill(ecus);
+                    if (ecus.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No results found for the given query");
+                        return;
+                    }
                     dgv.DataSource = ecus;
                 }
             }

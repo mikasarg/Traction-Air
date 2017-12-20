@@ -406,6 +406,7 @@
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
             this.pressureCellTextbox.TabIndex = 6;
+            this.pressureCellTextbox.Text = "0";
             // 
             // vehicleRefTextbox
             // 
@@ -862,6 +863,7 @@
             this.distanceTextbox.Name = "distanceTextbox";
             this.distanceTextbox.Size = new System.Drawing.Size(160, 20);
             this.distanceTextbox.TabIndex = 20;
+            this.distanceTextbox.Text = "0";
             // 
             // label37
             // 

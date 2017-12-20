@@ -378,6 +378,104 @@ namespace TractionAir
             }
             return code;
         }
+
+        public static void CheckDuplicateECU(int bc)
+        {
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM mainSettingsTable WHERE BoardCode = @bc;");
+            cmd.Connection = con;
+            cmd.Parameters.Add("@bc", SqlDbType.Int);
+            cmd.Parameters["@bc"].Value = bc;
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException("ECU with board code " + bc + " already exists");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+            }
+        }
+
+        public static void CheckDuplicatePressureGroup(string desc, int id)
+        {
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM pressureGroupsTable WHERE Description = @desc AND Id != @id;");
+            cmd.Connection = con;
+            cmd.Parameters.Add("@desc", SqlDbType.NVarChar);
+            cmd.Parameters["@desc"].Value = desc;
+            cmd.Parameters.Add("@id", SqlDbType.Int);
+            cmd.Parameters["@id"].Value = id;
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException("Pressure group with name " + desc + " already exists");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+            }
+        }
+
+        public static void CheckDuplicateCustomer(string company, int id)
+        {
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM customerTable WHERE Company = @company AND Id != @id;");
+            cmd.Connection = con;
+            cmd.Parameters.Add("@company", SqlDbType.NVarChar);
+            cmd.Parameters["@company"].Value = company;
+            cmd.Parameters.Add("@id", SqlDbType.Int);
+            cmd.Parameters["@id"].Value = id;
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException("Customer with company name " + company + " already exists");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+            }
+        }
+
+        public static void CheckDuplicateCountry(string code, int id)
+        {
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM countryCodeTable WHERE Code = @code AND Id != @id;");
+            cmd.Connection = con;
+            cmd.Parameters.Add("@code", SqlDbType.NVarChar);
+            cmd.Parameters["@code"].Value = code;
+            cmd.Parameters.Add("@id", SqlDbType.Int);
+            cmd.Parameters["@id"].Value = id;
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException("Country with code " + code + " already exists");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+            }
+        }
         #endregion
 
         #region ASCII Conversion

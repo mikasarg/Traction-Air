@@ -32,11 +32,13 @@ namespace TractionAir.Forms
             string update = "UPDATE countryCodeTable SET Code = @code, Country = @country WHERE Id = @id;";
             try
             {
+                string code = ECU_Manager.CheckCountryCode(codeTextbox.Text);
+                ECU_Manager.CheckDuplicateCountry(code, id); //check for a duplicate entry
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command = new SqlCommand(update, connection);
                     command.Parameters.Add("@code", SqlDbType.NVarChar);
-                    command.Parameters["@code"].Value = ECU_Manager.CheckCountryCode(codeTextbox.Text);
+                    command.Parameters["@code"].Value = code;
                     command.Parameters.Add("@country", SqlDbType.NVarChar);
                     command.Parameters["@country"].Value = ECU_Manager.CheckString(countryTextbox.Text, false);
                     command.Parameters.Add("@id", SqlDbType.Int);

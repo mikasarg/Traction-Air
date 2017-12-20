@@ -29,6 +29,8 @@ namespace TractionAir.Forms
             string insert = "INSERT INTO countryCodeTable VALUES (@code, @country);";
             try
             {
+                string code = ECU_Manager.CheckCountryCode(codeTextbox.Text);
+                ECU_Manager.CheckDuplicateCountry(code, -1); //check for an existing entry
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command = new SqlCommand(insert, connection);

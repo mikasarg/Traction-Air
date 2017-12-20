@@ -29,11 +29,13 @@ namespace TractionAir
             string insert = "INSERT INTO pressureGroupsTable VALUES (@description, @loadedOnRoad, @loadedOffRoad, @unloadedOnRoad, @maxTraction, @dateMod);";
             try
             {
+                string description = ECU_Manager.CheckString(descriptionTextbox.Text, false);
+                ECU_Manager.CheckDuplicatePressureGroup(description, -1); //check for a duplicate description
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command = new SqlCommand(insert, connection);
                     command.Parameters.Add("@description", SqlDbType.NVarChar);
-                    command.Parameters["@description"].Value = ECU_Manager.CheckString(descriptionTextbox.Text, false);
+                    command.Parameters["@description"].Value = description;
                     command.Parameters.Add("@loadedOnRoad", SqlDbType.SmallInt);
                     command.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
                     command.Parameters.Add("@loadedOffRoad", SqlDbType.SmallInt);

@@ -29,11 +29,13 @@ namespace TractionAir.Forms
             string insert2 = "INSERT INTO customerToCountry VALUES (@companyId, @countryId);";
             try
             {
+                string company = ECU_Manager.CheckString(companyTextbox.Text, false);
+                ECU_Manager.CheckDuplicateCustomer(company, -1); //check for a duplicate company
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command1 = new SqlCommand(insert1, connection);
                     command1.Parameters.Add("@company", SqlDbType.NVarChar);
-                    command1.Parameters["@company"].Value = ECU_Manager.CheckString(companyTextbox.Text, false);
+                    command1.Parameters["@company"].Value = company;
                     command1.Parameters.Add("@address1", SqlDbType.NVarChar);
                     command1.Parameters["@address1"].Value = ECU_Manager.CheckString(address1Textbox.Text, true);
                     command1.Parameters.Add("@address2", SqlDbType.NVarChar);

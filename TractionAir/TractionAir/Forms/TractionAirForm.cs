@@ -25,6 +25,7 @@ namespace TractionAir
         //TODO all menu functions
         //TODO retrieve and send data via USB
         //TODO connect to and edit the real database (online or offline)
+        //TODO disable copy if newer?
         private splashForm splash;
 
         /// <summary>
@@ -38,6 +39,8 @@ namespace TractionAir
             ECU_Manager.Initialise(ref serialPortECU);
 
             InitializeUSBPort();
+
+            InitialiseMode();
 
             SerialManager.Initialize();
 
@@ -93,6 +96,7 @@ namespace TractionAir
             this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
             mainSettingsTableDataGridView.Update();
             mainSettingsTableDataGridView.Refresh();
+            ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
         }
         #endregion
 
@@ -108,11 +112,11 @@ namespace TractionAir
                 onlineToolStripMenuItem.Checked = true;
                 if (true) //TODO check if connected to the internet
                 {
-                    onlineLabel.Text = "Online Mode: Connected";
+                    onlineLabel.Text = "Online Mode: Not Connected";
                 }
                 else
                 {
-                    onlineLabel.Text = "Online Mode: Not Connected";
+                    onlineLabel.Text = "Online Mode: Connected";
                 }
             }
             else //Offline mode

@@ -31,11 +31,13 @@ namespace TractionAir.Forms
             string update = "UPDATE pressureGroupsTable SET Description = @description, LoadedOnRoad = @loadedOnRoad, LoadedOffRoad = @loadedOffRoad, UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, DateMod = @dateMod WHERE Id = @id;";
             try
             {
+                string description = ECU_Manager.CheckString(descriptionTextbox.Text, false);
+                ECU_Manager.CheckDuplicatePressureGroup(description, id); //check for a duplicate description
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command = new SqlCommand(update, connection);
                     command.Parameters.Add("@description", SqlDbType.NVarChar);
-                    command.Parameters["@description"].Value = ECU_Manager.CheckString(descriptionTextbox.Text, false);
+                    command.Parameters["@description"].Value = description;
                     command.Parameters.Add("@loadedOnRoad", SqlDbType.SmallInt);
                     command.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
                     command.Parameters.Add("@loadedOffRoad", SqlDbType.SmallInt);

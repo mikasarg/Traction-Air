@@ -47,27 +47,14 @@ namespace TractionAir.Forms
             alreadyExists = false;
             try
             {
-                SqlConnection con = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS"));
-                SqlCommand cmd;
-                cmd = new SqlCommand("SELECT * FROM mainSettingsTable WHERE BoardCode = @bc;");
-                cmd.Parameters.Add("@bc", SqlDbType.Int);
-                cmd.Parameters["@bc"].Value = ECU_Manager.connectedBoard;
-                cmd.Connection = con;
-
                 try
                 {
-                    con.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read()) //Duplicates were found
-                    {
-                        alreadyExists = true;
-                        loadValuesFromDB();
-                    }
-                    con.Close();
+                    ECU_Manager.CheckDuplicateECU(ECU_Manager.connectedBoard);
                 }
-                catch (SqlException sqlex)
+                catch (InvalidOperationException ioex)
                 {
-                    MessageBox.Show(sqlex.Message, "Error");
+                    alreadyExists = true;
+                    loadValuesFromDB();
                 }
             }
             catch (Exception ex)
@@ -132,6 +119,7 @@ namespace TractionAir.Forms
             try
             {
                 SerialManager.WriteLine(output);
+                //string checkReceived = readWriteHelper.readInput(input); //TODO Check that the ecu received the data
             }
             catch(System.IO.IOException ioex)
             {
@@ -193,7 +181,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString(serialNumberTextbox.Text, true);
                     command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
-                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckString(pressureCellTextbox.Text, true);
+                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckInt(pressureCellTextbox.Text, true);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString(pt1SerialTextbox.Text, true);
                     command1.Parameters.Add("@pt2Serial", SqlDbType.NVarChar);
@@ -334,7 +322,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString(serialNumberTextbox.Text, true);
                     command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
-                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckString(pressureCellTextbox.Text, true);
+                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckInt(pressureCellTextbox.Text, true);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString(pt1SerialTextbox.Text, true);
                     command1.Parameters.Add("@pt2Serial", SqlDbType.NVarChar);
@@ -449,6 +437,7 @@ namespace TractionAir.Forms
             try
             {
                 settingsFromECU settings = readWriteHelper.readInput(input);
+                SerialManager.WriteLine(readWriteHelper.appendCRC("RCV,")); //Let ecu know that data was received
             }
             catch (InvalidOperationException ioex)
             {
