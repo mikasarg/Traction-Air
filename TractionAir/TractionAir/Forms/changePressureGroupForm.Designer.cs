@@ -47,6 +47,8 @@
             this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
             this.tableAdapterManager = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
+            this.unloadedOffRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
@@ -54,7 +56,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(234, 190);
+            this.cancelButton.Location = new System.Drawing.Point(234, 204);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -64,7 +66,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(136, 190);
+            this.saveButton.Location = new System.Drawing.Point(136, 204);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 4;
@@ -74,6 +76,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.unloadedOffRoadTextbox);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.descriptionTextbox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.maxTractionTextbox);
@@ -84,9 +88,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.loadedOnRoadTextbox);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 15);
+            this.groupBox1.Location = new System.Drawing.Point(18, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(424, 213);
+            this.groupBox1.Size = new System.Drawing.Size(424, 182);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -108,7 +112,7 @@
             // 
             // maxTractionTextbox
             // 
-            this.maxTractionTextbox.Location = new System.Drawing.Point(121, 123);
+            this.maxTractionTextbox.Location = new System.Drawing.Point(121, 149);
             this.maxTractionTextbox.Name = "maxTractionTextbox";
             this.maxTractionTextbox.Size = new System.Drawing.Size(100, 20);
             this.maxTractionTextbox.TabIndex = 4;
@@ -117,7 +121,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 126);
+            this.label4.Location = new System.Drawing.Point(43, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 6;
@@ -205,11 +209,28 @@
             this.tableAdapterManager.speedControlTableTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // unloadedOffRoadTextbox
+            // 
+            this.unloadedOffRoadTextbox.Location = new System.Drawing.Point(121, 123);
+            this.unloadedOffRoadTextbox.Name = "unloadedOffRoadTextbox";
+            this.unloadedOffRoadTextbox.Size = new System.Drawing.Size(100, 20);
+            this.unloadedOffRoadTextbox.TabIndex = 9;
+            this.unloadedOffRoadTextbox.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Unloaded Off Road:";
+            // 
             // changePressureGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 242);
+            this.ClientSize = new System.Drawing.Size(454, 239);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.groupBox1);
@@ -248,5 +269,7 @@
         private System.Windows.Forms.BindingSource pressureGroupsTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter pressureGroupsTableTableAdapter;
         private ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.TextBox unloadedOffRoadTextbox;
+        private System.Windows.Forms.Label label6;
     }
 }

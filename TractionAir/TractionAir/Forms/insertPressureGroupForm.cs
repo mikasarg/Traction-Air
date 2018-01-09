@@ -13,9 +13,18 @@ namespace TractionAir
 {
     public partial class insertPressureGroupForm : Form
     {
+        private string desc;
+        private int loadedOn, loadedOff, unloadedOn, unloadedOff, maxTraction;
 
-        public insertPressureGroupForm()
+        public insertPressureGroupForm(string desc, int loadedOn, int loadedOff, int unloadedOn, int unloadedOff, int maxTraction)
         {
+            this.desc = desc;
+            this.loadedOn = loadedOn;
+            this.loadedOff = loadedOff;
+            this.unloadedOn = unloadedOn;
+            this.unloadedOff = unloadedOff;
+            this.maxTraction = maxTraction;
+
             InitializeComponent();
         }
 
@@ -26,7 +35,7 @@ namespace TractionAir
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO pressureGroupsTable VALUES (@description, @loadedOnRoad, @loadedOffRoad, @unloadedOnRoad, @maxTraction, @dateMod);";
+            string insert = "INSERT INTO pressureGroupsTable VALUES (@description, @loadedOnRoad, @loadedOffRoad, @unloadedOnRoad, @maxTraction, @dateMod, @unloadedOffRoad);";
             try
             {
                 string description = ECU_Manager.CheckString(descriptionTextbox.Text, false);
@@ -46,6 +55,8 @@ namespace TractionAir
                     command.Parameters["@maxTraction"].Value = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
                     command.Parameters.Add("@dateMod", SqlDbType.DateTime);
                     command.Parameters["@dateMod"].Value = DateTime.Now;
+                    command.Parameters.Add("@unloadedOffRoad", SqlDbType.SmallInt);
+                    command.Parameters["@unloadedOffRoad"].Value = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
                     try
                     {
                         connection.Open();

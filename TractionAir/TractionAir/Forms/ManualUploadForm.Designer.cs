@@ -286,7 +286,7 @@
             this.saveButton.Location = new System.Drawing.Point(217, 565);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 31;
+            this.saveButton.TabIndex = 37;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -296,7 +296,7 @@
             this.cancelButton.Location = new System.Drawing.Point(307, 565);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 32;
+            this.cancelButton.TabIndex = 38;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -312,6 +312,7 @@
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 4;
             this.pressureGroupComboBox.ValueMember = "Id";
+            this.pressureGroupComboBox.SelectedValueChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedValueChanged);
             // 
             // pressureGroupsTableBindingSource
             // 
@@ -440,7 +441,7 @@
             this.notesRichTextbox.Location = new System.Drawing.Point(12, 434);
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.Size = new System.Drawing.Size(575, 116);
-            this.notesRichTextbox.TabIndex = 30;
+            this.notesRichTextbox.TabIndex = 36;
             this.notesRichTextbox.Text = "";
             // 
             // tableTableAdapter
@@ -688,7 +689,7 @@
             this.loadedOnRoadTextbox.Location = new System.Drawing.Point(429, 226);
             this.loadedOnRoadTextbox.Name = "loadedOnRoadTextbox";
             this.loadedOnRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.loadedOnRoadTextbox.TabIndex = 377;
+            this.loadedOnRoadTextbox.TabIndex = 22;
             this.loadedOnRoadTextbox.Text = "0";
             // 
             // label28
@@ -714,7 +715,7 @@
             this.loadedOffRoadTextbox.Location = new System.Drawing.Point(429, 247);
             this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
             this.loadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.loadedOffRoadTextbox.TabIndex = 378;
+            this.loadedOffRoadTextbox.TabIndex = 24;
             this.loadedOffRoadTextbox.Text = "0";
             // 
             // label16
@@ -740,7 +741,7 @@
             this.unloadedOffRoadTextbox.Location = new System.Drawing.Point(429, 289);
             this.unloadedOffRoadTextbox.Name = "unloadedOffRoadTextbox";
             this.unloadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.unloadedOffRoadTextbox.TabIndex = 374;
+            this.unloadedOffRoadTextbox.TabIndex = 28;
             this.unloadedOffRoadTextbox.Text = "0";
             // 
             // label39
@@ -802,7 +803,7 @@
             this.psiUnloadedOnTextbox.Location = new System.Drawing.Point(509, 268);
             this.psiUnloadedOnTextbox.Name = "psiUnloadedOnTextbox";
             this.psiUnloadedOnTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiUnloadedOnTextbox.TabIndex = 368;
+            this.psiUnloadedOnTextbox.TabIndex = 27;
             this.psiUnloadedOnTextbox.Text = "0";
             // 
             // psiUnloadedOffTextbox
@@ -810,7 +811,7 @@
             this.psiUnloadedOffTextbox.Location = new System.Drawing.Point(509, 289);
             this.psiUnloadedOffTextbox.Name = "psiUnloadedOffTextbox";
             this.psiUnloadedOffTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiUnloadedOffTextbox.TabIndex = 367;
+            this.psiUnloadedOffTextbox.TabIndex = 29;
             this.psiUnloadedOffTextbox.Text = "0";
             // 
             // psiLoadedOnTextbox
@@ -818,7 +819,7 @@
             this.psiLoadedOnTextbox.Location = new System.Drawing.Point(509, 226);
             this.psiLoadedOnTextbox.Name = "psiLoadedOnTextbox";
             this.psiLoadedOnTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiLoadedOnTextbox.TabIndex = 364;
+            this.psiLoadedOnTextbox.TabIndex = 23;
             this.psiLoadedOnTextbox.Text = "0";
             // 
             // psiMaxTractionTextbox
@@ -826,7 +827,7 @@
             this.psiMaxTractionTextbox.Location = new System.Drawing.Point(509, 310);
             this.psiMaxTractionTextbox.Name = "psiMaxTractionTextbox";
             this.psiMaxTractionTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiMaxTractionTextbox.TabIndex = 366;
+            this.psiMaxTractionTextbox.TabIndex = 31;
             this.psiMaxTractionTextbox.Text = "0";
             // 
             // psiLoadedOffTextbox
@@ -834,7 +835,7 @@
             this.psiLoadedOffTextbox.Location = new System.Drawing.Point(509, 247);
             this.psiLoadedOffTextbox.Name = "psiLoadedOffTextbox";
             this.psiLoadedOffTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiLoadedOffTextbox.TabIndex = 365;
+            this.psiLoadedOffTextbox.TabIndex = 25;
             this.psiLoadedOffTextbox.Text = "0";
             // 
             // label29
@@ -851,7 +852,7 @@
             this.stepUpDelayTextbox.Location = new System.Drawing.Point(429, 330);
             this.stepUpDelayTextbox.Name = "stepUpDelayTextbox";
             this.stepUpDelayTextbox.Size = new System.Drawing.Size(38, 20);
-            this.stepUpDelayTextbox.TabIndex = 357;
+            this.stepUpDelayTextbox.TabIndex = 32;
             this.stepUpDelayTextbox.Text = "0";
             // 
             // label25
@@ -886,7 +887,7 @@
             this.maxTractionTextbox.Location = new System.Drawing.Point(429, 310);
             this.maxTractionTextbox.Name = "maxTractionTextbox";
             this.maxTractionTextbox.Size = new System.Drawing.Size(38, 20);
-            this.maxTractionTextbox.TabIndex = 356;
+            this.maxTractionTextbox.TabIndex = 30;
             this.maxTractionTextbox.Text = "0";
             // 
             // notLoadedTextbox
@@ -894,7 +895,7 @@
             this.notLoadedTextbox.Location = new System.Drawing.Point(429, 268);
             this.notLoadedTextbox.Name = "notLoadedTextbox";
             this.notLoadedTextbox.Size = new System.Drawing.Size(38, 20);
-            this.notLoadedTextbox.TabIndex = 355;
+            this.notLoadedTextbox.TabIndex = 26;
             this.notLoadedTextbox.Text = "0";
             // 
             // label18
@@ -921,7 +922,7 @@
             this.gpsButtonCheckBox.Location = new System.Drawing.Point(429, 374);
             this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
             this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsButtonCheckBox.TabIndex = 348;
+            this.gpsButtonCheckBox.TabIndex = 34;
             this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
             // 
             // gpsOverrideCheckBox
@@ -930,7 +931,7 @@
             this.gpsOverrideCheckBox.Location = new System.Drawing.Point(429, 395);
             this.gpsOverrideCheckBox.Name = "gpsOverrideCheckBox";
             this.gpsOverrideCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsOverrideCheckBox.TabIndex = 349;
+            this.gpsOverrideCheckBox.TabIndex = 35;
             this.gpsOverrideCheckBox.UseVisualStyleBackColor = true;
             // 
             // beepCheckBox
@@ -939,7 +940,7 @@
             this.beepCheckBox.Location = new System.Drawing.Point(429, 353);
             this.beepCheckBox.Name = "beepCheckBox";
             this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.beepCheckBox.TabIndex = 347;
+            this.beepCheckBox.TabIndex = 33;
             this.beepCheckBox.UseVisualStyleBackColor = true;
             // 
             // label26
@@ -978,7 +979,7 @@
             this.speedControlComboBox.Location = new System.Drawing.Point(429, 199);
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
-            this.speedControlComboBox.TabIndex = 346;
+            this.speedControlComboBox.TabIndex = 21;
             this.speedControlComboBox.ValueMember = "Id";
             // 
             // label11

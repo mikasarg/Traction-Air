@@ -44,7 +44,7 @@ namespace TractionAir
         /// <param name="e"></param>
         private void insertButton_Click(object sender, EventArgs e)
         {
-            insertPressureGroupForm insertion = new insertPressureGroupForm();
+            insertPressureGroupForm insertion = new insertPressureGroupForm("", 0, 0, 0, 0, 0);
             insertion.ShowDialog();
             refreshTable();
         }

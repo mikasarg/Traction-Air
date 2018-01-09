@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(insertPressureGroupForm));
+            this.insertButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.unloadedOffRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.descriptionTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.maxTractionTextbox = new System.Windows.Forms.TextBox();
@@ -40,13 +44,33 @@
             this.label2 = new System.Windows.Forms.Label();
             this.loadedOnRoadTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.insertButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // insertButton
+            // 
+            this.insertButton.Location = new System.Drawing.Point(133, 199);
+            this.insertButton.Name = "insertButton";
+            this.insertButton.Size = new System.Drawing.Size(75, 23);
+            this.insertButton.TabIndex = 1;
+            this.insertButton.Text = "Insert";
+            this.insertButton.UseVisualStyleBackColor = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(231, 199);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.unloadedOffRoadTextbox);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.descriptionTextbox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.maxTractionTextbox);
@@ -57,11 +81,28 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.loadedOnRoadTextbox);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(14, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(428, 159);
+            this.groupBox1.Size = new System.Drawing.Size(424, 182);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // unloadedOffRoadTextbox
+            // 
+            this.unloadedOffRoadTextbox.Location = new System.Drawing.Point(121, 123);
+            this.unloadedOffRoadTextbox.Name = "unloadedOffRoadTextbox";
+            this.unloadedOffRoadTextbox.Size = new System.Drawing.Size(100, 20);
+            this.unloadedOffRoadTextbox.TabIndex = 4;
+            this.unloadedOffRoadTextbox.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Unloaded Off Road:";
             // 
             // descriptionTextbox
             // 
@@ -81,16 +122,16 @@
             // 
             // maxTractionTextbox
             // 
-            this.maxTractionTextbox.Location = new System.Drawing.Point(121, 123);
+            this.maxTractionTextbox.Location = new System.Drawing.Point(121, 149);
             this.maxTractionTextbox.Name = "maxTractionTextbox";
             this.maxTractionTextbox.Size = new System.Drawing.Size(100, 20);
-            this.maxTractionTextbox.TabIndex = 4;
+            this.maxTractionTextbox.TabIndex = 5;
             this.maxTractionTextbox.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 126);
+            this.label4.Location = new System.Drawing.Point(43, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 6;
@@ -147,34 +188,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Loaded On Road:";
             // 
-            // insertButton
-            // 
-            this.insertButton.Location = new System.Drawing.Point(133, 187);
-            this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(75, 23);
-            this.insertButton.TabIndex = 1;
-            this.insertButton.Text = "Insert";
-            this.insertButton.UseVisualStyleBackColor = true;
-            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(231, 187);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
             // insertPressureGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 226);
+            this.ClientSize = new System.Drawing.Size(452, 232);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.insertButton);
-            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -189,8 +210,11 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Button insertButton;
+        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox unloadedOffRoadTextbox;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox descriptionTextbox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox maxTractionTextbox;
@@ -201,7 +225,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox loadedOnRoadTextbox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button insertButton;
-        private System.Windows.Forms.Button cancelButton;
     }
 }

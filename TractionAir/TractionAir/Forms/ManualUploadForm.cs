@@ -201,5 +201,24 @@ namespace TractionAir
             }
             return;
         }
+
+        /// <summary>
+        /// Called when a new pressure group is selected in the combobox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pressureGroupComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (pressureGroupComboBox.SelectedValue == null)
+            {
+                return;
+            }
+            PressureGroupObject pg = ECU_Manager.getPGByID((int)pressureGroupComboBox.SelectedValue);
+            psiLoadedOnTextbox.Text = pg.LoadedOnRoad.ToString();
+            psiLoadedOffTextbox.Text = pg.LoadedOffRoad.ToString();
+            psiUnloadedOnTextbox.Text = pg.UnloadedOnRoad.ToString();
+            psiUnloadedOffTextbox.Text = pg.UnloadedOffRoad.ToString();
+            psiMaxTractionTextbox.Text = pg.MaxTraction.ToString();
+        }
     }
 }

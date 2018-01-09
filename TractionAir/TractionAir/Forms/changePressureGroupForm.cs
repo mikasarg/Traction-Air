@@ -28,7 +28,7 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE pressureGroupsTable SET Description = @description, LoadedOnRoad = @loadedOnRoad, LoadedOffRoad = @loadedOffRoad, UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, DateMod = @dateMod WHERE Id = @id;";
+            string update = "UPDATE pressureGroupsTable SET Description = @description, LoadedOnRoad = @loadedOnRoad, LoadedOffRoad = @loadedOffRoad, UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, DateMod = @dateMod, UnloadedOffRoad = @unloadedOffRoad WHERE Id = @id;";
             try
             {
                 string description = ECU_Manager.CheckString(descriptionTextbox.Text, false);
@@ -50,6 +50,8 @@ namespace TractionAir.Forms
                     command.Parameters["@dateMod"].Value = DateTime.Now;
                     command.Parameters.Add("@id", SqlDbType.Int);
                     command.Parameters["@id"].Value = id;
+                    command.Parameters.Add("@unloadedOffRoad", SqlDbType.SmallInt);
+                    command.Parameters["@unloadedOffRoad"].Value = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
 
                     try
                     {
@@ -95,6 +97,7 @@ namespace TractionAir.Forms
                 loadedOffRoadTextbox.Text = pressureGroup.LoadedOffRoad.ToString();
                 unloadedOnRoadTextbox.Text = pressureGroup.UnloadedOnRoad.ToString();
                 maxTractionTextbox.Text = pressureGroup.MaxTraction.ToString();
+                unloadedOffRoadTextbox.Text = pressureGroup.UnloadedOffRoad.ToString();
             }
             catch (InvalidOperationException ioex)
             {

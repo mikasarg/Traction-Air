@@ -476,6 +476,22 @@ namespace TractionAir
                 MessageBox.Show(sqlex.Message, "Error");
             }
         }
+
+        /// <summary>
+        /// Checks to see if the given values differ from the default for the pressure group
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckDifferentPSIs(int id, int loadedOn, int loadedOff, int unloadedOn, int unloadedOff, int maxTraction)
+        {
+            PressureGroupObject pg = getPGByID(id);
+
+            if (pg.LoadedOnRoad != loadedOn || pg.LoadedOffRoad != loadedOff || pg.UnloadedOnRoad != unloadedOn || pg.UnloadedOffRoad != unloadedOff || pg.MaxTraction != maxTraction)
+            {
+                return true;
+            }
+
+            return false;
+        }
         #endregion
 
         #region ASCII Conversion
