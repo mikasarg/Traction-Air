@@ -69,5 +69,7 @@ namespace TractionAir
         public int StepUpDelay { get; set; }
 
         public int Distance { get; set; }
+
+        public int UnloadedOffRoad { get; set; }
     }
 }

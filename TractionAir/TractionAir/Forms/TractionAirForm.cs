@@ -67,7 +67,7 @@ namespace TractionAir
 
             ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
 
-            //Closes the spalsh/loading screen
+            //Closes the splash/loading screen
             splash.Close();
 
             if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))

@@ -77,13 +77,11 @@
             this.bottomSerialNumberTextbox = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
+            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.maxTractionTextbox = new System.Windows.Forms.TextBox();
-            this.notLoadedTextbox = new System.Windows.Forms.TextBox();
             this.loadedOffRoadTextbox = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -119,8 +117,23 @@
             this.buildDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.distanceTextbox = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
+            this.label38 = new System.Windows.Forms.Label();
+            this.unloadedOffRoadTextbox = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.notLoadedTextbox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.psiUnloadedOnTextbox = new System.Windows.Forms.TextBox();
+            this.psiUnloadedOffTextbox = new System.Windows.Forms.TextBox();
+            this.psiLoadedOnTextbox = new System.Windows.Forms.TextBox();
+            this.psiMaxTractionTextbox = new System.Windows.Forms.TextBox();
+            this.psiLoadedOffTextbox = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
@@ -134,8 +147,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // eCUdataBindingSource
@@ -220,7 +233,7 @@
             // 
             // pt8SerialTextbox
             // 
-            this.pt8SerialTextbox.Location = new System.Drawing.Point(132, 370);
+            this.pt8SerialTextbox.Location = new System.Drawing.Point(132, 394);
             this.pt8SerialTextbox.Name = "pt8SerialTextbox";
             this.pt8SerialTextbox.ReadOnly = true;
             this.pt8SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -228,7 +241,7 @@
             // 
             // pt7SerialTextbox
             // 
-            this.pt7SerialTextbox.Location = new System.Drawing.Point(132, 345);
+            this.pt7SerialTextbox.Location = new System.Drawing.Point(132, 369);
             this.pt7SerialTextbox.Name = "pt7SerialTextbox";
             this.pt7SerialTextbox.ReadOnly = true;
             this.pt7SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -237,7 +250,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(70, 373);
+            this.label35.Location = new System.Drawing.Point(70, 397);
             this.label35.Name = "label35";
             this.label35.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label35.Size = new System.Drawing.Size(56, 13);
@@ -247,7 +260,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(70, 348);
+            this.label36.Location = new System.Drawing.Point(70, 372);
             this.label36.Name = "label36";
             this.label36.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label36.Size = new System.Drawing.Size(56, 13);
@@ -256,7 +269,7 @@
             // 
             // pt6SerialTextbox
             // 
-            this.pt6SerialTextbox.Location = new System.Drawing.Point(132, 319);
+            this.pt6SerialTextbox.Location = new System.Drawing.Point(132, 343);
             this.pt6SerialTextbox.Name = "pt6SerialTextbox";
             this.pt6SerialTextbox.ReadOnly = true;
             this.pt6SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -264,7 +277,7 @@
             // 
             // pt5SerialTextbox
             // 
-            this.pt5SerialTextbox.Location = new System.Drawing.Point(132, 294);
+            this.pt5SerialTextbox.Location = new System.Drawing.Point(132, 318);
             this.pt5SerialTextbox.Name = "pt5SerialTextbox";
             this.pt5SerialTextbox.ReadOnly = true;
             this.pt5SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -273,7 +286,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(70, 322);
+            this.label33.Location = new System.Drawing.Point(70, 346);
             this.label33.Name = "label33";
             this.label33.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label33.Size = new System.Drawing.Size(56, 13);
@@ -283,7 +296,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(70, 297);
+            this.label34.Location = new System.Drawing.Point(70, 321);
             this.label34.Name = "label34";
             this.label34.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label34.Size = new System.Drawing.Size(56, 13);
@@ -292,7 +305,7 @@
             // 
             // pt4SerialTextbox
             // 
-            this.pt4SerialTextbox.Location = new System.Drawing.Point(132, 268);
+            this.pt4SerialTextbox.Location = new System.Drawing.Point(132, 292);
             this.pt4SerialTextbox.Name = "pt4SerialTextbox";
             this.pt4SerialTextbox.ReadOnly = true;
             this.pt4SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -300,7 +313,7 @@
             // 
             // pt3SerialTextbox
             // 
-            this.pt3SerialTextbox.Location = new System.Drawing.Point(132, 243);
+            this.pt3SerialTextbox.Location = new System.Drawing.Point(132, 267);
             this.pt3SerialTextbox.Name = "pt3SerialTextbox";
             this.pt3SerialTextbox.ReadOnly = true;
             this.pt3SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -309,7 +322,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(70, 271);
+            this.label31.Location = new System.Drawing.Point(70, 295);
             this.label31.Name = "label31";
             this.label31.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label31.Size = new System.Drawing.Size(56, 13);
@@ -319,7 +332,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(70, 246);
+            this.label32.Location = new System.Drawing.Point(70, 270);
             this.label32.Name = "label32";
             this.label32.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label32.Size = new System.Drawing.Size(56, 13);
@@ -358,7 +371,7 @@
             // 
             this.gpsButtonCheckBox.AutoSize = true;
             this.gpsButtonCheckBox.Enabled = false;
-            this.gpsButtonCheckBox.Location = new System.Drawing.Point(443, 353);
+            this.gpsButtonCheckBox.Location = new System.Drawing.Point(442, 376);
             this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
             this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
             this.gpsButtonCheckBox.TabIndex = 28;
@@ -368,7 +381,7 @@
             // 
             this.gpsOverrideCheckBox.AutoSize = true;
             this.gpsOverrideCheckBox.Enabled = false;
-            this.gpsOverrideCheckBox.Location = new System.Drawing.Point(443, 374);
+            this.gpsOverrideCheckBox.Location = new System.Drawing.Point(442, 397);
             this.gpsOverrideCheckBox.Name = "gpsOverrideCheckBox";
             this.gpsOverrideCheckBox.Size = new System.Drawing.Size(15, 14);
             this.gpsOverrideCheckBox.TabIndex = 29;
@@ -378,7 +391,7 @@
             // 
             this.beepCheckBox.AutoSize = true;
             this.beepCheckBox.Enabled = false;
-            this.beepCheckBox.Location = new System.Drawing.Point(443, 332);
+            this.beepCheckBox.Location = new System.Drawing.Point(442, 355);
             this.beepCheckBox.Name = "beepCheckBox";
             this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
             this.beepCheckBox.TabIndex = 27;
@@ -387,7 +400,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(485, 312);
+            this.label29.Location = new System.Drawing.Point(484, 334);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(12, 13);
             this.label29.TabIndex = 234;
@@ -395,7 +408,7 @@
             // 
             // stepUpDelayTextbox
             // 
-            this.stepUpDelayTextbox.Location = new System.Drawing.Point(443, 308);
+            this.stepUpDelayTextbox.Location = new System.Drawing.Point(442, 331);
             this.stepUpDelayTextbox.Name = "stepUpDelayTextbox";
             this.stepUpDelayTextbox.ReadOnly = true;
             this.stepUpDelayTextbox.Size = new System.Drawing.Size(38, 20);
@@ -405,7 +418,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(485, 249);
+            this.label27.Location = new System.Drawing.Point(484, 225);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(32, 13);
             this.label27.TabIndex = 233;
@@ -413,7 +426,7 @@
             // 
             // loadedOnRoadTextbox
             // 
-            this.loadedOnRoadTextbox.Location = new System.Drawing.Point(443, 245);
+            this.loadedOnRoadTextbox.Location = new System.Drawing.Point(442, 221);
             this.loadedOnRoadTextbox.Name = "loadedOnRoadTextbox";
             this.loadedOnRoadTextbox.ReadOnly = true;
             this.loadedOnRoadTextbox.Size = new System.Drawing.Size(38, 20);
@@ -423,7 +436,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(348, 248);
+            this.label28.Location = new System.Drawing.Point(347, 224);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(89, 13);
             this.label28.TabIndex = 232;
@@ -432,7 +445,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(329, 374);
+            this.label26.Location = new System.Drawing.Point(328, 397);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(108, 13);
             this.label26.TabIndex = 231;
@@ -441,7 +454,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(361, 311);
+            this.label25.Location = new System.Drawing.Point(360, 333);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(76, 13);
             this.label25.TabIndex = 230;
@@ -450,7 +463,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(341, 332);
+            this.label24.Location = new System.Drawing.Point(340, 355);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(97, 13);
             this.label24.TabIndex = 229;
@@ -459,7 +472,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(333, 353);
+            this.label23.Location = new System.Drawing.Point(332, 376);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(104, 13);
             this.label23.TabIndex = 228;
@@ -467,7 +480,7 @@
             // 
             // bottomSerialNumberTextbox
             // 
-            this.bottomSerialNumberTextbox.Location = new System.Drawing.Point(132, 63);
+            this.bottomSerialNumberTextbox.Location = new System.Drawing.Point(132, 87);
             this.bottomSerialNumberTextbox.Name = "bottomSerialNumberTextbox";
             this.bottomSerialNumberTextbox.ReadOnly = true;
             this.bottomSerialNumberTextbox.Size = new System.Drawing.Size(160, 20);
@@ -476,7 +489,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(17, 66);
+            this.label22.Location = new System.Drawing.Point(17, 90);
             this.label22.Name = "label22";
             this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label22.Size = new System.Drawing.Size(109, 13);
@@ -490,34 +503,30 @@
             this.speedControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.speedControlComboBox.Enabled = false;
             this.speedControlComboBox.FormattingEnabled = true;
-            this.speedControlComboBox.Location = new System.Drawing.Point(443, 200);
+            this.speedControlComboBox.Location = new System.Drawing.Point(442, 198);
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
             this.speedControlComboBox.TabIndex = 21;
             this.speedControlComboBox.ValueMember = "Id";
             // 
+            // speedControlTableBindingSource
+            // 
+            this.speedControlTableBindingSource.DataMember = "speedControlTable";
+            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(485, 291);
+            this.label21.Location = new System.Drawing.Point(484, 313);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(32, 13);
             this.label21.TabIndex = 226;
             this.label21.Text = "km/h";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(485, 228);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(32, 13);
-            this.label20.TabIndex = 225;
-            this.label20.Text = "km/h";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(485, 270);
+            this.label19.Location = new System.Drawing.Point(484, 246);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(32, 13);
             this.label19.TabIndex = 224;
@@ -525,44 +534,26 @@
             // 
             // maxTractionTextbox
             // 
-            this.maxTractionTextbox.Location = new System.Drawing.Point(443, 287);
+            this.maxTractionTextbox.Location = new System.Drawing.Point(442, 309);
             this.maxTractionTextbox.Name = "maxTractionTextbox";
             this.maxTractionTextbox.ReadOnly = true;
             this.maxTractionTextbox.Size = new System.Drawing.Size(38, 20);
             this.maxTractionTextbox.TabIndex = 25;
             this.maxTractionTextbox.Text = "0";
             // 
-            // notLoadedTextbox
-            // 
-            this.notLoadedTextbox.Location = new System.Drawing.Point(443, 224);
-            this.notLoadedTextbox.Name = "notLoadedTextbox";
-            this.notLoadedTextbox.ReadOnly = true;
-            this.notLoadedTextbox.Size = new System.Drawing.Size(38, 20);
-            this.notLoadedTextbox.TabIndex = 22;
-            this.notLoadedTextbox.Text = "0";
-            // 
             // loadedOffRoadTextbox
             // 
-            this.loadedOffRoadTextbox.Location = new System.Drawing.Point(443, 266);
+            this.loadedOffRoadTextbox.Location = new System.Drawing.Point(442, 242);
             this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
             this.loadedOffRoadTextbox.ReadOnly = true;
             this.loadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
             this.loadedOffRoadTextbox.TabIndex = 24;
             this.loadedOffRoadTextbox.Text = "0";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(374, 227);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(63, 13);
-            this.label18.TabIndex = 223;
-            this.label18.Text = "Not Loaded";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(368, 290);
+            this.label17.Location = new System.Drawing.Point(367, 312);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 222;
@@ -571,7 +562,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(348, 269);
+            this.label16.Location = new System.Drawing.Point(347, 245);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(89, 13);
             this.label16.TabIndex = 221;
@@ -580,7 +571,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(341, 206);
+            this.label11.Location = new System.Drawing.Point(340, 204);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(96, 13);
             this.label11.TabIndex = 220;
@@ -589,7 +580,8 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(333, 174);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(332, 177);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 13);
             this.label10.TabIndex = 219;
@@ -602,7 +594,7 @@
             this.pressureGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pressureGroupComboBox.Enabled = false;
             this.pressureGroupComboBox.FormattingEnabled = true;
-            this.pressureGroupComboBox.Location = new System.Drawing.Point(132, 114);
+            this.pressureGroupComboBox.Location = new System.Drawing.Point(132, 138);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
             this.pressureGroupComboBox.TabIndex = 4;
@@ -615,7 +607,7 @@
             this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerComboBox.Enabled = false;
             this.customerComboBox.FormattingEnabled = true;
-            this.customerComboBox.Location = new System.Drawing.Point(132, 140);
+            this.customerComboBox.Location = new System.Drawing.Point(132, 164);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
             this.customerComboBox.TabIndex = 5;
@@ -628,7 +620,7 @@
             this.programVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.programVersionComboBox.Enabled = false;
             this.programVersionComboBox.FormattingEnabled = true;
-            this.programVersionComboBox.Location = new System.Drawing.Point(132, 88);
+            this.programVersionComboBox.Location = new System.Drawing.Point(132, 112);
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
             this.programVersionComboBox.TabIndex = 3;
@@ -657,7 +649,7 @@
             // 
             // pt2SerialTextbox
             // 
-            this.pt2SerialTextbox.Location = new System.Drawing.Point(132, 217);
+            this.pt2SerialTextbox.Location = new System.Drawing.Point(132, 241);
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
             this.pt2SerialTextbox.ReadOnly = true;
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -665,7 +657,7 @@
             // 
             // pt1SerialTextbox
             // 
-            this.pt1SerialTextbox.Location = new System.Drawing.Point(132, 192);
+            this.pt1SerialTextbox.Location = new System.Drawing.Point(132, 216);
             this.pt1SerialTextbox.Name = "pt1SerialTextbox";
             this.pt1SerialTextbox.ReadOnly = true;
             this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
@@ -673,7 +665,7 @@
             // 
             // pressureCellTextbox
             // 
-            this.pressureCellTextbox.Location = new System.Drawing.Point(132, 167);
+            this.pressureCellTextbox.Location = new System.Drawing.Point(132, 191);
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.ReadOnly = true;
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
@@ -689,7 +681,7 @@
             // 
             // serialNumberTextbox
             // 
-            this.serialNumberTextbox.Location = new System.Drawing.Point(132, 38);
+            this.serialNumberTextbox.Location = new System.Drawing.Point(132, 62);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.ReadOnly = true;
             this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
@@ -697,10 +689,10 @@
             // 
             // notesRichTextbox
             // 
-            this.notesRichTextbox.Location = new System.Drawing.Point(17, 415);
+            this.notesRichTextbox.Location = new System.Drawing.Point(17, 439);
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.ReadOnly = true;
-            this.notesRichTextbox.Size = new System.Drawing.Size(561, 116);
+            this.notesRichTextbox.Size = new System.Drawing.Size(577, 116);
             this.notesRichTextbox.TabIndex = 30;
             this.notesRichTextbox.Text = "";
             // 
@@ -717,7 +709,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(70, 220);
+            this.label15.Location = new System.Drawing.Point(70, 244);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label15.Size = new System.Drawing.Size(56, 13);
@@ -727,7 +719,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(70, 195);
+            this.label14.Location = new System.Drawing.Point(70, 219);
             this.label14.Name = "label14";
             this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label14.Size = new System.Drawing.Size(56, 13);
@@ -737,7 +729,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(58, 170);
+            this.label13.Location = new System.Drawing.Point(58, 194);
             this.label13.Name = "label13";
             this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label13.Size = new System.Drawing.Size(68, 13);
@@ -747,7 +739,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 399);
+            this.label12.Location = new System.Drawing.Point(17, 423);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 214;
@@ -776,7 +768,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 143);
+            this.label6.Location = new System.Drawing.Point(75, 167);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label6.Size = new System.Drawing.Size(51, 13);
@@ -786,7 +778,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 91);
+            this.label5.Location = new System.Drawing.Point(41, 115);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(84, 13);
@@ -806,7 +798,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 117);
+            this.label3.Location = new System.Drawing.Point(46, 141);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(80, 13);
@@ -816,7 +808,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 41);
+            this.label2.Location = new System.Drawing.Point(52, 65);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(73, 13);
@@ -880,20 +872,175 @@
             this.label37.TabIndex = 245;
             this.label37.Text = "Distance (km)";
             // 
-            // speedControlTableBindingSource
-            // 
-            this.speedControlTableBindingSource.DataMember = "speedControlTable";
-            this.speedControlTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
             // speedControlTableTableAdapter
             // 
             this.speedControlTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(484, 290);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(32, 13);
+            this.label38.TabIndex = 248;
+            this.label38.Text = "km/h";
+            // 
+            // unloadedOffRoadTextbox
+            // 
+            this.unloadedOffRoadTextbox.Location = new System.Drawing.Point(442, 286);
+            this.unloadedOffRoadTextbox.Name = "unloadedOffRoadTextbox";
+            this.unloadedOffRoadTextbox.ReadOnly = true;
+            this.unloadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
+            this.unloadedOffRoadTextbox.TabIndex = 246;
+            this.unloadedOffRoadTextbox.Text = "0";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(337, 289);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(99, 13);
+            this.label39.TabIndex = 247;
+            this.label39.Text = "Unloaded Off Road";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(484, 268);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(32, 13);
+            this.label20.TabIndex = 251;
+            this.label20.Text = "km/h";
+            // 
+            // notLoadedTextbox
+            // 
+            this.notLoadedTextbox.Location = new System.Drawing.Point(442, 264);
+            this.notLoadedTextbox.Name = "notLoadedTextbox";
+            this.notLoadedTextbox.ReadOnly = true;
+            this.notLoadedTextbox.Size = new System.Drawing.Size(38, 20);
+            this.notLoadedTextbox.TabIndex = 249;
+            this.notLoadedTextbox.Text = "0";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(337, 267);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(99, 13);
+            this.label18.TabIndex = 250;
+            this.label18.Text = "Unloaded On Road";
+            // 
+            // psiUnloadedOnTextbox
+            // 
+            this.psiUnloadedOnTextbox.Location = new System.Drawing.Point(522, 265);
+            this.psiUnloadedOnTextbox.Name = "psiUnloadedOnTextbox";
+            this.psiUnloadedOnTextbox.ReadOnly = true;
+            this.psiUnloadedOnTextbox.Size = new System.Drawing.Size(38, 20);
+            this.psiUnloadedOnTextbox.TabIndex = 256;
+            this.psiUnloadedOnTextbox.Text = "0";
+            // 
+            // psiUnloadedOffTextbox
+            // 
+            this.psiUnloadedOffTextbox.Location = new System.Drawing.Point(522, 287);
+            this.psiUnloadedOffTextbox.Name = "psiUnloadedOffTextbox";
+            this.psiUnloadedOffTextbox.ReadOnly = true;
+            this.psiUnloadedOffTextbox.Size = new System.Drawing.Size(38, 20);
+            this.psiUnloadedOffTextbox.TabIndex = 255;
+            this.psiUnloadedOffTextbox.Text = "0";
+            // 
+            // psiLoadedOnTextbox
+            // 
+            this.psiLoadedOnTextbox.Location = new System.Drawing.Point(522, 222);
+            this.psiLoadedOnTextbox.Name = "psiLoadedOnTextbox";
+            this.psiLoadedOnTextbox.ReadOnly = true;
+            this.psiLoadedOnTextbox.Size = new System.Drawing.Size(38, 20);
+            this.psiLoadedOnTextbox.TabIndex = 252;
+            this.psiLoadedOnTextbox.Text = "0";
+            // 
+            // psiMaxTractionTextbox
+            // 
+            this.psiMaxTractionTextbox.Location = new System.Drawing.Point(522, 310);
+            this.psiMaxTractionTextbox.Name = "psiMaxTractionTextbox";
+            this.psiMaxTractionTextbox.ReadOnly = true;
+            this.psiMaxTractionTextbox.Size = new System.Drawing.Size(38, 20);
+            this.psiMaxTractionTextbox.TabIndex = 254;
+            this.psiMaxTractionTextbox.Text = "0";
+            // 
+            // psiLoadedOffTextbox
+            // 
+            this.psiLoadedOffTextbox.Location = new System.Drawing.Point(522, 243);
+            this.psiLoadedOffTextbox.Name = "psiLoadedOffTextbox";
+            this.psiLoadedOffTextbox.ReadOnly = true;
+            this.psiLoadedOffTextbox.Size = new System.Drawing.Size(38, 20);
+            this.psiLoadedOffTextbox.TabIndex = 253;
+            this.psiLoadedOffTextbox.Text = "0";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(566, 225);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(20, 13);
+            this.label40.TabIndex = 257;
+            this.label40.Text = "psi";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(566, 246);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(20, 13);
+            this.label41.TabIndex = 258;
+            this.label41.Text = "psi";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(566, 267);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(20, 13);
+            this.label42.TabIndex = 259;
+            this.label42.Text = "psi";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(566, 289);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(20, 13);
+            this.label43.TabIndex = 260;
+            this.label43.Text = "psi";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(566, 312);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(20, 13);
+            this.label44.TabIndex = 261;
+            this.label44.Text = "psi";
             // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 543);
+            this.ClientSize = new System.Drawing.Size(606, 568);
+            this.Controls.Add(this.label44);
+            this.Controls.Add(this.label43);
+            this.Controls.Add(this.label42);
+            this.Controls.Add(this.label41);
+            this.Controls.Add(this.label40);
+            this.Controls.Add(this.psiUnloadedOnTextbox);
+            this.Controls.Add(this.psiUnloadedOffTextbox);
+            this.Controls.Add(this.psiLoadedOnTextbox);
+            this.Controls.Add(this.psiMaxTractionTextbox);
+            this.Controls.Add(this.psiLoadedOffTextbox);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.notLoadedTextbox);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label38);
+            this.Controls.Add(this.unloadedOffRoadTextbox);
+            this.Controls.Add(this.label39);
             this.Controls.Add(this.distanceTextbox);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.installDateTimePicker);
@@ -928,12 +1075,9 @@
             this.Controls.Add(this.label22);
             this.Controls.Add(this.speedControlComboBox);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.maxTractionTextbox);
-            this.Controls.Add(this.notLoadedTextbox);
             this.Controls.Add(this.loadedOffRoadTextbox);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label11);
@@ -984,8 +1128,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1039,12 +1183,9 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox speedControlComboBox;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox maxTractionTextbox;
-        private System.Windows.Forms.TextBox notLoadedTextbox;
         private System.Windows.Forms.TextBox loadedOffRoadTextbox;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label11;
@@ -1083,5 +1224,21 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.BindingSource speedControlTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter speedControlTableTableAdapter;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox unloadedOffRoadTextbox;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox notLoadedTextbox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox psiUnloadedOnTextbox;
+        private System.Windows.Forms.TextBox psiUnloadedOffTextbox;
+        private System.Windows.Forms.TextBox psiLoadedOnTextbox;
+        private System.Windows.Forms.TextBox psiMaxTractionTextbox;
+        private System.Windows.Forms.TextBox psiLoadedOffTextbox;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label44;
     }
 }

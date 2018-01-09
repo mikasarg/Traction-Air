@@ -35,13 +35,6 @@
             this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableAdapterManager = new TractionAir.pressureGroupsDataSetTableAdapters.TableAdapterManager();
             this.pressureGroupsTableDataGridView = new System.Windows.Forms.DataGridView();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loadedOffRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unloadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.insertButton = new System.Windows.Forms.Button();
@@ -49,6 +42,14 @@
             this.changeButton = new System.Windows.Forms.Button();
             this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
             this.tableAdapterManager1 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loadedOffRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unloadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unloadedOffRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableDataGridView)).BeginInit();
@@ -91,6 +92,7 @@
             this.loadedOnRoadDataGridViewTextBoxColumn,
             this.loadedOffRoadDataGridViewTextBoxColumn,
             this.unloadedOnRoadDataGridViewTextBoxColumn,
+            this.unloadedOffRoadDataGridViewTextBoxColumn,
             this.maxTractionDataGridViewTextBoxColumn,
             this.dateModDataGridViewTextBoxColumn,
             this.idColumn});
@@ -103,56 +105,6 @@
             this.pressureGroupsTableDataGridView.Size = new System.Drawing.Size(898, 479);
             this.pressureGroupsTableDataGridView.TabIndex = 0;
             this.pressureGroupsTableDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pressureGroupsTableDataGridView_CellDoubleClick);
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // loadedOnRoadDataGridViewTextBoxColumn
-            // 
-            this.loadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOnRoad";
-            this.loadedOnRoadDataGridViewTextBoxColumn.HeaderText = "Loaded On Road";
-            this.loadedOnRoadDataGridViewTextBoxColumn.Name = "loadedOnRoadDataGridViewTextBoxColumn";
-            this.loadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // loadedOffRoadDataGridViewTextBoxColumn
-            // 
-            this.loadedOffRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOffRoad";
-            this.loadedOffRoadDataGridViewTextBoxColumn.HeaderText = "Loaded Off Road";
-            this.loadedOffRoadDataGridViewTextBoxColumn.Name = "loadedOffRoadDataGridViewTextBoxColumn";
-            this.loadedOffRoadDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // unloadedOnRoadDataGridViewTextBoxColumn
-            // 
-            this.unloadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "UnloadedOnRoad";
-            this.unloadedOnRoadDataGridViewTextBoxColumn.HeaderText = "Unloaded On Road";
-            this.unloadedOnRoadDataGridViewTextBoxColumn.Name = "unloadedOnRoadDataGridViewTextBoxColumn";
-            this.unloadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // maxTractionDataGridViewTextBoxColumn
-            // 
-            this.maxTractionDataGridViewTextBoxColumn.DataPropertyName = "MaxTraction";
-            this.maxTractionDataGridViewTextBoxColumn.HeaderText = "Max Traction";
-            this.maxTractionDataGridViewTextBoxColumn.Name = "maxTractionDataGridViewTextBoxColumn";
-            this.maxTractionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateModDataGridViewTextBoxColumn
-            // 
-            this.dateModDataGridViewTextBoxColumn.DataPropertyName = "DateMod";
-            this.dateModDataGridViewTextBoxColumn.HeaderText = "Date Mod";
-            this.dateModDataGridViewTextBoxColumn.Name = "dateModDataGridViewTextBoxColumn";
-            this.dateModDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idColumn
-            // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
             // 
             // pressureGroupsTableBindingSource
             // 
@@ -218,6 +170,63 @@
             this.tableAdapterManager1.speedControlTableTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // loadedOnRoadDataGridViewTextBoxColumn
+            // 
+            this.loadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOnRoad";
+            this.loadedOnRoadDataGridViewTextBoxColumn.HeaderText = "Loaded On Road";
+            this.loadedOnRoadDataGridViewTextBoxColumn.Name = "loadedOnRoadDataGridViewTextBoxColumn";
+            this.loadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // loadedOffRoadDataGridViewTextBoxColumn
+            // 
+            this.loadedOffRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOffRoad";
+            this.loadedOffRoadDataGridViewTextBoxColumn.HeaderText = "Loaded Off Road";
+            this.loadedOffRoadDataGridViewTextBoxColumn.Name = "loadedOffRoadDataGridViewTextBoxColumn";
+            this.loadedOffRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // unloadedOnRoadDataGridViewTextBoxColumn
+            // 
+            this.unloadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "UnloadedOnRoad";
+            this.unloadedOnRoadDataGridViewTextBoxColumn.HeaderText = "Unloaded On Road";
+            this.unloadedOnRoadDataGridViewTextBoxColumn.Name = "unloadedOnRoadDataGridViewTextBoxColumn";
+            this.unloadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // unloadedOffRoadDataGridViewTextBoxColumn
+            // 
+            this.unloadedOffRoadDataGridViewTextBoxColumn.DataPropertyName = "UnloadedOffRoad";
+            this.unloadedOffRoadDataGridViewTextBoxColumn.HeaderText = "Unloaded Off Road";
+            this.unloadedOffRoadDataGridViewTextBoxColumn.Name = "unloadedOffRoadDataGridViewTextBoxColumn";
+            this.unloadedOffRoadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // maxTractionDataGridViewTextBoxColumn
+            // 
+            this.maxTractionDataGridViewTextBoxColumn.DataPropertyName = "MaxTraction";
+            this.maxTractionDataGridViewTextBoxColumn.HeaderText = "Max Traction";
+            this.maxTractionDataGridViewTextBoxColumn.Name = "maxTractionDataGridViewTextBoxColumn";
+            this.maxTractionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateModDataGridViewTextBoxColumn
+            // 
+            this.dateModDataGridViewTextBoxColumn.DataPropertyName = "DateMod";
+            this.dateModDataGridViewTextBoxColumn.HeaderText = "Date Mod";
+            this.dateModDataGridViewTextBoxColumn.Name = "dateModDataGridViewTextBoxColumn";
+            this.dateModDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idColumn
+            // 
+            this.idColumn.DataPropertyName = "Id";
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
             // PressureGroupsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +268,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn loadedOnRoadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn loadedOffRoadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unloadedOnRoadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unloadedOffRoadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxTractionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateModDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;

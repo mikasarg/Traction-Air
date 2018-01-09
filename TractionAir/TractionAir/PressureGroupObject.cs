@@ -21,5 +21,7 @@ namespace TractionAir
         public DateTime DateMod { get; set; }
 
         public int Id { get; set; }
+
+        public int UnloadedOffRoad { get; set; }
     }
 }

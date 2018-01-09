@@ -2195,6 +2195,8 @@ namespace TractionAir {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnUnloadedOffRoad;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public pressureGroupsTableDataTable() {
@@ -2286,6 +2288,14 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn UnloadedOffRoadColumn {
+                get {
+                    return this.columnUnloadedOffRoad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2321,7 +2331,7 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public pressureGroupsTableRow AddpressureGroupsTableRow(string Description, short LoadedOnRoad, short LoadedOffRoad, short UnloadedOnRoad, short MaxTraction, System.DateTime DateMod) {
+            public pressureGroupsTableRow AddpressureGroupsTableRow(string Description, short LoadedOnRoad, short LoadedOffRoad, short UnloadedOnRoad, short MaxTraction, System.DateTime DateMod, short UnloadedOffRoad) {
                 pressureGroupsTableRow rowpressureGroupsTableRow = ((pressureGroupsTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
@@ -2330,7 +2340,8 @@ namespace TractionAir {
                         UnloadedOnRoad,
                         MaxTraction,
                         DateMod,
-                        null};
+                        null,
+                        UnloadedOffRoad};
                 rowpressureGroupsTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpressureGroupsTableRow);
                 return rowpressureGroupsTableRow;
@@ -2367,6 +2378,7 @@ namespace TractionAir {
                 this.columnMaxTraction = base.Columns["MaxTraction"];
                 this.columnDateMod = base.Columns["DateMod"];
                 this.columnId = base.Columns["Id"];
+                this.columnUnloadedOffRoad = base.Columns["UnloadedOffRoad"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2386,6 +2398,8 @@ namespace TractionAir {
                 base.Columns.Add(this.columnDateMod);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnUnloadedOffRoad = new global::System.Data.DataColumn("UnloadedOffRoad", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnloadedOffRoad);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDescription}, true));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
@@ -2404,6 +2418,7 @@ namespace TractionAir {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
+                this.columnUnloadedOffRoad.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6081,6 +6096,17 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short UnloadedOffRoad {
+                get {
+                    return ((short)(this[this.tablepressureGroupsTable.UnloadedOffRoadColumn]));
+                }
+                set {
+                    this[this.tablepressureGroupsTable.UnloadedOffRoadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ecuToPressureGroupRow[] GetecuToPressureGroupRows() {
                 if ((this.Table.ChildRelations["ecuToPressureGroupPGIDFK"] == null)) {
                     return new ecuToPressureGroupRow[0];
@@ -9496,10 +9522,11 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             tableMapping.ColumnMappings.Add("MaxTraction", "MaxTraction");
             tableMapping.ColumnMappings.Add("DateMod", "DateMod");
             tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("UnloadedOffRoad", "UnloadedOffRoad");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [pressureGroupsTable] WHERE (([Description] = @Original_Description) AND ([DateMod] = @Original_DateMod) AND ([Id] = @Original_Id) AND ([LoadedOffRoad] = @Original_LoadedOffRoad) AND ([LoadedOnRoad] = @Original_LoadedOnRoad) AND ([MaxTraction] = @Original_MaxTraction) AND ([UnloadedOnRoad] = @Original_UnloadedOnRoad))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [pressureGroupsTable] WHERE (([Description] = @Original_Description) AND ([DateMod] = @Original_DateMod) AND ([Id] = @Original_Id) AND ([LoadedOffRoad] = @Original_LoadedOffRoad) AND ([LoadedOnRoad] = @Original_LoadedOnRoad) AND ([MaxTraction] = @Original_MaxTraction) AND ([UnloadedOnRoad] = @Original_UnloadedOnRoad) AND ([UnloadedOffRoad] = @Original_UnloadedOffRoad))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateMod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateMod", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9508,10 +9535,11 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxTraction", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [pressureGroupsTable] ([Description], [DateMod], [LoadedOffRoad], [LoadedOnRoad], [MaxTraction], [UnloadedOnRoad]) VALUES (@Description, @DateMod, @LoadedOffRoad, @LoadedOnRoad, @MaxTraction, @UnloadedOnRoad);
-SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, UnloadedOnRoad FROM pressureGroupsTable WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [pressureGroupsTable] ([Description], [DateMod], [LoadedOffRoad], [LoadedOnRoad], [MaxTraction], [UnloadedOnRoad], [UnloadedOffRoad]) VALUES (@Description, @DateMod, @LoadedOffRoad, @LoadedOnRoad, @MaxTraction, @UnloadedOnRoad, @UnloadedOffRoad);
+SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, UnloadedOnRoad, UnloadedOffRoad FROM pressureGroupsTable WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateMod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateMod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9519,10 +9547,11 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxTraction", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnloadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [pressureGroupsTable] SET [Description] = @Description, [DateMod] = @DateMod, [LoadedOffRoad] = @LoadedOffRoad, [LoadedOnRoad] = @LoadedOnRoad, [MaxTraction] = @MaxTraction, [UnloadedOnRoad] = @UnloadedOnRoad WHERE (([Description] = @Original_Description) AND ([DateMod] = @Original_DateMod) AND ([Id] = @Original_Id) AND ([LoadedOffRoad] = @Original_LoadedOffRoad) AND ([LoadedOnRoad] = @Original_LoadedOnRoad) AND ([MaxTraction] = @Original_MaxTraction) AND ([UnloadedOnRoad] = @Original_UnloadedOnRoad));
-SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, UnloadedOnRoad FROM pressureGroupsTable WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [pressureGroupsTable] SET [Description] = @Description, [DateMod] = @DateMod, [LoadedOffRoad] = @LoadedOffRoad, [LoadedOnRoad] = @LoadedOnRoad, [MaxTraction] = @MaxTraction, [UnloadedOnRoad] = @UnloadedOnRoad, [UnloadedOffRoad] = @UnloadedOffRoad WHERE (([Description] = @Original_Description) AND ([DateMod] = @Original_DateMod) AND ([Id] = @Original_Id) AND ([LoadedOffRoad] = @Original_LoadedOffRoad) AND ([LoadedOnRoad] = @Original_LoadedOnRoad) AND ([MaxTraction] = @Original_MaxTraction) AND ([UnloadedOnRoad] = @Original_UnloadedOnRoad) AND ([UnloadedOffRoad] = @Original_UnloadedOffRoad));
+SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, UnloadedOnRoad, UnloadedOffRoad FROM pressureGroupsTable WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateMod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateMod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9530,6 +9559,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxTraction", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnloadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateMod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateMod", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9537,6 +9567,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxTraction", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -9554,7 +9585,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unload" +
-                "edOnRoad FROM pressureGroupsTable";
+                "edOnRoad, UnloadedOffRoad FROM pressureGroupsTable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9615,7 +9646,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_Description, System.DateTime Original_DateMod, int Original_Id, short Original_LoadedOffRoad, short Original_LoadedOnRoad, short Original_MaxTraction, short Original_UnloadedOnRoad) {
+        public virtual int Delete(string Original_Description, System.DateTime Original_DateMod, int Original_Id, short Original_LoadedOffRoad, short Original_LoadedOnRoad, short Original_MaxTraction, short Original_UnloadedOnRoad, short Original_UnloadedOffRoad) {
             if ((Original_Description == null)) {
                 throw new global::System.ArgumentNullException("Original_Description");
             }
@@ -9628,6 +9659,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this.Adapter.DeleteCommand.Parameters[4].Value = ((short)(Original_LoadedOnRoad));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_MaxTraction));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_UnloadedOnRoad));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((short)(Original_UnloadedOffRoad));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9648,7 +9680,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Description, System.DateTime DateMod, short LoadedOffRoad, short LoadedOnRoad, short MaxTraction, short UnloadedOnRoad) {
+        public virtual int Insert(string Description, System.DateTime DateMod, short LoadedOffRoad, short LoadedOnRoad, short MaxTraction, short UnloadedOnRoad, short UnloadedOffRoad) {
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
@@ -9660,6 +9692,7 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this.Adapter.InsertCommand.Parameters[3].Value = ((short)(LoadedOnRoad));
             this.Adapter.InsertCommand.Parameters[4].Value = ((short)(MaxTraction));
             this.Adapter.InsertCommand.Parameters[5].Value = ((short)(UnloadedOnRoad));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((short)(UnloadedOffRoad));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9680,7 +9713,23 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Description, System.DateTime DateMod, short LoadedOffRoad, short LoadedOnRoad, short MaxTraction, short UnloadedOnRoad, string Original_Description, System.DateTime Original_DateMod, int Original_Id, short Original_LoadedOffRoad, short Original_LoadedOnRoad, short Original_MaxTraction, short Original_UnloadedOnRoad, int Id) {
+        public virtual int Update(
+                    string Description, 
+                    System.DateTime DateMod, 
+                    short LoadedOffRoad, 
+                    short LoadedOnRoad, 
+                    short MaxTraction, 
+                    short UnloadedOnRoad, 
+                    short UnloadedOffRoad, 
+                    string Original_Description, 
+                    System.DateTime Original_DateMod, 
+                    int Original_Id, 
+                    short Original_LoadedOffRoad, 
+                    short Original_LoadedOnRoad, 
+                    short Original_MaxTraction, 
+                    short Original_UnloadedOnRoad, 
+                    short Original_UnloadedOffRoad, 
+                    int Id) {
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
@@ -9692,19 +9741,21 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
             this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(LoadedOnRoad));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((short)(MaxTraction));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((short)(UnloadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((short)(UnloadedOffRoad));
             if ((Original_Description == null)) {
                 throw new global::System.ArgumentNullException("Original_Description");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Description));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_DateMod));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((short)(Original_LoadedOffRoad));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((short)(Original_LoadedOnRoad));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(Original_MaxTraction));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_UnloadedOnRoad));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_DateMod));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((short)(Original_LoadedOffRoad));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(Original_LoadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_MaxTraction));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_UnloadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((short)(Original_UnloadedOffRoad));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9725,8 +9776,8 @@ SELECT Description, DateMod, Id, LoadedOffRoad, LoadedOnRoad, MaxTraction, Unloa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime DateMod, short LoadedOffRoad, short LoadedOnRoad, short MaxTraction, short UnloadedOnRoad, string Original_Description, System.DateTime Original_DateMod, int Original_Id, short Original_LoadedOffRoad, short Original_LoadedOnRoad, short Original_MaxTraction, short Original_UnloadedOnRoad, int Id) {
-            return this.Update(Original_Description, DateMod, LoadedOffRoad, LoadedOnRoad, MaxTraction, UnloadedOnRoad, Original_Description, Original_DateMod, Original_Id, Original_LoadedOffRoad, Original_LoadedOnRoad, Original_MaxTraction, Original_UnloadedOnRoad, Id);
+        public virtual int Update(System.DateTime DateMod, short LoadedOffRoad, short LoadedOnRoad, short MaxTraction, short UnloadedOnRoad, short UnloadedOffRoad, string Original_Description, System.DateTime Original_DateMod, int Original_Id, short Original_LoadedOffRoad, short Original_LoadedOnRoad, short Original_MaxTraction, short Original_UnloadedOnRoad, short Original_UnloadedOffRoad, int Id) {
+            return this.Update(Original_Description, DateMod, LoadedOffRoad, LoadedOnRoad, MaxTraction, UnloadedOnRoad, UnloadedOffRoad, Original_Description, Original_DateMod, Original_Id, Original_LoadedOffRoad, Original_LoadedOnRoad, Original_MaxTraction, Original_UnloadedOnRoad, Original_UnloadedOffRoad, Id);
         }
     }
     
