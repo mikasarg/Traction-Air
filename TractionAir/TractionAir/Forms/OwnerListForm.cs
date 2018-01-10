@@ -92,7 +92,7 @@ namespace TractionAir
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Error");
+                            MessageBox.Show("Could not delete the customer. Make sure no ECUs have this customer listed as their owner.", "Error");
                         }
                     }
                 }

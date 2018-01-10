@@ -67,29 +67,23 @@ namespace TractionAir
             DataGridViewRow selectedRow = pressureGroupsTableDataGridView.SelectedRows[0];
             if (Int32.TryParse(selectedRow.Cells["idColumn"].Value.ToString(), out int id))
             {
-                string delete1 = "DELETE FROM ecuToPressureGroup WHERE PressureGroupID = @pressureGroupId;";
-                string delete2 = "DELETE FROM pressureGroupsTable WHERE Id = @pressureGroupId;";
+                string delete = "DELETE FROM pressureGroupsTable WHERE Id = @pressureGroupId;";
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                     {
-                        SqlCommand command1 = new SqlCommand(delete1, connection);
-                        command1.Parameters.Add("@pressureGroupId", SqlDbType.Int);
-                        command1.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
-
-                        SqlCommand command2 = new SqlCommand(delete2, connection);
-                        command2.Parameters.Add("@pressureGroupId", SqlDbType.Int);
-                        command2.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+                        SqlCommand command = new SqlCommand(delete, connection);
+                        command.Parameters.Add("@pressureGroupId", SqlDbType.Int);
+                        command.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
 
                         try
                         {
                             connection.Open();
-                            command1.ExecuteScalar(); //Must first delete connections in connecting table
-                            command2.ExecuteScalar(); 
+                            command.ExecuteScalar();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Error");
+                            MessageBox.Show("Could not delete the pressure group. Make sure no ECUs have this group listed as theirs.", "Error");
                         }
                     }
                 }
