@@ -257,7 +257,6 @@ namespace TractionAir
             }
         }
 
-
         /// <summary>
         /// Returns a countryObject based on the given ID
         /// </summary>
@@ -280,6 +279,29 @@ namespace TractionAir
                 }
             }
         }
+
+        /// <summary>
+        /// Returns the latest pressureGroup to be added
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
+        public static PressureGroupObject getLatestPG()
+        {
+            String query = $"SELECT * FROM pressureGroupsTable";
+            int max = 0;
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                PressureGroupObject[] pgs = iDbCon.Query<PressureGroupObject>(query).ToArray();
+                foreach (PressureGroupObject pg in pgs)
+                {
+                    if (pg.Id > max)
+                    {
+                        max = pg.Id;
+                    }
+                }
+            }
+            return getPGByID(max);
+        }
         #endregion
 
         #region check methods
@@ -290,13 +312,13 @@ namespace TractionAir
         /// <returns></returns>
         public static string CheckString(string s, bool allowNull)
         {
-            if (s == null && !allowNull)
+            if ((s == null || s.Equals("")) && !allowNull)
             {
-                throw new InvalidOperationException("Country cannot be null!");
+                throw new InvalidOperationException("A required input is null");
             }
-            if (s == null && allowNull)
+            if ((s == null || s.Equals("")) && allowNull)
             {
-                return null;
+                return "";
             }
             if (s.Length > 50)
             {
@@ -312,13 +334,13 @@ namespace TractionAir
         /// <returns></returns>
         public static string CheckLongString(string s, bool allowNull)
         {
-            if (s == null && !allowNull)
+            if ((s == null || s.Equals("")) && !allowNull)
             {
-                throw new InvalidOperationException("Country cannot be null!");
+                throw new InvalidOperationException("A required input is null");
             }
-            if (s == null && allowNull)
+            if ((s == null || s.Equals("")) && allowNull)
             {
-                return null;
+                return "";
             }
             return s;
         }
@@ -332,7 +354,7 @@ namespace TractionAir
         {
             if (s == null && !allowNull)
             {
-                throw new InvalidOperationException("Country cannot be null!");
+                throw new InvalidOperationException("A required input is null");
             }
             int i;
             if (!Int32.TryParse(s, out i))
@@ -370,7 +392,7 @@ namespace TractionAir
         {
             if (code == null)
             {
-                throw new InvalidOperationException("Code cannot be null!");
+                throw new InvalidOperationException("Country Code cannot be null!");
             }
             if (code.Length != 3)
             {
@@ -491,6 +513,22 @@ namespace TractionAir
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Returns the number of pressure groups in the table
+        /// </summary>
+        /// <returns></returns>
+        public static int NumberOfPGs()
+        {
+            String query = $"SELECT * FROM pressureGroupsTable";
+
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                PressureGroupObject[] pgs = iDbCon.Query<PressureGroupObject>(query).ToArray();
+                return pgs.Length;
+            }
+
         }
         #endregion
 

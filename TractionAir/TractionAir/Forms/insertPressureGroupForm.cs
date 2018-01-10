@@ -13,19 +13,17 @@ namespace TractionAir
 {
     public partial class insertPressureGroupForm : Form
     {
-        private string desc;
-        private int loadedOn, loadedOff, unloadedOn, unloadedOff, maxTraction;
 
         public insertPressureGroupForm(string desc, int loadedOn, int loadedOff, int unloadedOn, int unloadedOff, int maxTraction)
         {
-            this.desc = desc;
-            this.loadedOn = loadedOn;
-            this.loadedOff = loadedOff;
-            this.unloadedOn = unloadedOn;
-            this.unloadedOff = unloadedOff;
-            this.maxTraction = maxTraction;
-
             InitializeComponent();
+
+            descriptionTextbox.Text = desc;
+            loadedOnRoadTextbox.Text = loadedOn.ToString();
+            loadedOffRoadTextbox.Text = loadedOff.ToString();
+            unloadedOnRoadTextbox.Text = unloadedOn.ToString();
+            unloadedOffRoadTextbox.Text = unloadedOff.ToString();
+            maxTractionTextbox.Text = maxTraction.ToString();
         }
 
         /// <summary>

@@ -245,6 +245,26 @@ namespace TractionAir
 
                     try
                     {
+                        int loadedOn = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
+                        int loadedOff = ECU_Manager.CheckInt(psiLoadedOffTextbox.Text, false);
+                        int unloadedOn = ECU_Manager.CheckInt(psiUnloadedOnTextbox.Text, false);
+                        int unloadedOff = ECU_Manager.CheckInt(psiUnloadedOffTextbox.Text, false);
+                        int maxTraction = ECU_Manager.CheckInt(psiMaxTractionTextbox.Text, false);
+
+                        if (ECU_Manager.CheckDifferentPSIs((int)pressureGroupComboBox.SelectedValue, loadedOn, loadedOff, unloadedOn, unloadedOff, maxTraction))
+                        {
+                            int before = ECU_Manager.NumberOfPGs();
+                            insertPressureGroupForm insertPressureGroup = new insertPressureGroupForm(boardCode.ToString(), loadedOn, loadedOff, unloadedOn, unloadedOff, maxTraction);
+                            insertPressureGroup.ShowDialog();
+                            if (before != ECU_Manager.NumberOfPGs()) //A new pressure group was added
+                            {
+                                PressureGroupObject pg = ECU_Manager.getLatestPG();
+                                MessageBox.Show("New pressure group " + pg.Description + " added successfully");
+                                command1.Parameters["@pressureGroup"].Value = pg.Description;
+                                command4.Parameters["@pressureGroupId"].Value = pg.Id;
+                            }
+                        }
+
                         connection.Open();
                         command1.ExecuteScalar();
                         command2.ExecuteScalar();
