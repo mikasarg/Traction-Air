@@ -11,14 +11,26 @@ namespace TractionAir.Serial_Classes
         public int boardCode { get; set; }
 
         public string speedControl { get; set; }
-
-        public int notLoaded { get; set; }
-
+        
         public int loadedOnRoad { get; set; }
 
         public int loadedOffRoad { get; set; }
 
+        public int notLoaded { get; set; }
+
+        public int unloadedOffRoad { get; set; }
+
         public int maxTraction { get; set; }
+
+        public int psiLoadedOnRoad { get; set; }
+
+        public int psiLoadedOffRoad { get; set; }
+
+        public int psiNotLoaded { get; set; }
+
+        public int psiUnloadedOffRoad { get; set; }
+
+        public int psiMaxTraction { get; set; }
 
         public int stepUpDelay { get; set; }
 
@@ -28,7 +40,7 @@ namespace TractionAir.Serial_Classes
 
         public bool enableGPSOverride { get; set; }
 
-        public int unloadedOffRoad { get; set; }
+
 
     }
 }

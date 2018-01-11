@@ -112,23 +112,32 @@ namespace TractionAir.Forms
         private void saveECU()
         {
             string speedControl = speedControlComboBox.Text;
-            int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
             int loadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
             int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+            int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
             int unloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
             int maxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+            int psiLoadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+            int psiLoadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+            int psiNotLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
+            int psiUnloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
+            int psiMaxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
             int stepUpDelay = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, false);
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
             bool enableGPSOverride = gpsOverrideCheckBox.Checked;
-            string output = readWriteHelper.generateOutput(ECU_Manager.connectedBoard, speedControl, notLoaded, loadedOnRoad, loadedOffRoad, unloadedOffRoad, maxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
+            string output = readWriteHelper.generateOutput(ECU_Manager.connectedBoard, speedControl, loadedOnRoad, loadedOffRoad, 
+                notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
+                psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
             try
             {
                 SerialManager.WriteLine(output);
                 settingsFromECU settings = readWriteHelper.readInput(SerialManager.ReadLine());
-                if (/*TODO Board code*/ settings.speedControl.Equals(speedControl) && settings.notLoaded == notLoaded && settings.loadedOnRoad == loadedOnRoad
-                    && settings.loadedOffRoad == loadedOffRoad && settings.maxTraction == maxTraction && settings.stepUpDelay == stepUpDelay && settings.maxTractionBeep == maxTractionBeep
-                    && settings.enableGPSButtons == enableGPSButtons && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad/*TODO PSIS??!!?!??!!?! AND CRC*/)
+                if (/*TODO Board code*/ settings.speedControl.Equals(speedControl) && settings.loadedOnRoad == loadedOnRoad && settings.loadedOffRoad == loadedOffRoad 
+                    && settings.notLoaded == notLoaded && settings.maxTraction == maxTraction && settings.psiLoadedOnRoad == psiLoadedOnRoad && settings.psiLoadedOffRoad == psiLoadedOffRoad
+                    && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay 
+                    && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons 
+                    && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad/*TODO PSIS??!!?!??!!?! AND CRC*/)
                 {
                     MessageBox.Show("Data successfully written to ECU", "Download Complete");
                 }
