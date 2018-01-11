@@ -441,8 +441,6 @@ namespace TractionAir
                     }
                 }
             }
-            //TODO REMOVE line below it was for comm testing
-            return new List<String>{ "COM2" };
             return comports;
         }
         #endregion

@@ -28,5 +28,7 @@ namespace TractionAir.Serial_Classes
 
         public bool enableGPSOverride { get; set; }
 
+        public int unloadedOffRoad { get; set; }
+
     }
 }

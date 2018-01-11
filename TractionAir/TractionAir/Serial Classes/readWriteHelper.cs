@@ -23,7 +23,7 @@ namespace TractionAir.Serial_Classes
         /// <param name="enableGPSOverride"></param>
         /// <returns></returns>
         public static string generateOutput(int boardCode, string speedControl, int notLoaded, int loadedOnRoad, 
-            int loadedOffRoad, int maxTraction, int stepUpDelay, bool maxTractionBeep, 
+            int loadedOffRoad, int unloadedOffRoad, int maxTraction, int stepUpDelay, bool maxTractionBeep, 
             bool enableGPSButtons, bool enableGPSOverride)
         {
             string output = "";
@@ -47,11 +47,13 @@ namespace TractionAir.Serial_Classes
                 output = appendValue(output, "L3P");
             }
 
-            output = appendValue(output, string.Format("{0:000}", notLoaded));
-
             output = appendValue(output, string.Format("{0:000}", loadedOnRoad));
 
             output = appendValue(output, string.Format("{0:000}", loadedOffRoad));
+
+            output = appendValue(output, string.Format("{0:000}", notLoaded));
+
+            output = appendValue(output, string.Format("{0:000}", unloadedOffRoad));
 
             output = appendValue(output, string.Format("{0:000}", maxTraction));
 
@@ -112,12 +114,13 @@ namespace TractionAir.Serial_Classes
 
             sfe.boardCode = ECU_Manager.CheckInt(values[0], false);
             sfe.speedControl = ECU_Manager.CheckString(values[1], false);
-            sfe.notLoaded = ECU_Manager.CheckInt(values[2], false);
-            sfe.loadedOnRoad = ECU_Manager.CheckInt(values[3], false);
-            sfe.loadedOffRoad = ECU_Manager.CheckInt(values[4], false);
-            sfe.maxTraction = ECU_Manager.CheckInt(values[5], false);
-            sfe.stepUpDelay = ECU_Manager.CheckInt(values[6], false);
-            if (values[7].Equals("0"))
+            sfe.loadedOnRoad = ECU_Manager.CheckInt(values[2], false);
+            sfe.loadedOffRoad = ECU_Manager.CheckInt(values[3], false);
+            sfe.notLoaded = ECU_Manager.CheckInt(values[4], false);
+            sfe.unloadedOffRoad = ECU_Manager.CheckInt(values[5], false);
+            sfe.maxTraction = ECU_Manager.CheckInt(values[6], false);
+            sfe.stepUpDelay = ECU_Manager.CheckInt(values[7], false);
+            if (values[8].Equals("0"))
             {
                 sfe.maxTractionBeep = false;
             }
@@ -125,7 +128,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.maxTractionBeep = true;
             }
-            if (values[8].Equals("0"))
+            if (values[9].Equals("0"))
             {
                 sfe.enableGPSButtons = false;
             }
@@ -133,7 +136,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSButtons = true;
             }
-            if (values[9].Equals("0"))
+            if (values[10].Equals("0"))
             {
                 sfe.enableGPSOverride = false;
             }

@@ -36,6 +36,11 @@ namespace TractionAir
         }
 
         #region table connection methods
+        /// <summary>
+        /// Takes a board code and returns a version ID
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
         public static int EcuToVersion(int boardCode)
         {
             try
@@ -56,6 +61,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Returns the country that an ecu belongs to
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
         public static int EcuToCountry(int boardCode)
         {
             try
@@ -76,6 +86,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Returns the speedcontrolID for a given ECU
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
         public static int EcuToSpeedControl(int boardCode)
         {
             try
@@ -96,6 +111,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Returns a pressure group ID for a given ECU
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
         public static int EcuToPressureGroup(int boardCode)
         {
             try
@@ -116,6 +136,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Returns the customer ID for the owner of the given ecu
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
         public static int EcuToCustomer(int boardCode)
         {
             try
@@ -136,6 +161,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Returns the country ID that a given customer is based in
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static int CustomerToCountry(int id)
         {
             try
@@ -401,6 +431,10 @@ namespace TractionAir
             return code;
         }
 
+        /// <summary>
+        /// Checks to see if there already exists an ecu with the given board code
+        /// </summary>
+        /// <param name="bc"></param>
         public static void CheckDuplicateECU(int bc)
         {
             SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
@@ -424,6 +458,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Checks to see if a pressure group with the given descrption already exists
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="id"></param>
         public static void CheckDuplicatePressureGroup(string desc, int id)
         {
             SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
@@ -449,6 +488,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Checks to see if a customer with the given name already exists
+        /// </summary>
+        /// <param name="company"></param>
+        /// <param name="id"></param>
         public static void CheckDuplicateCustomer(string company, int id)
         {
             SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
@@ -474,6 +518,11 @@ namespace TractionAir
             }
         }
 
+        /// <summary>
+        /// Checks to see if a country with the given code already exists
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="id"></param>
         public static void CheckDuplicateCountry(string code, int id)
         {
             SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));

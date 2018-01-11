@@ -115,16 +115,27 @@ namespace TractionAir.Forms
             int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
             int loadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
             int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+            int unloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
             int maxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
             int stepUpDelay = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, false);
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
             bool enableGPSOverride = gpsOverrideCheckBox.Checked;
-            string output = readWriteHelper.generateOutput(ECU_Manager.connectedBoard, speedControl, notLoaded, loadedOnRoad, loadedOffRoad, maxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
+            string output = readWriteHelper.generateOutput(ECU_Manager.connectedBoard, speedControl, notLoaded, loadedOnRoad, loadedOffRoad, unloadedOffRoad, maxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
             try
             {
                 SerialManager.WriteLine(output);
-                //string checkReceived = readWriteHelper.readInput(input); //TODO Check that the ecu received the data
+                settingsFromECU settings = readWriteHelper.readInput(SerialManager.ReadLine());
+                if (/*TODO Board code*/ settings.speedControl.Equals(speedControl) && settings.notLoaded == notLoaded && settings.loadedOnRoad == loadedOnRoad
+                    && settings.loadedOffRoad == loadedOffRoad && settings.maxTraction == maxTraction && settings.stepUpDelay == stepUpDelay && settings.maxTractionBeep == maxTractionBeep
+                    && settings.enableGPSButtons == enableGPSButtons && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad/*TODO PSIS??!!?!??!!?! AND CRC*/)
+                {
+                    MessageBox.Show("Data successfully written to ECU", "Download Complete");
+                }
+                else
+                {
+                    throw new System.IO.IOException("Data mismatch between ECU settings and given values");
+                }
             }
             catch(System.IO.IOException ioex)
             {
@@ -134,8 +145,6 @@ namespace TractionAir.Forms
             {
                 throw new InvalidOperationException("Error when saving data to ECU: " + toex.Message);
             }
-            //TODO double check ecu got correct data - use CRC
-            MessageBox.Show("Data successfully written to ECU", "Download Complete");
         }
 
         /// <summary>
@@ -470,7 +479,8 @@ namespace TractionAir.Forms
         /// </summary>
         private void loadValuesFromECU()
         {
-            //TODO read data from ecu and put values in controls
+            //TODO test this somehow
+            settingsFromECU settings;
             try
             {
                 SerialManager.WriteLine(readWriteHelper.appendCRC("GET,"));
@@ -483,11 +493,10 @@ namespace TractionAir.Forms
             {
                 throw new InvalidOperationException("Error when asking for data from ECU: " + toex.Message);
             }
-            //TODO code below is correct but ECU does not respond yet
-            /*string input = SerialManager.ReadLine();
+            string input = SerialManager.ReadLine();
             try
             {
-                settingsFromECU settings = readWriteHelper.readInput(input);
+                settings = readWriteHelper.readInput(input);
                 SerialManager.WriteLine(readWriteHelper.appendCRC("RCV,")); //Let ecu know that data was received
             }
             catch (InvalidOperationException ioex)
@@ -499,11 +508,38 @@ namespace TractionAir.Forms
                 throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
             }
             ECU_Manager.connectedBoard = settings.boardCode;
-            
-            TODO fill controls with the data
-             
-            */
-            ECU_Manager.connectedBoard = 1000;
+            boardNumberTextbox.Text = settings.boardCode.ToString();
+            speedControlComboBox.SelectedValue = speedControlComboBox.FindStringExact(settings.speedControl);
+            loadedOnRoadTextbox.Text = settings.loadedOnRoad.ToString();
+            loadedOffRoadTextbox.Text = settings.loadedOffRoad.ToString();
+            notLoadedTextbox.Text = settings.notLoaded.ToString();
+            unloadedOffRoadTextbox.Text = settings.unloadedOffRoad.ToString();
+            maxTractionTextbox.Text = settings.maxTraction.ToString();
+            stepUpDelayTextbox.Text = settings.stepUpDelay.ToString();
+            if (settings.maxTractionBeep.Equals("0"))
+            {
+                beepCheckBox.Checked = false;
+            }
+            else
+            {
+                beepCheckBox.Checked = true;
+            }
+            if (settings.enableGPSButtons.Equals("0"))
+            {
+                gpsButtonCheckBox.Checked = false;
+            }
+            else
+            {
+                gpsButtonCheckBox.Checked = true;
+            }
+            if (settings.enableGPSOverride.Equals("0"))
+            {
+                gpsOverrideCheckBox.Checked = false;
+            }
+            else
+            {
+                gpsOverrideCheckBox.Checked = true;
+            }
         }
 
         /// <summary>
