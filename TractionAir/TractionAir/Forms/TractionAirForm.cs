@@ -16,6 +16,7 @@ using TractionAir.Serial_Classes;
 using System.Data.SqlClient;
 using System.Configuration;
 using TractionAir.Forms;
+using System.Net;
 
 namespace TractionAir
 {
@@ -98,6 +99,26 @@ namespace TractionAir
             mainSettingsTableDataGridView.Refresh();
             ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
         }
+
+        /// <summary>
+        /// Returns true if the program is connected to the internet; false otherwise
+        /// </summary>
+        /// <returns></returns>
+        private bool connected()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("https://www.google.co.nz"))
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Menu
@@ -110,13 +131,13 @@ namespace TractionAir
             {
                 offlineToolStripMenuItem.Checked = false;
                 onlineToolStripMenuItem.Checked = true;
-                if (true) //TODO check if connected to the internet
+                if (connected()) 
                 {
-                    onlineLabel.Text = "Online Mode: Not Connected";
+                    onlineLabel.Text = "Online Mode: Connected";
                 }
                 else
                 {
-                    onlineLabel.Text = "Online Mode: Connected";
+                    onlineLabel.Text = "Online Mode: Not Connected";
                 }
             }
             else //Offline mode
@@ -176,8 +197,15 @@ namespace TractionAir
                 Properties.Settings.Default.OnlineMode = true;
                 onlineToolStripMenuItem.Checked = true;
                 offlineToolStripMenuItem.Checked = false;
-                onlineLabel.Text = "Online Mode";
-                //TODO make this meaningful, and let them know if they are connected to the internet
+                if (connected())
+                {
+                    onlineLabel.Text = "Online Mode: Connected";
+                }
+                else
+                {
+                    onlineLabel.Text = "Online Mode: Not Connected";
+                }
+                //TODO make this meaningful
             }
         }
 

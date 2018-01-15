@@ -185,6 +185,41 @@ namespace TractionAir
                 throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
             }
         }
+
+        /// <summary>
+        /// Adds the given version number to the table if it doesn't exist already
+        /// </summary>
+        public static void addVersionIfDoesntExist(double version)
+        {
+
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                String progversion = "V" + version.ToString();
+                String query = "SELECT * FROM programVersionTable WHERE Version = @version";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@version", SqlDbType.NVarChar);
+                command.Parameters["@version"].Value = progversion;
+                try
+                {
+                    Int32 countryId = (Int32)command.ExecuteScalar();
+                }
+                catch (Exception e) //version not found, must insert new version
+                {
+                    String insert = "INSERT INTO programVersionTable VALUES @version";
+                    SqlCommand command2 = new SqlCommand(insert, con);
+                    command2.Parameters.Add("@version", SqlDbType.NVarChar);
+                    command2.Parameters["@version"].Value = progversion;
+                    command2.ExecuteNonQuery();
+                }
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to insert new progr: " + e.Message);
+            }
+        }
         #endregion
 
         #region messageBoxes
@@ -332,6 +367,33 @@ namespace TractionAir
             }
             return getPGByID(max);
         }
+
+        /// <summary>
+        /// Returns a pressure group ID based on the given PSI values
+        /// </summary>
+        /// <param name="loadedOn"></param>
+        /// <param name="loadedOff"></param>
+        /// <param name="unloadedOn"></param>
+        /// <param name="unloadedOff"></param>
+        /// <param name="maxTraction"></param>
+        /// <returns></returns>
+        public static int FindPressureGroupByPSIs(int loadedOn, int loadedOff, int unloadedOn, int unloadedOff, int maxTraction)
+        {
+            String query = $"SELECT * FROM pressureGroupsTable WHERE loadedOnRoad = '{ loadedOn }' AND loadedOffRoad = '{ loadedOff }' AND unloadedOnRoad = '{ unloadedOn }' AND unloadedOffRoad = '{ unloadedOff }' AND maxTraction = '{ maxTraction }'";
+
+            using (IDbConnection iDbCon = new SqlConnection(connection("ecuSettingsDB_CS")))
+            {
+                PressureGroupObject[] pgs = iDbCon.Query<PressureGroupObject>(query).ToArray();
+                if (pgs.Length != 0)
+                {
+                    return pgs[0].Id;
+                }
+                else
+                {
+                    return -1; //no pressure group with given psis found
+                }
+            }
+        }
         #endregion
 
         #region check methods
@@ -376,7 +438,7 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Checks that the string is valid and returns it
+        /// Checks that the int is valid and returns it
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
@@ -392,6 +454,25 @@ namespace TractionAir
                 throw new InvalidOperationException("Input '" + s + "' is not an integer");
             }
             return i;
+        }
+
+        /// <summary>
+        /// Checks that the double is valid and returns it
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static double CheckDouble(string s, bool allowNull)
+        {
+            if (s == null && !allowNull)
+            {
+                throw new InvalidOperationException("A required input is null");
+            }
+            double d;
+            if (!Double.TryParse(s, out d))
+            {
+                throw new InvalidOperationException("Input '" + s + "' is not a double");
+            }
+            return d;
         }
 
         /// <summary>

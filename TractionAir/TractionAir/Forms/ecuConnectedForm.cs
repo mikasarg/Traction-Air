@@ -133,11 +133,11 @@ namespace TractionAir.Forms
             {
                 SerialManager.WriteLine(output);
                 settingsFromECU settings = readWriteHelper.readInput(SerialManager.ReadLine());
-                if (/*TODO Board code*/ settings.speedControl.Equals(speedControl) && settings.loadedOnRoad == loadedOnRoad && settings.loadedOffRoad == loadedOffRoad 
+                if (settings.boardCode == ECU_Manager.connectedBoard && settings.speedControl.Equals(speedControl) && settings.loadedOnRoad == loadedOnRoad && settings.loadedOffRoad == loadedOffRoad 
                     && settings.notLoaded == notLoaded && settings.maxTraction == maxTraction && settings.psiLoadedOnRoad == psiLoadedOnRoad && settings.psiLoadedOffRoad == psiLoadedOffRoad
                     && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay 
                     && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons 
-                    && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad/*TODO PSIS??!!?!??!!?! AND CRC*/)
+                    && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad/*TODO CRC?*/)
                 {
                     MessageBox.Show("Data successfully written to ECU", "Download Complete");
                 }
@@ -518,6 +518,8 @@ namespace TractionAir.Forms
             }
             ECU_Manager.connectedBoard = settings.boardCode;
             boardNumberTextbox.Text = settings.boardCode.ToString();
+            ECU_Manager.addVersionIfDoesntExist(settings.version); //Adds a new version to the table if the version doesn't already exist
+            programVersionComboBox.SelectedValue = programVersionComboBox.FindStringExact("V" + settings.version.ToString());
             speedControlComboBox.SelectedValue = speedControlComboBox.FindStringExact(settings.speedControl);
             loadedOnRoadTextbox.Text = settings.loadedOnRoad.ToString();
             loadedOffRoadTextbox.Text = settings.loadedOffRoad.ToString();
@@ -525,6 +527,20 @@ namespace TractionAir.Forms
             unloadedOffRoadTextbox.Text = settings.unloadedOffRoad.ToString();
             maxTractionTextbox.Text = settings.maxTraction.ToString();
             stepUpDelayTextbox.Text = settings.stepUpDelay.ToString();
+            int pgID = ECU_Manager.FindPressureGroupByPSIs(settings.psiLoadedOnRoad, settings.psiLoadedOffRoad, settings.psiNotLoaded, settings.psiUnloadedOffRoad, settings.psiMaxTraction);
+            if (pgID == -1) //pressure group does not exist
+            {
+                pressureGroupComboBox.SelectedItem = null;
+                psiLoadedOnTextbox.Text = settings.psiLoadedOnRoad.ToString();
+                psiLoadedOffTextbox.Text = settings.psiLoadedOffRoad.ToString();
+                psiUnloadedOnTextbox.Text = settings.psiNotLoaded.ToString();
+                psiUnloadedOffTextbox.Text = settings.psiUnloadedOffRoad.ToString();
+                psiMaxTractionTextbox.Text = settings.psiMaxTraction.ToString();
+            }
+            else
+            {
+                pressureGroupComboBox.SelectedValue = pgID;
+            }
             if (settings.maxTractionBeep.Equals("0"))
             {
                 beepCheckBox.Checked = false;

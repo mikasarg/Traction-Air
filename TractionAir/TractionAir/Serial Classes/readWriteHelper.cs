@@ -126,7 +126,7 @@ namespace TractionAir.Serial_Classes
             List<string> values = input.Split(',').ToList();
 
             sfe.boardCode = ECU_Manager.CheckInt(values[0], false);
-            sfe.speedControl = ECU_Manager.CheckString(values[1], false);
+            sfe.speedControl = ECU_Manager.CheckDouble(values[1], false);
             sfe.loadedOnRoad = ECU_Manager.CheckInt(values[2], false);
             sfe.loadedOffRoad = ECU_Manager.CheckInt(values[3], false);
             sfe.notLoaded = ECU_Manager.CheckInt(values[4], false);
