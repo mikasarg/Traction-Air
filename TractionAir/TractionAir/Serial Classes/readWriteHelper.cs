@@ -163,6 +163,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSOverride = true;
             }
+            sfe.crc = ECU_Manager.CheckInt(values[17], false);
 
             return sfe;
         }

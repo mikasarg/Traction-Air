@@ -14,7 +14,10 @@ namespace TractionAir.Forms
 {
     public partial class ecuConnectedForm : Form
     {
+        private static int DEFAULT_BC = 0;
+
         private bool alreadyExists; //true if the connected ecu is already in the DB
+        private bool newBoard;
 
         public ecuConnectedForm()
         {
@@ -43,7 +46,7 @@ namespace TractionAir.Forms
                 MessageBox.Show(ioex.Message, "Failed to Load Values from ECU");
                 Close();
             }
-
+            newBoard = false;
             alreadyExists = false;
             try
             {
@@ -111,6 +114,21 @@ namespace TractionAir.Forms
 
         private void saveECU()
         {
+            int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
+            if (boardCode == DEFAULT_BC) //If user hasn't updated the board code from the default (for a new board)
+            {
+                throw new InvalidOperationException("Must enter a new board code - default board code '" + DEFAULT_BC + "' is invalid");
+            }
+            if (newBoard) { //If a new board, can't set it to have the same board code as one that already exists
+                try
+                {
+                    ECU_Manager.CheckDuplicateECU(boardCode);
+                }
+                catch (InvalidOperationException ioex) {
+                    throw new InvalidOperationException("Must enter a new board code - board code '" + boardCode + "' already exists in the database");
+                }
+            }
+            ECU_Manager.connectedBoard = boardCode;
             string speedControl = speedControlComboBox.Text;
             int loadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
             int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
@@ -126,18 +144,27 @@ namespace TractionAir.Forms
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
             bool enableGPSOverride = gpsOverrideCheckBox.Checked;
-            string output = readWriteHelper.generateOutput(ECU_Manager.connectedBoard, speedControl, loadedOnRoad, loadedOffRoad, 
+            string output = readWriteHelper.generateOutput(boardCode, speedControl, loadedOnRoad, loadedOffRoad, 
                 notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
                 psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
+            int CRC = 000;
+            if(Int32.TryParse(output.Substring(output.Length - 6, output.Length - 3), out CRC))
+            {
+                //CRC successfully converted to an integer
+            }
+            else
+            {
+                throw new InvalidOperationException("CRC could not be converted to an integer");
+            }
             try
             {
                 SerialManager.WriteLine(output);
                 settingsFromECU settings = readWriteHelper.readInput(SerialManager.ReadLine());
-                if (settings.boardCode == ECU_Manager.connectedBoard && settings.speedControl.Equals(speedControl) && settings.loadedOnRoad == loadedOnRoad && settings.loadedOffRoad == loadedOffRoad 
+                if (settings.boardCode == boardCode && settings.speedControl.Equals(speedControl) && settings.loadedOnRoad == loadedOnRoad && settings.loadedOffRoad == loadedOffRoad 
                     && settings.notLoaded == notLoaded && settings.maxTraction == maxTraction && settings.psiLoadedOnRoad == psiLoadedOnRoad && settings.psiLoadedOffRoad == psiLoadedOffRoad
                     && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay 
                     && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons 
-                    && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad/*TODO CRC?*/)
+                    && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad && settings.crc == CRC)
                 {
                     MessageBox.Show("Data successfully written to ECU", "Download Complete");
                 }
@@ -515,6 +542,11 @@ namespace TractionAir.Forms
             catch (TimeoutException toex)
             {
                 throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
+            }
+            if (settings.boardCode == DEFAULT_BC)
+            {
+                boardNumberTextbox.Enabled = true;
+                newBoard = true;
             }
             ECU_Manager.connectedBoard = settings.boardCode;
             boardNumberTextbox.Text = settings.boardCode.ToString();
