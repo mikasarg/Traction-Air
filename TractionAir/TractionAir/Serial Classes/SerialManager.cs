@@ -440,7 +440,7 @@ namespace TractionAir.Serial_Classes
             {
                 OpenSerialPort();
             }
-            return ECU_Manager.ECU_SerialPort.ReadLine();
+            return ECU_Manager.ECU_SerialPort.ReadTo("\u000D");
         }
 
         public static int OpenSerialPort()

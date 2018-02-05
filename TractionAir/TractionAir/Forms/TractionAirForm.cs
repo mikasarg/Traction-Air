@@ -70,12 +70,6 @@ namespace TractionAir
 
             //Closes the splash/loading screen
             splash.Close();
-
-            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
-            {
-                ecuConnectedForm ecuConnected = new ecuConnectedForm();
-                ecuConnected.ShowDialog();
-            }
         }
 
         #region System Methods
@@ -369,7 +363,8 @@ namespace TractionAir
             USBPort.RegisterForDeviceChange(true, this.Handle);
 
             //Check if ECU is already connected
-            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            //TODO if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            if (true)
             {
                 //ECU is connected
                 Properties.Settings.Default.EcuConnected = true;
@@ -386,6 +381,8 @@ namespace TractionAir
                         }
                     }
                 }
+                ecuConnectedForm ecuConnected = new ecuConnectedForm();
+                ecuConnected.ShowDialog();
                 connectedBoardLabel.Text = "Connected Board: " + ECU_Manager.connectedBoard;
             }
         }
@@ -469,6 +466,8 @@ namespace TractionAir
                     }
                 }
             }
+            //TODO remove below line (for testing)
+            return new List<string>() { "COM3" };
             return comports;
         }
         #endregion

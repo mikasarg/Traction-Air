@@ -14,7 +14,7 @@ namespace TractionAir.Forms
 {
     public partial class ecuConnectedForm : Form
     {
-        private static int DEFAULT_BC = 0;
+        private static int DEFAULT_BC = 000000;
 
         private bool alreadyExists; //true if the connected ecu is already in the DB
         private bool newBoard;
@@ -517,9 +517,11 @@ namespace TractionAir.Forms
         {
             //TODO test this somehow
             settingsFromECU settings;
+            string input = "";
             try
             {
                 SerialManager.WriteLine(readWriteHelper.appendCRC("GET,"));
+                input = SerialManager.ReadLine();
             }
             catch (System.IO.IOException ioex)
             {
@@ -529,7 +531,6 @@ namespace TractionAir.Forms
             {
                 throw new InvalidOperationException("Error when asking for data from ECU: " + toex.Message);
             }
-            string input = SerialManager.ReadLine();
             try
             {
                 settings = readWriteHelper.readInput(input);

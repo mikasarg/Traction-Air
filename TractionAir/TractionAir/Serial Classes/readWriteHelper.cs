@@ -109,17 +109,20 @@ namespace TractionAir.Serial_Classes
         /// <returns></returns>
         public static settingsFromECU readInput(string input)
         {
-            if (!checkCRCsMatch(input))
+            if (!input.Substring(0, 6).Equals("000000")) //No point checking if CRCs match if this is a new board
             {
-                try
+                if (!checkCRCsMatch(input))
                 {
-                    SerialManager.WriteLine(appendCRC("ERR,")); //Send an error message to the ECU to let it know there was a mismatch in the CRCs
+                    try
+                    {
+                        SerialManager.WriteLine(appendCRC("ERR,")); //Send an error message to the ECU to let it know there was a mismatch in the CRCs
+                    }
+                    catch (TimeoutException toex)
+                    {
+                        throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
+                    }
+                    throw new InvalidOperationException("CRCs did not match - could be caused by noise in the connection. Please try again.");
                 }
-                catch (TimeoutException toex)
-                {
-                    throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
-                }
-                throw new InvalidOperationException("CRCs did not match - could be caused by noise in the connection. Please try again.");
             }
 
             settingsFromECU sfe = new settingsFromECU();
@@ -205,7 +208,7 @@ namespace TractionAir.Serial_Classes
         /// <returns></returns>
         public static bool checkCRCsMatch(string input)
         {
-            if (input.Equals(appendCRC(input.Substring(0, input.Length - 7)))){ //Manually appends the CRC and checks if the 2 strings match
+            if (input.Equals(appendCRC(input.Substring(0, input.Length - 5)))){ //Manually appends the CRC and checks if the 2 strings match
                 return true;
             }
             return false;

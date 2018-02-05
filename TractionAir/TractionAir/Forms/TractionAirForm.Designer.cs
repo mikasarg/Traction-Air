@@ -759,8 +759,8 @@
             // 
             // serialPortECU
             // 
-            this.serialPortECU.ReadTimeout = 1000;
-            this.serialPortECU.WriteTimeout = 1000;
+            this.serialPortECU.ReadTimeout = 5000;
+            this.serialPortECU.WriteTimeout = 5000;
             // 
             // TractionAirForm
             // 
