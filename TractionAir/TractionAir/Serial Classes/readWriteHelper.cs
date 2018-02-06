@@ -129,8 +129,8 @@ namespace TractionAir.Serial_Classes
             List<string> values = input.Split(',').ToList();
 
             sfe.boardCode = ECU_Manager.CheckInt(values[0], false);
-            sfe.version = ECU_Manager.CheckDouble(values[1], false);
-            sfe.speedControl = ECU_Manager.CheckString(values[2], false);
+            sfe.version = ECU_Manager.CheckString(values[1], false);
+            sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[2]);
             sfe.loadedOnRoad = ECU_Manager.CheckInt(values[3], false);
             sfe.loadedOffRoad = ECU_Manager.CheckInt(values[4], false);
             sfe.notLoaded = ECU_Manager.CheckInt(values[5], false);
@@ -199,7 +199,7 @@ namespace TractionAir.Serial_Classes
                 }
                 output += c;
             }
-            return output + string.Format("{0:000}", CRC) + ",13"; //carraige return
+            return output + string.Format("{0:000}", CRC) + ",\u000D"; //carraige return
         }
         
         /// <summary>

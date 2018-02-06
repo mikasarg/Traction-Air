@@ -14,7 +14,7 @@ namespace TractionAir.Forms
 {
     public partial class ecuConnectedForm : Form
     {
-        private static int DEFAULT_BC = 000000;
+        private static int DEFAULT_BC = 0;
 
         private bool alreadyExists; //true if the connected ecu is already in the DB
         private bool newBoard;
@@ -135,11 +135,11 @@ namespace TractionAir.Forms
             int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
             int unloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
             int maxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
-            int psiLoadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
-            int psiLoadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
-            int psiNotLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
-            int psiUnloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
-            int psiMaxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+            int psiLoadedOnRoad = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
+            int psiLoadedOffRoad = ECU_Manager.CheckInt(psiLoadedOffTextbox.Text, false);
+            int psiNotLoaded = ECU_Manager.CheckInt(psiUnloadedOnTextbox.Text, false);
+            int psiUnloadedOffRoad = ECU_Manager.CheckInt(psiUnloadedOffTextbox.Text, false);
+            int psiMaxTraction = ECU_Manager.CheckInt(psiMaxTractionTextbox.Text, false);
             int stepUpDelay = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, false);
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
@@ -148,13 +148,13 @@ namespace TractionAir.Forms
                 notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
                 psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
             int CRC = 000;
-            if(Int32.TryParse(output.Substring(output.Length - 6, output.Length - 3), out CRC))
+            if(Int32.TryParse(output.Substring(output.Length - 6, 3), out CRC))
             {
                 //CRC successfully converted to an integer
             }
             else
             {
-                throw new InvalidOperationException("CRC could not be converted to an integer");
+                throw new InvalidOperationException("CRC '" + output.Substring(output.Length - 6, 3) + "' could not be converted to an integer");
             }
             try
             {
@@ -546,13 +546,13 @@ namespace TractionAir.Forms
             }
             if (settings.boardCode == DEFAULT_BC)
             {
-                boardNumberTextbox.Enabled = true;
+                boardNumberTextbox.ReadOnly = false;
                 newBoard = true;
             }
             ECU_Manager.connectedBoard = settings.boardCode;
             boardNumberTextbox.Text = settings.boardCode.ToString();
-            ECU_Manager.addVersionIfDoesntExist(settings.version); //Adds a new version to the table if the version doesn't already exist
-            programVersionComboBox.SelectedValue = programVersionComboBox.FindStringExact("V" + settings.version.ToString());
+            ECU_Manager.AddVersionIfDoesntExist(settings.version); //Adds a new version to the table if the version doesn't already exist
+            programVersionComboBox.SelectedValue = programVersionComboBox.FindStringExact("V" + settings.version);
             speedControlComboBox.SelectedValue = speedControlComboBox.FindStringExact(settings.speedControl);
             loadedOnRoadTextbox.Text = settings.loadedOnRoad.ToString();
             loadedOffRoadTextbox.Text = settings.loadedOffRoad.ToString();
@@ -574,7 +574,7 @@ namespace TractionAir.Forms
             {
                 pressureGroupComboBox.SelectedValue = pgID;
             }
-            if (settings.maxTractionBeep.Equals("0"))
+            if (settings.maxTractionBeep)
             {
                 beepCheckBox.Checked = false;
             }
@@ -582,7 +582,7 @@ namespace TractionAir.Forms
             {
                 beepCheckBox.Checked = true;
             }
-            if (settings.enableGPSButtons.Equals("0"))
+            if (settings.enableGPSButtons)
             {
                 gpsButtonCheckBox.Checked = false;
             }
@@ -590,7 +590,7 @@ namespace TractionAir.Forms
             {
                 gpsButtonCheckBox.Checked = true;
             }
-            if (settings.enableGPSOverride.Equals("0"))
+            if (settings.enableGPSOverride)
             {
                 gpsOverrideCheckBox.Checked = false;
             }

@@ -189,14 +189,14 @@ namespace TractionAir
         /// <summary>
         /// Adds the given version number to the table if it doesn't exist already
         /// </summary>
-        public static void addVersionIfDoesntExist(double version)
+        public static void AddVersionIfDoesntExist(string version)
         {
 
             try
             {
                 SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
                 con.Open();
-                String progversion = "V" + version.ToString();
+                String progversion = "V" + version;
                 String query = "SELECT * FROM programVersionTable WHERE Version = @version";
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.Add("@version", SqlDbType.NVarChar);
@@ -207,7 +207,7 @@ namespace TractionAir
                 }
                 catch (Exception e) //version not found, must insert new version
                 {
-                    String insert = "INSERT INTO programVersionTable VALUES @version";
+                    String insert = "INSERT INTO programVersionTable VALUES (@version);";
                     SqlCommand command2 = new SqlCommand(insert, con);
                     command2.Parameters.Add("@version", SqlDbType.NVarChar);
                     command2.Parameters["@version"].Value = progversion;
@@ -217,7 +217,7 @@ namespace TractionAir
             }
             catch (Exception e)
             {
-                throw new InvalidOperationException("Unable to insert new progr: " + e.Message);
+                throw new InvalidOperationException("Unable to insert new program version: " + e.Message);
             }
         }
         #endregion
@@ -397,6 +397,27 @@ namespace TractionAir
         #endregion
 
         #region check methods
+        public static string CodeToSpeedControl(string code)
+        {
+            if (code.Equals("NSC"))
+            {
+                return "No Speed Control";
+            }
+            else if (code.Equals("L2P"))
+            {
+                return "Lower Two Pressures";
+            }
+            else if (code.Equals("L3P"))
+            {
+                return "Lower Three Pressures";
+            }
+            else if (code.Equals("OMT"))
+            {
+                return "Only Max Traction";
+            }
+            throw new InvalidOperationException("Speed Control '" + code + "' does not exist");
+        }
+
         /// <summary>
         /// Checks that the string is valid and returns it
         /// </summary>
