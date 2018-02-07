@@ -36,15 +36,21 @@ namespace TractionAir.Forms
             this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-
-            try
+            while (true)
             {
-                loadValuesFromECU();
-            }
-            catch (InvalidOperationException ioex)
-            {
-                MessageBox.Show(ioex.Message, "Failed to Load Values from ECU");
-                Close();
+                try
+                {
+                    loadValuesFromECU();
+                    break;
+                }
+                catch (InvalidOperationException ioex)
+                {
+                    if (DialogResult.No == MessageBox.Show(ioex.Message + "\nRetry?", "Failed to Load Values from ECU", MessageBoxButtons.YesNo))
+                    {
+                        Close();
+                        return;
+                    }
+                }
             }
             newBoard = false;
             alreadyExists = false;
@@ -73,27 +79,33 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to save this data to the ECU?", "Confirm", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
+            while (true)
             {
-                return;
-            }
-            try
-            {
-                saveECU();
-                if (alreadyExists)
+                DialogResult dialogResult = MessageBox.Show("Are you sure you wish to save this data to the ECU?", "Confirm", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
                 {
-                    updateDB();
+                    return;
                 }
-                else //new entry
+                try
                 {
-                    saveToDB();
+                    saveECU();
+                    if (alreadyExists)
+                    {
+                        updateDB();
+                    }
+                    else //new entry
+                    {
+                        saveToDB();
+                    }
+                    break;
                 }
-            }
-            catch (InvalidOperationException ioex)
-            {
-                MessageBox.Show(ioex.Message, "Invalid Input/Failed to Write to ECU");
-                return;
+                catch (InvalidOperationException ioex)
+                {
+                    if (DialogResult.No == MessageBox.Show(ioex.Message + "\nRetry?", "Invalid Input/Failed to Write to ECU", MessageBoxButtons.YesNo))
+                    {
+                        return;
+                    }
+                }
             }
             this.Close();
         }
@@ -148,13 +160,13 @@ namespace TractionAir.Forms
                 notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
                 psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
             int CRC = 000;
-            if(Int32.TryParse(output.Substring(output.Length - 6, 3), out CRC))
+            if(Int32.TryParse(output.Substring(output.Length - 4, 3), out CRC))
             {
                 //CRC successfully converted to an integer
             }
             else
             {
-                throw new InvalidOperationException("CRC '" + output.Substring(output.Length - 6, 3) + "' could not be converted to an integer");
+                throw new InvalidOperationException("CRC '" + output.Substring(output.Length - 4, 3) + "' could not be converted to an integer");
             }
             try
             {
@@ -534,15 +546,10 @@ namespace TractionAir.Forms
             try
             {
                 settings = readWriteHelper.readInput(input);
-                SerialManager.WriteLine(readWriteHelper.appendCRC("RCV,")); //Let ecu know that data was received
             }
             catch (InvalidOperationException ioex)
             {
                 throw new InvalidOperationException("Error when reading data from ECU: " + ioex.Message);
-            }
-            catch (TimeoutException toex)
-            {
-                throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
             }
             if (settings.boardCode == DEFAULT_BC)
             {
@@ -576,27 +583,27 @@ namespace TractionAir.Forms
             }
             if (settings.maxTractionBeep)
             {
-                beepCheckBox.Checked = false;
+                beepCheckBox.Checked = true;
             }
             else
             {
-                beepCheckBox.Checked = true;
+                beepCheckBox.Checked = false;
             }
             if (settings.enableGPSButtons)
             {
-                gpsButtonCheckBox.Checked = false;
+                gpsButtonCheckBox.Checked = true;
             }
             else
             {
-                gpsButtonCheckBox.Checked = true;
+                gpsButtonCheckBox.Checked = false;
             }
             if (settings.enableGPSOverride)
             {
-                gpsOverrideCheckBox.Checked = false;
+                gpsOverrideCheckBox.Checked = true;
             }
             else
             {
-                gpsOverrideCheckBox.Checked = true;
+                gpsOverrideCheckBox.Checked = false;
             }
         }
 

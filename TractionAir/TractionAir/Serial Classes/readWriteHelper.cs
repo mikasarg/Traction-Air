@@ -58,8 +58,6 @@ namespace TractionAir.Serial_Classes
 
             output = appendValue(output, string.Format("{0:000}", maxTraction));
 
-            output = appendValue(output, string.Format("{0:00}", stepUpDelay));
-
             output = appendValue(output, string.Format("{0:000}", psiLoadedOnRoad));
 
             output = appendValue(output, string.Format("{0:000}", psiLoadedOffRoad));
@@ -109,18 +107,10 @@ namespace TractionAir.Serial_Classes
         /// <returns></returns>
         public static settingsFromECU readInput(string input)
         {
-            if (!input.Substring(0, 6).Equals("000000")) //No point checking if CRCs match if this is a new board
+            if (!input.Substring(0, 6).Equals("000000")) //TODO REMOVE No point checking if CRCs match if this is a new board
             {
                 if (!checkCRCsMatch(input))
                 {
-                    try
-                    {
-                        SerialManager.WriteLine(appendCRC("ERR,")); //Send an error message to the ECU to let it know there was a mismatch in the CRCs
-                    }
-                    catch (TimeoutException toex)
-                    {
-                        throw new InvalidOperationException("Error when reading data from ECU: " + toex.Message);
-                    }
                     throw new InvalidOperationException("CRCs did not match - could be caused by noise in the connection. Please try again.");
                 }
             }
@@ -199,7 +189,7 @@ namespace TractionAir.Serial_Classes
                 }
                 output += c;
             }
-            return output + string.Format("{0:000}", CRC) + ",\u000D"; //carraige return
+            return output + string.Format("{0:000}", CRC) + ","; //carraige return is added automatically by writeline?
         }
         
         /// <summary>
@@ -208,7 +198,7 @@ namespace TractionAir.Serial_Classes
         /// <returns></returns>
         public static bool checkCRCsMatch(string input)
         {
-            if (input.Equals(appendCRC(input.Substring(0, input.Length - 5)))){ //Manually appends the CRC and checks if the 2 strings match
+            if (input.Equals(appendCRC(input.Substring(0, input.Length - 4)))){ //Manually appends the CRC and checks if the 2 strings match
                 return true;
             }
             return false;
