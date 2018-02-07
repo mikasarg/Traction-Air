@@ -43,9 +43,13 @@ namespace TractionAir.Serial_Classes
             {
                 output = appendValue(output, "L2P");
             }
-            else //Lower Three Pressures
+            else if (speedControl.Equals("Lower Three Pressures"))
             {
                 output = appendValue(output, "L3P");
+            }
+            else //Lower Four Pressures
+            {
+                output = appendValue(output, "L4P");
             }
 
             output = appendValue(output, string.Format("{0:000}", loadedOnRoad));

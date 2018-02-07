@@ -559,8 +559,11 @@ namespace TractionAir.Forms
             ECU_Manager.connectedBoard = settings.boardCode;
             boardNumberTextbox.Text = settings.boardCode.ToString();
             ECU_Manager.AddVersionIfDoesntExist(settings.version); //Adds a new version to the table if the version doesn't already exist
-            programVersionComboBox.SelectedValue = programVersionComboBox.FindStringExact("V" + settings.version);
-            speedControlComboBox.SelectedValue = speedControlComboBox.FindStringExact(settings.speedControl);
+            programVersionTableTableAdapter.Fill(ecuSettingsDatabaseDataSet.programVersionTable); //Fills the table with the new data
+            programVersionComboBox.DataSource = programVersionTableBindingSource; //Resets the datasource of the combobox
+            programVersionComboBox.Refresh(); //Refreshes the combobox so the new value will display
+            programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact("V" + settings.version); //Selects the new value
+            speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(settings.speedControl);
             loadedOnRoadTextbox.Text = settings.loadedOnRoad.ToString();
             loadedOffRoadTextbox.Text = settings.loadedOffRoad.ToString();
             notLoadedTextbox.Text = settings.notLoaded.ToString();

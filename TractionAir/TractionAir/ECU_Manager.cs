@@ -397,6 +397,11 @@ namespace TractionAir
         #endregion
 
         #region check methods
+        /// <summary>
+        /// Converts a given 3-letter code to the relevant speed control.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public static string CodeToSpeedControl(string code)
         {
             if (code.Equals("NSC"))
@@ -410,6 +415,10 @@ namespace TractionAir
             else if (code.Equals("L3P"))
             {
                 return "Lower Three Pressures";
+            }
+            else if (code.Equals("L4P"))
+            {
+                return "Lower Four Pressures";
             }
             else if (code.Equals("OMT"))
             {
