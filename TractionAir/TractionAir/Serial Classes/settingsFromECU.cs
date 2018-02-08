@@ -10,6 +10,8 @@ namespace TractionAir.Serial_Classes
     {
         public int boardCode { get; set; }
 
+        public string boardVersion { get; set; }
+
         public string version { get; set; }
 
         public string speedControl { get; set; }

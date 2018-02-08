@@ -29,6 +29,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ViewForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.boardVersionTable' table. You can move, or remove it, as needed.
+            this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
@@ -53,6 +55,7 @@ namespace TractionAir
                 boardNumberTextbox.Text = boardCode.ToString();
                 serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, false);
                 bottomSerialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialCodeBot, true);
+                boardVersionComboBox.SelectedValue = ECU_Manager.EcuToBoardVersion(boardCode);
                 programVersionComboBox.SelectedValue = ECU_Manager.EcuToVersion(boardCode);
                 pressureGroupComboBox.SelectedValue = pgId;
                 customerComboBox.SelectedValue = ECU_Manager.EcuToCustomer(boardCode);

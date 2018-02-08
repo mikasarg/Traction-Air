@@ -135,6 +135,10 @@
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.boardVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.boardVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.boardVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -150,6 +154,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardVersionTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -264,7 +269,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 61);
+            this.label2.Location = new System.Drawing.Point(47, 43);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(73, 13);
@@ -431,7 +436,7 @@
             // 
             // serialNumberTextbox
             // 
-            this.serialNumberTextbox.Location = new System.Drawing.Point(127, 58);
+            this.serialNumberTextbox.Location = new System.Drawing.Point(127, 40);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.serialNumberTextbox.TabIndex = 1;
@@ -482,7 +487,7 @@
             // 
             // bottomSerialNumberTextbox
             // 
-            this.bottomSerialNumberTextbox.Location = new System.Drawing.Point(127, 83);
+            this.bottomSerialNumberTextbox.Location = new System.Drawing.Point(127, 63);
             this.bottomSerialNumberTextbox.Name = "bottomSerialNumberTextbox";
             this.bottomSerialNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.bottomSerialNumberTextbox.TabIndex = 2;
@@ -490,7 +495,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(12, 86);
+            this.label22.Location = new System.Drawing.Point(12, 66);
             this.label22.Name = "label22";
             this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label22.Size = new System.Drawing.Size(109, 13);
@@ -1000,11 +1005,44 @@
             this.label10.TabIndex = 350;
             this.label10.Text = "Manual Database Update";
             // 
+            // boardVersionComboBox
+            // 
+            this.boardVersionComboBox.DataSource = this.boardVersionTableBindingSource;
+            this.boardVersionComboBox.DisplayMember = "Version";
+            this.boardVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boardVersionComboBox.FormattingEnabled = true;
+            this.boardVersionComboBox.Location = new System.Drawing.Point(127, 85);
+            this.boardVersionComboBox.Name = "boardVersionComboBox";
+            this.boardVersionComboBox.Size = new System.Drawing.Size(70, 21);
+            this.boardVersionComboBox.TabIndex = 383;
+            this.boardVersionComboBox.ValueMember = "Id";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(47, 88);
+            this.label45.Name = "label45";
+            this.label45.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label45.Size = new System.Drawing.Size(73, 13);
+            this.label45.TabIndex = 384;
+            this.label45.Text = "Board Version";
+            // 
+            // boardVersionTableBindingSource
+            // 
+            this.boardVersionTableBindingSource.DataMember = "boardVersionTable";
+            this.boardVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // boardVersionTableTableAdapter
+            // 
+            this.boardVersionTableTableAdapter.ClearBeforeFill = true;
+            // 
             // ManualUploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 598);
+            this.Controls.Add(this.boardVersionComboBox);
+            this.Controls.Add(this.label45);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.loadedOnRoadTextbox);
             this.Controls.Add(this.label28);
@@ -1111,6 +1149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardVersionTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1224,5 +1263,9 @@
         private System.Windows.Forms.ComboBox speedControlComboBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox boardVersionComboBox;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.BindingSource boardVersionTableBindingSource;
+        private ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter boardVersionTableTableAdapter;
     }
 }

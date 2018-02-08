@@ -134,6 +134,10 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
+            this.boardVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.boardVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.boardVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
@@ -149,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardVersionTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // eCUdataBindingSource
@@ -480,7 +485,7 @@
             // 
             // bottomSerialNumberTextbox
             // 
-            this.bottomSerialNumberTextbox.Location = new System.Drawing.Point(132, 87);
+            this.bottomSerialNumberTextbox.Location = new System.Drawing.Point(132, 62);
             this.bottomSerialNumberTextbox.Name = "bottomSerialNumberTextbox";
             this.bottomSerialNumberTextbox.ReadOnly = true;
             this.bottomSerialNumberTextbox.Size = new System.Drawing.Size(160, 20);
@@ -489,7 +494,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(17, 90);
+            this.label22.Location = new System.Drawing.Point(17, 65);
             this.label22.Name = "label22";
             this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label22.Size = new System.Drawing.Size(109, 13);
@@ -681,7 +686,7 @@
             // 
             // serialNumberTextbox
             // 
-            this.serialNumberTextbox.Location = new System.Drawing.Point(132, 62);
+            this.serialNumberTextbox.Location = new System.Drawing.Point(132, 37);
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.ReadOnly = true;
             this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
@@ -808,7 +813,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 65);
+            this.label2.Location = new System.Drawing.Point(52, 40);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(73, 13);
@@ -1020,11 +1025,45 @@
             this.label44.TabIndex = 261;
             this.label44.Text = "psi";
             // 
+            // boardVersionComboBox
+            // 
+            this.boardVersionComboBox.DataSource = this.boardVersionTableBindingSource;
+            this.boardVersionComboBox.DisplayMember = "Version";
+            this.boardVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boardVersionComboBox.Enabled = false;
+            this.boardVersionComboBox.FormattingEnabled = true;
+            this.boardVersionComboBox.Location = new System.Drawing.Point(132, 87);
+            this.boardVersionComboBox.Name = "boardVersionComboBox";
+            this.boardVersionComboBox.Size = new System.Drawing.Size(70, 21);
+            this.boardVersionComboBox.TabIndex = 262;
+            this.boardVersionComboBox.ValueMember = "Id";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(52, 91);
+            this.label45.Name = "label45";
+            this.label45.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label45.Size = new System.Drawing.Size(73, 13);
+            this.label45.TabIndex = 263;
+            this.label45.Text = "Board Version";
+            // 
+            // boardVersionTableBindingSource
+            // 
+            this.boardVersionTableBindingSource.DataMember = "boardVersionTable";
+            this.boardVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            // 
+            // boardVersionTableTableAdapter
+            // 
+            this.boardVersionTableTableAdapter.ClearBeforeFill = true;
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 568);
+            this.Controls.Add(this.boardVersionComboBox);
+            this.Controls.Add(this.label45);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.label42);
@@ -1130,6 +1169,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedControlTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardVersionTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1240,5 +1280,9 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.ComboBox boardVersionComboBox;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.BindingSource boardVersionTableBindingSource;
+        private ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter boardVersionTableTableAdapter;
     }
 }

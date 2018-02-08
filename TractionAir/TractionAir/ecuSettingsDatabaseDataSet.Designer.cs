@@ -48,6 +48,10 @@ namespace TractionAir {
         
         private ecuToVersionDataTable tableecuToVersion;
         
+        private boardVersionTableDataTable tableboardVersionTable;
+        
+        private ecuToBoardVersionDataTable tableecuToBoardVersion;
+        
         private global::System.Data.DataRelation relationcountryCodeFK1;
         
         private global::System.Data.DataRelation relationcountryCodeFK;
@@ -77,6 +81,10 @@ namespace TractionAir {
         private global::System.Data.DataRelation relationFK_ecuToVersionTable_ToECU1;
         
         private global::System.Data.DataRelation relationFK_ecuToVersionTable_ToVersion1;
+        
+        private global::System.Data.DataRelation relationFK_ecuToBoardVersionTable_ToECU;
+        
+        private global::System.Data.DataRelation relationFK_ecuToBoardVersionTable_ToVersion;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -141,6 +149,12 @@ namespace TractionAir {
                 }
                 if ((ds.Tables["ecuToVersion"] != null)) {
                     base.Tables.Add(new ecuToVersionDataTable(ds.Tables["ecuToVersion"]));
+                }
+                if ((ds.Tables["boardVersionTable"] != null)) {
+                    base.Tables.Add(new boardVersionTableDataTable(ds.Tables["boardVersionTable"]));
+                }
+                if ((ds.Tables["ecuToBoardVersion"] != null)) {
+                    base.Tables.Add(new ecuToBoardVersionDataTable(ds.Tables["ecuToBoardVersion"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -282,6 +296,26 @@ namespace TractionAir {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public boardVersionTableDataTable boardVersionTable {
+            get {
+                return this.tableboardVersionTable;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ecuToBoardVersionDataTable ecuToBoardVersion {
+            get {
+                return this.tableecuToBoardVersion;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -382,6 +416,12 @@ namespace TractionAir {
                 }
                 if ((ds.Tables["ecuToVersion"] != null)) {
                     base.Tables.Add(new ecuToVersionDataTable(ds.Tables["ecuToVersion"]));
+                }
+                if ((ds.Tables["boardVersionTable"] != null)) {
+                    base.Tables.Add(new boardVersionTableDataTable(ds.Tables["boardVersionTable"]));
+                }
+                if ((ds.Tables["ecuToBoardVersion"] != null)) {
+                    base.Tables.Add(new ecuToBoardVersionDataTable(ds.Tables["ecuToBoardVersion"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -488,6 +528,18 @@ namespace TractionAir {
                     this.tableecuToVersion.InitVars();
                 }
             }
+            this.tableboardVersionTable = ((boardVersionTableDataTable)(base.Tables["boardVersionTable"]));
+            if ((initTable == true)) {
+                if ((this.tableboardVersionTable != null)) {
+                    this.tableboardVersionTable.InitVars();
+                }
+            }
+            this.tableecuToBoardVersion = ((ecuToBoardVersionDataTable)(base.Tables["ecuToBoardVersion"]));
+            if ((initTable == true)) {
+                if ((this.tableecuToBoardVersion != null)) {
+                    this.tableecuToBoardVersion.InitVars();
+                }
+            }
             this.relationcountryCodeFK1 = this.Relations["countryCodeFK1"];
             this.relationcountryCodeFK = this.Relations["countryCodeFK"];
             this.relationcustomerFK = this.Relations["customerFK"];
@@ -503,6 +555,8 @@ namespace TractionAir {
             this.relationFK_ecuToSpeedControl_ToSpeedControl = this.Relations["FK_ecuToSpeedControl_ToSpeedControl"];
             this.relationFK_ecuToVersionTable_ToECU1 = this.Relations["FK_ecuToVersionTable_ToECU1"];
             this.relationFK_ecuToVersionTable_ToVersion1 = this.Relations["FK_ecuToVersionTable_ToVersion1"];
+            this.relationFK_ecuToBoardVersionTable_ToECU = this.Relations["FK_ecuToBoardVersionTable_ToECU"];
+            this.relationFK_ecuToBoardVersionTable_ToVersion = this.Relations["FK_ecuToBoardVersionTable_ToVersion"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -537,6 +591,10 @@ namespace TractionAir {
             base.Tables.Add(this.tableecuToSpeedControl);
             this.tableecuToVersion = new ecuToVersionDataTable();
             base.Tables.Add(this.tableecuToVersion);
+            this.tableboardVersionTable = new boardVersionTableDataTable();
+            base.Tables.Add(this.tableboardVersionTable);
+            this.tableecuToBoardVersion = new ecuToBoardVersionDataTable();
+            base.Tables.Add(this.tableecuToBoardVersion);
             this.relationcountryCodeFK1 = new global::System.Data.DataRelation("countryCodeFK1", new global::System.Data.DataColumn[] {
                         this.tablecountryCodeTable.CodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablecustomerTable.CountryColumn}, false);
@@ -597,6 +655,14 @@ namespace TractionAir {
                         this.tableprogramVersionTable.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableecuToVersion.VersionIDColumn}, false);
             this.Relations.Add(this.relationFK_ecuToVersionTable_ToVersion1);
+            this.relationFK_ecuToBoardVersionTable_ToECU = new global::System.Data.DataRelation("FK_ecuToBoardVersionTable_ToECU", new global::System.Data.DataColumn[] {
+                        this.tablemainSettingsTable.BoardCodeColumn}, new global::System.Data.DataColumn[] {
+                        this.tableecuToBoardVersion.BoardCodeColumn}, false);
+            this.Relations.Add(this.relationFK_ecuToBoardVersionTable_ToECU);
+            this.relationFK_ecuToBoardVersionTable_ToVersion = new global::System.Data.DataRelation("FK_ecuToBoardVersionTable_ToVersion", new global::System.Data.DataColumn[] {
+                        this.tableboardVersionTable.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableecuToBoardVersion.VersionIDColumn}, false);
+            this.Relations.Add(this.relationFK_ecuToBoardVersionTable_ToVersion);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -668,6 +734,18 @@ namespace TractionAir {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeecuToVersion() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeboardVersionTable() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeecuToBoardVersion() {
             return false;
         }
         
@@ -761,6 +839,12 @@ namespace TractionAir {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void ecuToVersionRowChangeEventHandler(object sender, ecuToVersionRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void boardVersionTableRowChangeEventHandler(object sender, boardVersionTableRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void ecuToBoardVersionRowChangeEventHandler(object sender, ecuToBoardVersionRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1502,6 +1586,8 @@ namespace TractionAir {
             
             private global::System.Data.DataColumn columnDistance;
             
+            private global::System.Data.DataColumn columnUnloadedOffRoad;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mainSettingsTableDataTable() {
@@ -1785,6 +1871,14 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn UnloadedOffRoadColumn {
+                get {
+                    return this.columnUnloadedOffRoad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1851,7 +1945,8 @@ namespace TractionAir {
                         short StepUpDelay, 
                         bool EnableGPSButtons, 
                         bool EnableGPSOverride, 
-                        int Distance) {
+                        int Distance, 
+                        short UnloadedOffRoad) {
                 mainSettingsTableRow rowmainSettingsTableRow = ((mainSettingsTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1884,7 +1979,8 @@ namespace TractionAir {
                         StepUpDelay,
                         EnableGPSButtons,
                         EnableGPSOverride,
-                        Distance};
+                        Distance,
+                        UnloadedOffRoad};
                 if ((parentcustomerTableRowBycustomerFK != null)) {
                     columnValuesArray[0] = parentcustomerTableRowBycustomerFK[0];
                 }
@@ -1951,6 +2047,7 @@ namespace TractionAir {
                 this.columnEnableGPSButtons = base.Columns["EnableGPSButtons"];
                 this.columnEnableGPSOverride = base.Columns["EnableGPSOverride"];
                 this.columnDistance = base.Columns["Distance"];
+                this.columnUnloadedOffRoad = base.Columns["UnloadedOffRoad"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2018,6 +2115,8 @@ namespace TractionAir {
                 base.Columns.Add(this.columnEnableGPSOverride);
                 this.columnDistance = new global::System.Data.DataColumn("Distance", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDistance);
+                this.columnUnloadedOffRoad = new global::System.Data.DataColumn("UnloadedOffRoad", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnloadedOffRoad);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnBoardCode}, true));
                 this.columnOwner.AllowDBNull = false;
@@ -2048,6 +2147,7 @@ namespace TractionAir {
                 this.columnPT7Serial.MaxLength = 50;
                 this.columnPT8Serial.MaxLength = 50;
                 this.columnSerialCodeBot.MaxLength = 50;
+                this.columnUnloadedOffRoad.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4890,6 +4990,582 @@ namespace TractionAir {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class boardVersionTableDataTable : global::System.Data.TypedTableBase<boardVersionTableRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnVersion;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableDataTable() {
+                this.TableName = "boardVersionTable";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal boardVersionTableDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected boardVersionTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VersionColumn {
+                get {
+                    return this.columnVersion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRow this[int index] {
+                get {
+                    return ((boardVersionTableRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event boardVersionTableRowChangeEventHandler boardVersionTableRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event boardVersionTableRowChangeEventHandler boardVersionTableRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event boardVersionTableRowChangeEventHandler boardVersionTableRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event boardVersionTableRowChangeEventHandler boardVersionTableRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddboardVersionTableRow(boardVersionTableRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRow AddboardVersionTableRow(string Version) {
+                boardVersionTableRow rowboardVersionTableRow = ((boardVersionTableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Version};
+                rowboardVersionTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowboardVersionTableRow);
+                return rowboardVersionTableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRow FindById(int Id) {
+                return ((boardVersionTableRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                boardVersionTableDataTable cln = ((boardVersionTableDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new boardVersionTableDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnVersion = base.Columns["Version"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnVersion = new global::System.Data.DataColumn("Version", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVersion);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
+                this.columnVersion.AllowDBNull = false;
+                this.columnVersion.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRow NewboardVersionTableRow() {
+                return ((boardVersionTableRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new boardVersionTableRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(boardVersionTableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.boardVersionTableRowChanged != null)) {
+                    this.boardVersionTableRowChanged(this, new boardVersionTableRowChangeEvent(((boardVersionTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.boardVersionTableRowChanging != null)) {
+                    this.boardVersionTableRowChanging(this, new boardVersionTableRowChangeEvent(((boardVersionTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.boardVersionTableRowDeleted != null)) {
+                    this.boardVersionTableRowDeleted(this, new boardVersionTableRowChangeEvent(((boardVersionTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.boardVersionTableRowDeleting != null)) {
+                    this.boardVersionTableRowDeleting(this, new boardVersionTableRowChangeEvent(((boardVersionTableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveboardVersionTableRow(boardVersionTableRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ecuSettingsDatabaseDataSet ds = new ecuSettingsDatabaseDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "boardVersionTableDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ecuToBoardVersionDataTable : global::System.Data.TypedTableBase<ecuToBoardVersionRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnBoardCode;
+            
+            private global::System.Data.DataColumn columnVersionID;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionDataTable() {
+                this.TableName = "ecuToBoardVersion";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ecuToBoardVersionDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected ecuToBoardVersionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BoardCodeColumn {
+                get {
+                    return this.columnBoardCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VersionIDColumn {
+                get {
+                    return this.columnVersionID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow this[int index] {
+                get {
+                    return ((ecuToBoardVersionRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ecuToBoardVersionRowChangeEventHandler ecuToBoardVersionRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ecuToBoardVersionRowChangeEventHandler ecuToBoardVersionRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ecuToBoardVersionRowChangeEventHandler ecuToBoardVersionRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ecuToBoardVersionRowChangeEventHandler ecuToBoardVersionRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddecuToBoardVersionRow(ecuToBoardVersionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow AddecuToBoardVersionRow(mainSettingsTableRow parentmainSettingsTableRowByFK_ecuToBoardVersionTable_ToECU, boardVersionTableRow parentboardVersionTableRowByFK_ecuToBoardVersionTable_ToVersion) {
+                ecuToBoardVersionRow rowecuToBoardVersionRow = ((ecuToBoardVersionRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null};
+                if ((parentmainSettingsTableRowByFK_ecuToBoardVersionTable_ToECU != null)) {
+                    columnValuesArray[1] = parentmainSettingsTableRowByFK_ecuToBoardVersionTable_ToECU[5];
+                }
+                if ((parentboardVersionTableRowByFK_ecuToBoardVersionTable_ToVersion != null)) {
+                    columnValuesArray[2] = parentboardVersionTableRowByFK_ecuToBoardVersionTable_ToVersion[0];
+                }
+                rowecuToBoardVersionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowecuToBoardVersionRow);
+                return rowecuToBoardVersionRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow FindById(int Id) {
+                return ((ecuToBoardVersionRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ecuToBoardVersionDataTable cln = ((ecuToBoardVersionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ecuToBoardVersionDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnBoardCode = base.Columns["BoardCode"];
+                this.columnVersionID = base.Columns["VersionID"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnBoardCode = new global::System.Data.DataColumn("BoardCode", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBoardCode);
+                this.columnVersionID = new global::System.Data.DataColumn("VersionID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVersionID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
+                this.columnBoardCode.AllowDBNull = false;
+                this.columnVersionID.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow NewecuToBoardVersionRow() {
+                return ((ecuToBoardVersionRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ecuToBoardVersionRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ecuToBoardVersionRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ecuToBoardVersionRowChanged != null)) {
+                    this.ecuToBoardVersionRowChanged(this, new ecuToBoardVersionRowChangeEvent(((ecuToBoardVersionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ecuToBoardVersionRowChanging != null)) {
+                    this.ecuToBoardVersionRowChanging(this, new ecuToBoardVersionRowChangeEvent(((ecuToBoardVersionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ecuToBoardVersionRowDeleted != null)) {
+                    this.ecuToBoardVersionRowDeleted(this, new ecuToBoardVersionRowChangeEvent(((ecuToBoardVersionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ecuToBoardVersionRowDeleting != null)) {
+                    this.ecuToBoardVersionRowDeleting(this, new ecuToBoardVersionRowChangeEvent(((ecuToBoardVersionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveecuToBoardVersionRow(ecuToBoardVersionRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ecuSettingsDatabaseDataSet ds = new ecuSettingsDatabaseDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ecuToBoardVersionDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class countryCodeTableRow : global::System.Data.DataRow {
@@ -5663,6 +6339,17 @@ namespace TractionAir {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short UnloadedOffRoad {
+                get {
+                    return ((short)(this[this.tablemainSettingsTable.UnloadedOffRoadColumn]));
+                }
+                set {
+                    this[this.tablemainSettingsTable.UnloadedOffRoadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public countryCodeTableRow countryCodeTableRow {
                 get {
                     return ((countryCodeTableRow)(this.GetParentRow(this.Table.ParentRelations["countryCodeFK"])));
@@ -5999,6 +6686,17 @@ namespace TractionAir {
                 }
                 else {
                     return ((ecuToVersionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecuToVersionTable_ToECU1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow[] GetecuToBoardVersionRows() {
+                if ((this.Table.ChildRelations["FK_ecuToBoardVersionTable_ToECU"] == null)) {
+                    return new ecuToBoardVersionRow[0];
+                }
+                else {
+                    return ((ecuToBoardVersionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecuToBoardVersionTable_ToECU"])));
                 }
             }
         }
@@ -6634,6 +7332,124 @@ namespace TractionAir {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class boardVersionTableRow : global::System.Data.DataRow {
+            
+            private boardVersionTableDataTable tableboardVersionTable;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal boardVersionTableRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableboardVersionTable = ((boardVersionTableDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableboardVersionTable.IdColumn]));
+                }
+                set {
+                    this[this.tableboardVersionTable.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Version {
+                get {
+                    return ((string)(this[this.tableboardVersionTable.VersionColumn]));
+                }
+                set {
+                    this[this.tableboardVersionTable.VersionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow[] GetecuToBoardVersionRows() {
+                if ((this.Table.ChildRelations["FK_ecuToBoardVersionTable_ToVersion"] == null)) {
+                    return new ecuToBoardVersionRow[0];
+                }
+                else {
+                    return ((ecuToBoardVersionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecuToBoardVersionTable_ToVersion"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ecuToBoardVersionRow : global::System.Data.DataRow {
+            
+            private ecuToBoardVersionDataTable tableecuToBoardVersion;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ecuToBoardVersionRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableecuToBoardVersion = ((ecuToBoardVersionDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableecuToBoardVersion.IdColumn]));
+                }
+                set {
+                    this[this.tableecuToBoardVersion.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int BoardCode {
+                get {
+                    return ((int)(this[this.tableecuToBoardVersion.BoardCodeColumn]));
+                }
+                set {
+                    this[this.tableecuToBoardVersion.BoardCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int VersionID {
+                get {
+                    return ((int)(this[this.tableecuToBoardVersion.VersionIDColumn]));
+                }
+                set {
+                    this[this.tableecuToBoardVersion.VersionIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public mainSettingsTableRow mainSettingsTableRow {
+                get {
+                    return ((mainSettingsTableRow)(this.GetParentRow(this.Table.ParentRelations["FK_ecuToBoardVersionTable_ToECU"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ecuToBoardVersionTable_ToECU"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRow boardVersionTableRow {
+                get {
+                    return ((boardVersionTableRow)(this.GetParentRow(this.Table.ParentRelations["FK_ecuToBoardVersionTable_ToVersion"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ecuToBoardVersionTable_ToVersion"]);
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -7027,6 +7843,74 @@ namespace TractionAir {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ecuToVersionRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class boardVersionTableRowChangeEvent : global::System.EventArgs {
+            
+            private boardVersionTableRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRowChangeEvent(boardVersionTableRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public boardVersionTableRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class ecuToBoardVersionRowChangeEvent : global::System.EventArgs {
+            
+            private ecuToBoardVersionRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRowChangeEvent(ecuToBoardVersionRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ecuToBoardVersionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -8055,6 +8939,7 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
             tableMapping.ColumnMappings.Add("EnableGPSButtons", "EnableGPSButtons");
             tableMapping.ColumnMappings.Add("EnableGPSOverride", "EnableGPSOverride");
             tableMapping.ColumnMappings.Add("Distance", "Distance");
+            tableMapping.ColumnMappings.Add("UnloadedOffRoad", "UnloadedOffRoad");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -8063,33 +8948,25 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
                 "ion = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) A" +
                 "ND ([BoardCode] = @Original_BoardCode) AND ([BuildDate] = @Original_BuildDate) A" +
                 "ND ([DateMod] = @Original_DateMod) AND ([PressureGroup] = @Original_PressureGrou" +
-                "p) AND ([SpeedStages] = @Original_SpeedStages) AND ([VehicleRef] = @Original_Veh" +
-                "icleRef) AND ((@IsNull_LoadedOffRoad = 1 AND [LoadedOffRoad] IS NULL) OR ([Loade" +
-                "dOffRoad] = @Original_LoadedOffRoad)) AND ((@IsNull_LoadedOnRoad = 1 AND [Loaded" +
-                "OnRoad] IS NULL) OR ([LoadedOnRoad] = @Original_LoadedOnRoad)) AND ((@IsNull_Max" +
-                "Traction = 1 AND [MaxTraction] IS NULL) OR ([MaxTraction] = @Original_MaxTractio" +
-                "n)) AND ((@IsNull_PT1Serial = 1 AND [PT1Serial] IS NULL) OR ([PT1Serial] = @Orig" +
-                "inal_PT1Serial)) AND ((@IsNull_PT2Serial = 1 AND [PT2Serial] IS NULL) OR ([PT2Se" +
-                "rial] = @Original_PT2Serial)) AND ((@IsNull_PT3Serial = 1 AND [PT3Serial] IS NUL" +
-                "L) OR ([PT3Serial] = @Original_PT3Serial)) AND ((@IsNull_PT4Serial = 1 AND [PT4S" +
-                "erial] IS NULL) OR ([PT4Serial] = @Original_PT4Serial)) AND ((@IsNull_PT5Serial " +
-                "= 1 AND [PT5Serial] IS NULL) OR ([PT5Serial] = @Original_PT5Serial)) AND ((@IsNu" +
-                "ll_PT6Serial = 1 AND [PT6Serial] IS NULL) OR ([PT6Serial] = @Original_PT6Serial)" +
-                ") AND ((@IsNull_PT7Serial = 1 AND [PT7Serial] IS NULL) OR ([PT7Serial] = @Origin" +
-                "al_PT7Serial)) AND ((@IsNull_PT8Serial = 1 AND [PT8Serial] IS NULL) OR ([PT8Seri" +
-                "al] = @Original_PT8Serial)) AND ((@IsNull_PressureCell = 1 AND [PressureCell] IS" +
-                " NULL) OR ([PressureCell] = @Original_PressureCell)) AND ((@IsNull_SerialNumber " +
-                "= 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AN" +
-                "D ((@IsNull_UnloadedOnRoad = 1 AND [UnloadedOnRoad] IS NULL) OR ([UnloadedOnRoad" +
-                "] = @Original_UnloadedOnRoad)) AND ((@IsNull_EnableGPSButtons = 1 AND [EnableGPS" +
-                "Buttons] IS NULL) OR ([EnableGPSButtons] = @Original_EnableGPSButtons)) AND ((@I" +
-                "sNull_EnableGPSOverride = 1 AND [EnableGPSOverride] IS NULL) OR ([EnableGPSOverr" +
-                "ide] = @Original_EnableGPSOverride)) AND ((@IsNull_MaxTractionBeep = 1 AND [MaxT" +
-                "ractionBeep] IS NULL) OR ([MaxTractionBeep] = @Original_MaxTractionBeep)) AND ((" +
-                "@IsNull_SerialCodeBot = 1 AND [SerialCodeBot] IS NULL) OR ([SerialCodeBot] = @Or" +
-                "iginal_SerialCodeBot)) AND ((@IsNull_StepUpDelay = 1 AND [StepUpDelay] IS NULL) " +
-                "OR ([StepUpDelay] = @Original_StepUpDelay)) AND ((@IsNull_Distance = 1 AND [Dist" +
-                "ance] IS NULL) OR ([Distance] = @Original_Distance)))";
+                "p) AND ([SpeedStages] = @Original_SpeedStages) AND ((@IsNull_VehicleRef = 1 AND " +
+                "[VehicleRef] IS NULL) OR ([VehicleRef] = @Original_VehicleRef)) AND ([LoadedOffR" +
+                "oad] = @Original_LoadedOffRoad) AND ([LoadedOnRoad] = @Original_LoadedOnRoad) AN" +
+                "D ([MaxTraction] = @Original_MaxTraction) AND ([PT1Serial] = @Original_PT1Serial" +
+                ") AND ([PT2Serial] = @Original_PT2Serial) AND ((@IsNull_PT3Serial = 1 AND [PT3Se" +
+                "rial] IS NULL) OR ([PT3Serial] = @Original_PT3Serial)) AND ((@IsNull_PT4Serial =" +
+                " 1 AND [PT4Serial] IS NULL) OR ([PT4Serial] = @Original_PT4Serial)) AND ((@IsNul" +
+                "l_PT5Serial = 1 AND [PT5Serial] IS NULL) OR ([PT5Serial] = @Original_PT5Serial))" +
+                " AND ((@IsNull_PT6Serial = 1 AND [PT6Serial] IS NULL) OR ([PT6Serial] = @Origina" +
+                "l_PT6Serial)) AND ((@IsNull_PT7Serial = 1 AND [PT7Serial] IS NULL) OR ([PT7Seria" +
+                "l] = @Original_PT7Serial)) AND ((@IsNull_PT8Serial = 1 AND [PT8Serial] IS NULL) " +
+                "OR ([PT8Serial] = @Original_PT8Serial)) AND ([PressureCell] = @Original_Pressure" +
+                "Cell) AND ([SerialNumber] = @Original_SerialNumber) AND ([UnloadedOnRoad] = @Ori" +
+                "ginal_UnloadedOnRoad) AND ([EnableGPSButtons] = @Original_EnableGPSButtons) AND " +
+                "([EnableGPSOverride] = @Original_EnableGPSOverride) AND ([MaxTractionBeep] = @Or" +
+                "iginal_MaxTractionBeep) AND ((@IsNull_SerialCodeBot = 1 AND [SerialCodeBot] IS N" +
+                "ULL) OR ([SerialCodeBot] = @Original_SerialCodeBot)) AND ([StepUpDelay] = @Origi" +
+                "nal_StepUpDelay) AND ([Distance] = @Original_Distance) AND ([UnloadedOffRoad] = " +
+                "@Original_UnloadedOffRoad))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8101,16 +8978,12 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateMod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateMod", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PressureGroup", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressureGroup", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SpeedStages", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedStages", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VehicleRef", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleRef", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VehicleRef", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleRef", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoadedOffRoad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOffRoad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOffRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoadedOnRoad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxTraction", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxTraction", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT1Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT1Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT1Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT1Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT2Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT2Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT2Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT2Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT3Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT3Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT3Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT3Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8124,28 +8997,21 @@ SELECT Company, City, Country, Phone, Date, Address1, Address2, Id FROM customer
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT7Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT7Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT8Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT8Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT8Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT8Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PressureCell", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressureCell", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PressureCell", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressureCell", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SerialNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SerialNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UnloadedOnRoad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EnableGPSButtons", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSButtons", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EnableGPSButtons", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSButtons", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EnableGPSOverride", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSOverride", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EnableGPSOverride", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSOverride", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxTractionBeep", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTractionBeep", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxTractionBeep", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTractionBeep", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SerialCodeBot", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StepUpDelay", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [mainSettingsTable] ([Owner], [Country], [Version], [Description], [Notes], [BoardCode], [BuildDate], [DateMod], [PressureGroup], [SpeedStages], [VehicleRef], [LoadedOffRoad], [LoadedOnRoad], [MaxTraction], [PT1Serial], [PT2Serial], [PT3Serial], [PT4Serial], [PT5Serial], [PT6Serial], [PT7Serial], [PT8Serial], [PressureCell], [SerialNumber], [UnloadedOnRoad], [EnableGPSButtons], [EnableGPSOverride], [MaxTractionBeep], [SerialCodeBot], [StepUpDelay], [Distance]) VALUES (@Owner, @Country, @Version, @Description, @Notes, @BoardCode, @BuildDate, @DateMod, @PressureGroup, @SpeedStages, @VehicleRef, @LoadedOffRoad, @LoadedOnRoad, @MaxTraction, @PT1Serial, @PT2Serial, @PT3Serial, @PT4Serial, @PT5Serial, @PT6Serial, @PT7Serial, @PT8Serial, @PressureCell, @SerialNumber, @UnloadedOnRoad, @EnableGPSButtons, @EnableGPSOverride, @MaxTractionBeep, @SerialCodeBot, @StepUpDelay, @Distance);
-SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance FROM mainSettingsTable WHERE (BoardCode = @BoardCode)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [mainSettingsTable] ([Owner], [Country], [Version], [Description], [Notes], [BoardCode], [BuildDate], [DateMod], [PressureGroup], [SpeedStages], [VehicleRef], [LoadedOffRoad], [LoadedOnRoad], [MaxTraction], [PT1Serial], [PT2Serial], [PT3Serial], [PT4Serial], [PT5Serial], [PT6Serial], [PT7Serial], [PT8Serial], [PressureCell], [SerialNumber], [UnloadedOnRoad], [EnableGPSButtons], [EnableGPSOverride], [MaxTractionBeep], [SerialCodeBot], [StepUpDelay], [Distance], [UnloadedOffRoad]) VALUES (@Owner, @Country, @Version, @Description, @Notes, @BoardCode, @BuildDate, @DateMod, @PressureGroup, @SpeedStages, @VehicleRef, @LoadedOffRoad, @LoadedOnRoad, @MaxTraction, @PT1Serial, @PT2Serial, @PT3Serial, @PT4Serial, @PT5Serial, @PT6Serial, @PT7Serial, @PT8Serial, @PressureCell, @SerialNumber, @UnloadedOnRoad, @EnableGPSButtons, @EnableGPSOverride, @MaxTractionBeep, @SerialCodeBot, @StepUpDelay, @Distance, @UnloadedOffRoad);
+SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance, UnloadedOffRoad FROM mainSettingsTable WHERE (BoardCode = @BoardCode)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8178,6 +9044,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [mainSettingsTable] SET [Owner] = @Owner, [Country] = @Country, [Version] " +
@@ -8191,44 +9058,36 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                 ", [SerialNumber] = @SerialNumber, [UnloadedOnRoad] = @UnloadedOnRoad, [EnableGPS" +
                 "Buttons] = @EnableGPSButtons, [EnableGPSOverride] = @EnableGPSOverride, [MaxTrac" +
                 "tionBeep] = @MaxTractionBeep, [SerialCodeBot] = @SerialCodeBot, [StepUpDelay] = " +
-                "@StepUpDelay, [Distance] = @Distance WHERE (([Owner] = @Original_Owner) AND ([Co" +
-                "untry] = @Original_Country) AND ([Version] = @Original_Version) AND ((@IsNull_De" +
-                "scription = 1 AND [Description] IS NULL) OR ([Description] = @Original_Descripti" +
-                "on)) AND ([BoardCode] = @Original_BoardCode) AND ([BuildDate] = @Original_BuildD" +
-                "ate) AND ([DateMod] = @Original_DateMod) AND ([PressureGroup] = @Original_Pressu" +
-                "reGroup) AND ([SpeedStages] = @Original_SpeedStages) AND ([VehicleRef] = @Origin" +
-                "al_VehicleRef) AND ((@IsNull_LoadedOffRoad = 1 AND [LoadedOffRoad] IS NULL) OR (" +
-                "[LoadedOffRoad] = @Original_LoadedOffRoad)) AND ((@IsNull_LoadedOnRoad = 1 AND [" +
-                "LoadedOnRoad] IS NULL) OR ([LoadedOnRoad] = @Original_LoadedOnRoad)) AND ((@IsNu" +
-                "ll_MaxTraction = 1 AND [MaxTraction] IS NULL) OR ([MaxTraction] = @Original_MaxT" +
-                "raction)) AND ((@IsNull_PT1Serial = 1 AND [PT1Serial] IS NULL) OR ([PT1Serial] =" +
-                " @Original_PT1Serial)) AND ((@IsNull_PT2Serial = 1 AND [PT2Serial] IS NULL) OR (" +
-                "[PT2Serial] = @Original_PT2Serial)) AND ((@IsNull_PT3Serial = 1 AND [PT3Serial] " +
-                "IS NULL) OR ([PT3Serial] = @Original_PT3Serial)) AND ((@IsNull_PT4Serial = 1 AND" +
-                " [PT4Serial] IS NULL) OR ([PT4Serial] = @Original_PT4Serial)) AND ((@IsNull_PT5S" +
-                "erial = 1 AND [PT5Serial] IS NULL) OR ([PT5Serial] = @Original_PT5Serial)) AND (" +
-                "(@IsNull_PT6Serial = 1 AND [PT6Serial] IS NULL) OR ([PT6Serial] = @Original_PT6S" +
-                "erial)) AND ((@IsNull_PT7Serial = 1 AND [PT7Serial] IS NULL) OR ([PT7Serial] = @" +
-                "Original_PT7Serial)) AND ((@IsNull_PT8Serial = 1 AND [PT8Serial] IS NULL) OR ([P" +
-                "T8Serial] = @Original_PT8Serial)) AND ((@IsNull_PressureCell = 1 AND [PressureCe" +
-                "ll] IS NULL) OR ([PressureCell] = @Original_PressureCell)) AND ((@IsNull_SerialN" +
-                "umber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumbe" +
-                "r)) AND ((@IsNull_UnloadedOnRoad = 1 AND [UnloadedOnRoad] IS NULL) OR ([Unloaded" +
-                "OnRoad] = @Original_UnloadedOnRoad)) AND ((@IsNull_EnableGPSButtons = 1 AND [Ena" +
-                "bleGPSButtons] IS NULL) OR ([EnableGPSButtons] = @Original_EnableGPSButtons)) AN" +
-                "D ((@IsNull_EnableGPSOverride = 1 AND [EnableGPSOverride] IS NULL) OR ([EnableGP" +
-                "SOverride] = @Original_EnableGPSOverride)) AND ((@IsNull_MaxTractionBeep = 1 AND" +
-                " [MaxTractionBeep] IS NULL) OR ([MaxTractionBeep] = @Original_MaxTractionBeep)) " +
-                "AND ((@IsNull_SerialCodeBot = 1 AND [SerialCodeBot] IS NULL) OR ([SerialCodeBot]" +
-                " = @Original_SerialCodeBot)) AND ((@IsNull_StepUpDelay = 1 AND [StepUpDelay] IS " +
-                "NULL) OR ([StepUpDelay] = @Original_StepUpDelay)) AND ((@IsNull_Distance = 1 AND" +
-                " [Distance] IS NULL) OR ([Distance] = @Original_Distance)));\r\nSELECT Owner, Coun" +
-                "try, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, " +
-                "SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT" +
-                "2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, Press" +
-                "ureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxT" +
-                "ractionBeep, SerialCodeBot, StepUpDelay, Distance FROM mainSettingsTable WHERE (" +
-                "BoardCode = @BoardCode)";
+                "@StepUpDelay, [Distance] = @Distance, [UnloadedOffRoad] = @UnloadedOffRoad WHERE" +
+                " (([Owner] = @Original_Owner) AND ([Country] = @Original_Country) AND ([Version]" +
+                " = @Original_Version) AND ((@IsNull_Description = 1 AND [Description] IS NULL) O" +
+                "R ([Description] = @Original_Description)) AND ([BoardCode] = @Original_BoardCod" +
+                "e) AND ([BuildDate] = @Original_BuildDate) AND ([DateMod] = @Original_DateMod) A" +
+                "ND ([PressureGroup] = @Original_PressureGroup) AND ([SpeedStages] = @Original_Sp" +
+                "eedStages) AND ((@IsNull_VehicleRef = 1 AND [VehicleRef] IS NULL) OR ([VehicleRe" +
+                "f] = @Original_VehicleRef)) AND ([LoadedOffRoad] = @Original_LoadedOffRoad) AND " +
+                "([LoadedOnRoad] = @Original_LoadedOnRoad) AND ([MaxTraction] = @Original_MaxTrac" +
+                "tion) AND ([PT1Serial] = @Original_PT1Serial) AND ([PT2Serial] = @Original_PT2Se" +
+                "rial) AND ((@IsNull_PT3Serial = 1 AND [PT3Serial] IS NULL) OR ([PT3Serial] = @Or" +
+                "iginal_PT3Serial)) AND ((@IsNull_PT4Serial = 1 AND [PT4Serial] IS NULL) OR ([PT4" +
+                "Serial] = @Original_PT4Serial)) AND ((@IsNull_PT5Serial = 1 AND [PT5Serial] IS N" +
+                "ULL) OR ([PT5Serial] = @Original_PT5Serial)) AND ((@IsNull_PT6Serial = 1 AND [PT" +
+                "6Serial] IS NULL) OR ([PT6Serial] = @Original_PT6Serial)) AND ((@IsNull_PT7Seria" +
+                "l = 1 AND [PT7Serial] IS NULL) OR ([PT7Serial] = @Original_PT7Serial)) AND ((@Is" +
+                "Null_PT8Serial = 1 AND [PT8Serial] IS NULL) OR ([PT8Serial] = @Original_PT8Seria" +
+                "l)) AND ([PressureCell] = @Original_PressureCell) AND ([SerialNumber] = @Origina" +
+                "l_SerialNumber) AND ([UnloadedOnRoad] = @Original_UnloadedOnRoad) AND ([EnableGP" +
+                "SButtons] = @Original_EnableGPSButtons) AND ([EnableGPSOverride] = @Original_Ena" +
+                "bleGPSOverride) AND ([MaxTractionBeep] = @Original_MaxTractionBeep) AND ((@IsNul" +
+                "l_SerialCodeBot = 1 AND [SerialCodeBot] IS NULL) OR ([SerialCodeBot] = @Original" +
+                "_SerialCodeBot)) AND ([StepUpDelay] = @Original_StepUpDelay) AND ([Distance] = @" +
+                "Original_Distance) AND ([UnloadedOffRoad] = @Original_UnloadedOffRoad));\r\nSELECT" +
+                " Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, Pre" +
+                "ssureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, P" +
+                "T1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8S" +
+                "erial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOv" +
+                "erride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance, UnloadedOffRoad F" +
+                "ROM mainSettingsTable WHERE (BoardCode = @BoardCode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8261,6 +9120,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Country", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Version", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8271,16 +9131,12 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateMod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateMod", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PressureGroup", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressureGroup", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SpeedStages", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedStages", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VehicleRef", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleRef", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VehicleRef", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleRef", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoadedOffRoad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOffRoad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOffRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LoadedOnRoad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LoadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxTraction", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxTraction", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTraction", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT1Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT1Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT1Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT1Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT2Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT2Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT2Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT2Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT3Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT3Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT3Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT3Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8294,24 +9150,17 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT7Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT7Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PT8Serial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT8Serial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PT8Serial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PT8Serial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PressureCell", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressureCell", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PressureCell", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PressureCell", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SerialNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SerialNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UnloadedOnRoad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOnRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOnRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EnableGPSButtons", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSButtons", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EnableGPSButtons", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSButtons", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EnableGPSOverride", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSOverride", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EnableGPSOverride", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EnableGPSOverride", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxTractionBeep", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTractionBeep", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxTractionBeep", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTractionBeep", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SerialCodeBot", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SerialCodeBot", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SerialCodeBot", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StepUpDelay", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StepUpDelay", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StepUpDelay", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Distance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnloadedOffRoad", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnloadedOffRoad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8327,7 +9176,7 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance FROM mainSettingsTable";
+            this._commandCollection[0].CommandText = @"SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance, UnloadedOffRoad FROM mainSettingsTable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8399,9 +9248,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string Original_PressureGroup, 
                     string Original_SpeedStages, 
                     string Original_VehicleRef, 
-                    global::System.Nullable<short> Original_LoadedOffRoad, 
-                    global::System.Nullable<short> Original_LoadedOnRoad, 
-                    global::System.Nullable<short> Original_MaxTraction, 
+                    short Original_LoadedOffRoad, 
+                    short Original_LoadedOnRoad, 
+                    short Original_MaxTraction, 
                     string Original_PT1Serial, 
                     string Original_PT2Serial, 
                     string Original_PT3Serial, 
@@ -8410,15 +9259,16 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string Original_PT6Serial, 
                     string Original_PT7Serial, 
                     string Original_PT8Serial, 
-                    global::System.Nullable<short> Original_PressureCell, 
+                    short Original_PressureCell, 
                     string Original_SerialNumber, 
-                    global::System.Nullable<short> Original_UnloadedOnRoad, 
-                    global::System.Nullable<bool> Original_EnableGPSButtons, 
-                    global::System.Nullable<bool> Original_EnableGPSOverride, 
-                    global::System.Nullable<bool> Original_MaxTractionBeep, 
+                    short Original_UnloadedOnRoad, 
+                    bool Original_EnableGPSButtons, 
+                    bool Original_EnableGPSOverride, 
+                    bool Original_MaxTractionBeep, 
                     string Original_SerialCodeBot, 
-                    global::System.Nullable<short> Original_StepUpDelay, 
-                    global::System.Nullable<int> Original_Distance) {
+                    short Original_StepUpDelay, 
+                    int Original_Distance, 
+                    short Original_UnloadedOffRoad) {
             if ((Original_Owner == null)) {
                 throw new global::System.ArgumentNullException("Original_Owner");
             }
@@ -8461,171 +9311,98 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_SpeedStages));
             }
             if ((Original_VehicleRef == null)) {
-                throw new global::System.ArgumentNullException("Original_VehicleRef");
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_VehicleRef));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_VehicleRef));
             }
-            if ((Original_LoadedOffRoad.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((short)(Original_LoadedOffRoad.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LoadedOnRoad.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((short)(Original_LoadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((Original_MaxTraction.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((short)(Original_MaxTraction.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[12].Value = ((short)(Original_LoadedOffRoad));
+            this.Adapter.DeleteCommand.Parameters[13].Value = ((short)(Original_LoadedOnRoad));
+            this.Adapter.DeleteCommand.Parameters[14].Value = ((short)(Original_MaxTraction));
             if ((Original_PT1Serial == null)) {
+                throw new global::System.ArgumentNullException("Original_PT1Serial");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_PT1Serial));
+            }
+            if ((Original_PT2Serial == null)) {
+                throw new global::System.ArgumentNullException("Original_PT2Serial");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_PT2Serial));
+            }
+            if ((Original_PT3Serial == null)) {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_PT1Serial));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_PT3Serial));
             }
-            if ((Original_PT2Serial == null)) {
+            if ((Original_PT4Serial == null)) {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_PT2Serial));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_PT4Serial));
             }
-            if ((Original_PT3Serial == null)) {
+            if ((Original_PT5Serial == null)) {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_PT3Serial));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_PT5Serial));
             }
-            if ((Original_PT4Serial == null)) {
+            if ((Original_PT6Serial == null)) {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_PT4Serial));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_PT6Serial));
             }
-            if ((Original_PT5Serial == null)) {
+            if ((Original_PT7Serial == null)) {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_PT5Serial));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_PT7Serial));
             }
-            if ((Original_PT6Serial == null)) {
+            if ((Original_PT8Serial == null)) {
                 this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_PT6Serial));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_PT8Serial));
             }
-            if ((Original_PT7Serial == null)) {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_PT7Serial));
-            }
-            if ((Original_PT8Serial == null)) {
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[32].Value = ((string)(Original_PT8Serial));
-            }
-            if ((Original_PressureCell.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[34].Value = ((short)(Original_PressureCell.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[29].Value = ((short)(Original_PressureCell));
             if ((Original_SerialNumber == null)) {
+                throw new global::System.ArgumentNullException("Original_SerialNumber");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_SerialNumber));
+            }
+            this.Adapter.DeleteCommand.Parameters[31].Value = ((short)(Original_UnloadedOnRoad));
+            this.Adapter.DeleteCommand.Parameters[32].Value = ((bool)(Original_EnableGPSButtons));
+            this.Adapter.DeleteCommand.Parameters[33].Value = ((bool)(Original_EnableGPSOverride));
+            this.Adapter.DeleteCommand.Parameters[34].Value = ((bool)(Original_MaxTractionBeep));
+            if ((Original_SerialCodeBot == null)) {
                 this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[36].Value = ((string)(Original_SerialNumber));
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((string)(Original_SerialCodeBot));
             }
-            if ((Original_UnloadedOnRoad.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[38].Value = ((short)(Original_UnloadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
-            if ((Original_EnableGPSButtons.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[40].Value = ((bool)(Original_EnableGPSButtons.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
-            }
-            if ((Original_EnableGPSOverride.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[42].Value = ((bool)(Original_EnableGPSOverride.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[42].Value = global::System.DBNull.Value;
-            }
-            if ((Original_MaxTractionBeep.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[44].Value = ((bool)(Original_MaxTractionBeep.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[44].Value = global::System.DBNull.Value;
-            }
-            if ((Original_SerialCodeBot == null)) {
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[46].Value = ((string)(Original_SerialCodeBot));
-            }
-            if ((Original_StepUpDelay.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[48].Value = ((short)(Original_StepUpDelay.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Distance.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((int)(Original_Distance.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[37].Value = ((short)(Original_StepUpDelay));
+            this.Adapter.DeleteCommand.Parameters[38].Value = ((int)(Original_Distance));
+            this.Adapter.DeleteCommand.Parameters[39].Value = ((short)(Original_UnloadedOffRoad));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8658,9 +9435,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string PressureGroup, 
                     string SpeedStages, 
                     string VehicleRef, 
-                    global::System.Nullable<short> LoadedOffRoad, 
-                    global::System.Nullable<short> LoadedOnRoad, 
-                    global::System.Nullable<short> MaxTraction, 
+                    short LoadedOffRoad, 
+                    short LoadedOnRoad, 
+                    short MaxTraction, 
                     string PT1Serial, 
                     string PT2Serial, 
                     string PT3Serial, 
@@ -8669,15 +9446,16 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string PT6Serial, 
                     string PT7Serial, 
                     string PT8Serial, 
-                    global::System.Nullable<short> PressureCell, 
+                    short PressureCell, 
                     string SerialNumber, 
-                    global::System.Nullable<short> UnloadedOnRoad, 
-                    global::System.Nullable<bool> EnableGPSButtons, 
-                    global::System.Nullable<bool> EnableGPSOverride, 
-                    global::System.Nullable<bool> MaxTractionBeep, 
+                    short UnloadedOnRoad, 
+                    bool EnableGPSButtons, 
+                    bool EnableGPSOverride, 
+                    bool MaxTractionBeep, 
                     string SerialCodeBot, 
-                    global::System.Nullable<short> StepUpDelay, 
-                    global::System.Nullable<int> Distance) {
+                    short StepUpDelay, 
+                    int Distance, 
+                    short UnloadedOffRoad) {
             if ((Owner == null)) {
                 throw new global::System.ArgumentNullException("Owner");
             }
@@ -8724,37 +9502,22 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SpeedStages));
             }
             if ((VehicleRef == null)) {
-                throw new global::System.ArgumentNullException("VehicleRef");
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = ((string)(VehicleRef));
             }
-            if ((LoadedOffRoad.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((short)(LoadedOffRoad.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((LoadedOnRoad.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((short)(LoadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((MaxTraction.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((short)(MaxTraction.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[11].Value = ((short)(LoadedOffRoad));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((short)(LoadedOnRoad));
+            this.Adapter.InsertCommand.Parameters[13].Value = ((short)(MaxTraction));
             if ((PT1Serial == null)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("PT1Serial");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = ((string)(PT1Serial));
             }
             if ((PT2Serial == null)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("PT2Serial");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[15].Value = ((string)(PT2Serial));
@@ -8795,60 +9558,26 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             else {
                 this.Adapter.InsertCommand.Parameters[21].Value = ((string)(PT8Serial));
             }
-            if ((PressureCell.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[22].Value = ((short)(PressureCell.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[22].Value = ((short)(PressureCell));
             if ((SerialNumber == null)) {
-                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("SerialNumber");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[23].Value = ((string)(SerialNumber));
             }
-            if ((UnloadedOnRoad.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[24].Value = ((short)(UnloadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
-            }
-            if ((EnableGPSButtons.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(EnableGPSButtons.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
-            }
-            if ((EnableGPSOverride.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[26].Value = ((bool)(EnableGPSOverride.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            if ((MaxTractionBeep.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((bool)(MaxTractionBeep.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[24].Value = ((short)(UnloadedOnRoad));
+            this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(EnableGPSButtons));
+            this.Adapter.InsertCommand.Parameters[26].Value = ((bool)(EnableGPSOverride));
+            this.Adapter.InsertCommand.Parameters[27].Value = ((bool)(MaxTractionBeep));
             if ((SerialCodeBot == null)) {
                 this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[28].Value = ((string)(SerialCodeBot));
             }
-            if ((StepUpDelay.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((short)(StepUpDelay.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            if ((Distance.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[30].Value = ((int)(Distance.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[29].Value = ((short)(StepUpDelay));
+            this.Adapter.InsertCommand.Parameters[30].Value = ((int)(Distance));
+            this.Adapter.InsertCommand.Parameters[31].Value = ((short)(UnloadedOffRoad));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8881,9 +9610,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string PressureGroup, 
                     string SpeedStages, 
                     string VehicleRef, 
-                    global::System.Nullable<short> LoadedOffRoad, 
-                    global::System.Nullable<short> LoadedOnRoad, 
-                    global::System.Nullable<short> MaxTraction, 
+                    short LoadedOffRoad, 
+                    short LoadedOnRoad, 
+                    short MaxTraction, 
                     string PT1Serial, 
                     string PT2Serial, 
                     string PT3Serial, 
@@ -8892,15 +9621,16 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string PT6Serial, 
                     string PT7Serial, 
                     string PT8Serial, 
-                    global::System.Nullable<short> PressureCell, 
+                    short PressureCell, 
                     string SerialNumber, 
-                    global::System.Nullable<short> UnloadedOnRoad, 
-                    global::System.Nullable<bool> EnableGPSButtons, 
-                    global::System.Nullable<bool> EnableGPSOverride, 
-                    global::System.Nullable<bool> MaxTractionBeep, 
+                    short UnloadedOnRoad, 
+                    bool EnableGPSButtons, 
+                    bool EnableGPSOverride, 
+                    bool MaxTractionBeep, 
                     string SerialCodeBot, 
-                    global::System.Nullable<short> StepUpDelay, 
-                    global::System.Nullable<int> Distance, 
+                    short StepUpDelay, 
+                    int Distance, 
+                    short UnloadedOffRoad, 
                     string Original_Owner, 
                     string Original_Country, 
                     string Original_Version, 
@@ -8911,9 +9641,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string Original_PressureGroup, 
                     string Original_SpeedStages, 
                     string Original_VehicleRef, 
-                    global::System.Nullable<short> Original_LoadedOffRoad, 
-                    global::System.Nullable<short> Original_LoadedOnRoad, 
-                    global::System.Nullable<short> Original_MaxTraction, 
+                    short Original_LoadedOffRoad, 
+                    short Original_LoadedOnRoad, 
+                    short Original_MaxTraction, 
                     string Original_PT1Serial, 
                     string Original_PT2Serial, 
                     string Original_PT3Serial, 
@@ -8922,15 +9652,16 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string Original_PT6Serial, 
                     string Original_PT7Serial, 
                     string Original_PT8Serial, 
-                    global::System.Nullable<short> Original_PressureCell, 
+                    short Original_PressureCell, 
                     string Original_SerialNumber, 
-                    global::System.Nullable<short> Original_UnloadedOnRoad, 
-                    global::System.Nullable<bool> Original_EnableGPSButtons, 
-                    global::System.Nullable<bool> Original_EnableGPSOverride, 
-                    global::System.Nullable<bool> Original_MaxTractionBeep, 
+                    short Original_UnloadedOnRoad, 
+                    bool Original_EnableGPSButtons, 
+                    bool Original_EnableGPSOverride, 
+                    bool Original_MaxTractionBeep, 
                     string Original_SerialCodeBot, 
-                    global::System.Nullable<short> Original_StepUpDelay, 
-                    global::System.Nullable<int> Original_Distance) {
+                    short Original_StepUpDelay, 
+                    int Original_Distance, 
+                    short Original_UnloadedOffRoad) {
             if ((Owner == null)) {
                 throw new global::System.ArgumentNullException("Owner");
             }
@@ -8977,37 +9708,22 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(SpeedStages));
             }
             if ((VehicleRef == null)) {
-                throw new global::System.ArgumentNullException("VehicleRef");
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(VehicleRef));
             }
-            if ((LoadedOffRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(LoadedOffRoad.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((LoadedOnRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(LoadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((MaxTraction.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(MaxTraction.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(LoadedOffRoad));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(LoadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(MaxTraction));
             if ((PT1Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("PT1Serial");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(PT1Serial));
             }
             if ((PT2Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("PT2Serial");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(PT2Serial));
@@ -9048,267 +9764,160 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(PT8Serial));
             }
-            if ((PressureCell.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((short)(PressureCell.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((short)(PressureCell));
             if ((SerialNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("SerialNumber");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(SerialNumber));
             }
-            if ((UnloadedOnRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((short)(UnloadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
-            }
-            if ((EnableGPSButtons.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(EnableGPSButtons.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
-            }
-            if ((EnableGPSOverride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((bool)(EnableGPSOverride.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            if ((MaxTractionBeep.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((bool)(MaxTractionBeep.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((short)(UnloadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(EnableGPSButtons));
+            this.Adapter.UpdateCommand.Parameters[26].Value = ((bool)(EnableGPSOverride));
+            this.Adapter.UpdateCommand.Parameters[27].Value = ((bool)(MaxTractionBeep));
             if ((SerialCodeBot == null)) {
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(SerialCodeBot));
             }
-            if ((StepUpDelay.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((short)(StepUpDelay.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            if ((Distance.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Distance.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[29].Value = ((short)(StepUpDelay));
+            this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Distance));
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((short)(UnloadedOffRoad));
             if ((Original_Owner == null)) {
                 throw new global::System.ArgumentNullException("Original_Owner");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Owner));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Owner));
             }
             if ((Original_Country == null)) {
                 throw new global::System.ArgumentNullException("Original_Country");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Country));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Country));
             }
             if ((Original_Version == null)) {
                 throw new global::System.ArgumentNullException("Original_Version");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Version));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_Version));
             }
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Description));
             }
-            this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_BoardCode));
-            this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(Original_BuildDate));
-            this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(Original_DateMod));
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((int)(Original_BoardCode));
+            this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(Original_BuildDate));
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((System.DateTime)(Original_DateMod));
             if ((Original_PressureGroup == null)) {
                 throw new global::System.ArgumentNullException("Original_PressureGroup");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_PressureGroup));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_PressureGroup));
             }
             if ((Original_SpeedStages == null)) {
                 throw new global::System.ArgumentNullException("Original_SpeedStages");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_SpeedStages));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_SpeedStages));
             }
             if ((Original_VehicleRef == null)) {
-                throw new global::System.ArgumentNullException("Original_VehicleRef");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_VehicleRef));
-            }
-            if ((Original_LoadedOffRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((short)(Original_LoadedOffRoad.Value));
-            }
-            else {
                 this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((Original_LoadedOnRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((short)(Original_LoadedOnRoad.Value));
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_VehicleRef));
             }
-            if ((Original_MaxTraction.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((short)(Original_MaxTraction.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[44].Value = ((short)(Original_LoadedOffRoad));
+            this.Adapter.UpdateCommand.Parameters[45].Value = ((short)(Original_LoadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[46].Value = ((short)(Original_MaxTraction));
             if ((Original_PT1Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_PT1Serial");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_PT1Serial));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_PT1Serial));
             }
             if ((Original_PT2Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_PT2Serial");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_PT2Serial));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_PT2Serial));
             }
             if ((Original_PT3Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((string)(Original_PT3Serial));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((string)(Original_PT3Serial));
             }
             if ((Original_PT4Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_PT4Serial));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_PT4Serial));
             }
             if ((Original_PT5Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((string)(Original_PT5Serial));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(Original_PT5Serial));
             }
             if ((Original_PT6Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(Original_PT6Serial));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_PT6Serial));
             }
             if ((Original_PT7Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((string)(Original_PT7Serial));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_PT7Serial));
             }
             if ((Original_PT8Serial == null)) {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((string)(Original_PT8Serial));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_PT8Serial));
             }
-            if ((Original_PressureCell.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((short)(Original_PressureCell.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[61].Value = ((short)(Original_PressureCell));
             if ((Original_SerialNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_SerialNumber");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((string)(Original_SerialNumber));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(Original_SerialNumber));
             }
-            if ((Original_UnloadedOnRoad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((short)(Original_UnloadedOnRoad.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
-            }
-            if ((Original_EnableGPSButtons.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((bool)(Original_EnableGPSButtons.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
-            }
-            if ((Original_EnableGPSOverride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((bool)(Original_EnableGPSOverride.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
-            }
-            if ((Original_MaxTractionBeep.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((bool)(Original_MaxTractionBeep.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[63].Value = ((short)(Original_UnloadedOnRoad));
+            this.Adapter.UpdateCommand.Parameters[64].Value = ((bool)(Original_EnableGPSButtons));
+            this.Adapter.UpdateCommand.Parameters[65].Value = ((bool)(Original_EnableGPSOverride));
+            this.Adapter.UpdateCommand.Parameters[66].Value = ((bool)(Original_MaxTractionBeep));
             if ((Original_SerialCodeBot == null)) {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((string)(Original_SerialCodeBot));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((string)(Original_SerialCodeBot));
             }
-            if ((Original_StepUpDelay.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((short)(Original_StepUpDelay.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Distance.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((int)(Original_Distance.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[69].Value = ((short)(Original_StepUpDelay));
+            this.Adapter.UpdateCommand.Parameters[70].Value = ((int)(Original_Distance));
+            this.Adapter.UpdateCommand.Parameters[71].Value = ((short)(Original_UnloadedOffRoad));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9340,9 +9949,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string PressureGroup, 
                     string SpeedStages, 
                     string VehicleRef, 
-                    global::System.Nullable<short> LoadedOffRoad, 
-                    global::System.Nullable<short> LoadedOnRoad, 
-                    global::System.Nullable<short> MaxTraction, 
+                    short LoadedOffRoad, 
+                    short LoadedOnRoad, 
+                    short MaxTraction, 
                     string PT1Serial, 
                     string PT2Serial, 
                     string PT3Serial, 
@@ -9351,15 +9960,16 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string PT6Serial, 
                     string PT7Serial, 
                     string PT8Serial, 
-                    global::System.Nullable<short> PressureCell, 
+                    short PressureCell, 
                     string SerialNumber, 
-                    global::System.Nullable<short> UnloadedOnRoad, 
-                    global::System.Nullable<bool> EnableGPSButtons, 
-                    global::System.Nullable<bool> EnableGPSOverride, 
-                    global::System.Nullable<bool> MaxTractionBeep, 
+                    short UnloadedOnRoad, 
+                    bool EnableGPSButtons, 
+                    bool EnableGPSOverride, 
+                    bool MaxTractionBeep, 
                     string SerialCodeBot, 
-                    global::System.Nullable<short> StepUpDelay, 
-                    global::System.Nullable<int> Distance, 
+                    short StepUpDelay, 
+                    int Distance, 
+                    short UnloadedOffRoad, 
                     string Original_Owner, 
                     string Original_Country, 
                     string Original_Version, 
@@ -9370,9 +9980,9 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string Original_PressureGroup, 
                     string Original_SpeedStages, 
                     string Original_VehicleRef, 
-                    global::System.Nullable<short> Original_LoadedOffRoad, 
-                    global::System.Nullable<short> Original_LoadedOnRoad, 
-                    global::System.Nullable<short> Original_MaxTraction, 
+                    short Original_LoadedOffRoad, 
+                    short Original_LoadedOnRoad, 
+                    short Original_MaxTraction, 
                     string Original_PT1Serial, 
                     string Original_PT2Serial, 
                     string Original_PT3Serial, 
@@ -9381,16 +9991,17 @@ SELECT Owner, Country, Version, Description, Notes, BoardCode, BuildDate, DateMo
                     string Original_PT6Serial, 
                     string Original_PT7Serial, 
                     string Original_PT8Serial, 
-                    global::System.Nullable<short> Original_PressureCell, 
+                    short Original_PressureCell, 
                     string Original_SerialNumber, 
-                    global::System.Nullable<short> Original_UnloadedOnRoad, 
-                    global::System.Nullable<bool> Original_EnableGPSButtons, 
-                    global::System.Nullable<bool> Original_EnableGPSOverride, 
-                    global::System.Nullable<bool> Original_MaxTractionBeep, 
+                    short Original_UnloadedOnRoad, 
+                    bool Original_EnableGPSButtons, 
+                    bool Original_EnableGPSOverride, 
+                    bool Original_MaxTractionBeep, 
                     string Original_SerialCodeBot, 
-                    global::System.Nullable<short> Original_StepUpDelay, 
-                    global::System.Nullable<int> Original_Distance) {
-            return this.Update(Owner, Country, Version, Description, Notes, Original_BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance, Original_Owner, Original_Country, Original_Version, Original_Description, Original_BoardCode, Original_BuildDate, Original_DateMod, Original_PressureGroup, Original_SpeedStages, Original_VehicleRef, Original_LoadedOffRoad, Original_LoadedOnRoad, Original_MaxTraction, Original_PT1Serial, Original_PT2Serial, Original_PT3Serial, Original_PT4Serial, Original_PT5Serial, Original_PT6Serial, Original_PT7Serial, Original_PT8Serial, Original_PressureCell, Original_SerialNumber, Original_UnloadedOnRoad, Original_EnableGPSButtons, Original_EnableGPSOverride, Original_MaxTractionBeep, Original_SerialCodeBot, Original_StepUpDelay, Original_Distance);
+                    short Original_StepUpDelay, 
+                    int Original_Distance, 
+                    short Original_UnloadedOffRoad) {
+            return this.Update(Owner, Country, Version, Description, Notes, Original_BoardCode, BuildDate, DateMod, PressureGroup, SpeedStages, VehicleRef, LoadedOffRoad, LoadedOnRoad, MaxTraction, PT1Serial, PT2Serial, PT3Serial, PT4Serial, PT5Serial, PT6Serial, PT7Serial, PT8Serial, PressureCell, SerialNumber, UnloadedOnRoad, EnableGPSButtons, EnableGPSOverride, MaxTractionBeep, SerialCodeBot, StepUpDelay, Distance, UnloadedOffRoad, Original_Owner, Original_Country, Original_Version, Original_Description, Original_BoardCode, Original_BuildDate, Original_DateMod, Original_PressureGroup, Original_SpeedStages, Original_VehicleRef, Original_LoadedOffRoad, Original_LoadedOnRoad, Original_MaxTraction, Original_PT1Serial, Original_PT2Serial, Original_PT3Serial, Original_PT4Serial, Original_PT5Serial, Original_PT6Serial, Original_PT7Serial, Original_PT8Serial, Original_PressureCell, Original_SerialNumber, Original_UnloadedOnRoad, Original_EnableGPSButtons, Original_EnableGPSOverride, Original_MaxTractionBeep, Original_SerialCodeBot, Original_StepUpDelay, Original_Distance, Original_UnloadedOffRoad);
         }
     }
     
@@ -9948,7 +10559,7 @@ SELECT Id, [Board Code], [Customer ID] FROM ecuToCustomer WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, [Board Code], [Customer ID] FROM dbo.ecuToCustomer";
+            this._commandCollection[0].CommandText = "SELECT Id, [Board Code], [Customer ID], BoardCode, CustomerID FROM ecuToCustomer";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12260,6 +12871,631 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class boardVersionTableTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public boardVersionTableTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "boardVersionTable";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Version", "Version");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[boardVersionTable] WHERE (([Id] = @Original_Id) AND ([Version]" +
+                " = @Original_Version))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Version", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[boardVersionTable] ([Version]) VALUES (@Version);\r\nSELECT Id, " +
+                "Version FROM boardVersionTable WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Version", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[boardVersionTable] SET [Version] = @Version WHERE (([Id] = @Origina" +
+                "l_Id) AND ([Version] = @Original_Version));\r\nSELECT Id, Version FROM boardVersio" +
+                "nTable WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Version", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Version", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::TractionAir.Properties.Settings.Default.ecuSettingsDatabaseConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, Version FROM dbo.boardVersionTable";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ecuSettingsDatabaseDataSet.boardVersionTableDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ecuSettingsDatabaseDataSet.boardVersionTableDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ecuSettingsDatabaseDataSet.boardVersionTableDataTable dataTable = new ecuSettingsDatabaseDataSet.boardVersionTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ecuSettingsDatabaseDataSet.boardVersionTableDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ecuSettingsDatabaseDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "boardVersionTable");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, string Original_Version) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            if ((Original_Version == null)) {
+                throw new global::System.ArgumentNullException("Original_Version");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Version));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string Version) {
+            if ((Version == null)) {
+                throw new global::System.ArgumentNullException("Version");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Version));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Version, int Original_Id, string Original_Version, int Id) {
+            if ((Version == null)) {
+                throw new global::System.ArgumentNullException("Version");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Version));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Id));
+            if ((Original_Version == null)) {
+                throw new global::System.ArgumentNullException("Original_Version");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Version));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Version, int Original_Id, string Original_Version) {
+            return this.Update(Version, Original_Id, Original_Version, Original_Id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ecuToBoardVersionTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public ecuToBoardVersionTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ecuToBoardVersion";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("BoardCode", "BoardCode");
+            tableMapping.ColumnMappings.Add("VersionID", "VersionID");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ecuToBoardVersion] WHERE (([Id] = @Original_Id) AND ([BoardCod" +
+                "e] = @Original_BoardCode) AND ([VersionID] = @Original_VersionID))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ecuToBoardVersion] ([BoardCode], [VersionID]) VALUES (@BoardCo" +
+                "de, @VersionID);\r\nSELECT Id, BoardCode, VersionID FROM ecuToBoardVersion WHERE (" +
+                "Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ecuToBoardVersion] SET [BoardCode] = @BoardCode, [VersionID] = @VersionID WHERE (([Id] = @Original_Id) AND ([BoardCode] = @Original_BoardCode) AND ([VersionID] = @Original_VersionID));
+SELECT Id, BoardCode, VersionID FROM ecuToBoardVersion WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BoardCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BoardCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VersionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VersionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::TractionAir.Properties.Settings.Default.ecuSettingsDatabaseConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, BoardCode, VersionID FROM dbo.ecuToBoardVersion";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ecuSettingsDatabaseDataSet.ecuToBoardVersionDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ecuSettingsDatabaseDataSet.ecuToBoardVersionDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ecuSettingsDatabaseDataSet.ecuToBoardVersionDataTable dataTable = new ecuSettingsDatabaseDataSet.ecuToBoardVersionDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ecuSettingsDatabaseDataSet.ecuToBoardVersionDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ecuSettingsDatabaseDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ecuToBoardVersion");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, int Original_BoardCode, int Original_VersionID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_BoardCode));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_VersionID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int BoardCode, int VersionID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(BoardCode));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(VersionID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int BoardCode, int VersionID, int Original_Id, int Original_BoardCode, int Original_VersionID, int Id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(BoardCode));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(VersionID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_BoardCode));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_VersionID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int BoardCode, int VersionID, int Original_Id, int Original_BoardCode, int Original_VersionID) {
+            return this.Update(BoardCode, VersionID, Original_Id, Original_BoardCode, Original_VersionID, Original_Id);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12294,6 +13530,10 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
         private ecuToSpeedControlTableAdapter _ecuToSpeedControlTableAdapter;
         
         private ecuToVersionTableAdapter _ecuToVersionTableAdapter;
+        
+        private boardVersionTableTableAdapter _boardVersionTableTableAdapter;
+        
+        private ecuToBoardVersionTableAdapter _ecuToBoardVersionTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -12480,6 +13720,34 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public boardVersionTableTableAdapter boardVersionTableTableAdapter {
+            get {
+                return this._boardVersionTableTableAdapter;
+            }
+            set {
+                this._boardVersionTableTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ecuToBoardVersionTableAdapter ecuToBoardVersionTableAdapter {
+            get {
+                return this._ecuToBoardVersionTableAdapter;
+            }
+            set {
+                this._ecuToBoardVersionTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -12545,6 +13813,14 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                             && (this._ecuToVersionTableAdapter.Connection != null))) {
                     return this._ecuToVersionTableAdapter.Connection;
                 }
+                if (((this._boardVersionTableTableAdapter != null) 
+                            && (this._boardVersionTableTableAdapter.Connection != null))) {
+                    return this._boardVersionTableTableAdapter.Connection;
+                }
+                if (((this._ecuToBoardVersionTableAdapter != null) 
+                            && (this._ecuToBoardVersionTableAdapter.Connection != null))) {
+                    return this._ecuToBoardVersionTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -12592,6 +13868,12 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     count = (count + 1);
                 }
                 if ((this._ecuToVersionTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._boardVersionTableTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._ecuToBoardVersionTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -12659,6 +13941,15 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._boardVersionTableTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.boardVersionTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._boardVersionTableTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._ecuToCustomerTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ecuToCustomer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12710,6 +14001,15 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._ecuToVersionTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._ecuToBoardVersionTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ecuToBoardVersion.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._ecuToBoardVersionTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12771,6 +14071,14 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._boardVersionTableTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.boardVersionTable.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._boardVersionTableTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._ecuToCustomerTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ecuToCustomer.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12819,6 +14127,14 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._ecuToBoardVersionTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ecuToBoardVersion.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._ecuToBoardVersionTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -12829,6 +14145,14 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(ecuSettingsDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._ecuToBoardVersionTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ecuToBoardVersion.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._ecuToBoardVersionTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._ecuToVersionTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ecuToVersion.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -12874,6 +14198,14 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._ecuToCustomerTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._boardVersionTableTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.boardVersionTable.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._boardVersionTableTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13024,6 +14356,16 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._boardVersionTableTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._boardVersionTableTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._ecuToBoardVersionTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._ecuToBoardVersionTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -13164,6 +14506,24 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._ecuToVersionTableAdapter.Adapter);
                     }
                 }
+                if ((this._boardVersionTableTableAdapter != null)) {
+                    revertConnections.Add(this._boardVersionTableTableAdapter, this._boardVersionTableTableAdapter.Connection);
+                    this._boardVersionTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._boardVersionTableTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._boardVersionTableTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._boardVersionTableTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._boardVersionTableTableAdapter.Adapter);
+                    }
+                }
+                if ((this._ecuToBoardVersionTableAdapter != null)) {
+                    revertConnections.Add(this._ecuToBoardVersionTableAdapter, this._ecuToBoardVersionTableAdapter.Connection);
+                    this._ecuToBoardVersionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._ecuToBoardVersionTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._ecuToBoardVersionTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._ecuToBoardVersionTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._ecuToBoardVersionTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -13269,6 +14629,14 @@ SELECT Id, BoardCode, VersionID FROM ecuToVersion WHERE (Id = @Id)";
                 if ((this._ecuToVersionTableAdapter != null)) {
                     this._ecuToVersionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ecuToVersionTableAdapter]));
                     this._ecuToVersionTableAdapter.Transaction = null;
+                }
+                if ((this._boardVersionTableTableAdapter != null)) {
+                    this._boardVersionTableTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._boardVersionTableTableAdapter]));
+                    this._boardVersionTableTableAdapter.Transaction = null;
+                }
+                if ((this._ecuToBoardVersionTableAdapter != null)) {
+                    this._ecuToBoardVersionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ecuToBoardVersionTableAdapter]));
+                    this._ecuToBoardVersionTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

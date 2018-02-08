@@ -32,6 +32,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.boardVersionTable' table. You can move, or remove it, as needed.
+            this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
@@ -59,6 +61,7 @@ namespace TractionAir
             string insert4 = "INSERT INTO ecuToPressureGroup VALUES (@boardCode, @pressureGroupId);";
             string insert5 = "INSERT INTO ecuToVersion VALUES (@boardCode, @versionId);";
             string insert6 = "INSERT INTO ecuToSpeedControl VALUES (@boardCode, @speedControlId);";
+            string insert7 = "INSERT INTO ecuToBoardVersion VALUES (@boardCode, @versionId);";
 
             try
             {
@@ -164,6 +167,12 @@ namespace TractionAir
                     command6.Parameters.Add("@speedControlId", SqlDbType.Int);
                     command6.Parameters["@speedControlId"].Value = speedControlComboBox.SelectedValue;
 
+                    SqlCommand command7 = new SqlCommand(insert7, connection);
+                    command7.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command7.Parameters["@boardCode"].Value = boardCode;
+                    command7.Parameters.Add("@versionId", SqlDbType.Int);
+                    command7.Parameters["@versionId"].Value = boardVersionComboBox.SelectedValue;
+
                     try
                     {
                         int loadedOn = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
@@ -193,6 +202,7 @@ namespace TractionAir
                         command4.ExecuteScalar();
                         command5.ExecuteScalar();
                         command6.ExecuteScalar();
+                        command7.ExecuteScalar();
                     }
                     catch (Exception ex)
                     {

@@ -62,6 +62,31 @@ namespace TractionAir
         }
 
         /// <summary>
+        /// Takes a board code and returns a board version ID
+        /// </summary>
+        /// <param name="boardCode"></param>
+        /// <returns></returns>
+        public static int EcuToBoardVersion(int boardCode)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                string query = "SELECT VersionID FROM ecuToBoardVersion WHERE BoardCode = @bc";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@bc", SqlDbType.Int);
+                command.Parameters["@bc"].Value = boardCode;
+                Int32 versionId = (Int32)command.ExecuteScalar();
+                con.Close();
+                return versionId;
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
+            }
+        }
+
+        /// <summary>
         /// Returns the country that an ecu belongs to
         /// </summary>
         /// <param name="boardCode"></param>
@@ -183,6 +208,41 @@ namespace TractionAir
             catch (Exception e)
             {
                 throw new InvalidOperationException("Unable to locate ID of connected table row: " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Adds the given board version number to the table if it doesn't exist already
+        /// </summary>
+        public static void AddBoardVersionIfDoesntExist(string version)
+        {
+
+            try
+            {
+                SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+                con.Open();
+                String boardversion = "V" + version;
+                String query = "SELECT * FROM boardVersionTable WHERE Version = @version";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add("@version", SqlDbType.NVarChar);
+                command.Parameters["@version"].Value = boardversion;
+                try
+                {
+                    Int32 countryId = (Int32)command.ExecuteScalar();
+                }
+                catch (Exception e) //version not found, must insert new version
+                {
+                    String insert = "INSERT INTO boardVersionTable VALUES (@version);";
+                    SqlCommand command2 = new SqlCommand(insert, con);
+                    command2.Parameters.Add("@version", SqlDbType.NVarChar);
+                    command2.Parameters["@version"].Value = boardversion;
+                    command2.ExecuteNonQuery();
+                }
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to insert new board version: " + e.Message);
             }
         }
 
@@ -482,6 +542,29 @@ namespace TractionAir
             if (!Int32.TryParse(s, out i))
             {
                 throw new InvalidOperationException("Input '" + s + "' is not an integer");
+            }
+            return i;
+        }
+
+        /// <summary>
+        /// Checks that the int is valid (0-9) and returns it
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static int CheckSmallInt(string s, bool allowNull)
+        {
+            if (s == null && !allowNull)
+            {
+                throw new InvalidOperationException("A required input is null");
+            }
+            int i;
+            if (!Int32.TryParse(s, out i))
+            {
+                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+            }
+            if (i < 0 || i > 9)
+            {
+                throw new InvalidOperationException("Input '" + i + "' must be between 0 and 9");
             }
             return i;
         }

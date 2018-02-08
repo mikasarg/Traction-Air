@@ -30,6 +30,8 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.boardVersionTable' table. You can move, or remove it, as needed.
+            this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
             this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
@@ -54,6 +56,7 @@ namespace TractionAir
                 boardNumberTextbox.Text = boardCode.ToString();
                 serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, false);
                 bottomSerialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialCodeBot, true);
+                boardVersionComboBox.SelectedValue = ECU_Manager.EcuToBoardVersion(boardCode);
                 programVersionComboBox.SelectedValue = ECU_Manager.EcuToVersion(boardCode);
                 pressureGroupComboBox.SelectedValue = pgId;
                 customerComboBox.SelectedValue = ECU_Manager.EcuToCustomer(boardCode);
@@ -141,6 +144,7 @@ namespace TractionAir
             string update4 = "UPDATE ecuToPressureGroup SET PressureGroupID = @pressureGroupId WHERE BoardCode = @boardCode;";
             string update5 = "UPDATE ecuToVersion SET VersionID = @versionId WHERE BoardCode = @boardCode;";
             string update6 = "UPDATE ecuToSpeedControl SET SpeedControlID = @speedControlId WHERE BoardCode = @boardCode;";
+            string update7 = "UPDATE ecuToBoardVersion SET VersionID = @versionId WHERE BoardCode = @boardCode;";
 
             try
             {
@@ -243,6 +247,12 @@ namespace TractionAir
                     command6.Parameters.Add("@speedControlId", SqlDbType.Int);
                     command6.Parameters["@speedControlId"].Value = speedControlComboBox.SelectedValue;
 
+                    SqlCommand command7 = new SqlCommand(update7, connection);
+                    command7.Parameters.Add("@boardCode", SqlDbType.Int);
+                    command7.Parameters["@boardCode"].Value = boardCode;
+                    command7.Parameters.Add("@versionId", SqlDbType.Int);
+                    command7.Parameters["@versionId"].Value = boardVersionComboBox.SelectedValue;
+
                     try
                     {
                         int loadedOn = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
@@ -272,6 +282,7 @@ namespace TractionAir
                         command4.ExecuteScalar();
                         command5.ExecuteScalar();
                         command6.ExecuteScalar();
+                        command7.ExecuteScalar();
                     }
                     catch (Exception ex)
                     {

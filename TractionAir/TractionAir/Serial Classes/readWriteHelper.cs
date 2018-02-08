@@ -72,7 +72,7 @@ namespace TractionAir.Serial_Classes
 
             output = appendValue(output, string.Format("{0:000}", psiMaxTraction));
 
-            output = appendValue(output, string.Format("{0:00}", stepUpDelay));
+            output = appendValue(output, string.Format("{0:0}", stepUpDelay));
 
             if (maxTractionBeep)
             {
@@ -123,20 +123,21 @@ namespace TractionAir.Serial_Classes
             List<string> values = input.Split(',').ToList();
 
             sfe.boardCode = ECU_Manager.CheckInt(values[0], false);
-            sfe.version = ECU_Manager.CheckString(values[1], false);
-            sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[2]);
-            sfe.loadedOnRoad = ECU_Manager.CheckInt(values[3], false);
-            sfe.loadedOffRoad = ECU_Manager.CheckInt(values[4], false);
-            sfe.notLoaded = ECU_Manager.CheckInt(values[5], false);
-            sfe.unloadedOffRoad = ECU_Manager.CheckInt(values[6], false);
-            sfe.maxTraction = ECU_Manager.CheckInt(values[7], false);
-            sfe.psiLoadedOnRoad = ECU_Manager.CheckInt(values[8], false);
-            sfe.psiLoadedOffRoad = ECU_Manager.CheckInt(values[9], false);
-            sfe.psiNotLoaded = ECU_Manager.CheckInt(values[10], false);
-            sfe.psiUnloadedOffRoad = ECU_Manager.CheckInt(values[11], false);
-            sfe.psiMaxTraction = ECU_Manager.CheckInt(values[12], false);
-            sfe.stepUpDelay = ECU_Manager.CheckInt(values[13], false);
-            if (values[14].Equals("0"))
+            sfe.boardVersion = ECU_Manager.CheckString(values[1], false);
+            sfe.version = ECU_Manager.CheckString(values[2], false);
+            sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[3]);
+            sfe.loadedOnRoad = ECU_Manager.CheckInt(values[4], false);
+            sfe.loadedOffRoad = ECU_Manager.CheckInt(values[5], false);
+            sfe.notLoaded = ECU_Manager.CheckInt(values[6], false);
+            sfe.unloadedOffRoad = ECU_Manager.CheckInt(values[7], false);
+            sfe.maxTraction = ECU_Manager.CheckInt(values[8], false);
+            sfe.psiLoadedOnRoad = ECU_Manager.CheckInt(values[9], false);
+            sfe.psiLoadedOffRoad = ECU_Manager.CheckInt(values[10], false);
+            sfe.psiNotLoaded = ECU_Manager.CheckInt(values[11], false);
+            sfe.psiUnloadedOffRoad = ECU_Manager.CheckInt(values[12], false);
+            sfe.psiMaxTraction = ECU_Manager.CheckInt(values[13], false);
+            sfe.stepUpDelay = ECU_Manager.CheckSmallInt(values[14], false);
+            if (values[15].Equals("0"))
             {
                 sfe.maxTractionBeep = false;
             }
@@ -144,7 +145,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.maxTractionBeep = true;
             }
-            if (values[15].Equals("0"))
+            if (values[16].Equals("0"))
             {
                 sfe.enableGPSButtons = false;
             }
@@ -152,7 +153,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSButtons = true;
             }
-            if (values[16].Equals("0"))
+            if (values[17].Equals("0"))
             {
                 sfe.enableGPSOverride = false;
             }
