@@ -950,11 +950,11 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(319, 374);
+            this.label23.Location = new System.Drawing.Point(358, 374);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 13);
+            this.label23.Size = new System.Drawing.Size(65, 13);
             this.label23.TabIndex = 352;
-            this.label23.Text = "Enable GPS Buttons";
+            this.label23.Text = "Enable GPS";
             // 
             // speedControlComboBox
             // 

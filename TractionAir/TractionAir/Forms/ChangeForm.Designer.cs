@@ -456,11 +456,11 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(328, 377);
+            this.label23.Location = new System.Drawing.Point(367, 377);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 13);
+            this.label23.Size = new System.Drawing.Size(65, 13);
             this.label23.TabIndex = 162;
-            this.label23.Text = "Enable GPS Buttons";
+            this.label23.Text = "Enable GPS";
             // 
             // bottomSerialNumberTextbox
             // 
