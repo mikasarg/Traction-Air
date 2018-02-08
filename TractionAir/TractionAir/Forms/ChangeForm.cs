@@ -79,7 +79,6 @@ namespace TractionAir
                 //Manual Database Update section
                 speedControlComboBox.SelectedValue = ECU_Manager.EcuToSpeedControl(boardCode);
                 loadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOffRoad.ToString(), false);
-                loadedOnRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOnRoad.ToString(), false);
                 notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), false);
                 unloadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOffRoad.ToString(), false);
                 maxTractionTextbox.Text = ECU_Manager.CheckString(ecu.MaxTraction.ToString(), false);
@@ -197,7 +196,7 @@ namespace TractionAir
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
                     command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+                    command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);

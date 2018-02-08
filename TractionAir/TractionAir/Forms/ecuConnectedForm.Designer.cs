@@ -96,8 +96,6 @@
             this.pressureGroupsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.pressureGroupsTableTableAdapter();
             this.customerTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter();
             this.speedControlTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter();
-            this.label27 = new System.Windows.Forms.Label();
-            this.loadedOnRoadTextbox = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.loadedOffRoadTextbox = new System.Windows.Forms.TextBox();
@@ -125,9 +123,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.boardVersionComboBox = new System.Windows.Forms.ComboBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.ecuSettingsDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.boardVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ecuSettingsDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label45 = new System.Windows.Forms.Label();
             this.boardVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.countryCodeTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -135,8 +133,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardVersionTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // distanceTextbox
@@ -144,7 +142,7 @@
             this.distanceTextbox.Location = new System.Drawing.Point(413, 141);
             this.distanceTextbox.Name = "distanceTextbox";
             this.distanceTextbox.Size = new System.Drawing.Size(160, 20);
-            this.distanceTextbox.TabIndex = 20;
+            this.distanceTextbox.TabIndex = 21;
             this.distanceTextbox.Text = "0";
             // 
             // label37
@@ -164,7 +162,7 @@
             this.installDateTimePicker.Location = new System.Drawing.Point(414, 65);
             this.installDateTimePicker.Name = "installDateTimePicker";
             this.installDateTimePicker.Size = new System.Drawing.Size(159, 20);
-            this.installDateTimePicker.TabIndex = 17;
+            this.installDateTimePicker.TabIndex = 18;
             // 
             // buildDateTimePicker
             // 
@@ -173,7 +171,7 @@
             this.buildDateTimePicker.Location = new System.Drawing.Point(413, 40);
             this.buildDateTimePicker.Name = "buildDateTimePicker";
             this.buildDateTimePicker.Size = new System.Drawing.Size(108, 20);
-            this.buildDateTimePicker.TabIndex = 16;
+            this.buildDateTimePicker.TabIndex = 17;
             this.buildDateTimePicker.Value = new System.DateTime(2017, 12, 6, 15, 43, 45, 0);
             // 
             // pt8SerialTextbox
@@ -181,14 +179,14 @@
             this.pt8SerialTextbox.Location = new System.Drawing.Point(136, 394);
             this.pt8SerialTextbox.Name = "pt8SerialTextbox";
             this.pt8SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt8SerialTextbox.TabIndex = 14;
+            this.pt8SerialTextbox.TabIndex = 15;
             // 
             // pt7SerialTextbox
             // 
             this.pt7SerialTextbox.Location = new System.Drawing.Point(136, 369);
             this.pt7SerialTextbox.Name = "pt7SerialTextbox";
             this.pt7SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt7SerialTextbox.TabIndex = 13;
+            this.pt7SerialTextbox.TabIndex = 14;
             // 
             // label35
             // 
@@ -215,14 +213,14 @@
             this.pt6SerialTextbox.Location = new System.Drawing.Point(136, 343);
             this.pt6SerialTextbox.Name = "pt6SerialTextbox";
             this.pt6SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt6SerialTextbox.TabIndex = 12;
+            this.pt6SerialTextbox.TabIndex = 13;
             // 
             // pt5SerialTextbox
             // 
             this.pt5SerialTextbox.Location = new System.Drawing.Point(136, 318);
             this.pt5SerialTextbox.Name = "pt5SerialTextbox";
             this.pt5SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt5SerialTextbox.TabIndex = 11;
+            this.pt5SerialTextbox.TabIndex = 12;
             // 
             // label33
             // 
@@ -249,14 +247,14 @@
             this.pt4SerialTextbox.Location = new System.Drawing.Point(136, 292);
             this.pt4SerialTextbox.Name = "pt4SerialTextbox";
             this.pt4SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt4SerialTextbox.TabIndex = 10;
+            this.pt4SerialTextbox.TabIndex = 11;
             // 
             // pt3SerialTextbox
             // 
             this.pt3SerialTextbox.Location = new System.Drawing.Point(136, 267);
             this.pt3SerialTextbox.Name = "pt3SerialTextbox";
             this.pt3SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt3SerialTextbox.TabIndex = 9;
+            this.pt3SerialTextbox.TabIndex = 10;
             // 
             // label31
             // 
@@ -287,7 +285,7 @@
             this.countryComboBox.Location = new System.Drawing.Point(413, 14);
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(70, 21);
-            this.countryComboBox.TabIndex = 15;
+            this.countryComboBox.TabIndex = 16;
             this.countryComboBox.ValueMember = "Id";
             // 
             // countryCodeTableBindingSource
@@ -390,7 +388,7 @@
             this.speedControlComboBox.Location = new System.Drawing.Point(447, 201);
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
-            this.speedControlComboBox.TabIndex = 21;
+            this.speedControlComboBox.TabIndex = 22;
             this.speedControlComboBox.ValueMember = "Id";
             // 
             // speedControlTableBindingSource
@@ -425,7 +423,7 @@
             this.pressureGroupComboBox.Location = new System.Drawing.Point(136, 138);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
-            this.pressureGroupComboBox.TabIndex = 4;
+            this.pressureGroupComboBox.TabIndex = 5;
             this.pressureGroupComboBox.ValueMember = "Id";
             this.pressureGroupComboBox.SelectedValueChanged += new System.EventHandler(this.pressureGroupComboBox_SelectedValueChanged);
             // 
@@ -443,7 +441,7 @@
             this.customerComboBox.Location = new System.Drawing.Point(136, 164);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
-            this.customerComboBox.TabIndex = 5;
+            this.customerComboBox.TabIndex = 6;
             this.customerComboBox.ValueMember = "Id";
             // 
             // customerTableBindingSource
@@ -460,7 +458,7 @@
             this.programVersionComboBox.Location = new System.Drawing.Point(136, 112);
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
-            this.programVersionComboBox.TabIndex = 3;
+            this.programVersionComboBox.TabIndex = 4;
             this.programVersionComboBox.ValueMember = "Id";
             // 
             // programVersionTableBindingSource
@@ -482,28 +480,28 @@
             this.descriptionTextbox.Location = new System.Drawing.Point(413, 115);
             this.descriptionTextbox.Name = "descriptionTextbox";
             this.descriptionTextbox.Size = new System.Drawing.Size(160, 20);
-            this.descriptionTextbox.TabIndex = 19;
+            this.descriptionTextbox.TabIndex = 20;
             // 
             // pt2SerialTextbox
             // 
             this.pt2SerialTextbox.Location = new System.Drawing.Point(136, 241);
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt2SerialTextbox.TabIndex = 8;
+            this.pt2SerialTextbox.TabIndex = 9;
             // 
             // pt1SerialTextbox
             // 
             this.pt1SerialTextbox.Location = new System.Drawing.Point(136, 216);
             this.pt1SerialTextbox.Name = "pt1SerialTextbox";
             this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt1SerialTextbox.TabIndex = 7;
+            this.pt1SerialTextbox.TabIndex = 8;
             // 
             // pressureCellTextbox
             // 
             this.pressureCellTextbox.Location = new System.Drawing.Point(136, 191);
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pressureCellTextbox.TabIndex = 6;
+            this.pressureCellTextbox.TabIndex = 7;
             this.pressureCellTextbox.Text = "0";
             // 
             // vehicleRefTextbox
@@ -511,7 +509,7 @@
             this.vehicleRefTextbox.Location = new System.Drawing.Point(413, 89);
             this.vehicleRefTextbox.Name = "vehicleRefTextbox";
             this.vehicleRefTextbox.Size = new System.Drawing.Size(160, 20);
-            this.vehicleRefTextbox.TabIndex = 18;
+            this.vehicleRefTextbox.TabIndex = 19;
             // 
             // serialNumberTextbox
             // 
@@ -696,23 +694,6 @@
             // speedControlTableTableAdapter
             // 
             this.speedControlTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(489, 232);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 13);
-            this.label27.TabIndex = 345;
-            this.label27.Text = "km/h";
-            // 
-            // loadedOnRoadTextbox
-            // 
-            this.loadedOnRoadTextbox.Location = new System.Drawing.Point(447, 228);
-            this.loadedOnRoadTextbox.Name = "loadedOnRoadTextbox";
-            this.loadedOnRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.loadedOnRoadTextbox.TabIndex = 22;
-            this.loadedOnRoadTextbox.Text = "0";
             // 
             // label28
             // 
@@ -947,8 +928,18 @@
             this.boardVersionComboBox.Location = new System.Drawing.Point(136, 87);
             this.boardVersionComboBox.Name = "boardVersionComboBox";
             this.boardVersionComboBox.Size = new System.Drawing.Size(70, 21);
-            this.boardVersionComboBox.TabIndex = 346;
+            this.boardVersionComboBox.TabIndex = 3;
             this.boardVersionComboBox.ValueMember = "Id";
+            // 
+            // boardVersionTableBindingSource
+            // 
+            this.boardVersionTableBindingSource.DataMember = "boardVersionTable";
+            this.boardVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
+            // 
+            // ecuSettingsDatabaseDataSetBindingSource
+            // 
+            this.ecuSettingsDatabaseDataSetBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
+            this.ecuSettingsDatabaseDataSetBindingSource.Position = 0;
             // 
             // label45
             // 
@@ -959,16 +950,6 @@
             this.label45.Size = new System.Drawing.Size(73, 13);
             this.label45.TabIndex = 347;
             this.label45.Text = "Board Version";
-            // 
-            // ecuSettingsDatabaseDataSetBindingSource
-            // 
-            this.ecuSettingsDatabaseDataSetBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            this.ecuSettingsDatabaseDataSetBindingSource.Position = 0;
-            // 
-            // boardVersionTableBindingSource
-            // 
-            this.boardVersionTableBindingSource.DataMember = "boardVersionTable";
-            this.boardVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSetBindingSource;
             // 
             // boardVersionTableTableAdapter
             // 
@@ -981,8 +962,6 @@
             this.ClientSize = new System.Drawing.Size(614, 595);
             this.Controls.Add(this.boardVersionComboBox);
             this.Controls.Add(this.label45);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.loadedOnRoadTextbox);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.loadedOffRoadTextbox);
@@ -1078,8 +1057,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programVersionTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardVersionTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1153,8 +1132,6 @@
         private ecuSettingsDatabaseDataSetTableAdapters.customerTableTableAdapter customerTableTableAdapter;
         private System.Windows.Forms.BindingSource speedControlTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.speedControlTableTableAdapter speedControlTableTableAdapter;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox loadedOnRoadTextbox;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox loadedOffRoadTextbox;

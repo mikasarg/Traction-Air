@@ -15,8 +15,6 @@ namespace TractionAir.Serial_Classes
         public string version { get; set; }
 
         public string speedControl { get; set; }
-        
-        public int loadedOnRoad { get; set; }
 
         public int loadedOffRoad { get; set; }
 

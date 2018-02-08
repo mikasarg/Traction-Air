@@ -144,7 +144,6 @@ namespace TractionAir.Forms
             }
             ECU_Manager.connectedBoard = boardCode;
             string speedControl = speedControlComboBox.Text;
-            int loadedOnRoad = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
             int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
             int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
             int unloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
@@ -158,7 +157,7 @@ namespace TractionAir.Forms
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
             bool enableGPSOverride = gpsOverrideCheckBox.Checked;
-            string output = readWriteHelper.generateOutput(boardCode, speedControl, loadedOnRoad, loadedOffRoad, 
+            string output = readWriteHelper.generateOutput(boardCode, speedControl, loadedOffRoad, 
                 notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
                 psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
             int CRC = 000;
@@ -174,7 +173,7 @@ namespace TractionAir.Forms
             {
                 SerialManager.WriteLine(output);
                 settingsFromECU settings = readWriteHelper.readInput(SerialManager.ReadLine());
-                if (settings.boardCode == boardCode && settings.speedControl.Equals(speedControl) && settings.loadedOnRoad == loadedOnRoad && settings.loadedOffRoad == loadedOffRoad 
+                if (settings.boardCode == boardCode && settings.speedControl.Equals(speedControl) && settings.loadedOffRoad == loadedOffRoad 
                     && settings.notLoaded == notLoaded && settings.maxTraction == maxTraction && settings.psiLoadedOnRoad == psiLoadedOnRoad && settings.psiLoadedOffRoad == psiLoadedOffRoad
                     && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay 
                     && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons 
@@ -268,7 +267,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
                     command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+                    command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);
@@ -439,7 +438,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
                     command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+                    command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);
@@ -589,7 +588,6 @@ namespace TractionAir.Forms
             programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact("V" + settings.version); //Selects the new value
 
             speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(settings.speedControl);
-            loadedOnRoadTextbox.Text = settings.loadedOnRoad.ToString();
             loadedOffRoadTextbox.Text = settings.loadedOffRoad.ToString();
             notLoadedTextbox.Text = settings.notLoaded.ToString();
             unloadedOffRoadTextbox.Text = settings.unloadedOffRoad.ToString();
@@ -670,7 +668,6 @@ namespace TractionAir.Forms
             //Manual Database Update section
             speedControlComboBox.SelectedValue = ECU_Manager.EcuToSpeedControl(ECU_Manager.connectedBoard);
             loadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOffRoad.ToString(), false);
-            loadedOnRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOnRoad.ToString(), false);
             notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), false);
             maxTractionTextbox.Text = ECU_Manager.CheckString(ecu.MaxTraction.ToString(), false);
             stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), false);

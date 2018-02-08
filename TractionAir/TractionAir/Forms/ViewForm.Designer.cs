@@ -67,9 +67,6 @@
             this.beepCheckBox = new System.Windows.Forms.CheckBox();
             this.label29 = new System.Windows.Forms.Label();
             this.stepUpDelayTextbox = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.loadedOnRoadTextbox = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -134,10 +131,11 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.boardVersionComboBox = new System.Windows.Forms.ComboBox();
-            this.label45 = new System.Windows.Forms.Label();
             this.boardVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label45 = new System.Windows.Forms.Label();
             this.boardVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter();
+            this.boardVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
@@ -242,7 +240,7 @@
             this.pt8SerialTextbox.Name = "pt8SerialTextbox";
             this.pt8SerialTextbox.ReadOnly = true;
             this.pt8SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt8SerialTextbox.TabIndex = 13;
+            this.pt8SerialTextbox.TabIndex = 15;
             // 
             // pt7SerialTextbox
             // 
@@ -250,7 +248,7 @@
             this.pt7SerialTextbox.Name = "pt7SerialTextbox";
             this.pt7SerialTextbox.ReadOnly = true;
             this.pt7SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt7SerialTextbox.TabIndex = 12;
+            this.pt7SerialTextbox.TabIndex = 14;
             // 
             // label35
             // 
@@ -278,7 +276,7 @@
             this.pt6SerialTextbox.Name = "pt6SerialTextbox";
             this.pt6SerialTextbox.ReadOnly = true;
             this.pt6SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt6SerialTextbox.TabIndex = 11;
+            this.pt6SerialTextbox.TabIndex = 13;
             // 
             // pt5SerialTextbox
             // 
@@ -286,7 +284,7 @@
             this.pt5SerialTextbox.Name = "pt5SerialTextbox";
             this.pt5SerialTextbox.ReadOnly = true;
             this.pt5SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt5SerialTextbox.TabIndex = 10;
+            this.pt5SerialTextbox.TabIndex = 12;
             // 
             // label33
             // 
@@ -314,7 +312,7 @@
             this.pt4SerialTextbox.Name = "pt4SerialTextbox";
             this.pt4SerialTextbox.ReadOnly = true;
             this.pt4SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt4SerialTextbox.TabIndex = 9;
+            this.pt4SerialTextbox.TabIndex = 11;
             // 
             // pt3SerialTextbox
             // 
@@ -322,7 +320,7 @@
             this.pt3SerialTextbox.Name = "pt3SerialTextbox";
             this.pt3SerialTextbox.ReadOnly = true;
             this.pt3SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt3SerialTextbox.TabIndex = 8;
+            this.pt3SerialTextbox.TabIndex = 10;
             // 
             // label31
             // 
@@ -354,7 +352,7 @@
             this.countryComboBox.Location = new System.Drawing.Point(409, 13);
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(70, 21);
-            this.countryComboBox.TabIndex = 14;
+            this.countryComboBox.TabIndex = 16;
             this.countryComboBox.ValueMember = "Id";
             // 
             // countryCodeTableBindingSource
@@ -379,7 +377,7 @@
             this.gpsButtonCheckBox.Location = new System.Drawing.Point(442, 376);
             this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
             this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsButtonCheckBox.TabIndex = 33;
+            this.gpsButtonCheckBox.TabIndex = 34;
             this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
             // 
             // gpsOverrideCheckBox
@@ -389,7 +387,7 @@
             this.gpsOverrideCheckBox.Location = new System.Drawing.Point(442, 397);
             this.gpsOverrideCheckBox.Name = "gpsOverrideCheckBox";
             this.gpsOverrideCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsOverrideCheckBox.TabIndex = 34;
+            this.gpsOverrideCheckBox.TabIndex = 35;
             this.gpsOverrideCheckBox.UseVisualStyleBackColor = true;
             // 
             // beepCheckBox
@@ -399,7 +397,7 @@
             this.beepCheckBox.Location = new System.Drawing.Point(442, 355);
             this.beepCheckBox.Name = "beepCheckBox";
             this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.beepCheckBox.TabIndex = 32;
+            this.beepCheckBox.TabIndex = 33;
             this.beepCheckBox.UseVisualStyleBackColor = true;
             // 
             // label29
@@ -417,35 +415,8 @@
             this.stepUpDelayTextbox.Name = "stepUpDelayTextbox";
             this.stepUpDelayTextbox.ReadOnly = true;
             this.stepUpDelayTextbox.Size = new System.Drawing.Size(38, 20);
-            this.stepUpDelayTextbox.TabIndex = 31;
+            this.stepUpDelayTextbox.TabIndex = 32;
             this.stepUpDelayTextbox.Text = "0";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(484, 225);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 13);
-            this.label27.TabIndex = 233;
-            this.label27.Text = "km/h";
-            // 
-            // loadedOnRoadTextbox
-            // 
-            this.loadedOnRoadTextbox.Location = new System.Drawing.Point(442, 221);
-            this.loadedOnRoadTextbox.Name = "loadedOnRoadTextbox";
-            this.loadedOnRoadTextbox.ReadOnly = true;
-            this.loadedOnRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.loadedOnRoadTextbox.TabIndex = 21;
-            this.loadedOnRoadTextbox.Text = "0";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(347, 224);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(89, 13);
-            this.label28.TabIndex = 232;
-            this.label28.Text = "Loaded On Road";
             // 
             // label26
             // 
@@ -489,7 +460,7 @@
             this.bottomSerialNumberTextbox.Name = "bottomSerialNumberTextbox";
             this.bottomSerialNumberTextbox.ReadOnly = true;
             this.bottomSerialNumberTextbox.Size = new System.Drawing.Size(160, 20);
-            this.bottomSerialNumberTextbox.TabIndex = 1;
+            this.bottomSerialNumberTextbox.TabIndex = 2;
             // 
             // label22
             // 
@@ -511,7 +482,7 @@
             this.speedControlComboBox.Location = new System.Drawing.Point(442, 198);
             this.speedControlComboBox.Name = "speedControlComboBox";
             this.speedControlComboBox.Size = new System.Drawing.Size(135, 21);
-            this.speedControlComboBox.TabIndex = 20;
+            this.speedControlComboBox.TabIndex = 22;
             this.speedControlComboBox.ValueMember = "Id";
             // 
             // speedControlTableBindingSource
@@ -543,7 +514,7 @@
             this.maxTractionTextbox.Name = "maxTractionTextbox";
             this.maxTractionTextbox.ReadOnly = true;
             this.maxTractionTextbox.Size = new System.Drawing.Size(38, 20);
-            this.maxTractionTextbox.TabIndex = 29;
+            this.maxTractionTextbox.TabIndex = 30;
             this.maxTractionTextbox.Text = "0";
             // 
             // loadedOffRoadTextbox
@@ -552,7 +523,7 @@
             this.loadedOffRoadTextbox.Name = "loadedOffRoadTextbox";
             this.loadedOffRoadTextbox.ReadOnly = true;
             this.loadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.loadedOffRoadTextbox.TabIndex = 23;
+            this.loadedOffRoadTextbox.TabIndex = 24;
             this.loadedOffRoadTextbox.Text = "0";
             // 
             // label17
@@ -602,7 +573,7 @@
             this.pressureGroupComboBox.Location = new System.Drawing.Point(132, 138);
             this.pressureGroupComboBox.Name = "pressureGroupComboBox";
             this.pressureGroupComboBox.Size = new System.Drawing.Size(181, 21);
-            this.pressureGroupComboBox.TabIndex = 3;
+            this.pressureGroupComboBox.TabIndex = 5;
             this.pressureGroupComboBox.ValueMember = "Id";
             // 
             // customerComboBox
@@ -615,7 +586,7 @@
             this.customerComboBox.Location = new System.Drawing.Point(132, 164);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(181, 21);
-            this.customerComboBox.TabIndex = 4;
+            this.customerComboBox.TabIndex = 6;
             this.customerComboBox.ValueMember = "Id";
             // 
             // programVersionComboBox
@@ -628,7 +599,7 @@
             this.programVersionComboBox.Location = new System.Drawing.Point(132, 112);
             this.programVersionComboBox.Name = "programVersionComboBox";
             this.programVersionComboBox.Size = new System.Drawing.Size(70, 21);
-            this.programVersionComboBox.TabIndex = 2;
+            this.programVersionComboBox.TabIndex = 4;
             this.programVersionComboBox.ValueMember = "Id";
             // 
             // programVersionTableBindingSource
@@ -650,7 +621,7 @@
             this.descriptionTextbox.Name = "descriptionTextbox";
             this.descriptionTextbox.ReadOnly = true;
             this.descriptionTextbox.Size = new System.Drawing.Size(160, 20);
-            this.descriptionTextbox.TabIndex = 18;
+            this.descriptionTextbox.TabIndex = 20;
             // 
             // pt2SerialTextbox
             // 
@@ -658,7 +629,7 @@
             this.pt2SerialTextbox.Name = "pt2SerialTextbox";
             this.pt2SerialTextbox.ReadOnly = true;
             this.pt2SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt2SerialTextbox.TabIndex = 7;
+            this.pt2SerialTextbox.TabIndex = 9;
             // 
             // pt1SerialTextbox
             // 
@@ -666,7 +637,7 @@
             this.pt1SerialTextbox.Name = "pt1SerialTextbox";
             this.pt1SerialTextbox.ReadOnly = true;
             this.pt1SerialTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pt1SerialTextbox.TabIndex = 6;
+            this.pt1SerialTextbox.TabIndex = 8;
             // 
             // pressureCellTextbox
             // 
@@ -674,7 +645,7 @@
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.ReadOnly = true;
             this.pressureCellTextbox.Size = new System.Drawing.Size(160, 20);
-            this.pressureCellTextbox.TabIndex = 5;
+            this.pressureCellTextbox.TabIndex = 7;
             // 
             // vehicleRefTextbox
             // 
@@ -682,7 +653,7 @@
             this.vehicleRefTextbox.Name = "vehicleRefTextbox";
             this.vehicleRefTextbox.ReadOnly = true;
             this.vehicleRefTextbox.Size = new System.Drawing.Size(160, 20);
-            this.vehicleRefTextbox.TabIndex = 17;
+            this.vehicleRefTextbox.TabIndex = 19;
             // 
             // serialNumberTextbox
             // 
@@ -690,7 +661,7 @@
             this.serialNumberTextbox.Name = "serialNumberTextbox";
             this.serialNumberTextbox.ReadOnly = true;
             this.serialNumberTextbox.Size = new System.Drawing.Size(160, 20);
-            this.serialNumberTextbox.TabIndex = 0;
+            this.serialNumberTextbox.TabIndex = 1;
             // 
             // notesRichTextbox
             // 
@@ -698,7 +669,7 @@
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.ReadOnly = true;
             this.notesRichTextbox.Size = new System.Drawing.Size(577, 116);
-            this.notesRichTextbox.TabIndex = 35;
+            this.notesRichTextbox.TabIndex = 36;
             this.notesRichTextbox.Text = "";
             // 
             // label9
@@ -846,7 +817,7 @@
             this.installDateTimePicker.Location = new System.Drawing.Point(410, 64);
             this.installDateTimePicker.Name = "installDateTimePicker";
             this.installDateTimePicker.Size = new System.Drawing.Size(159, 20);
-            this.installDateTimePicker.TabIndex = 16;
+            this.installDateTimePicker.TabIndex = 18;
             // 
             // buildDateTimePicker
             // 
@@ -856,7 +827,7 @@
             this.buildDateTimePicker.Location = new System.Drawing.Point(409, 39);
             this.buildDateTimePicker.Name = "buildDateTimePicker";
             this.buildDateTimePicker.Size = new System.Drawing.Size(108, 20);
-            this.buildDateTimePicker.TabIndex = 15;
+            this.buildDateTimePicker.TabIndex = 17;
             this.buildDateTimePicker.Value = new System.DateTime(2017, 12, 6, 15, 43, 45, 0);
             // 
             // distanceTextbox
@@ -865,7 +836,7 @@
             this.distanceTextbox.Name = "distanceTextbox";
             this.distanceTextbox.ReadOnly = true;
             this.distanceTextbox.Size = new System.Drawing.Size(160, 20);
-            this.distanceTextbox.TabIndex = 19;
+            this.distanceTextbox.TabIndex = 21;
             // 
             // label37
             // 
@@ -896,7 +867,7 @@
             this.unloadedOffRoadTextbox.Name = "unloadedOffRoadTextbox";
             this.unloadedOffRoadTextbox.ReadOnly = true;
             this.unloadedOffRoadTextbox.Size = new System.Drawing.Size(38, 20);
-            this.unloadedOffRoadTextbox.TabIndex = 27;
+            this.unloadedOffRoadTextbox.TabIndex = 28;
             this.unloadedOffRoadTextbox.Text = "0";
             // 
             // label39
@@ -923,7 +894,7 @@
             this.notLoadedTextbox.Name = "notLoadedTextbox";
             this.notLoadedTextbox.ReadOnly = true;
             this.notLoadedTextbox.Size = new System.Drawing.Size(38, 20);
-            this.notLoadedTextbox.TabIndex = 25;
+            this.notLoadedTextbox.TabIndex = 26;
             this.notLoadedTextbox.Text = "0";
             // 
             // label18
@@ -941,7 +912,7 @@
             this.psiUnloadedOnTextbox.Name = "psiUnloadedOnTextbox";
             this.psiUnloadedOnTextbox.ReadOnly = true;
             this.psiUnloadedOnTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiUnloadedOnTextbox.TabIndex = 26;
+            this.psiUnloadedOnTextbox.TabIndex = 27;
             this.psiUnloadedOnTextbox.Text = "0";
             // 
             // psiUnloadedOffTextbox
@@ -950,7 +921,7 @@
             this.psiUnloadedOffTextbox.Name = "psiUnloadedOffTextbox";
             this.psiUnloadedOffTextbox.ReadOnly = true;
             this.psiUnloadedOffTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiUnloadedOffTextbox.TabIndex = 28;
+            this.psiUnloadedOffTextbox.TabIndex = 29;
             this.psiUnloadedOffTextbox.Text = "0";
             // 
             // psiLoadedOnTextbox
@@ -959,7 +930,7 @@
             this.psiLoadedOnTextbox.Name = "psiLoadedOnTextbox";
             this.psiLoadedOnTextbox.ReadOnly = true;
             this.psiLoadedOnTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiLoadedOnTextbox.TabIndex = 22;
+            this.psiLoadedOnTextbox.TabIndex = 23;
             this.psiLoadedOnTextbox.Text = "0";
             // 
             // psiMaxTractionTextbox
@@ -968,7 +939,7 @@
             this.psiMaxTractionTextbox.Name = "psiMaxTractionTextbox";
             this.psiMaxTractionTextbox.ReadOnly = true;
             this.psiMaxTractionTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiMaxTractionTextbox.TabIndex = 30;
+            this.psiMaxTractionTextbox.TabIndex = 31;
             this.psiMaxTractionTextbox.Text = "0";
             // 
             // psiLoadedOffTextbox
@@ -977,7 +948,7 @@
             this.psiLoadedOffTextbox.Name = "psiLoadedOffTextbox";
             this.psiLoadedOffTextbox.ReadOnly = true;
             this.psiLoadedOffTextbox.Size = new System.Drawing.Size(38, 20);
-            this.psiLoadedOffTextbox.TabIndex = 24;
+            this.psiLoadedOffTextbox.TabIndex = 25;
             this.psiLoadedOffTextbox.Text = "0";
             // 
             // label40
@@ -1025,18 +996,10 @@
             this.label44.TabIndex = 261;
             this.label44.Text = "psi";
             // 
-            // boardVersionComboBox
+            // boardVersionTableBindingSource
             // 
-            this.boardVersionComboBox.DataSource = this.boardVersionTableBindingSource;
-            this.boardVersionComboBox.DisplayMember = "Version";
-            this.boardVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.boardVersionComboBox.Enabled = false;
-            this.boardVersionComboBox.FormattingEnabled = true;
-            this.boardVersionComboBox.Location = new System.Drawing.Point(132, 87);
-            this.boardVersionComboBox.Name = "boardVersionComboBox";
-            this.boardVersionComboBox.Size = new System.Drawing.Size(70, 21);
-            this.boardVersionComboBox.TabIndex = 262;
-            this.boardVersionComboBox.ValueMember = "Id";
+            this.boardVersionTableBindingSource.DataMember = "boardVersionTable";
+            this.boardVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
             // 
             // label45
             // 
@@ -1048,14 +1011,31 @@
             this.label45.TabIndex = 263;
             this.label45.Text = "Board Version";
             // 
-            // boardVersionTableBindingSource
-            // 
-            this.boardVersionTableBindingSource.DataMember = "boardVersionTable";
-            this.boardVersionTableBindingSource.DataSource = this.ecuSettingsDatabaseDataSet;
-            // 
             // boardVersionTableTableAdapter
             // 
             this.boardVersionTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // boardVersionComboBox
+            // 
+            this.boardVersionComboBox.DataSource = this.boardVersionTableBindingSource;
+            this.boardVersionComboBox.DisplayMember = "Version";
+            this.boardVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boardVersionComboBox.Enabled = false;
+            this.boardVersionComboBox.FormattingEnabled = true;
+            this.boardVersionComboBox.Location = new System.Drawing.Point(132, 87);
+            this.boardVersionComboBox.Name = "boardVersionComboBox";
+            this.boardVersionComboBox.Size = new System.Drawing.Size(70, 21);
+            this.boardVersionComboBox.TabIndex = 3;
+            this.boardVersionComboBox.ValueMember = "Id";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(347, 224);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(89, 13);
+            this.label28.TabIndex = 232;
+            this.label28.Text = "Loaded On Road";
             // 
             // ViewForm
             // 
@@ -1103,8 +1083,6 @@
             this.Controls.Add(this.beepCheckBox);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.stepUpDelayTextbox);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.loadedOnRoadTextbox);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
@@ -1212,9 +1190,6 @@
         private System.Windows.Forms.CheckBox beepCheckBox;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox stepUpDelayTextbox;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox loadedOnRoadTextbox;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
@@ -1280,9 +1255,10 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.ComboBox boardVersionComboBox;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.BindingSource boardVersionTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter boardVersionTableTableAdapter;
+        private System.Windows.Forms.ComboBox boardVersionComboBox;
+        private System.Windows.Forms.Label label28;
     }
 }

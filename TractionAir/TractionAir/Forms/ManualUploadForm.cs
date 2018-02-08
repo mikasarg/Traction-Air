@@ -117,7 +117,7 @@ namespace TractionAir
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
                     command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+                    command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);

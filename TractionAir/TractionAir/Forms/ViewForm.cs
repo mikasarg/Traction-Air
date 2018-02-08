@@ -78,7 +78,6 @@ namespace TractionAir
                 //Manual Database Update section
                 speedControlComboBox.SelectedValue = ECU_Manager.EcuToSpeedControl(boardCode);
                 loadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOffRoad.ToString(), false);
-                loadedOnRoadTextbox.Text = ECU_Manager.CheckString(ecu.LoadedOnRoad.ToString(), false);
                 notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), false);
                 unloadedOffRoadTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOffRoad.ToString(), false);
                 maxTractionTextbox.Text = ECU_Manager.CheckString(ecu.MaxTraction.ToString(), false);
