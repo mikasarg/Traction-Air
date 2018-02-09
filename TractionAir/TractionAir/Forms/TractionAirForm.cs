@@ -363,8 +363,8 @@ namespace TractionAir
             USBPort.RegisterForDeviceChange(true, this.Handle);
 
             //Check if ECU is already connected
-            //TODO if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
-            if (true)
+            if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            //TODO if (true)
             {
                 //ECU is connected
                 Properties.Settings.Default.EcuConnected = true;
@@ -467,7 +467,7 @@ namespace TractionAir
                 }
             }
             //TODO remove below line (for testing)
-            return new List<string>() { "COM3" };
+            //return new List<string>() { "COM3" };
             return comports;
         }
         #endregion

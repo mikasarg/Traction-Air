@@ -125,9 +125,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.gpsButtonCheckBox = new System.Windows.Forms.CheckBox();
-            this.gpsOverrideCheckBox = new System.Windows.Forms.CheckBox();
             this.beepCheckBox = new System.Windows.Forms.CheckBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
@@ -911,15 +909,6 @@
             this.gpsButtonCheckBox.TabIndex = 34;
             this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
             // 
-            // gpsOverrideCheckBox
-            // 
-            this.gpsOverrideCheckBox.AutoSize = true;
-            this.gpsOverrideCheckBox.Location = new System.Drawing.Point(429, 395);
-            this.gpsOverrideCheckBox.Name = "gpsOverrideCheckBox";
-            this.gpsOverrideCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsOverrideCheckBox.TabIndex = 35;
-            this.gpsOverrideCheckBox.UseVisualStyleBackColor = true;
-            // 
             // beepCheckBox
             // 
             this.beepCheckBox.AutoSize = true;
@@ -928,15 +917,6 @@
             this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
             this.beepCheckBox.TabIndex = 33;
             this.beepCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(315, 395);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(108, 13);
-            this.label26.TabIndex = 354;
-            this.label26.Text = "Enable GPS Override";
             // 
             // label24
             // 
@@ -1051,9 +1031,7 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.gpsButtonCheckBox);
-            this.Controls.Add(this.gpsOverrideCheckBox);
             this.Controls.Add(this.beepCheckBox);
-            this.Controls.Add(this.label26);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.speedControlComboBox);
@@ -1232,9 +1210,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox gpsButtonCheckBox;
-        private System.Windows.Forms.CheckBox gpsOverrideCheckBox;
         private System.Windows.Forms.CheckBox beepCheckBox;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox speedControlComboBox;

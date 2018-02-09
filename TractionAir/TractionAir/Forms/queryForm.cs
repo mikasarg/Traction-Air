@@ -53,18 +53,6 @@ namespace TractionAir
                 conditions = true;
                 query += "VehicleRef LIKE '%@vehicleRef%' AND ";
             }
-            if (!gpsComboBox.Text.Equals(""))
-            {
-                conditions = true;
-                if (gpsComboBox.Text.Equals("Yes"))
-                {
-                    query += "EnableGPSOverride = 1 AND ";
-                }
-                else //No
-                {
-                    query += "EnableGPSOverride = 0 AND ";
-                }
-            }
             if (!distanceTextbox.Text.Equals(""))
             {
                 conditions = true;

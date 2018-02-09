@@ -532,7 +532,7 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int CheckInt(string s, bool allowNull)
+        /*public static int CheckInt(string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
@@ -544,14 +544,14 @@ namespace TractionAir
                 throw new InvalidOperationException("Input '" + s + "' is not an integer");
             }
             return i;
-        }
+        }*/
 
         /// <summary>
-        /// Checks that the int is valid (0-9) and returns it
+        /// Checks that the int is valid (1 digit) and returns it
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int CheckSmallInt(string s, bool allowNull)
+        public static int Check1Int(string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
@@ -570,22 +570,49 @@ namespace TractionAir
         }
 
         /// <summary>
-        /// Checks that the double is valid and returns it
+        /// Checks that the int is valid (3 digits) and returns it
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static double CheckDouble(string s, bool allowNull)
+        public static int Check3Int(string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
                 throw new InvalidOperationException("A required input is null");
             }
-            double d;
-            if (!Double.TryParse(s, out d))
+            int i;
+            if (!Int32.TryParse(s, out i))
             {
-                throw new InvalidOperationException("Input '" + s + "' is not a double");
+                throw new InvalidOperationException("Input '" + s + "' is not an integer");
             }
-            return d;
+            if (i < 0 || i > 1000)
+            {
+                throw new InvalidOperationException("Input '" + i + "' must be up to 3 digits");
+            }
+            return i;
+        }
+
+        /// <summary>
+        /// Checks that the int is valid (6 digits) and returns it
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static int Check6Int(string s, bool allowNull)
+        {
+            if (s == null && !allowNull)
+            {
+                throw new InvalidOperationException("A required input is null");
+            }
+            int i;
+            if (!Int32.TryParse(s, out i))
+            {
+                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+            }
+            if (i < 0 || i > 1000000)
+            {
+                throw new InvalidOperationException("Input '" + i + "' must be up to 6 digits");
+            }
+            return i;
         }
 
         /// <summary>

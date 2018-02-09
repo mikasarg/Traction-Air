@@ -84,7 +84,6 @@ namespace TractionAir
                 stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), false);
                 beepCheckBox.Checked = ecu.MaxTractionBeep;
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
-                gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
                 distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), false).ToString();
 
                 PressureGroupObject pg = ECU_Manager.getPGByID(pgId);

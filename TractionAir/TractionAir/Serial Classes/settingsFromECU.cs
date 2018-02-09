@@ -40,8 +40,6 @@ namespace TractionAir.Serial_Classes
 
         public bool enableGPSButtons { get; set; }
 
-        public bool enableGPSOverride { get; set; }
-
         public int crc { get; set; }
 
     }

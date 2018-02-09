@@ -153,13 +153,12 @@ namespace TractionAir.Forms
             int psiNotLoaded = ECU_Manager.CheckInt(psiUnloadedOnTextbox.Text, false);
             int psiUnloadedOffRoad = ECU_Manager.CheckInt(psiUnloadedOffTextbox.Text, false);
             int psiMaxTraction = ECU_Manager.CheckInt(psiMaxTractionTextbox.Text, false);
-            int stepUpDelay = ECU_Manager.CheckSmallInt(stepUpDelayTextbox.Text, false);
+            int stepUpDelay = ECU_Manager.Check1Int(stepUpDelayTextbox.Text, false);
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
-            bool enableGPSOverride = gpsOverrideCheckBox.Checked;
             string output = readWriteHelper.generateOutput(boardCode, speedControl, loadedOffRoad, 
                 notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
-                psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, enableGPSOverride);
+                psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons);
             int CRC = 000;
             if(Int32.TryParse(output.Substring(output.Length - 4, 3), out CRC))
             {
@@ -177,7 +176,7 @@ namespace TractionAir.Forms
                     && settings.notLoaded == notLoaded && settings.maxTraction == maxTraction && settings.psiLoadedOnRoad == psiLoadedOnRoad && settings.psiLoadedOffRoad == psiLoadedOffRoad
                     && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay 
                     && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons 
-                    && settings.enableGPSOverride == enableGPSOverride && settings.unloadedOffRoad == unloadedOffRoad && settings.crc == CRC)
+                    && settings.unloadedOffRoad == unloadedOffRoad && settings.crc == CRC)
                 {
                     MessageBox.Show("Data successfully written to ECU", "Download Complete");
                 }
@@ -281,7 +280,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
                     command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
-                    command1.Parameters["@enableGpsOverride"].Value = ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked);
+                    command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
                     command1.Parameters["@distance"].Value = ECU_Manager.CheckInt(distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
@@ -452,7 +451,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
                     command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
-                    command1.Parameters["@enableGpsOverride"].Value = ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked);
+                    command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
                     command1.Parameters["@distance"].Value = ECU_Manager.CheckInt(distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
@@ -587,6 +586,8 @@ namespace TractionAir.Forms
             programVersionComboBox.Refresh(); //Refreshes the combobox so the new value will display
             programVersionComboBox.SelectedIndex = programVersionComboBox.FindStringExact("V" + settings.version); //Selects the new value
 
+            buildDateTimePicker.Value = DateTime.Now; //current time
+
             speedControlComboBox.SelectedIndex = speedControlComboBox.FindStringExact(settings.speedControl);
             loadedOffRoadTextbox.Text = settings.loadedOffRoad.ToString();
             notLoadedTextbox.Text = settings.notLoaded.ToString();
@@ -623,14 +624,6 @@ namespace TractionAir.Forms
             {
                 gpsButtonCheckBox.Checked = false;
             }
-            if (settings.enableGPSOverride)
-            {
-                gpsOverrideCheckBox.Checked = true;
-            }
-            else
-            {
-                gpsOverrideCheckBox.Checked = false;
-            }
         }
 
         /// <summary>
@@ -638,16 +631,18 @@ namespace TractionAir.Forms
         /// </summary>
         private void loadValuesFromDB()
         {
+            //TODO NOTE: Many lines are commented out so as not to override the settings from the ECU.
+            
             ECU_MainSettings ecu = ECU_Manager.getECUByBC(ECU_Manager.connectedBoard);
-            int pgId = ECU_Manager.EcuToPressureGroup(ECU_Manager.connectedBoard);
+            //int pgId = ECU_Manager.EcuToPressureGroup(ECU_Manager.connectedBoard);
 
             //Sets the text for the boxes to be their equivalents in the selected entry
-            boardNumberTextbox.Text = ECU_Manager.connectedBoard.ToString();
+            //boardNumberTextbox.Text = ECU_Manager.connectedBoard.ToString();
             serialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialNumber, false);
             bottomSerialNumberTextbox.Text = ECU_Manager.CheckString(ecu.SerialCodeBot, true);
-            boardVersionComboBox.SelectedValue = ECU_Manager.EcuToBoardVersion(ECU_Manager.connectedBoard);
-            programVersionComboBox.SelectedValue = ECU_Manager.EcuToVersion(ECU_Manager.connectedBoard);
-            pressureGroupComboBox.SelectedValue = pgId;
+            //boardVersionComboBox.SelectedValue = ECU_Manager.EcuToBoardVersion(ECU_Manager.connectedBoard);
+            //programVersionComboBox.SelectedValue = ECU_Manager.EcuToVersion(ECU_Manager.connectedBoard);
+            //pressureGroupComboBox.SelectedValue = pgId;
             customerComboBox.SelectedValue = ECU_Manager.EcuToCustomer(ECU_Manager.connectedBoard);
             buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
             installDateTimePicker.Value = DateTime.Now; //current time
@@ -671,17 +666,16 @@ namespace TractionAir.Forms
             notLoadedTextbox.Text = ECU_Manager.CheckString(ecu.UnloadedOnRoad.ToString(), false);
             maxTractionTextbox.Text = ECU_Manager.CheckString(ecu.MaxTraction.ToString(), false);
             stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), false);
-            beepCheckBox.Checked = ecu.MaxTractionBeep;
-            gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
-            gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
+            //beepCheckBox.Checked = ecu.MaxTractionBeep;
+            //gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
             distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), false).ToString();
 
-            PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
-            psiLoadedOnTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOnRoad.ToString(), false).ToString();
-            psiLoadedOffTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOffRoad.ToString(), false).ToString();
-            psiUnloadedOnTextbox.Text = ECU_Manager.CheckInt(pg.UnloadedOnRoad.ToString(), false).ToString();
-            psiUnloadedOffTextbox.Text = ECU_Manager.CheckInt(pg.UnloadedOffRoad.ToString(), false).ToString();
-            psiMaxTractionTextbox.Text = ECU_Manager.CheckInt(pg.MaxTraction.ToString(), false).ToString();
+            //PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
+            //psiLoadedOnTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOnRoad.ToString(), false).ToString();
+            //psiLoadedOffTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOffRoad.ToString(), false).ToString();
+            //psiUnloadedOnTextbox.Text = ECU_Manager.CheckInt(pg.UnloadedOnRoad.ToString(), false).ToString();
+            //psiUnloadedOffTextbox.Text = ECU_Manager.CheckInt(pg.UnloadedOffRoad.ToString(), false).ToString();
+            //psiMaxTractionTextbox.Text = ECU_Manager.CheckInt(pg.MaxTraction.ToString(), false).ToString();
         }
 
         /// <summary>

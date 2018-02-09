@@ -85,7 +85,6 @@ namespace TractionAir
                 stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), false);
                 beepCheckBox.Checked = ecu.MaxTractionBeep;
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
-                gpsOverrideCheckBox.Checked = ecu.EnableGPSOverride;
                 distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), false).ToString();
 
                 PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
@@ -210,7 +209,7 @@ namespace TractionAir
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
                     command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
-                    command1.Parameters["@enableGpsOverride"].Value = ECU_Manager.CheckBit(gpsOverrideCheckBox.Checked);
+                    command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
                     command1.Parameters["@distance"].Value = ECU_Manager.CheckInt(distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);

@@ -54,7 +54,6 @@
             this.ownerTextbox = new System.Windows.Forms.TextBox();
             this.operatorButton1 = new System.Windows.Forms.Button();
             this.boardCodeTextbox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -64,12 +63,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.clearButton = new System.Windows.Forms.Button();
-            this.gpsComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // queryButton
             // 
-            this.queryButton.Location = new System.Drawing.Point(63, 447);
+            this.queryButton.Location = new System.Drawing.Point(63, 419);
             this.queryButton.Name = "queryButton";
             this.queryButton.Size = new System.Drawing.Size(75, 23);
             this.queryButton.TabIndex = 18;
@@ -79,7 +77,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(239, 447);
+            this.cancelButton.Location = new System.Drawing.Point(239, 419);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 20;
@@ -89,14 +87,14 @@
             // 
             // pt8CodeTextbox
             // 
-            this.pt8CodeTextbox.Location = new System.Drawing.Point(126, 402);
+            this.pt8CodeTextbox.Location = new System.Drawing.Point(126, 374);
             this.pt8CodeTextbox.Name = "pt8CodeTextbox";
             this.pt8CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt8CodeTextbox.TabIndex = 17;
             // 
             // pt7CodeTextbox
             // 
-            this.pt7CodeTextbox.Location = new System.Drawing.Point(126, 375);
+            this.pt7CodeTextbox.Location = new System.Drawing.Point(126, 347);
             this.pt7CodeTextbox.Name = "pt7CodeTextbox";
             this.pt7CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt7CodeTextbox.TabIndex = 16;
@@ -104,7 +102,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 405);
+            this.label5.Location = new System.Drawing.Point(54, 377);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 128;
@@ -113,7 +111,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(54, 378);
+            this.label9.Location = new System.Drawing.Point(54, 350);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 13);
             this.label9.TabIndex = 127;
@@ -121,14 +119,14 @@
             // 
             // pt6CodeTextbox
             // 
-            this.pt6CodeTextbox.Location = new System.Drawing.Point(126, 348);
+            this.pt6CodeTextbox.Location = new System.Drawing.Point(126, 320);
             this.pt6CodeTextbox.Name = "pt6CodeTextbox";
             this.pt6CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt6CodeTextbox.TabIndex = 15;
             // 
             // pt5CodeTextbox
             // 
-            this.pt5CodeTextbox.Location = new System.Drawing.Point(126, 321);
+            this.pt5CodeTextbox.Location = new System.Drawing.Point(126, 293);
             this.pt5CodeTextbox.Name = "pt5CodeTextbox";
             this.pt5CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt5CodeTextbox.TabIndex = 14;
@@ -136,7 +134,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(54, 351);
+            this.label10.Location = new System.Drawing.Point(54, 323);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 13);
             this.label10.TabIndex = 122;
@@ -145,7 +143,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(54, 324);
+            this.label11.Location = new System.Drawing.Point(54, 296);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 13);
             this.label11.TabIndex = 121;
@@ -153,14 +151,14 @@
             // 
             // pt4CodeTextbox
             // 
-            this.pt4CodeTextbox.Location = new System.Drawing.Point(126, 294);
+            this.pt4CodeTextbox.Location = new System.Drawing.Point(126, 266);
             this.pt4CodeTextbox.Name = "pt4CodeTextbox";
             this.pt4CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt4CodeTextbox.TabIndex = 13;
             // 
             // pt3CodeTextbox
             // 
-            this.pt3CodeTextbox.Location = new System.Drawing.Point(126, 267);
+            this.pt3CodeTextbox.Location = new System.Drawing.Point(126, 239);
             this.pt3CodeTextbox.Name = "pt3CodeTextbox";
             this.pt3CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt3CodeTextbox.TabIndex = 12;
@@ -168,7 +166,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 297);
+            this.label2.Location = new System.Drawing.Point(54, 269);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 116;
@@ -177,7 +175,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 270);
+            this.label3.Location = new System.Drawing.Point(54, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 115;
@@ -185,7 +183,7 @@
             // 
             // operatorButton3
             // 
-            this.operatorButton3.Location = new System.Drawing.Point(316, 157);
+            this.operatorButton3.Location = new System.Drawing.Point(316, 129);
             this.operatorButton3.Name = "operatorButton3";
             this.operatorButton3.Size = new System.Drawing.Size(23, 23);
             this.operatorButton3.TabIndex = 7;
@@ -195,28 +193,28 @@
             // 
             // distanceTextbox
             // 
-            this.distanceTextbox.Location = new System.Drawing.Point(126, 159);
+            this.distanceTextbox.Location = new System.Drawing.Point(126, 131);
             this.distanceTextbox.Name = "distanceTextbox";
             this.distanceTextbox.Size = new System.Drawing.Size(174, 20);
             this.distanceTextbox.TabIndex = 6;
             // 
             // pt2CodeTextbox
             // 
-            this.pt2CodeTextbox.Location = new System.Drawing.Point(126, 240);
+            this.pt2CodeTextbox.Location = new System.Drawing.Point(126, 212);
             this.pt2CodeTextbox.Name = "pt2CodeTextbox";
             this.pt2CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt2CodeTextbox.TabIndex = 11;
             // 
             // pt1CodeTextbox
             // 
-            this.pt1CodeTextbox.Location = new System.Drawing.Point(126, 213);
+            this.pt1CodeTextbox.Location = new System.Drawing.Point(126, 185);
             this.pt1CodeTextbox.Name = "pt1CodeTextbox";
             this.pt1CodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.pt1CodeTextbox.TabIndex = 10;
             // 
             // operatorButton4
             // 
-            this.operatorButton4.Location = new System.Drawing.Point(316, 184);
+            this.operatorButton4.Location = new System.Drawing.Point(316, 156);
             this.operatorButton4.Name = "operatorButton4";
             this.operatorButton4.Size = new System.Drawing.Size(23, 23);
             this.operatorButton4.TabIndex = 9;
@@ -226,7 +224,7 @@
             // 
             // pressureCellTextbox
             // 
-            this.pressureCellTextbox.Location = new System.Drawing.Point(126, 186);
+            this.pressureCellTextbox.Location = new System.Drawing.Point(126, 158);
             this.pressureCellTextbox.Name = "pressureCellTextbox";
             this.pressureCellTextbox.Size = new System.Drawing.Size(174, 20);
             this.pressureCellTextbox.TabIndex = 8;
@@ -269,19 +267,10 @@
             this.boardCodeTextbox.Size = new System.Drawing.Size(174, 20);
             this.boardCodeTextbox.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 136);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 88;
-            this.label1.Text = "GPS Override";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(37, 162);
+            this.label16.Location = new System.Drawing.Point(37, 134);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(72, 13);
             this.label16.TabIndex = 96;
@@ -290,7 +279,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(54, 243);
+            this.label15.Location = new System.Drawing.Point(54, 215);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(55, 13);
             this.label15.TabIndex = 95;
@@ -299,7 +288,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(54, 216);
+            this.label14.Location = new System.Drawing.Point(54, 188);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 13);
             this.label14.TabIndex = 94;
@@ -308,7 +297,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(41, 189);
+            this.label13.Location = new System.Drawing.Point(41, 161);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 13);
             this.label13.TabIndex = 93;
@@ -352,7 +341,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(151, 447);
+            this.clearButton.Location = new System.Drawing.Point(151, 419);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 19;
@@ -360,25 +349,11 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // gpsComboBox
-            // 
-            this.gpsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gpsComboBox.FormattingEnabled = true;
-            this.gpsComboBox.Items.AddRange(new object[] {
-            "",
-            "Yes",
-            "No"});
-            this.gpsComboBox.Location = new System.Drawing.Point(126, 132);
-            this.gpsComboBox.Name = "gpsComboBox";
-            this.gpsComboBox.Size = new System.Drawing.Size(46, 21);
-            this.gpsComboBox.TabIndex = 5;
-            // 
             // queryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 491);
-            this.Controls.Add(this.gpsComboBox);
+            this.ClientSize = new System.Drawing.Size(377, 463);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.pt8CodeTextbox);
             this.Controls.Add(this.pt7CodeTextbox);
@@ -403,7 +378,6 @@
             this.Controls.Add(this.ownerTextbox);
             this.Controls.Add(this.operatorButton1);
             this.Controls.Add(this.boardCodeTextbox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -452,7 +426,6 @@
         private System.Windows.Forms.TextBox ownerTextbox;
         private System.Windows.Forms.Button operatorButton1;
         private System.Windows.Forms.TextBox boardCodeTextbox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -462,6 +435,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.ComboBox gpsComboBox;
     }
 }
