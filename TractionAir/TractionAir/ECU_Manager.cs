@@ -532,7 +532,7 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        /*public static int CheckInt(string s, bool allowNull)
+        public static int CheckBigInt(string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
@@ -544,7 +544,7 @@ namespace TractionAir
                 throw new InvalidOperationException("Input '" + s + "' is not an integer");
             }
             return i;
-        }*/
+        }
 
         /// <summary>
         /// Checks that the int is valid (1 digit) and returns it

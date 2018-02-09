@@ -67,7 +67,7 @@ namespace TractionAir.Forms
                     {
                         SqlCommand command = new SqlCommand(delete, connection);
                         command.Parameters.Add("@countryId", SqlDbType.Int);
-                        command.Parameters["@countryId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+                        command.Parameters["@countryId"].Value = ECU_Manager.CheckBigInt(id.ToString(), false);
 
                         try
                         {

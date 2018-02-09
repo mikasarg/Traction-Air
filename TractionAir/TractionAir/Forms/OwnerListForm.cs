@@ -78,11 +78,11 @@ namespace TractionAir
                     {
                         SqlCommand command1 = new SqlCommand(delete1, connection);
                         command1.Parameters.Add("@customerId", SqlDbType.Int);
-                        command1.Parameters["@customerId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+                        command1.Parameters["@customerId"].Value = ECU_Manager.CheckBigInt(id.ToString(), false);
 
                         SqlCommand command2 = new SqlCommand(delete2, connection);
                         command2.Parameters.Add("@customerId", SqlDbType.Int);
-                        command2.Parameters["@customerId"].Value = ECU_Manager.CheckInt(id.ToString(), false);
+                        command2.Parameters["@customerId"].Value = ECU_Manager.CheckBigInt(id.ToString(), false);
 
                         try
                         {

@@ -62,7 +62,7 @@ namespace TractionAir
                 buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
                 installDateTimePicker.Text = (ecu.DateMod).ToString("dd/MM/yyyy HH:mm");
                 vehicleRefTextbox.Text = ECU_Manager.CheckString(ecu.VehicleRef, true);
-                pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), false).ToString();
+                pressureCellTextbox.Text = ECU_Manager.CheckBigInt(ecu.PressureCell.ToString(), false).ToString();
                 pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, false);
                 pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, false);
                 pt3SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT3Serial, true);
@@ -84,14 +84,14 @@ namespace TractionAir
                 stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), false);
                 beepCheckBox.Checked = ecu.MaxTractionBeep;
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
-                distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), false).ToString();
+                distanceTextbox.Text = ECU_Manager.CheckBigInt(ecu.Distance.ToString(), false).ToString();
 
                 PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
-                psiLoadedOnTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOnRoad.ToString(), false).ToString();
-                psiLoadedOffTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOffRoad.ToString(), false).ToString();
-                psiUnloadedOnTextbox.Text = ECU_Manager.CheckInt(pg.UnloadedOnRoad.ToString(), false).ToString();
-                psiUnloadedOffTextbox.Text = ECU_Manager.CheckInt(pg.UnloadedOffRoad.ToString(), false).ToString();
-                psiMaxTractionTextbox.Text = ECU_Manager.CheckInt(pg.MaxTraction.ToString(), false).ToString();
+                psiLoadedOnTextbox.Text = ECU_Manager.Check3Int(pg.LoadedOnRoad.ToString(), false).ToString();
+                psiLoadedOffTextbox.Text = ECU_Manager.Check3Int(pg.LoadedOffRoad.ToString(), false).ToString();
+                psiUnloadedOnTextbox.Text = ECU_Manager.Check3Int(pg.UnloadedOnRoad.ToString(), false).ToString();
+                psiUnloadedOffTextbox.Text = ECU_Manager.Check3Int(pg.UnloadedOffRoad.ToString(), false).ToString();
+                psiMaxTractionTextbox.Text = ECU_Manager.Check3Int(pg.MaxTraction.ToString(), false).ToString();
             }
             catch (InvalidOperationException ioex)
             {

@@ -44,17 +44,17 @@ namespace TractionAir
                     command.Parameters.Add("@description", SqlDbType.NVarChar);
                     command.Parameters["@description"].Value = description;
                     command.Parameters.Add("@loadedOnRoad", SqlDbType.SmallInt);
-                    command.Parameters["@loadedOnRoad"].Value = ECU_Manager.CheckInt(loadedOnRoadTextbox.Text, false);
+                    command.Parameters["@loadedOnRoad"].Value = ECU_Manager.Check3Int(loadedOnRoadTextbox.Text, false);
                     command.Parameters.Add("@loadedOffRoad", SqlDbType.SmallInt);
-                    command.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+                    command.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int(loadedOffRoadTextbox.Text, false);
                     command.Parameters.Add("@unloadedOnRoad", SqlDbType.SmallInt);
-                    command.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(unloadedOnRoadTextbox.Text, false);
+                    command.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int(unloadedOnRoadTextbox.Text, false);
                     command.Parameters.Add("@maxTraction", SqlDbType.SmallInt);
-                    command.Parameters["@maxTraction"].Value = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+                    command.Parameters["@maxTraction"].Value = ECU_Manager.Check3Int(maxTractionTextbox.Text, false);
                     command.Parameters.Add("@dateMod", SqlDbType.DateTime);
                     command.Parameters["@dateMod"].Value = DateTime.Now;
                     command.Parameters.Add("@unloadedOffRoad", SqlDbType.SmallInt);
-                    command.Parameters["@unloadedOffRoad"].Value = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
+                    command.Parameters["@unloadedOffRoad"].Value = ECU_Manager.Check3Int(unloadedOffRoadTextbox.Text, false);
                     try
                     {
                         connection.Open();

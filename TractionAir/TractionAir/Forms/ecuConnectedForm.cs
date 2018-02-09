@@ -128,7 +128,7 @@ namespace TractionAir.Forms
 
         private void saveECU()
         {
-            int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
+            int boardCode = ECU_Manager.Check6Int(boardNumberTextbox.Text, false);
             if (boardCode == DEFAULT_BC) //If user hasn't updated the board code from the default (for a new board)
             {
                 throw new InvalidOperationException("Must enter a new board code - default board code '" + DEFAULT_BC + "' is invalid");
@@ -144,15 +144,15 @@ namespace TractionAir.Forms
             }
             ECU_Manager.connectedBoard = boardCode;
             string speedControl = speedControlComboBox.Text;
-            int loadedOffRoad = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
-            int notLoaded = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
-            int unloadedOffRoad = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
-            int maxTraction = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
-            int psiLoadedOnRoad = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
-            int psiLoadedOffRoad = ECU_Manager.CheckInt(psiLoadedOffTextbox.Text, false);
-            int psiNotLoaded = ECU_Manager.CheckInt(psiUnloadedOnTextbox.Text, false);
-            int psiUnloadedOffRoad = ECU_Manager.CheckInt(psiUnloadedOffTextbox.Text, false);
-            int psiMaxTraction = ECU_Manager.CheckInt(psiMaxTractionTextbox.Text, false);
+            int loadedOffRoad = ECU_Manager.Check3Int(loadedOffRoadTextbox.Text, false);
+            int notLoaded = ECU_Manager.Check3Int(notLoadedTextbox.Text, false);
+            int unloadedOffRoad = ECU_Manager.Check3Int(unloadedOffRoadTextbox.Text, false);
+            int maxTraction = ECU_Manager.Check3Int(maxTractionTextbox.Text, false);
+            int psiLoadedOnRoad = ECU_Manager.Check3Int(psiLoadedOnTextbox.Text, false);
+            int psiLoadedOffRoad = ECU_Manager.Check3Int(psiLoadedOffTextbox.Text, false);
+            int psiNotLoaded = ECU_Manager.Check3Int(psiUnloadedOnTextbox.Text, false);
+            int psiUnloadedOffRoad = ECU_Manager.Check3Int(psiUnloadedOffTextbox.Text, false);
+            int psiMaxTraction = ECU_Manager.Check3Int(psiMaxTractionTextbox.Text, false);
             int stepUpDelay = ECU_Manager.Check1Int(stepUpDelayTextbox.Text, false);
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
@@ -217,7 +217,7 @@ namespace TractionAir.Forms
 
             try
             {
-                int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
+                int boardCode = ECU_Manager.Check6Int(boardNumberTextbox.Text, false);
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command1 = new SqlCommand(update1, connection);
@@ -246,7 +246,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString(serialNumberTextbox.Text, false);
                     command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
-                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckInt(pressureCellTextbox.Text, false);
+                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckBigInt(pressureCellTextbox.Text, false);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString(pt1SerialTextbox.Text, false);
                     command1.Parameters.Add("@pt2Serial", SqlDbType.NVarChar);
@@ -264,27 +264,27 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@pt8Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt8Serial"].Value = ECU_Manager.CheckString(pt8SerialTextbox.Text, true);
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+                    command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int(loadedOffRoadTextbox.Text, false);
                     command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
+                    command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int(notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);
-                    command1.Parameters["@maxTraction"].Value = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+                    command1.Parameters["@maxTraction"].Value = ECU_Manager.Check3Int(maxTractionTextbox.Text, false);
                     command1.Parameters.Add("@serialCodeBot", SqlDbType.NVarChar);
                     command1.Parameters["@serialCodeBot"].Value = ECU_Manager.CheckString(bottomSerialNumberTextbox.Text, true);
                     command1.Parameters.Add("@maxTractionBeep", SqlDbType.Bit);
                     command1.Parameters["@maxTractionBeep"].Value = ECU_Manager.CheckBit(beepCheckBox.Checked);
                     command1.Parameters.Add("@stepUpDelay", SqlDbType.Int);
-                    command1.Parameters["@stepUpDelay"].Value = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, false);
+                    command1.Parameters["@stepUpDelay"].Value = ECU_Manager.Check1Int(stepUpDelayTextbox.Text, false);
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
                     command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
                     command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
-                    command1.Parameters["@distance"].Value = ECU_Manager.CheckInt(distanceTextbox.Text, false);
+                    command1.Parameters["@distance"].Value = ECU_Manager.CheckBigInt(distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
-                    command1.Parameters["@unloadedOffRoad"].Value = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
+                    command1.Parameters["@unloadedOffRoad"].Value = ECU_Manager.Check3Int(unloadedOffRoadTextbox.Text, false);
 
                     SqlCommand command2 = new SqlCommand(update2, connection);
                     command2.Parameters.Add("@boardCode", SqlDbType.Int);
@@ -324,11 +324,11 @@ namespace TractionAir.Forms
 
                     try
                     {
-                        int loadedOn = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
-                        int loadedOff = ECU_Manager.CheckInt(psiLoadedOffTextbox.Text, false);
-                        int unloadedOn = ECU_Manager.CheckInt(psiUnloadedOnTextbox.Text, false);
-                        int unloadedOff = ECU_Manager.CheckInt(psiUnloadedOffTextbox.Text, false);
-                        int maxTraction = ECU_Manager.CheckInt(psiMaxTractionTextbox.Text, false);
+                        int loadedOn = ECU_Manager.Check3Int(psiLoadedOnTextbox.Text, false);
+                        int loadedOff = ECU_Manager.Check3Int(psiLoadedOffTextbox.Text, false);
+                        int unloadedOn = ECU_Manager.Check3Int(psiUnloadedOnTextbox.Text, false);
+                        int unloadedOff = ECU_Manager.Check3Int(psiUnloadedOffTextbox.Text, false);
+                        int maxTraction = ECU_Manager.Check3Int(psiMaxTractionTextbox.Text, false);
 
                         if (ECU_Manager.CheckDifferentPSIs((int)pressureGroupComboBox.SelectedValue, loadedOn, loadedOff, unloadedOn, unloadedOff, maxTraction))
                         {
@@ -388,7 +388,7 @@ namespace TractionAir.Forms
 
             try
             {
-                int boardCode = ECU_Manager.CheckInt(boardNumberTextbox.Text, false);
+                int boardCode = ECU_Manager.Check6Int(boardNumberTextbox.Text, false);
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command1 = new SqlCommand(insert1, connection);
@@ -417,7 +417,7 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString(serialNumberTextbox.Text, false);
                     command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
-                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckInt(pressureCellTextbox.Text, false);
+                    command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckBigInt(pressureCellTextbox.Text, false);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString(pt1SerialTextbox.Text, false);
                     command1.Parameters.Add("@pt2Serial", SqlDbType.NVarChar);
@@ -435,27 +435,27 @@ namespace TractionAir.Forms
                     command1.Parameters.Add("@pt8Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt8Serial"].Value = ECU_Manager.CheckString(pt8SerialTextbox.Text, true);
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.CheckInt(loadedOffRoadTextbox.Text, false);
+                    command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int(loadedOffRoadTextbox.Text, false);
                     command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.CheckInt(notLoadedTextbox.Text, false);
+                    command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int(notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);
-                    command1.Parameters["@maxTraction"].Value = ECU_Manager.CheckInt(maxTractionTextbox.Text, false);
+                    command1.Parameters["@maxTraction"].Value = ECU_Manager.Check3Int(maxTractionTextbox.Text, false);
                     command1.Parameters.Add("@serialCodeBot", SqlDbType.NVarChar);
                     command1.Parameters["@serialCodeBot"].Value = ECU_Manager.CheckString(bottomSerialNumberTextbox.Text, true);
                     command1.Parameters.Add("@maxTractionBeep", SqlDbType.Bit);
                     command1.Parameters["@maxTractionBeep"].Value = ECU_Manager.CheckBit(beepCheckBox.Checked);
                     command1.Parameters.Add("@stepUpDelay", SqlDbType.Int);
-                    command1.Parameters["@stepUpDelay"].Value = ECU_Manager.CheckInt(stepUpDelayTextbox.Text, false);
+                    command1.Parameters["@stepUpDelay"].Value = ECU_Manager.Check1Int(stepUpDelayTextbox.Text, false);
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
                     command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
                     command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
-                    command1.Parameters["@distance"].Value = ECU_Manager.CheckInt(distanceTextbox.Text, false);
+                    command1.Parameters["@distance"].Value = ECU_Manager.CheckBigInt(distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
-                    command1.Parameters["@unloadedOffRoad"].Value = ECU_Manager.CheckInt(unloadedOffRoadTextbox.Text, false);
+                    command1.Parameters["@unloadedOffRoad"].Value = ECU_Manager.Check3Int(unloadedOffRoadTextbox.Text, false);
 
                     SqlCommand command2 = new SqlCommand(insert2, connection);
                     command2.Parameters.Add("@boardCode", SqlDbType.Int);
@@ -495,11 +495,11 @@ namespace TractionAir.Forms
 
                     try
                     {
-                        int loadedOn = ECU_Manager.CheckInt(psiLoadedOnTextbox.Text, false);
-                        int loadedOff = ECU_Manager.CheckInt(psiLoadedOffTextbox.Text, false);
-                        int unloadedOn = ECU_Manager.CheckInt(psiUnloadedOnTextbox.Text, false);
-                        int unloadedOff = ECU_Manager.CheckInt(psiUnloadedOffTextbox.Text, false);
-                        int maxTraction = ECU_Manager.CheckInt(psiMaxTractionTextbox.Text, false);
+                        int loadedOn = ECU_Manager.Check3Int(psiLoadedOnTextbox.Text, false);
+                        int loadedOff = ECU_Manager.Check3Int(psiLoadedOffTextbox.Text, false);
+                        int unloadedOn = ECU_Manager.Check3Int(psiUnloadedOnTextbox.Text, false);
+                        int unloadedOff = ECU_Manager.Check3Int(psiUnloadedOffTextbox.Text, false);
+                        int maxTraction = ECU_Manager.Check3Int(psiMaxTractionTextbox.Text, false);
 
                         if (ECU_Manager.CheckDifferentPSIs((int)pressureGroupComboBox.SelectedValue, loadedOn, loadedOff, unloadedOn, unloadedOff, maxTraction))
                         {
@@ -647,7 +647,7 @@ namespace TractionAir.Forms
             buildDateTimePicker.Text = (ecu.BuildDate).ToString("dd/MM/yyyy");
             installDateTimePicker.Value = DateTime.Now; //current time
             vehicleRefTextbox.Text = ecu.VehicleRef;
-            pressureCellTextbox.Text = ECU_Manager.CheckInt(ecu.PressureCell.ToString(), false).ToString();
+            pressureCellTextbox.Text = ECU_Manager.CheckBigInt(ecu.PressureCell.ToString(), false).ToString();
             pt1SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT1Serial, false);
             pt2SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT2Serial, false);
             pt3SerialTextbox.Text = ECU_Manager.CheckString(ecu.PT3Serial, true);
@@ -668,7 +668,7 @@ namespace TractionAir.Forms
             stepUpDelayTextbox.Text = ECU_Manager.CheckString(ecu.StepUpDelay.ToString(), false);
             //beepCheckBox.Checked = ecu.MaxTractionBeep;
             //gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
-            distanceTextbox.Text = ECU_Manager.CheckInt(ecu.Distance.ToString(), false).ToString();
+            distanceTextbox.Text = ECU_Manager.CheckBigInt(ecu.Distance.ToString(), false).ToString();
 
             //PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
             //psiLoadedOnTextbox.Text = ECU_Manager.CheckInt(pg.LoadedOnRoad.ToString(), false).ToString();

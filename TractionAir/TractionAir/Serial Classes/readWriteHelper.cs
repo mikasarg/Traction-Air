@@ -111,19 +111,19 @@ namespace TractionAir.Serial_Classes
             settingsFromECU sfe = new settingsFromECU();
             List<string> values = input.Split(',').ToList();
 
-            sfe.boardCode = ECU_Manager.CheckInt(values[0], false);
+            sfe.boardCode = ECU_Manager.Check6Int(values[0], false);
             sfe.boardVersion = ECU_Manager.CheckString(values[1], false);
             sfe.version = ECU_Manager.CheckString(values[2], false);
             sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[3]);
-            sfe.loadedOffRoad = ECU_Manager.CheckInt(values[4], false);
-            sfe.notLoaded = ECU_Manager.CheckInt(values[5], false);
-            sfe.unloadedOffRoad = ECU_Manager.CheckInt(values[6], false);
-            sfe.maxTraction = ECU_Manager.CheckInt(values[7], false);
-            sfe.psiLoadedOnRoad = ECU_Manager.CheckInt(values[8], false);
-            sfe.psiLoadedOffRoad = ECU_Manager.CheckInt(values[9], false);
-            sfe.psiNotLoaded = ECU_Manager.CheckInt(values[10], false);
-            sfe.psiUnloadedOffRoad = ECU_Manager.CheckInt(values[11], false);
-            sfe.psiMaxTraction = ECU_Manager.CheckInt(values[12], false);
+            sfe.loadedOffRoad = ECU_Manager.Check3Int(values[4], false);
+            sfe.notLoaded = ECU_Manager.Check3Int(values[5], false);
+            sfe.unloadedOffRoad = ECU_Manager.Check3Int(values[6], false);
+            sfe.maxTraction = ECU_Manager.Check3Int(values[7], false);
+            sfe.psiLoadedOnRoad = ECU_Manager.Check3Int(values[8], false);
+            sfe.psiLoadedOffRoad = ECU_Manager.Check3Int(values[9], false);
+            sfe.psiNotLoaded = ECU_Manager.Check3Int(values[10], false);
+            sfe.psiUnloadedOffRoad = ECU_Manager.Check3Int(values[11], false);
+            sfe.psiMaxTraction = ECU_Manager.Check3Int(values[12], false);
             sfe.stepUpDelay = ECU_Manager.Check1Int(values[13], false);
             if (values[14].Equals("0"))
             {
@@ -141,7 +141,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSButtons = true;
             }
-            sfe.crc = ECU_Manager.CheckInt(values[16], false);
+            sfe.crc = ECU_Manager.Check3Int(values[16], false);
 
             return sfe;
         }
