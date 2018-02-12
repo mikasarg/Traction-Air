@@ -492,11 +492,11 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static string CheckString(string s, bool allowNull)
+        public static string CheckString(string name, string s, bool allowNull)
         {
             if ((s == null || s.Equals("")) && !allowNull)
             {
-                throw new InvalidOperationException("A required input is null");
+                throw new InvalidOperationException(name + ": A required input is null");
             }
             if ((s == null || s.Equals("")) && allowNull)
             {
@@ -504,7 +504,7 @@ namespace TractionAir
             }
             if (s.Length > 50)
             {
-                throw new InvalidOperationException("Input '" + s + "' is too long!");
+                throw new InvalidOperationException(name + ": Input '" + s + "' is too long!");
             }
             return s;
         }
@@ -514,11 +514,11 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static string CheckLongString(string s, bool allowNull)
+        public static string CheckLongString(string name, string s, bool allowNull)
         {
             if ((s == null || s.Equals("")) && !allowNull)
             {
-                throw new InvalidOperationException("A required input is null");
+                throw new InvalidOperationException(name + ": A required input is null");
             }
             if ((s == null || s.Equals("")) && allowNull)
             {
@@ -532,16 +532,16 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int CheckBigInt(string s, bool allowNull)
+        public static int CheckBigInt(string name, string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
-                throw new InvalidOperationException("A required input is null");
+                throw new InvalidOperationException(name + ": A required input is null");
             }
             int i;
             if (!Int32.TryParse(s, out i))
             {
-                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+                throw new InvalidOperationException(name + ": Input '" + s + "' is not an integer");
             }
             return i;
         }
@@ -551,20 +551,20 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int Check1Int(string s, bool allowNull)
+        public static int Check1Int(string name, string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
-                throw new InvalidOperationException("A required input is null");
+                throw new InvalidOperationException(name + ": A required input is null");
             }
             int i;
             if (!Int32.TryParse(s, out i))
             {
-                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+                throw new InvalidOperationException(name + ": Input '" + s + "' is not an integer");
             }
             if (i < 0 || i > 9)
             {
-                throw new InvalidOperationException("Input '" + i + "' must be between 0 and 9");
+                throw new InvalidOperationException(name + ": Input '" + i + "' must be between 0 and 9");
             }
             return i;
         }
@@ -574,20 +574,20 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int Check3Int(string s, bool allowNull)
+        public static int Check3Int(string name, string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
-                throw new InvalidOperationException("A required input is null");
+                throw new InvalidOperationException(name + ": A required input is null");
             }
             int i;
             if (!Int32.TryParse(s, out i))
             {
-                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+                throw new InvalidOperationException(name + ": Input '" + s + "' is not an integer");
             }
             if (i < 0 || i > 1000)
             {
-                throw new InvalidOperationException("Input '" + i + "' must be up to 3 digits");
+                throw new InvalidOperationException(name + ": Input '" + i + "' must be up to 3 digits");
             }
             return i;
         }
@@ -597,20 +597,20 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int Check6Int(string s, bool allowNull)
+        public static int Check6Int(string name, string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
-                throw new InvalidOperationException("A required input is null");
+                throw new InvalidOperationException(name + ": A required input is null");
             }
             int i;
             if (!Int32.TryParse(s, out i))
             {
-                throw new InvalidOperationException("Input '" + s + "' is not an integer");
+                throw new InvalidOperationException(name + ": Input '" + s + "' is not an integer");
             }
             if (i < 0 || i > 1000000)
             {
-                throw new InvalidOperationException("Input '" + i + "' must be up to 6 digits");
+                throw new InvalidOperationException(name + ": Input '" + i + "' must be up to 6 digits");
             }
             return i;
         }

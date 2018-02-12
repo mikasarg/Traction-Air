@@ -40,7 +40,7 @@ namespace TractionAir.Forms
                     command.Parameters.Add("@code", SqlDbType.NVarChar);
                     command.Parameters["@code"].Value = code;
                     command.Parameters.Add("@country", SqlDbType.NVarChar);
-                    command.Parameters["@country"].Value = ECU_Manager.CheckString(countryTextbox.Text, false);
+                    command.Parameters["@country"].Value = ECU_Manager.CheckString("Country", countryTextbox.Text, false);
                     command.Parameters.Add("@id", SqlDbType.Int);
                     command.Parameters["@id"].Value = id;
                     try

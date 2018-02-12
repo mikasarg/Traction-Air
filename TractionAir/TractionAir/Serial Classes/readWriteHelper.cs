@@ -111,20 +111,20 @@ namespace TractionAir.Serial_Classes
             settingsFromECU sfe = new settingsFromECU();
             List<string> values = input.Split(',').ToList();
 
-            sfe.boardCode = ECU_Manager.Check6Int(values[0], false);
-            sfe.boardVersion = ECU_Manager.CheckString(values[1], false);
-            sfe.version = ECU_Manager.CheckString(values[2], false);
+            sfe.boardCode = ECU_Manager.Check6Int("Board Code", values[0], false);
+            sfe.boardVersion = ECU_Manager.CheckString("Board Version", values[1], false);
+            sfe.version = ECU_Manager.CheckString("Code Version", values[2], false);
             sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[3]);
-            sfe.loadedOffRoad = ECU_Manager.Check3Int(values[4], false);
-            sfe.notLoaded = ECU_Manager.Check3Int(values[5], false);
-            sfe.unloadedOffRoad = ECU_Manager.Check3Int(values[6], false);
-            sfe.maxTraction = ECU_Manager.Check3Int(values[7], false);
-            sfe.psiLoadedOnRoad = ECU_Manager.Check3Int(values[8], false);
-            sfe.psiLoadedOffRoad = ECU_Manager.Check3Int(values[9], false);
-            sfe.psiNotLoaded = ECU_Manager.Check3Int(values[10], false);
-            sfe.psiUnloadedOffRoad = ECU_Manager.Check3Int(values[11], false);
-            sfe.psiMaxTraction = ECU_Manager.Check3Int(values[12], false);
-            sfe.stepUpDelay = ECU_Manager.Check1Int(values[13], false);
+            sfe.loadedOffRoad = ECU_Manager.Check3Int("Loaded Off Road", values[4], false);
+            sfe.notLoaded = ECU_Manager.Check3Int("Unloaded On Road", values[5], false);
+            sfe.unloadedOffRoad = ECU_Manager.Check3Int("Unloaded Off Road", values[6], false);
+            sfe.maxTraction = ECU_Manager.Check3Int("Max Traction", values[7], false);
+            sfe.psiLoadedOnRoad = ECU_Manager.Check3Int("Loaded On Road Pressure", values[8], false);
+            sfe.psiLoadedOffRoad = ECU_Manager.Check3Int("Loaded Off Road Pressure", values[9], false);
+            sfe.psiNotLoaded = ECU_Manager.Check3Int("Unloaded On Road Pressure", values[10], false);
+            sfe.psiUnloadedOffRoad = ECU_Manager.Check3Int("Unloaded Off Road Pressure", values[11], false);
+            sfe.psiMaxTraction = ECU_Manager.Check3Int("Max Traction Pressure", values[12], false);
+            sfe.stepUpDelay = ECU_Manager.Check1Int("Step Up Delay", values[13], false);
             if (values[14].Equals("0"))
             {
                 sfe.maxTractionBeep = false;
@@ -141,7 +141,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSButtons = true;
             }
-            sfe.crc = ECU_Manager.Check3Int(values[16], false);
+            sfe.crc = ECU_Manager.Check3Int("CRC", values[16], false);
 
             return sfe;
         }

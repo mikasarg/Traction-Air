@@ -31,7 +31,7 @@ namespace TractionAir.Forms
             string update = "UPDATE pressureGroupsTable SET Description = @description, LoadedOnRoad = @loadedOnRoad, LoadedOffRoad = @loadedOffRoad, UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, DateMod = @dateMod, UnloadedOffRoad = @unloadedOffRoad WHERE Id = @id;";
             try
             {
-                string description = ECU_Manager.CheckString(descriptionTextbox.Text, false);
+                string description = ECU_Manager.CheckString("Description", descriptionTextbox.Text, false);
                 ECU_Manager.CheckDuplicatePressureGroup(description, id); //check for a duplicate description
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
@@ -39,19 +39,19 @@ namespace TractionAir.Forms
                     command.Parameters.Add("@description", SqlDbType.NVarChar);
                     command.Parameters["@description"].Value = description;
                     command.Parameters.Add("@loadedOnRoad", SqlDbType.SmallInt);
-                    command.Parameters["@loadedOnRoad"].Value = ECU_Manager.Check3Int(loadedOnRoadTextbox.Text, false);
+                    command.Parameters["@loadedOnRoad"].Value = ECU_Manager.Check3Int("Loaded On Road", loadedOnRoadTextbox.Text, false);
                     command.Parameters.Add("@loadedOffRoad", SqlDbType.SmallInt);
-                    command.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int(loadedOffRoadTextbox.Text, false);
+                    command.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int("Loaded Off Road", loadedOffRoadTextbox.Text, false);
                     command.Parameters.Add("@unloadedOnRoad", SqlDbType.SmallInt);
-                    command.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int(unloadedOnRoadTextbox.Text, false);
+                    command.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int("Unloaded On Road", unloadedOnRoadTextbox.Text, false);
                     command.Parameters.Add("@maxTraction", SqlDbType.SmallInt);
-                    command.Parameters["@maxTraction"].Value = ECU_Manager.Check3Int(maxTractionTextbox.Text, false);
+                    command.Parameters["@maxTraction"].Value = ECU_Manager.Check3Int("Max Traction", maxTractionTextbox.Text, false);
                     command.Parameters.Add("@dateMod", SqlDbType.DateTime);
                     command.Parameters["@dateMod"].Value = DateTime.Now;
                     command.Parameters.Add("@id", SqlDbType.Int);
                     command.Parameters["@id"].Value = id;
                     command.Parameters.Add("@unloadedOffRoad", SqlDbType.SmallInt);
-                    command.Parameters["@unloadedOffRoad"].Value = ECU_Manager.Check3Int(unloadedOffRoadTextbox.Text, false);
+                    command.Parameters["@unloadedOffRoad"].Value = ECU_Manager.Check3Int("Unloaded Off Road", unloadedOffRoadTextbox.Text, false);
 
                     try
                     {

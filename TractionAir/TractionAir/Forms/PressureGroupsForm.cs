@@ -74,7 +74,7 @@ namespace TractionAir
                     {
                         SqlCommand command = new SqlCommand(delete, connection);
                         command.Parameters.Add("@pressureGroupId", SqlDbType.Int);
-                        command.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckBigInt(id.ToString(), false);
+                        command.Parameters["@pressureGroupId"].Value = ECU_Manager.CheckBigInt("Pressure Group ID", id.ToString(), false);
 
                         try
                         {
