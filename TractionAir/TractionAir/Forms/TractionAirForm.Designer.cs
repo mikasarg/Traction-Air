@@ -104,6 +104,8 @@
             this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
             this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.serialPortECU = new System.IO.Ports.SerialPort(this.components);
+            this.addProgramVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBoardVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
@@ -138,7 +140,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -156,14 +158,14 @@
             this.onlineToolStripMenuItem.Checked = true;
             this.onlineToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.onlineToolStripMenuItem.Name = "onlineToolStripMenuItem";
-            this.onlineToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.onlineToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.onlineToolStripMenuItem.Text = "Online";
             this.onlineToolStripMenuItem.Click += new System.EventHandler(this.onlineToolStripMenuItem_Click);
             // 
             // offlineToolStripMenuItem
             // 
             this.offlineToolStripMenuItem.Name = "offlineToolStripMenuItem";
-            this.offlineToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.offlineToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.offlineToolStripMenuItem.Text = "Offline";
             this.offlineToolStripMenuItem.Click += new System.EventHandler(this.offlineToolStripMenuItem_Click);
             // 
@@ -202,7 +204,9 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accessCodeToolStripMenuItem,
-            this.manualUploadToolStripMenuItem});
+            this.manualUploadToolStripMenuItem,
+            this.addProgramVersionToolStripMenuItem,
+            this.addBoardVersionToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -210,14 +214,14 @@
             // accessCodeToolStripMenuItem
             // 
             this.accessCodeToolStripMenuItem.Name = "accessCodeToolStripMenuItem";
-            this.accessCodeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.accessCodeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.accessCodeToolStripMenuItem.Text = "Access Code";
             this.accessCodeToolStripMenuItem.Click += new System.EventHandler(this.accessCodeToolStripMenuItem_Click);
             // 
             // manualUploadToolStripMenuItem
             // 
             this.manualUploadToolStripMenuItem.Name = "manualUploadToolStripMenuItem";
-            this.manualUploadToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.manualUploadToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.manualUploadToolStripMenuItem.Text = "Manual Upload";
             this.manualUploadToolStripMenuItem.Click += new System.EventHandler(this.manualUploadToolStripMenuItem_Click);
             // 
@@ -233,14 +237,14 @@
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.contentsToolStripMenuItem.Text = "Contents";
             this.contentsToolStripMenuItem.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.versionToolStripMenuItem.Text = "Version";
             this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
@@ -741,6 +745,20 @@
             this.serialPortECU.ReadTimeout = 5000;
             this.serialPortECU.WriteTimeout = 5000;
             // 
+            // addProgramVersionToolStripMenuItem
+            // 
+            this.addProgramVersionToolStripMenuItem.Name = "addProgramVersionToolStripMenuItem";
+            this.addProgramVersionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.addProgramVersionToolStripMenuItem.Text = "Add Program Version";
+            this.addProgramVersionToolStripMenuItem.Click += new System.EventHandler(this.addProgramVersionToolStripMenuItem_Click);
+            // 
+            // addBoardVersionToolStripMenuItem
+            // 
+            this.addBoardVersionToolStripMenuItem.Name = "addBoardVersionToolStripMenuItem";
+            this.addBoardVersionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.addBoardVersionToolStripMenuItem.Text = "Add Board Version";
+            this.addBoardVersionToolStripMenuItem.Click += new System.EventHandler(this.addBoardVersionToolStripMenuItem_Click);
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -851,6 +869,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn enableGPSOverrideDataGridViewCheckBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem countriesToolStripMenuItem;
         private System.IO.Ports.SerialPort serialPortECU;
+        private System.Windows.Forms.ToolStripMenuItem addProgramVersionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addBoardVersionToolStripMenuItem;
     }
 }
 

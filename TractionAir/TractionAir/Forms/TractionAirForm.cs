@@ -249,6 +249,11 @@ namespace TractionAir
             help.Show();
         }
 
+        /// <summary>
+        /// Shows the manual upload form to add an ECU
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void manualUploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManualUploadForm manualUpload = new ManualUploadForm();
@@ -256,11 +261,38 @@ namespace TractionAir
             refreshTable();
         }
 
+        /// <summary>
+        /// Shows the country table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void countriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CountriesListForm countriesList = new CountriesListForm();
             countriesList.Show();
             refreshTable();
+        }
+
+        /// <summary>
+        /// Add a program version
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addProgramVersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addProgramVersionForm addProgramVersion = new addProgramVersionForm();
+            addProgramVersion.ShowDialog();
+        }
+
+        /// <summary>
+        /// Add a board version
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addBoardVersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addBoardVersionForm addBoardVersion = new addBoardVersionForm();
+            addBoardVersion.ShowDialog();
         }
         #endregion
 
@@ -483,8 +515,8 @@ namespace TractionAir
             changeButton_Click(sender, e);
         }
 
-        #endregion
 
+        #endregion
 
     }
 }

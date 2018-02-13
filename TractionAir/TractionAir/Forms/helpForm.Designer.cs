@@ -31,17 +31,21 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Introduction");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Access Code");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Manual Upload");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Tools", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Add Program Version");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Add Board Version");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Tools", new System.Windows.Forms.TreeNode[] {
             treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Owner List");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Pressure Groups");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Countries");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Browse", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Query");
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Owner List");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Pressure Groups");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Countries");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Browse", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Query");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(helpForm));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -57,23 +61,27 @@
             treeNode2.Text = "Access Code";
             treeNode3.Name = "manualUploadNode";
             treeNode3.Text = "Manual Upload";
-            treeNode4.Name = "toolsNode";
-            treeNode4.Text = "Tools";
-            treeNode5.Name = "customersNode";
-            treeNode5.Text = "Owner List";
-            treeNode6.Name = "pressureGroupsNode";
-            treeNode6.Text = "Pressure Groups";
-            treeNode7.Name = "countriesNode";
-            treeNode7.Text = "Countries";
-            treeNode8.Name = "browseNode";
-            treeNode8.Text = "Browse";
-            treeNode9.Name = "queryNode";
-            treeNode9.Text = "Query";
+            treeNode4.Name = "addProgNode";
+            treeNode4.Text = "Add Program Version";
+            treeNode5.Name = "addBoardNode";
+            treeNode5.Text = "Add Board Version";
+            treeNode6.Name = "toolsNode";
+            treeNode6.Text = "Tools";
+            treeNode7.Name = "customersNode";
+            treeNode7.Text = "Owner List";
+            treeNode8.Name = "pressureGroupsNode";
+            treeNode8.Text = "Pressure Groups";
+            treeNode9.Name = "countriesNode";
+            treeNode9.Text = "Countries";
+            treeNode10.Name = "browseNode";
+            treeNode10.Text = "Browse";
+            treeNode11.Name = "queryNode";
+            treeNode11.Text = "Query";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode4,
-            treeNode8,
-            treeNode9});
+            treeNode6,
+            treeNode10,
+            treeNode11});
             this.treeView1.Size = new System.Drawing.Size(229, 482);
             this.treeView1.TabIndex = 0;
             // 

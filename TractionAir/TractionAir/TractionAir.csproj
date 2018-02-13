@@ -93,6 +93,18 @@
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DevBroadcastVolume.cs" />
+    <Compile Include="Forms\addBoardVersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\addBoardVersionForm.Designer.cs">
+      <DependentUpon>addBoardVersionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\addProgramVersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\addProgramVersionForm.Designer.cs">
+      <DependentUpon>addProgramVersionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\changeCountryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +232,12 @@
     <EmbeddedResource Include="Forms\AccessCodeForm.resx">
       <DependentUpon>AccessCodeForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\addBoardVersionForm.resx">
+      <DependentUpon>addBoardVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\addProgramVersionForm.resx">
+      <DependentUpon>addProgramVersionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\changeCountryForm.resx">
       <DependentUpon>changeCountryForm.cs</DependentUpon>

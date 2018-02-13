@@ -770,6 +770,62 @@ namespace TractionAir
         }
 
         /// <summary>
+        /// Checks to see if a program version with the given version already exists
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="id"></param>
+        public static void CheckDuplicateProgVersion(string version)
+        {
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM programVersionTable WHERE Version = @version;");
+            cmd.Connection = con;
+            cmd.Parameters.Add("@version", SqlDbType.NVarChar);
+            cmd.Parameters["@version"].Value = version;
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException("Version " + version + " already exists");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if a board version with the given version already exists
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="id"></param>
+        public static void CheckDuplicateBoardVersion(string version)
+        {
+            SqlConnection con = new SqlConnection(connection("ecuSettingsDB_CS"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM boardVersionTable WHERE Version = @version;");
+            cmd.Connection = con;
+            cmd.Parameters.Add("@version", SqlDbType.NVarChar);
+            cmd.Parameters["@version"].Value = version;
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) //Duplicates were found
+                {
+                    throw new InvalidOperationException("Version " + version + " already exists");
+                }
+                con.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message, "Error");
+            }
+        }
+
+        /// <summary>
         /// Checks to see if the given values differ from the default for the pressure group
         /// </summary>
         /// <returns></returns>
