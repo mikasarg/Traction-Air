@@ -41,17 +41,17 @@ namespace TractionAir
             if (!ownerTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "Owner LIKE '%@owner%' AND ";
+                query += "Owner LIKE '%' + @owner + '%' AND ";
             }
             if (!descriptionTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "Description LIKE '%@description%' AND ";
+                query += "Description LIKE '%' + @description + '%' AND ";
             }
             if (!vehicleRefTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "VehicleRef LIKE '%@vehicleRef%' AND ";
+                query += "VehicleRef LIKE '%' + @vehicleRef + '%' AND ";
             }
             if (!distanceTextbox.Text.Equals(""))
             {
@@ -66,48 +66,50 @@ namespace TractionAir
             if (!pt1CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT1Serial LIKE '%@pt1Code%' AND ";
+                query += "PT1Serial LIKE '%' + @pt1Code + '%' AND ";
             }
             if (!pt2CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT2Serial LIKE '%@pt2Code%' AND ";
+                query += "PT2Serial LIKE '%' + @pt2Code + '%' AND ";
             }
             if (!pt3CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT3Serial LIKE '%@pt3Code%' AND ";
+                query += "PT3Serial LIKE '%' + @pt3Code + '%' AND ";
             }
             if (!pt4CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT4Serial LIKE '%@pt4Code%' AND ";
+                query += "PT4Serial LIKE '%' + @pt4Code + '%' AND ";
             }
             if (!pt5CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT5Serial LIKE '%@pt5Code%' AND ";
+                query += "PT5Serial LIKE '%' + @pt5Code + '%' AND ";
             }
             if (!pt6CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT6Serial LIKE '%@pt6Code%' AND ";
+                query += "PT6Serial LIKE '%' + @pt6Code + '%' AND ";
             }
             if (!pt7CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT7Serial LIKE '%@pt7Code%' AND ";
+                query += "PT7Serial LIKE '%' + @pt7Code + '%' AND ";
             }
             if (!pt8CodeTextbox.Text.Equals(""))
             {
                 conditions = true;
-                query += "PT8Serial LIKE '%@pt8Code%' AND ";
+                query += "PT8Serial LIKE '%' + @pt8Code + '%' AND ";
             }
 
             if (!conditions) //nothing entered
             {
                 clearButton_Click(null, null);
             }
+
+            MessageBox.Show(query);
 
             query = query.Substring(0, query.Length - 5); //removes the last " AND "
 

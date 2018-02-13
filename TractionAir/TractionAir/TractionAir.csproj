@@ -315,8 +315,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ecuSettingsDatabase_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>ecuSettingsDatabase.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
