@@ -52,8 +52,6 @@ namespace TractionAir
 
         public int LoadedOffRoad { get; set; }
 
-        public int LoadedOnRoad { get; set; }
-
         public int UnloadedOnRoad { get; set; }
 
         public int MaxTraction { get; set; }
@@ -63,8 +61,6 @@ namespace TractionAir
         public bool MaxTractionBeep { get; set; }
 
         public bool EnableGPSButtons { get; set; }
-
-        public bool EnableGPSOverride { get; set; }
 
         public int StepUpDelay { get; set; }
 

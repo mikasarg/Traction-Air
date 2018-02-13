@@ -23,7 +23,6 @@ namespace TractionAir
         {
             this.Validate();
             this.tableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.pressureGroupsDataSet);
 
         }
 

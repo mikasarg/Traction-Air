@@ -178,11 +178,6 @@
       <DependentUpon>splashForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PressureGroupObject.cs" />
-    <Compile Include="sampleDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,21 +190,11 @@
     <Compile Include="Forms\OwnerListForm.Designer.cs">
       <DependentUpon>OwnerListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="pressureGroupsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\PressureGroupsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\PressureGroupsForm.Designer.cs">
       <DependentUpon>PressureGroupsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="sampleDBDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Forms\TractionAirForm.cs">
       <SubType>Form</SubType>
@@ -311,17 +296,6 @@
       <DependentUpon>ecuSettingsDatabaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="pressureGroupsDataSet.xsc">
-      <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="pressureGroupsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>pressureGroupsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="pressureGroupsDataSet.xss">
-      <DependentUpon>pressureGroupsDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -331,28 +305,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="sampleDBDataSet.xsc">
-      <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="sampleDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sampleDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sampleDBDataSet.xss">
-      <DependentUpon>sampleDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="sampleDBDataSet1.xsc">
-      <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="sampleDBDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sampleDBDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sampleDBDataSet1.xss">
-      <DependentUpon>sampleDBDataSet1.xsd</DependentUpon>
-    </None>
     <None Include="TractionAir_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -365,20 +317,6 @@
     <Content Include="ecuSettingsDatabase_log.ldf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>ecuSettingsDatabase.mdf</DependentUpon>
-    </Content>
-    <Content Include="pressureGroups.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="pressureGroups_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>pressureGroups.mdf</DependentUpon>
-    </Content>
-    <Content Include="sampleDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="sampleDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>sampleDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

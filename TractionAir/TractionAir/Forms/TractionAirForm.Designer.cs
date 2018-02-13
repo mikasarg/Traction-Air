@@ -43,6 +43,8 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accessCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualUploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addProgramVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBoardVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,9 +57,6 @@
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
             this.changeButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
-            this.tableAdapterManager1 = new TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager();
-            this.setupTableTableAdapter = new TractionAir.sampleDBDataSetTableAdapters.setupTableTableAdapter();
-            this.tableAdapterManager = new TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager();
             this.mainSettingsTableDataGridView = new System.Windows.Forms.DataGridView();
             this.boardCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pressureGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,14 +80,12 @@
             this.pT7SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pT8SerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loadedOffRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unloadedOnRoadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serialCodeBotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxTractionBeepDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.stepUpDelayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enableGPSButtonsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.enableGPSOverrideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.boardCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,8 +101,6 @@
             this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
             this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.serialPortECU = new System.IO.Ports.SerialPort(this.components);
-            this.addProgramVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addBoardVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
@@ -225,6 +220,20 @@
             this.manualUploadToolStripMenuItem.Text = "Manual Upload";
             this.manualUploadToolStripMenuItem.Click += new System.EventHandler(this.manualUploadToolStripMenuItem_Click);
             // 
+            // addProgramVersionToolStripMenuItem
+            // 
+            this.addProgramVersionToolStripMenuItem.Name = "addProgramVersionToolStripMenuItem";
+            this.addProgramVersionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.addProgramVersionToolStripMenuItem.Text = "Add Program Version";
+            this.addProgramVersionToolStripMenuItem.Click += new System.EventHandler(this.addProgramVersionToolStripMenuItem_Click);
+            // 
+            // addBoardVersionToolStripMenuItem
+            // 
+            this.addBoardVersionToolStripMenuItem.Name = "addBoardVersionToolStripMenuItem";
+            this.addBoardVersionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.addBoardVersionToolStripMenuItem.Text = "Add Board Version";
+            this.addBoardVersionToolStripMenuItem.Click += new System.EventHandler(this.addBoardVersionToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -336,25 +345,6 @@
             this.viewButton.UseVisualStyleBackColor = true;
             this.viewButton.Click += new System.EventHandler(this.viewButton_Click);
             // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.ECUdataTableAdapter = null;
-            this.tableAdapterManager1.setupTableTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = TractionAir.sampleDBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // setupTableTableAdapter
-            // 
-            this.setupTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ECUdataTableAdapter = null;
-            this.tableAdapterManager.setupTableTableAdapter = this.setupTableTableAdapter;
-            this.tableAdapterManager.UpdateOrder = TractionAir.sampleDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // mainSettingsTableDataGridView
             // 
             this.mainSettingsTableDataGridView.AllowUserToAddRows = false;
@@ -388,14 +378,12 @@
             this.pT7SerialDataGridViewTextBoxColumn,
             this.pT8SerialDataGridViewTextBoxColumn,
             this.loadedOffRoadDataGridViewTextBoxColumn,
-            this.loadedOnRoadDataGridViewTextBoxColumn,
             this.unloadedOnRoadDataGridViewTextBoxColumn,
             this.maxTractionDataGridViewTextBoxColumn,
             this.serialCodeBotDataGridViewTextBoxColumn,
             this.maxTractionBeepDataGridViewCheckBoxColumn,
             this.stepUpDelayDataGridViewTextBoxColumn,
-            this.enableGPSButtonsDataGridViewCheckBoxColumn,
-            this.enableGPSOverrideDataGridViewCheckBoxColumn});
+            this.enableGPSButtonsDataGridViewCheckBoxColumn});
             this.mainSettingsTableDataGridView.DataSource = this.mainSettingsTableBindingSource;
             this.mainSettingsTableDataGridView.Location = new System.Drawing.Point(4, 27);
             this.mainSettingsTableDataGridView.MultiSelect = false;
@@ -573,14 +561,6 @@
             this.loadedOffRoadDataGridViewTextBoxColumn.ReadOnly = true;
             this.loadedOffRoadDataGridViewTextBoxColumn.Visible = false;
             // 
-            // loadedOnRoadDataGridViewTextBoxColumn
-            // 
-            this.loadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "LoadedOnRoad";
-            this.loadedOnRoadDataGridViewTextBoxColumn.HeaderText = "LoadedOnRoad";
-            this.loadedOnRoadDataGridViewTextBoxColumn.Name = "loadedOnRoadDataGridViewTextBoxColumn";
-            this.loadedOnRoadDataGridViewTextBoxColumn.ReadOnly = true;
-            this.loadedOnRoadDataGridViewTextBoxColumn.Visible = false;
-            // 
             // unloadedOnRoadDataGridViewTextBoxColumn
             // 
             this.unloadedOnRoadDataGridViewTextBoxColumn.DataPropertyName = "UnloadedOnRoad";
@@ -628,14 +608,6 @@
             this.enableGPSButtonsDataGridViewCheckBoxColumn.Name = "enableGPSButtonsDataGridViewCheckBoxColumn";
             this.enableGPSButtonsDataGridViewCheckBoxColumn.ReadOnly = true;
             this.enableGPSButtonsDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // enableGPSOverrideDataGridViewCheckBoxColumn
-            // 
-            this.enableGPSOverrideDataGridViewCheckBoxColumn.DataPropertyName = "EnableGPSOverride";
-            this.enableGPSOverrideDataGridViewCheckBoxColumn.HeaderText = "EnableGPSOverride";
-            this.enableGPSOverrideDataGridViewCheckBoxColumn.Name = "enableGPSOverrideDataGridViewCheckBoxColumn";
-            this.enableGPSOverrideDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.enableGPSOverrideDataGridViewCheckBoxColumn.Visible = false;
             // 
             // mainSettingsTableBindingSource
             // 
@@ -745,20 +717,6 @@
             this.serialPortECU.ReadTimeout = 5000;
             this.serialPortECU.WriteTimeout = 5000;
             // 
-            // addProgramVersionToolStripMenuItem
-            // 
-            this.addProgramVersionToolStripMenuItem.Name = "addProgramVersionToolStripMenuItem";
-            this.addProgramVersionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.addProgramVersionToolStripMenuItem.Text = "Add Program Version";
-            this.addProgramVersionToolStripMenuItem.Click += new System.EventHandler(this.addProgramVersionToolStripMenuItem_Click);
-            // 
-            // addBoardVersionToolStripMenuItem
-            // 
-            this.addBoardVersionToolStripMenuItem.Name = "addBoardVersionToolStripMenuItem";
-            this.addBoardVersionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.addBoardVersionToolStripMenuItem.Text = "Add Board Version";
-            this.addBoardVersionToolStripMenuItem.Click += new System.EventHandler(this.addBoardVersionToolStripMenuItem_Click);
-            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -811,10 +769,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label onlineLabel;
         private System.Windows.Forms.Label comPortLabel;
-        private sampleDBDataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.BindingSource setupTableBindingSource;
-        private sampleDBDataSetTableAdapters.setupTableTableAdapter setupTableTableAdapter;
-        private sampleDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Timer timer_update;
         private System.Windows.Forms.ToolStripMenuItem manualUploadToolStripMenuItem;
         private System.Windows.Forms.Button queryButton;

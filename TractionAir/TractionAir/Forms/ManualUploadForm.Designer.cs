@@ -50,7 +50,6 @@
             this.ecuSettingsDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
             this.customerTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainSettingsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -66,7 +65,6 @@
             this.vehicleRefTextbox = new System.Windows.Forms.TextBox();
             this.serialNumberTextbox = new System.Windows.Forms.TextBox();
             this.notesRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.speedControlTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainSettingsTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -139,7 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).BeginInit();
@@ -333,12 +330,6 @@
             // tableBindingSource
             // 
             this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
-            // 
-            // pressureGroupsDataSet
-            // 
-            this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
-            this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // customerComboBox
             // 
@@ -447,12 +438,10 @@
             // 
             // tableTableAdapter
             // 
-            this.tableTableAdapter.ClearBeforeFill = true;
             // 
             // tableBindingSource1
             // 
             this.tableBindingSource1.DataMember = "Table";
-            this.tableBindingSource1.DataSource = this.pressureGroupsDataSet;
             // 
             // speedControlTableBindingSource
             // 
@@ -1095,7 +1084,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource1)).EndInit();
@@ -1139,9 +1127,7 @@
         private System.Windows.Forms.TextBox vehicleRefTextbox;
         private System.Windows.Forms.TextBox serialNumberTextbox;
         private System.Windows.Forms.RichTextBox notesRichTextbox;
-        private pressureGroupsDataSet pressureGroupsDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
-        private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
         private System.Windows.Forms.BindingSource tableBindingSource1;
         // private System.Windows.Forms.BindingSource sampleDBDataSet1BindingSource;
         // private sampleDBDataSet1 sampleDBDataSet1;

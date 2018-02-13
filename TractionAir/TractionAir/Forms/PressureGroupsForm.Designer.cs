@@ -30,10 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PressureGroupsForm));
-            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
-            this.tableAdapterManager = new TractionAir.pressureGroupsDataSetTableAdapters.TableAdapterManager();
             this.pressureGroupsTableDataGridView = new System.Windows.Forms.DataGridView();
             this.pressureGroupsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
@@ -50,7 +47,6 @@
             this.maxTractionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
@@ -59,23 +55,16 @@
             // 
             // pressureGroupsDataSet
             // 
-            this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
-            this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableBindingSource
             // 
             this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
             // 
             // tableTableAdapter
             // 
-            this.tableTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.TableTableAdapter = this.tableTableAdapter;
-            this.tableAdapterManager.UpdateOrder = TractionAir.pressureGroupsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // pressureGroupsTableDataGridView
             // 
@@ -241,7 +230,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Browse the Setup Pressures (PSI)";
             this.Load += new System.EventHandler(this.PressureGroupsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).EndInit();
@@ -252,10 +240,7 @@
 
         #endregion
 
-        private pressureGroupsDataSet pressureGroupsDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
-        private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
-        private pressureGroupsDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView pressureGroupsTableDataGridView;
         private System.Windows.Forms.Button insertButton;
         private System.Windows.Forms.Button deleteButton;

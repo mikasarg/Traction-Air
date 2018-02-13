@@ -32,11 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewForm));
             this.eCUdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sampleDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sampleDBDataSet1 = new TractionAir.sampleDBDataSet1();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pressureGroupsDataSet = new TractionAir.pressureGroupsDataSet();
-            this.eCUdataTableAdapter = new TractionAir.sampleDBDataSet1TableAdapters.ECUdataTableAdapter();
-            this.tableTableAdapter = new TractionAir.pressureGroupsDataSetTableAdapters.TableTableAdapter();
             this.customerTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ecuSettingsDatabaseDataSet = new TractionAir.ecuSettingsDatabaseDataSet();
@@ -136,9 +132,7 @@
             this.label28 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -159,31 +153,20 @@
             // 
             // sampleDBDataSet1BindingSource
             // 
-            this.sampleDBDataSet1BindingSource.DataSource = this.sampleDBDataSet1;
             this.sampleDBDataSet1BindingSource.Position = 0;
-            // 
-            // sampleDBDataSet1
-            // 
-            this.sampleDBDataSet1.DataSetName = "sampleDBDataSet1";
-            this.sampleDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableBindingSource
             // 
             this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.pressureGroupsDataSet;
             // 
             // pressureGroupsDataSet
             // 
-            this.pressureGroupsDataSet.DataSetName = "pressureGroupsDataSet";
-            this.pressureGroupsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // eCUdataTableAdapter
             // 
-            this.eCUdataTableAdapter.ClearBeforeFill = true;
             // 
             // tableTableAdapter
             // 
-            this.tableTableAdapter.ClearBeforeFill = true;
             // 
             // customerTableBindingSource1
             // 
@@ -1111,9 +1094,7 @@
             this.Load += new System.EventHandler(this.ViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
@@ -1132,12 +1113,8 @@
 
         #endregion
         private System.Windows.Forms.BindingSource sampleDBDataSet1BindingSource;
-        private sampleDBDataSet1 sampleDBDataSet1;
         private System.Windows.Forms.BindingSource eCUdataBindingSource;
-        private sampleDBDataSet1TableAdapters.ECUdataTableAdapter eCUdataTableAdapter;
-        private pressureGroupsDataSet pressureGroupsDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
-        private pressureGroupsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
         private System.Windows.Forms.BindingSource customerTableBindingSource1;
         private System.Windows.Forms.BindingSource ecuSettingsDatabaseDataSetBindingSource;
         private ecuSettingsDatabaseDataSet ecuSettingsDatabaseDataSet;

@@ -204,9 +204,9 @@ namespace TractionAir.Forms
                 "Country = @country, BuildDate = @buildDate, Version = @version, Description = @description, VehicleRef = @vehicleRef, " +
                 "SpeedStages = @speedStages, DateMod = @dateMod, Notes = @notes, SerialNumber = @serialNumber, PressureCell = @pressureCell, " +
                 "PT1Serial = @pt1Serial, PT2Serial = @pt2Serial, PT3Serial = @pt3Serial, PT4Serial = @pt4Serial, PT5Serial = @pt5Serial, " +
-                "PT6Serial = @pt6Serial, PT7Serial = @pt7Serial, PT8Serial = @pt8Serial, LoadedOffRoad = @loadedOffRoad, LoadedOnRoad = @loadedOnRoad, " +
+                "PT6Serial = @pt6Serial, PT7Serial = @pt7Serial, PT8Serial = @pt8Serial, LoadedOffRoad = @loadedOffRoad, " +
                 "UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, SerialCodeBot = @serialCodeBot, MaxTractionBeep = @maxTractionBeep, " +
-                "StepUpDelay = @stepUpDelay, EnableGPSButtons = @enableGpsButtons, EnableGPSOverride = @enableGpsOverride, Distance = @distance, UnloadedOffRoad = @unloadedOffRoad " +
+                "StepUpDelay = @stepUpDelay, EnableGPSButtons = @enableGpsButtons, Distance = @distance, UnloadedOffRoad = @unloadedOffRoad " +
                 "WHERE BoardCode = @boardCode;";
             string update2 = "UPDATE ecuToCountry SET CountryID = @countryId WHERE BoardCode = @boardCode;"; //Have to update the connections as well
             string update3 = "UPDATE ecuToCustomer SET CustomerID = @customerId WHERE BoardCode = @boardCode;";
@@ -265,8 +265,6 @@ namespace TractionAir.Forms
                     command1.Parameters["@pt8Serial"].Value = ECU_Manager.CheckString("Pt8 Serial", pt8SerialTextbox.Text, true);
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int("Loaded Off Road", loadedOffRoadTextbox.Text, false);
-                    command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int("Unloaded On Road", notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);
@@ -279,8 +277,6 @@ namespace TractionAir.Forms
                     command1.Parameters["@stepUpDelay"].Value = ECU_Manager.Check1Int("Step Up Delay", stepUpDelayTextbox.Text, false);
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
-                    command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
-                    command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
                     command1.Parameters["@distance"].Value = ECU_Manager.CheckBigInt("Distance", distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
@@ -380,9 +376,9 @@ namespace TractionAir.Forms
     "@country, @buildDate, @version, @description, @vehicleRef, " +
     "@speedStages, @dateMod, @notes, @serialNumber, @pressureCell, " +
     "@pt1Serial, @pt2Serial, @pt3Serial, @pt4Serial, @pt5Serial, " +
-    " @pt6Serial, @pt7Serial, @pt8Serial, @loadedOffRoad, @loadedOnRoad, " +
+    " @pt6Serial, @pt7Serial, @pt8Serial, @loadedOffRoad, " +
     " @unloadedOnRoad, @maxTraction, @serialCodeBot, @maxTractionBeep, " +
-    " @stepUpDelay, @enableGpsButtons, @enableGpsOverride, @distance, @unloadedOffRoad);";
+    " @stepUpDelay, @enableGpsButtons, @distance, @unloadedOffRoad);";
             string insert2 = "INSERT INTO ecuToCountry VALUES (@boardCode, @countryId);"; //Have to update the connections as well
             string insert3 = "INSERT INTO ecuToCustomer VALUES (@boardCode, @customerId);";
             string insert4 = "INSERT INTO ecuToPressureGroup VALUES (@boardCode, @pressureGroupId);";
@@ -440,8 +436,6 @@ namespace TractionAir.Forms
                     command1.Parameters["@pt8Serial"].Value = ECU_Manager.CheckString("Pt8 Serial", pt8SerialTextbox.Text, true);
                     command1.Parameters.Add("@loadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@loadedOffRoad"].Value = ECU_Manager.Check3Int("Loaded Off Road", loadedOffRoadTextbox.Text, false);
-                    command1.Parameters.Add("@loadedOnRoad", SqlDbType.Int);
-                    command1.Parameters["@loadedOnRoad"].Value = 0; //Loaded On has been removed
                     command1.Parameters.Add("@unloadedOnRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOnRoad"].Value = ECU_Manager.Check3Int("Unloaded On Road", notLoadedTextbox.Text, false);
                     command1.Parameters.Add("@maxTraction", SqlDbType.Int);
@@ -454,8 +448,6 @@ namespace TractionAir.Forms
                     command1.Parameters["@stepUpDelay"].Value = ECU_Manager.Check1Int("Step Up Delay", stepUpDelayTextbox.Text, false);
                     command1.Parameters.Add("@enableGpsButtons", SqlDbType.Bit);
                     command1.Parameters["@enableGpsButtons"].Value = ECU_Manager.CheckBit(gpsButtonCheckBox.Checked);
-                    command1.Parameters.Add("@enableGpsOverride", SqlDbType.Bit);
-                    command1.Parameters["@enableGpsOverride"].Value = 0; //GPS Override has been removed
                     command1.Parameters.Add("@distance", SqlDbType.Int);
                     command1.Parameters["@distance"].Value = ECU_Manager.CheckBigInt("Distance", distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
