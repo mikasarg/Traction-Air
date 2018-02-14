@@ -30,7 +30,6 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.boardVersionTable' table. You can move, or remove it, as needed.
             this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
             this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
             this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
@@ -87,6 +86,11 @@ namespace TractionAir
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
                 distanceTextbox.Text = ECU_Manager.CheckBigInt("Distance", ecu.Distance.ToString(), false).ToString();
 
+                airFaultBeepCheckBox.Checked = ecu.AirFaultBeep;
+                gpsSpeedUpCheckBox.Checked = ecu.GPSSpeedUp;
+                gpsSpeedSafetyCheckBox.Checked = ecu.GPSSpeedSafety;
+                airFaultBeepTimeLimitTextbox.Text = ECU_Manager.CheckString("Air Fault Beep Time Limit", ecu.AirFaultBeepTimeLimit.ToString(), false);
+
                 PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
                 psiLoadedOnTextbox.Text = ECU_Manager.Check3Int("Loaded On Road Pressure", pg.LoadedOnRoad.ToString(), false).ToString();
                 psiLoadedOffTextbox.Text = ECU_Manager.Check3Int("Loaded Off Road Pressure", pg.LoadedOffRoad.ToString(), false).ToString();
@@ -135,8 +139,8 @@ namespace TractionAir
                 "PT1Serial = @pt1Serial, PT2Serial = @pt2Serial, PT3Serial = @pt3Serial, PT4Serial = @pt4Serial, PT5Serial = @pt5Serial, " +
                 "PT6Serial = @pt6Serial, PT7Serial = @pt7Serial, PT8Serial = @pt8Serial, LoadedOffRoad = @loadedOffRoad, " +
                 "UnloadedOnRoad = @unloadedOnRoad, MaxTraction = @maxTraction, SerialCodeBot = @serialCodeBot, MaxTractionBeep = @maxTractionBeep, " +
-                "StepUpDelay = @stepUpDelay, EnableGPSButtons = @enableGpsButtons, Distance = @distance, UnloadedOffRoad = @unloadedOffRoad " +
-                "WHERE BoardCode = @boardCode;";
+                "StepUpDelay = @stepUpDelay, EnableGPSButtons = @enableGpsButtons, Distance = @distance, UnloadedOffRoad = @unloadedOffRoad, " +
+                "AirFaultBeep = @airFaultBeep, GPSSpeedUp = @gpsSpeedUp, GPSSpeedSafety = @gpsSpeedSafety, AirFaultBeepTimeLimit = @airFaultBeepTimeLimit WHERE BoardCode = @boardCode;";
             string update2 = "UPDATE ecuToCountry SET CountryID = @countryId WHERE BoardCode = @boardCode;"; //Have to update the connections as well
             string update3 = "UPDATE ecuToCustomer SET CustomerID = @customerId WHERE BoardCode = @boardCode;";
             string update4 = "UPDATE ecuToPressureGroup SET PressureGroupID = @pressureGroupId WHERE BoardCode = @boardCode;";
@@ -210,6 +214,14 @@ namespace TractionAir
                     command1.Parameters["@distance"].Value = ECU_Manager.CheckBigInt("Distance", distanceTextbox.Text, false);
                     command1.Parameters.Add("@unloadedOffRoad", SqlDbType.Int);
                     command1.Parameters["@unloadedOffRoad"].Value = ECU_Manager.Check3Int("Unloaded Off Road", unloadedOffRoadTextbox.Text, false);
+                    command1.Parameters.Add("@airFaultBeep", SqlDbType.Bit);
+                    command1.Parameters["@airFaultBeep"].Value = ECU_Manager.CheckBit(airFaultBeepCheckBox.Checked);
+                    command1.Parameters.Add("@gpsSpeedUp", SqlDbType.Bit);
+                    command1.Parameters["@gpsSpeedUp"].Value = ECU_Manager.CheckBit(gpsSpeedUpCheckBox.Checked);
+                    command1.Parameters.Add("@gpsSpeedSafety", SqlDbType.Bit);
+                    command1.Parameters["@gpsSpeedSafety"].Value = ECU_Manager.CheckBit(gpsSpeedSafetyCheckBox.Checked);
+                    command1.Parameters.Add("@airFaultBeepTimeLimit", SqlDbType.SmallInt);
+                    command1.Parameters["@airFaultBeepTimeLimit"].Value = ECU_Manager.Check1Int("Air Fault Beep Time Limit", airFaultBeepTimeLimitTextbox.Text, false);
 
                     SqlCommand command2 = new SqlCommand(update2, connection);
                     command2.Parameters.Add("@boardCode", SqlDbType.Int);

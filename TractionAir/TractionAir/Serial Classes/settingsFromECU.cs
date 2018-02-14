@@ -40,6 +40,14 @@ namespace TractionAir.Serial_Classes
 
         public bool enableGPSButtons { get; set; }
 
+        public bool AirFaultBeep { get; set; }
+
+        public bool GPSSpeedUp { get; set; }
+
+        public bool GPSSpeedSafety { get; set; }
+
+        public int AirFaultBeepTimeLimit { get; set; }
+
         public int crc { get; set; }
 
     }

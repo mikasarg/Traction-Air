@@ -122,10 +122,6 @@
             this.notLoadedTextbox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.gpsButtonCheckBox = new System.Windows.Forms.CheckBox();
-            this.beepCheckBox = new System.Windows.Forms.CheckBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.speedControlComboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -133,6 +129,19 @@
             this.boardVersionTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label45 = new System.Windows.Forms.Label();
             this.boardVersionTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter();
+            this.gpsSpeedUpCheckBox = new System.Windows.Forms.CheckBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.airFaultBeepTimeLimitTextbox = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.gpsSpeedSafetyCheckBox = new System.Windows.Forms.CheckBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.airFaultBeepCheckBox = new System.Windows.Forms.CheckBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.gpsButtonCheckBox = new System.Windows.Forms.CheckBox();
+            this.beepCheckBox = new System.Windows.Forms.CheckBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pressureGroupsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).BeginInit();
@@ -435,9 +444,6 @@
             this.notesRichTextbox.Size = new System.Drawing.Size(575, 116);
             this.notesRichTextbox.TabIndex = 36;
             this.notesRichTextbox.Text = "";
-            // 
-            // tableTableAdapter
-            // 
             // 
             // tableBindingSource1
             // 
@@ -889,42 +895,6 @@
             this.label17.TabIndex = 358;
             this.label17.Text = "Max Traction";
             // 
-            // gpsButtonCheckBox
-            // 
-            this.gpsButtonCheckBox.AutoSize = true;
-            this.gpsButtonCheckBox.Location = new System.Drawing.Point(429, 374);
-            this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
-            this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsButtonCheckBox.TabIndex = 34;
-            this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // beepCheckBox
-            // 
-            this.beepCheckBox.AutoSize = true;
-            this.beepCheckBox.Location = new System.Drawing.Point(429, 353);
-            this.beepCheckBox.Name = "beepCheckBox";
-            this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.beepCheckBox.TabIndex = 33;
-            this.beepCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(327, 353);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(97, 13);
-            this.label24.TabIndex = 353;
-            this.label24.Text = "Max Traction Beep";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(358, 374);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(65, 13);
-            this.label23.TabIndex = 352;
-            this.label23.Text = "Enable GPS";
-            // 
             // speedControlComboBox
             // 
             this.speedControlComboBox.DataSource = this.speedControlTableBindingSource;
@@ -986,11 +956,142 @@
             // 
             this.boardVersionTableTableAdapter.ClearBeforeFill = true;
             // 
+            // gpsSpeedUpCheckBox
+            // 
+            this.gpsSpeedUpCheckBox.AutoSize = true;
+            this.gpsSpeedUpCheckBox.Checked = true;
+            this.gpsSpeedUpCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.gpsSpeedUpCheckBox.Location = new System.Drawing.Point(429, 412);
+            this.gpsSpeedUpCheckBox.Name = "gpsSpeedUpCheckBox";
+            this.gpsSpeedUpCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.gpsSpeedUpCheckBox.TabIndex = 396;
+            this.gpsSpeedUpCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(346, 412);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(77, 13);
+            this.label48.TabIndex = 397;
+            this.label48.Text = "GPS SpeedUp";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(471, 374);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(23, 13);
+            this.label46.TabIndex = 395;
+            this.label46.Text = "min";
+            // 
+            // airFaultBeepTimeLimitTextbox
+            // 
+            this.airFaultBeepTimeLimitTextbox.Location = new System.Drawing.Point(429, 370);
+            this.airFaultBeepTimeLimitTextbox.Name = "airFaultBeepTimeLimitTextbox";
+            this.airFaultBeepTimeLimitTextbox.Size = new System.Drawing.Size(38, 20);
+            this.airFaultBeepTimeLimitTextbox.TabIndex = 393;
+            this.airFaultBeepTimeLimitTextbox.Text = "0";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(300, 373);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(123, 13);
+            this.label47.TabIndex = 394;
+            this.label47.Text = "Air Fault Beep Time Limit";
+            // 
+            // gpsSpeedSafetyCheckBox
+            // 
+            this.gpsSpeedSafetyCheckBox.AutoSize = true;
+            this.gpsSpeedSafetyCheckBox.Location = new System.Drawing.Point(553, 413);
+            this.gpsSpeedSafetyCheckBox.Name = "gpsSpeedSafetyCheckBox";
+            this.gpsSpeedSafetyCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.gpsSpeedSafetyCheckBox.TabIndex = 391;
+            this.gpsSpeedSafetyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(451, 413);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(96, 13);
+            this.label27.TabIndex = 392;
+            this.label27.Text = "GPS Speed Safety";
+            // 
+            // airFaultBeepCheckBox
+            // 
+            this.airFaultBeepCheckBox.AutoSize = true;
+            this.airFaultBeepCheckBox.Location = new System.Drawing.Point(429, 354);
+            this.airFaultBeepCheckBox.Name = "airFaultBeepCheckBox";
+            this.airFaultBeepCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.airFaultBeepCheckBox.TabIndex = 389;
+            this.airFaultBeepCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(350, 354);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(73, 13);
+            this.label26.TabIndex = 390;
+            this.label26.Text = "Air Fault Beep";
+            // 
+            // gpsButtonCheckBox
+            // 
+            this.gpsButtonCheckBox.AutoSize = true;
+            this.gpsButtonCheckBox.Location = new System.Drawing.Point(553, 394);
+            this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
+            this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.gpsButtonCheckBox.TabIndex = 386;
+            this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // beepCheckBox
+            // 
+            this.beepCheckBox.AutoSize = true;
+            this.beepCheckBox.Location = new System.Drawing.Point(429, 394);
+            this.beepCheckBox.Name = "beepCheckBox";
+            this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.beepCheckBox.TabIndex = 385;
+            this.beepCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(327, 394);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(97, 13);
+            this.label24.TabIndex = 388;
+            this.label24.Text = "Max Traction Beep";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(482, 394);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(65, 13);
+            this.label23.TabIndex = 387;
+            this.label23.Text = "Enable GPS";
+            // 
             // ManualUploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 598);
+            this.Controls.Add(this.gpsSpeedUpCheckBox);
+            this.Controls.Add(this.label48);
+            this.Controls.Add(this.label46);
+            this.Controls.Add(this.airFaultBeepTimeLimitTextbox);
+            this.Controls.Add(this.label47);
+            this.Controls.Add(this.gpsSpeedSafetyCheckBox);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.airFaultBeepCheckBox);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.gpsButtonCheckBox);
+            this.Controls.Add(this.beepCheckBox);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.boardVersionComboBox);
             this.Controls.Add(this.label45);
             this.Controls.Add(this.label28);
@@ -1019,10 +1120,6 @@
             this.Controls.Add(this.notLoadedTextbox);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.gpsButtonCheckBox);
-            this.Controls.Add(this.beepCheckBox);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.speedControlComboBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -1195,10 +1292,6 @@
         private System.Windows.Forms.TextBox notLoadedTextbox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.CheckBox gpsButtonCheckBox;
-        private System.Windows.Forms.CheckBox beepCheckBox;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox speedControlComboBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -1206,5 +1299,18 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.BindingSource boardVersionTableBindingSource;
         private ecuSettingsDatabaseDataSetTableAdapters.boardVersionTableTableAdapter boardVersionTableTableAdapter;
+        private System.Windows.Forms.CheckBox gpsSpeedUpCheckBox;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox airFaultBeepTimeLimitTextbox;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.CheckBox gpsSpeedSafetyCheckBox;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox airFaultBeepCheckBox;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.CheckBox gpsButtonCheckBox;
+        private System.Windows.Forms.CheckBox beepCheckBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
     }
 }

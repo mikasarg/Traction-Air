@@ -67,5 +67,13 @@ namespace TractionAir
         public int Distance { get; set; }
 
         public int UnloadedOffRoad { get; set; }
+
+        public bool AirFaultBeep { get; set; }
+
+        public bool GPSSpeedUp { get; set; }
+
+        public bool GPSSpeedSafety { get; set; }
+
+        public int AirFaultBeepTimeLimit { get; set; }
     }
 }

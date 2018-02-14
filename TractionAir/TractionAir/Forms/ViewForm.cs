@@ -86,6 +86,11 @@ namespace TractionAir
                 gpsButtonCheckBox.Checked = ecu.EnableGPSButtons;
                 distanceTextbox.Text = ECU_Manager.CheckBigInt("Distance", ecu.Distance.ToString(), false).ToString();
 
+                airFaultBeepCheckBox.Checked = ecu.AirFaultBeep;
+                gpsSpeedUpCheckBox.Checked = ecu.GPSSpeedUp;
+                gpsSpeedSafetyCheckBox.Checked = ecu.GPSSpeedSafety;
+                airFaultBeepTimeLimitTextbox.Text = ECU_Manager.CheckString("Air Fault Beep Time Limit", ecu.AirFaultBeepTimeLimit.ToString(), false);
+
                 PressureGroupObject pg = ECU_Manager.getPGByID(pgId);
                 psiLoadedOnTextbox.Text = ECU_Manager.Check3Int("Loaded On Road Pressure", pg.LoadedOnRoad.ToString(), false).ToString();
                 psiLoadedOffTextbox.Text = ECU_Manager.Check3Int("Loaded Off Road Pressure", pg.LoadedOffRoad.ToString(), false).ToString();

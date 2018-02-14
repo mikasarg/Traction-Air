@@ -25,7 +25,7 @@ namespace TractionAir.Serial_Classes
         public static string generateOutput(int boardCode, string speedControl,
             int loadedOffRoad, int notLoaded, int unloadedOffRoad, int maxTraction, int psiLoadedOnRoad,
             int psiLoadedOffRoad, int psiNotLoaded, int psiUnloadedOffRoad, int psiMaxTraction, int stepUpDelay, bool maxTractionBeep, 
-            bool enableGPSButtons)
+            bool enableGPSButtons, bool airFaultBeep, bool gpsSpeedUp, bool gpsSpeedSafety, int airFaultBeepTimeLimit)
         {
             string output = "";
 
@@ -89,6 +89,35 @@ namespace TractionAir.Serial_Classes
             {
                 output = appendValue(output, "0");
             }
+
+            if (gpsSpeedUp)
+            {
+                output = appendValue(output, "1");
+            }
+            else
+            {
+                output = appendValue(output, "0");
+            }
+
+            if (gpsSpeedSafety)
+            {
+                output = appendValue(output, "1");
+            }
+            else
+            {
+                output = appendValue(output, "0");
+            }
+
+            if (airFaultBeep)
+            {
+                output = appendValue(output, "1");
+            }
+            else
+            {
+                output = appendValue(output, "0");
+            }
+
+            output = appendValue(output, string.Format("{0:0}", airFaultBeepTimeLimit));
 
             return appendCRC(output);
         }
