@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -104,6 +104,12 @@
     </Compile>
     <Compile Include="Forms\addProgramVersionForm.Designer.cs">
       <DependentUpon>addProgramVersionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\backupRestoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\backupRestoreForm.Designer.cs">
+      <DependentUpon>backupRestoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\changeCountryForm.cs">
       <SubType>Form</SubType>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\addProgramVersionForm.resx">
       <DependentUpon>addProgramVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\backupRestoreForm.resx">
+      <DependentUpon>backupRestoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\changeCountryForm.resx">
       <DependentUpon>changeCountryForm.cs</DependentUpon>

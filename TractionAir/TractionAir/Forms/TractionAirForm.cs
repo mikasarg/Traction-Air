@@ -294,6 +294,17 @@ namespace TractionAir
             addBoardVersionForm addBoardVersion = new addBoardVersionForm();
             addBoardVersion.ShowDialog();
         }
+
+        /// <summary>
+        /// Allows the user to backup and/or restore the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backupRestoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            backupRestoreForm backupRestore = new backupRestoreForm();
+            backupRestore.ShowDialog();
+        }
         #endregion
 
         #region Buttons

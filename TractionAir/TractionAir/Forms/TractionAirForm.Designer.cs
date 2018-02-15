@@ -101,6 +101,7 @@
             this.mainSettingsTableTableAdapter = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.mainSettingsTableTableAdapter();
             this.tableAdapterManager2 = new TractionAir.ecuSettingsDatabaseDataSetTableAdapters.TableAdapterManager();
             this.serialPortECU = new System.IO.Ports.SerialPort(this.components);
+            this.backupRestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource)).BeginInit();
@@ -201,7 +202,8 @@
             this.accessCodeToolStripMenuItem,
             this.manualUploadToolStripMenuItem,
             this.addProgramVersionToolStripMenuItem,
-            this.addBoardVersionToolStripMenuItem});
+            this.addBoardVersionToolStripMenuItem,
+            this.backupRestoreToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -717,6 +719,13 @@
             this.serialPortECU.ReadTimeout = 5000;
             this.serialPortECU.WriteTimeout = 5000;
             // 
+            // backupRestoreToolStripMenuItem
+            // 
+            this.backupRestoreToolStripMenuItem.Name = "backupRestoreToolStripMenuItem";
+            this.backupRestoreToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.backupRestoreToolStripMenuItem.Text = "Backup/Restore";
+            this.backupRestoreToolStripMenuItem.Click += new System.EventHandler(this.backupRestoreToolStripMenuItem_Click);
+            // 
             // TractionAirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -826,6 +835,7 @@
         private System.IO.Ports.SerialPort serialPortECU;
         private System.Windows.Forms.ToolStripMenuItem addProgramVersionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addBoardVersionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupRestoreToolStripMenuItem;
     }
 }
 
