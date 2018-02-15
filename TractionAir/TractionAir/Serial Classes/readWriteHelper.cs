@@ -170,7 +170,32 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSButtons = true;
             }
-            sfe.crc = ECU_Manager.Check3Int("CRC", values[16], false);
+            if (values[16].Equals("0"))
+            {
+                sfe.GPSSpeedUp = false;
+            }
+            else
+            {
+                sfe.GPSSpeedUp = true;
+            }
+            if (values[17].Equals("0"))
+            {
+                sfe.GPSSpeedSafety = false;
+            }
+            else
+            {
+                sfe.GPSSpeedSafety = true;
+            }
+            if (values[18].Equals("0"))
+            {
+                sfe.AirFaultBeep = false;
+            }
+            else
+            {
+                sfe.AirFaultBeep = true;
+            }
+            sfe.AirFaultBeepTimeLimit = ECU_Manager.Check1Int("Air Fault Beep Time Limit", values[19], false);
+            sfe.crc = ECU_Manager.Check3Int("CRC", values[20], false);
 
             return sfe;
         }

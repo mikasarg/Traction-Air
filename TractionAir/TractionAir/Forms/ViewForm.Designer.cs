@@ -1183,10 +1183,6 @@
             this.Text = "View";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ViewForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).EndInit();

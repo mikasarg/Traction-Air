@@ -156,9 +156,13 @@ namespace TractionAir.Forms
             int stepUpDelay = ECU_Manager.Check1Int("Step Up Delay", stepUpDelayTextbox.Text, false);
             bool maxTractionBeep = beepCheckBox.Checked;
             bool enableGPSButtons = gpsButtonCheckBox.Checked;
+            bool gpsSpeedUp = gpsSpeedUpCheckBox.Checked;
+            bool gpsSpeedSafety = gpsSpeedSafetyCheckBox.Checked;
+            bool airFaultBeep = airFaultBeepCheckBox.Checked;
+            int airFaultBeepTimeLimit = ECU_Manager.Check1Int("Air Fault Beep Time Limit", airFaultBeepTimeLimitTextbox.Text, false);
             string output = readWriteHelper.generateOutput(boardCode, speedControl, loadedOffRoad, 
                 notLoaded, unloadedOffRoad, maxTraction, psiLoadedOnRoad, psiLoadedOffRoad, psiNotLoaded, psiUnloadedOffRoad, 
-                psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons);
+                psiMaxTraction, stepUpDelay, maxTractionBeep, enableGPSButtons, gpsSpeedUp, gpsSpeedSafety, airFaultBeep, airFaultBeepTimeLimit);
             int CRC = 000;
             if(Int32.TryParse(output.Substring(output.Length - 4, 3), out CRC))
             {
@@ -172,11 +176,12 @@ namespace TractionAir.Forms
             {
                 SerialManager.WriteLine(output);
                 settingsFromECU settings = readWriteHelper.readInput(SerialManager.ReadLine());
-                if (settings.boardCode == boardCode && settings.speedControl.Equals(speedControl) && settings.loadedOffRoad == loadedOffRoad 
+                if (settings.boardCode == boardCode && settings.speedControl.Equals(speedControl) && settings.loadedOffRoad == loadedOffRoad
                     && settings.notLoaded == notLoaded && settings.maxTraction == maxTraction && settings.psiLoadedOnRoad == psiLoadedOnRoad && settings.psiLoadedOffRoad == psiLoadedOffRoad
-                    && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay 
-                    && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons 
-                    && settings.unloadedOffRoad == unloadedOffRoad && settings.crc == CRC)
+                    && settings.psiNotLoaded == psiNotLoaded && settings.psiMaxTraction == psiMaxTraction && settings.stepUpDelay == stepUpDelay
+                    && settings.maxTractionBeep == maxTractionBeep && settings.enableGPSButtons == enableGPSButtons
+                    && settings.unloadedOffRoad == unloadedOffRoad && settings.GPSSpeedUp == gpsSpeedUp && settings.GPSSpeedSafety == gpsSpeedSafety
+                    && settings.AirFaultBeep == airFaultBeep && settings.AirFaultBeepTimeLimit == airFaultBeepTimeLimit && settings.crc == CRC)
                 {
                     MessageBox.Show("Data successfully written to ECU", "Download Complete");
                 }
