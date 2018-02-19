@@ -589,7 +589,7 @@
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.ReadOnly = true;
             this.notesRichTextbox.Size = new System.Drawing.Size(577, 116);
-            this.notesRichTextbox.TabIndex = 36;
+            this.notesRichTextbox.TabIndex = 39;
             this.notesRichTextbox.Text = "";
             // 
             // label9
@@ -966,7 +966,7 @@
             this.gpsSpeedUpCheckBox.Location = new System.Drawing.Point(442, 412);
             this.gpsSpeedUpCheckBox.Name = "gpsSpeedUpCheckBox";
             this.gpsSpeedUpCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsSpeedUpCheckBox.TabIndex = 370;
+            this.gpsSpeedUpCheckBox.TabIndex = 37;
             this.gpsSpeedUpCheckBox.UseVisualStyleBackColor = true;
             // 
             // label48
@@ -993,7 +993,7 @@
             this.airFaultBeepTimeLimitTextbox.Name = "airFaultBeepTimeLimitTextbox";
             this.airFaultBeepTimeLimitTextbox.ReadOnly = true;
             this.airFaultBeepTimeLimitTextbox.Size = new System.Drawing.Size(38, 20);
-            this.airFaultBeepTimeLimitTextbox.TabIndex = 367;
+            this.airFaultBeepTimeLimitTextbox.TabIndex = 34;
             this.airFaultBeepTimeLimitTextbox.Text = "0";
             // 
             // label47
@@ -1012,7 +1012,7 @@
             this.gpsSpeedSafetyCheckBox.Location = new System.Drawing.Point(566, 413);
             this.gpsSpeedSafetyCheckBox.Name = "gpsSpeedSafetyCheckBox";
             this.gpsSpeedSafetyCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsSpeedSafetyCheckBox.TabIndex = 365;
+            this.gpsSpeedSafetyCheckBox.TabIndex = 38;
             this.gpsSpeedSafetyCheckBox.UseVisualStyleBackColor = true;
             // 
             // label27
@@ -1031,7 +1031,7 @@
             this.airFaultBeepCheckBox.Location = new System.Drawing.Point(442, 354);
             this.airFaultBeepCheckBox.Name = "airFaultBeepCheckBox";
             this.airFaultBeepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.airFaultBeepCheckBox.TabIndex = 363;
+            this.airFaultBeepCheckBox.TabIndex = 33;
             this.airFaultBeepCheckBox.UseVisualStyleBackColor = true;
             // 
             // label26
@@ -1050,7 +1050,7 @@
             this.gpsButtonCheckBox.Location = new System.Drawing.Point(566, 394);
             this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
             this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsButtonCheckBox.TabIndex = 360;
+            this.gpsButtonCheckBox.TabIndex = 36;
             this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
             // 
             // beepCheckBox
@@ -1060,7 +1060,7 @@
             this.beepCheckBox.Location = new System.Drawing.Point(442, 394);
             this.beepCheckBox.Name = "beepCheckBox";
             this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.beepCheckBox.TabIndex = 359;
+            this.beepCheckBox.TabIndex = 35;
             this.beepCheckBox.UseVisualStyleBackColor = true;
             // 
             // label24
@@ -1183,6 +1183,10 @@
             this.Text = "View";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ViewForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.eCUdataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sampleDBDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ecuSettingsDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSettingsTableBindingSource1)).EndInit();

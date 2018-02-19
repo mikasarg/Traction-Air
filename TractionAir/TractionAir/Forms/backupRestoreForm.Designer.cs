@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(backupRestoreForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.backupLocationTextbox = new System.Windows.Forms.TextBox();
-            this.browseButton = new System.Windows.Forms.Button();
             this.backupButton = new System.Windows.Forms.Button();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.backupLocationTextbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.restoreButton = new System.Windows.Forms.Button();
             this.browseButton2 = new System.Windows.Forms.Button();
@@ -56,21 +56,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Backup Database";
             // 
-            // label1
+            // backupButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Location";
-            // 
-            // backupLocationTextbox
-            // 
-            this.backupLocationTextbox.Location = new System.Drawing.Point(93, 31);
-            this.backupLocationTextbox.Name = "backupLocationTextbox";
-            this.backupLocationTextbox.Size = new System.Drawing.Size(324, 20);
-            this.backupLocationTextbox.TabIndex = 1;
+            this.backupButton.Enabled = false;
+            this.backupButton.Location = new System.Drawing.Point(438, 57);
+            this.backupButton.Name = "backupButton";
+            this.backupButton.Size = new System.Drawing.Size(75, 23);
+            this.backupButton.TabIndex = 3;
+            this.backupButton.Text = "Backup";
+            this.backupButton.UseVisualStyleBackColor = true;
+            this.backupButton.Click += new System.EventHandler(this.backupButton_Click);
             // 
             // browseButton
             // 
@@ -82,16 +77,21 @@
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
-            // backupButton
+            // backupLocationTextbox
             // 
-            this.backupButton.Enabled = false;
-            this.backupButton.Location = new System.Drawing.Point(438, 57);
-            this.backupButton.Name = "backupButton";
-            this.backupButton.Size = new System.Drawing.Size(75, 23);
-            this.backupButton.TabIndex = 3;
-            this.backupButton.Text = "Backup";
-            this.backupButton.UseVisualStyleBackColor = true;
-            this.backupButton.Click += new System.EventHandler(this.backupButton_Click);
+            this.backupLocationTextbox.Location = new System.Drawing.Point(93, 31);
+            this.backupLocationTextbox.Name = "backupLocationTextbox";
+            this.backupLocationTextbox.Size = new System.Drawing.Size(324, 20);
+            this.backupLocationTextbox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Location";
             // 
             // groupBox2
             // 
@@ -147,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 264);
+            this.ClientSize = new System.Drawing.Size(578, 232);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -321,7 +321,7 @@
             this.gpsButtonCheckBox.Location = new System.Drawing.Point(571, 397);
             this.gpsButtonCheckBox.Name = "gpsButtonCheckBox";
             this.gpsButtonCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsButtonCheckBox.TabIndex = 34;
+            this.gpsButtonCheckBox.TabIndex = 36;
             this.gpsButtonCheckBox.UseVisualStyleBackColor = true;
             // 
             // beepCheckBox
@@ -330,7 +330,7 @@
             this.beepCheckBox.Location = new System.Drawing.Point(447, 397);
             this.beepCheckBox.Name = "beepCheckBox";
             this.beepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.beepCheckBox.TabIndex = 33;
+            this.beepCheckBox.TabIndex = 35;
             this.beepCheckBox.UseVisualStyleBackColor = true;
             // 
             // label24
@@ -512,7 +512,7 @@
             this.notesRichTextbox.Location = new System.Drawing.Point(17, 445);
             this.notesRichTextbox.Name = "notesRichTextbox";
             this.notesRichTextbox.Size = new System.Drawing.Size(581, 116);
-            this.notesRichTextbox.TabIndex = 36;
+            this.notesRichTextbox.TabIndex = 39;
             this.notesRichTextbox.Text = "";
             // 
             // label9
@@ -649,7 +649,7 @@
             this.cancelButton.Location = new System.Drawing.Point(310, 576);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 38;
+            this.cancelButton.TabIndex = 41;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -659,7 +659,7 @@
             this.saveButton.Location = new System.Drawing.Point(221, 576);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 37;
+            this.saveButton.TabIndex = 40;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -950,7 +950,7 @@
             this.airFaultBeepCheckBox.Location = new System.Drawing.Point(447, 357);
             this.airFaultBeepCheckBox.Name = "airFaultBeepCheckBox";
             this.airFaultBeepCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.airFaultBeepCheckBox.TabIndex = 348;
+            this.airFaultBeepCheckBox.TabIndex = 33;
             this.airFaultBeepCheckBox.UseVisualStyleBackColor = true;
             // 
             // label26
@@ -968,7 +968,7 @@
             this.gpsSpeedSafetyCheckBox.Location = new System.Drawing.Point(571, 416);
             this.gpsSpeedSafetyCheckBox.Name = "gpsSpeedSafetyCheckBox";
             this.gpsSpeedSafetyCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsSpeedSafetyCheckBox.TabIndex = 350;
+            this.gpsSpeedSafetyCheckBox.TabIndex = 38;
             this.gpsSpeedSafetyCheckBox.UseVisualStyleBackColor = true;
             // 
             // label27
@@ -994,7 +994,7 @@
             this.airFaultBeepTimeLimitTextbox.Location = new System.Drawing.Point(447, 373);
             this.airFaultBeepTimeLimitTextbox.Name = "airFaultBeepTimeLimitTextbox";
             this.airFaultBeepTimeLimitTextbox.Size = new System.Drawing.Size(38, 20);
-            this.airFaultBeepTimeLimitTextbox.TabIndex = 352;
+            this.airFaultBeepTimeLimitTextbox.TabIndex = 34;
             this.airFaultBeepTimeLimitTextbox.Text = "0";
             // 
             // label47
@@ -1014,7 +1014,7 @@
             this.gpsSpeedUpCheckBox.Location = new System.Drawing.Point(447, 415);
             this.gpsSpeedUpCheckBox.Name = "gpsSpeedUpCheckBox";
             this.gpsSpeedUpCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.gpsSpeedUpCheckBox.TabIndex = 357;
+            this.gpsSpeedUpCheckBox.TabIndex = 37;
             this.gpsSpeedUpCheckBox.UseVisualStyleBackColor = true;
             // 
             // label48

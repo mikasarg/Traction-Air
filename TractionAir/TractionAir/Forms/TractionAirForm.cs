@@ -304,6 +304,7 @@ namespace TractionAir
         {
             backupRestoreForm backupRestore = new backupRestoreForm();
             backupRestore.ShowDialog();
+            refreshTable();
         }
         #endregion
 
