@@ -36,7 +36,7 @@ namespace TractionAir.Forms
         private void addButton_Click(object sender, EventArgs e)
         {
             //Check for duplicates
-            string version = "V" + numericUpDown1.Value.ToString("0.0");
+            string version = "V" + numericUpDown1.Value.ToString("0.00");
             try
             {
                 ECU_Manager.CheckDuplicateProgVersion(version);

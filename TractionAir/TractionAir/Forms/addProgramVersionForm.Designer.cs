@@ -58,26 +58,26 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.DecimalPlaces = 1;
+            this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(78, 12);
+            131072});
+            this.numericUpDown1.Location = new System.Drawing.Point(75, 12);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            99,
+            999,
             0,
             0,
-            65536});
+            131072});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 14);
+            this.label1.Location = new System.Drawing.Point(61, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 3;

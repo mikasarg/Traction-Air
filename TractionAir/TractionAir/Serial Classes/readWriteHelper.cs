@@ -141,8 +141,8 @@ namespace TractionAir.Serial_Classes
             List<string> values = input.Split(',').ToList();
 
             sfe.boardCode = ECU_Manager.Check6Int("Board Code", values[0], false);
-            sfe.boardVersion = ECU_Manager.CheckString("Board Version", values[1], false);
-            sfe.version = ECU_Manager.CheckString("Code Version", values[2], false);
+            sfe.boardVersion = CheckVersion("Board Version", values[1], false);
+            sfe.version = CheckVersion("Code Version", values[2], false);
             sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[3]);
             sfe.loadedOffRoad = ECU_Manager.Check3Int("Loaded Off Road", values[4], false);
             sfe.notLoaded = ECU_Manager.Check3Int("Unloaded On Road", values[5], false);
@@ -267,6 +267,29 @@ namespace TractionAir.Serial_Classes
                 input >>= 1;
             }
             return CRC;
+        }
+
+        /// <summary>
+        /// Checks that the version is valid and returns it
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static string CheckVersion(string name, string s, bool allowNull)
+        {
+            if ((s == null || s.Equals("")) && !allowNull)
+            {
+                throw new InvalidOperationException(name + ": A required input is null");
+            }
+            if ((s == null || s.Equals("")) && allowNull)
+            {
+                return "";
+            }
+            if (s.Length != 3)
+            {
+                throw new InvalidOperationException(name + ": Input '" + s + "' should be 3 characters long!");
+            }
+            string output = s.Substring(0, 1) + "." + s.Substring(1, 2); //adds the decimal place in the version
+            return output;
         }
     }
 }
