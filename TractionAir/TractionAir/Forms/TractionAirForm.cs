@@ -23,8 +23,6 @@ namespace TractionAir
     public partial class TractionAirForm : Form
     {
         //TODO make the progress bar work
-        //TODO all menu functions
-        //TODO retrieve and send data via USB
         //TODO connect to and edit the real database (online or offline)
         //TODO disable copy if newer?
         private splashForm splash;
@@ -302,7 +300,7 @@ namespace TractionAir
         /// <param name="e"></param>
         private void backupRestoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            backupRestoreForm backupRestore = new backupRestoreForm();
+            backupRestoreForm backupRestore = new backupRestoreForm(toolStripProgressBar1);
             backupRestore.ShowDialog();
             refreshTable();
         }

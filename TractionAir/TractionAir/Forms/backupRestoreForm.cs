@@ -14,9 +14,11 @@ namespace TractionAir.Forms
     public partial class backupRestoreForm : Form
     {
         SqlConnection con = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS"));
+        ToolStripProgressBar progressBar;
 
-        public backupRestoreForm()
+        public backupRestoreForm(ToolStripProgressBar progressBar)
         {
+            this.progressBar = progressBar;
             InitializeComponent();
         }
 
@@ -32,7 +34,7 @@ namespace TractionAir.Forms
 
         private void backupButton_Click(object sender, EventArgs e)
         {
-
+            progressBar.Value = 0;
             try
             {
                 if (backupLocationTextbox.Text == string.Empty)
@@ -41,6 +43,7 @@ namespace TractionAir.Forms
                 }
                 else
                 {
+                    progressBar.Value = 10;
                     if (con.State != ConnectionState.Open)
                     {
                         con.Open();
@@ -50,9 +53,10 @@ namespace TractionAir.Forms
 
                     using(SqlCommand command = new SqlCommand(cmd, con))
                     {
-
+                        progressBar.Value = 20;
                         command.ExecuteNonQuery();
                         con.Close();
+                        progressBar.Value = 100;
                         MessageBox.Show("Database backup completed successfully");
                         backupButton.Enabled = false;
                     }
@@ -62,6 +66,7 @@ namespace TractionAir.Forms
             {
                 MessageBox.Show(ex.ToString(), "Error");
             }
+            progressBar.Value = 0;
         }
 
         private void browseButton2_Click(object sender, EventArgs e)
@@ -78,26 +83,32 @@ namespace TractionAir.Forms
 
         private void restoreButton_Click(object sender, EventArgs e)
         {
+            progressBar.Value = 0;
             try
             {
+                progressBar.Value = 10;
                 if (con.State != ConnectionState.Open)
                 {
                     con.Open();
                 }
                 string database = con.Database.ToString();
 
+                progressBar.Value = 30;
                 string sqlStmt2 = string.Format("ALTER DATABASE [" + database + "] SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
                 SqlCommand bu2 = new SqlCommand(sqlStmt2, con);
                 bu2.ExecuteNonQuery();
 
+                progressBar.Value = 50;
                 string sqlStmt3 = "USE MASTER RESTORE DATABASE [" + database + "] FROM DISK='" + restoreLocationTextbox.Text + "'WITH REPLACE;";
                 SqlCommand bu3 = new SqlCommand(sqlStmt3, con);
                 bu3.ExecuteNonQuery();
 
+                progressBar.Value = 70;
                 string sqlStmt4 = string.Format("ALTER DATABASE [" + database + "] SET MULTI_USER");
                 SqlCommand bu4 = new SqlCommand(sqlStmt4, con);
                 bu4.ExecuteNonQuery();
 
+                progressBar.Value = 100;
                 MessageBox.Show("Database restoration completed successfully");
                 con.Close();
             }
@@ -105,6 +116,7 @@ namespace TractionAir.Forms
             {
                 MessageBox.Show(ex.ToString(), "Error");
             }
+            progressBar.Value = 0;
         }
     }
 }
