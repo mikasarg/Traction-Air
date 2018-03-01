@@ -70,18 +70,7 @@ namespace TractionAir.Serial_Classes
 
             output = appendValue(output, string.Format("{0:000}", psiMaxTraction));
 
-            output = appendValue(output, string.Format("{0:0}", stepUpDelay));
-
-            if (maxTractionBeep)
-            {
-                output = appendValue(output, "1");
-            }
-            else
-            {
-                output = appendValue(output, "0");
-            }
-
-            if (enableGPSButtons)
+            if(enableGPSButtons)
             {
                 output = appendValue(output, "1");
             }
@@ -108,6 +97,16 @@ namespace TractionAir.Serial_Classes
                 output = appendValue(output, "0");
             }
 
+            output = appendValue(output, string.Format("{0:0}", stepUpDelay));
+
+            if (maxTractionBeep)
+            {
+                output = appendValue(output, "1");
+            }
+            else
+            {
+                output = appendValue(output, "0");
+            }
             if (airFaultBeep)
             {
                 output = appendValue(output, "1");
@@ -140,7 +139,7 @@ namespace TractionAir.Serial_Classes
             settingsFromECU sfe = new settingsFromECU();
             List<string> values = input.Split(',').ToList();
 
-            sfe.boardCode = ECU_Manager.Check6Int("Board Code", values[0], false);
+            sfe.boardCode = ECU_Manager.Check5Int("Board Code", values[0], false);
             sfe.boardVersion = CheckVersion("Board Version", values[1], false);
             sfe.version = CheckVersion("Code Version", values[2], false);
             sfe.speedControl = ECU_Manager.CodeToSpeedControl(values[3]);
@@ -153,16 +152,7 @@ namespace TractionAir.Serial_Classes
             sfe.psiNotLoaded = ECU_Manager.Check3Int("Unloaded On Road Pressure", values[10], false);
             sfe.psiUnloadedOffRoad = ECU_Manager.Check3Int("Unloaded Off Road Pressure", values[11], false);
             sfe.psiMaxTraction = ECU_Manager.Check3Int("Max Traction Pressure", values[12], false);
-            sfe.stepUpDelay = ECU_Manager.Check1Int("Step Up Delay", values[13], false);
-            if (values[14].Equals("0"))
-            {
-                sfe.maxTractionBeep = false;
-            }
-            else
-            {
-                sfe.maxTractionBeep = true;
-            }
-            if (values[15].Equals("0"))
+            if (values[13].Equals("0"))
             {
                 sfe.enableGPSButtons = false;
             }
@@ -170,7 +160,7 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.enableGPSButtons = true;
             }
-            if (values[16].Equals("0"))
+            if (values[14].Equals("0"))
             {
                 sfe.GPSSpeedUp = false;
             }
@@ -178,13 +168,22 @@ namespace TractionAir.Serial_Classes
             {
                 sfe.GPSSpeedUp = true;
             }
-            if (values[17].Equals("0"))
+            if (values[15].Equals("0"))
             {
                 sfe.GPSSpeedSafety = false;
             }
             else
             {
                 sfe.GPSSpeedSafety = true;
+            }
+            sfe.stepUpDelay = ECU_Manager.Check1Int("Step Up Delay", values[16], false);
+            if (values[17].Equals("0"))
+            {
+                sfe.maxTractionBeep = false;
+            }
+            else
+            {
+                sfe.maxTractionBeep = true;
             }
             if (values[18].Equals("0"))
             {
@@ -195,7 +194,7 @@ namespace TractionAir.Serial_Classes
                 sfe.AirFaultBeep = true;
             }
             sfe.AirFaultBeepTimeLimit = ECU_Manager.Check1Int("Air Fault Beep Time Limit", values[19], false);
-            sfe.crc = ECU_Manager.Check3Int("CRC", values[20], false);
+            sfe.crc = ECU_Manager.Check3Int("CRC", values[20].Substring(0,3), false); //gets first 3 characters of final entry - separates CRC from carraige return
 
             return sfe;
         }
@@ -228,7 +227,7 @@ namespace TractionAir.Serial_Classes
                 }
                 output += c;
             }
-            return output + string.Format("{0:000}", CRC) + ","; //carraige return is added automatically by writeline?
+            return output + string.Format("{0:000}", CRC); //carraige return is added automatically by writeline?
         }
         
         /// <summary>

@@ -597,7 +597,7 @@ namespace TractionAir
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static int Check6Int(string name, string s, bool allowNull)
+        public static int Check5Int(string name, string s, bool allowNull)
         {
             if (s == null && !allowNull)
             {
@@ -608,9 +608,9 @@ namespace TractionAir
             {
                 throw new InvalidOperationException(name + ": Input '" + s + "' is not an integer");
             }
-            if (i < 0 || i > 1000000)
+            if (i < 0 || i > 65535)
             {
-                throw new InvalidOperationException(name + ": Input '" + i + "' must be up to 6 digits");
+                throw new InvalidOperationException(name + ": Input '" + i + "' must be up to 5 digits");
             }
             return i;
         }

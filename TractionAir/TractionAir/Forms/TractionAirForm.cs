@@ -378,9 +378,9 @@ namespace TractionAir
         private USBClass USBPort;
         private List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
 
-        private const string ECU_VID = "0403";
-        private const string ECU_PID = "6015";
-        private const string ECU_DEVID = "vid_0403&pid_6015";
+        private const string ECU_VID = "04D8";
+        private const string ECU_PID = "000A";
+        private const string ECU_DEVID = "vid_04D8&pid_000A";
 
         /// <summary>
         /// Overrides the windows proc method (for interacting with USB devices)

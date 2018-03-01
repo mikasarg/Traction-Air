@@ -66,7 +66,7 @@ namespace TractionAir
 
             try
             {
-                int boardCode = ECU_Manager.Check6Int("Board Code", boardNumberTextbox.Text, false);
+                int boardCode = ECU_Manager.Check5Int("Board Code", boardNumberTextbox.Text, false);
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     //TEST TO SEE IF BOARD ALREADY EXISTS

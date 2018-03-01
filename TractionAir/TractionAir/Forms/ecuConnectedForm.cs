@@ -128,7 +128,7 @@ namespace TractionAir.Forms
 
         private void saveECU()
         {
-            int boardCode = ECU_Manager.Check6Int("Board Code", boardNumberTextbox.Text, false);
+            int boardCode = ECU_Manager.Check5Int("Board Code", boardNumberTextbox.Text, false);
             if (boardCode == DEFAULT_BC) //If user hasn't updated the board code from the default (for a new board)
             {
                 throw new InvalidOperationException("Must enter a new board code - default board code '" + DEFAULT_BC + "' is invalid");
@@ -222,7 +222,7 @@ namespace TractionAir.Forms
 
             try
             {
-                int boardCode = ECU_Manager.Check6Int("Board Code", boardNumberTextbox.Text, false);
+                int boardCode = ECU_Manager.Check5Int("Board Code", boardNumberTextbox.Text, false);
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command1 = new SqlCommand(update1, connection);
@@ -402,7 +402,7 @@ namespace TractionAir.Forms
 
             try
             {
-                int boardCode = ECU_Manager.Check6Int("Board Code", boardNumberTextbox.Text, false);
+                int boardCode = ECU_Manager.Check5Int("Board Code", boardNumberTextbox.Text, false);
                 using (SqlConnection connection = new SqlConnection(ECU_Manager.connection("ecuSettingsDB_CS")))
                 {
                     SqlCommand command1 = new SqlCommand(insert1, connection);
