@@ -54,8 +54,15 @@ namespace TractionAir
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TractionAirForm_Load(object sender, EventArgs e)
-        { 
-            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+        {
+            try
+            {
+                this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Database Not Found Error");
+            }
 
             int selectedCellCount = mainSettingsTableDataGridView.GetCellCount(DataGridViewElementStates.Selected);
             if (selectedCellCount > 0)
