@@ -51,8 +51,7 @@ namespace TractionAir.Serial_Classes
 
         public static void Initialize()
         {
-            //TODO ??
-            statusText = "ECU Connected on " + Properties.Settings.Default.ConnectionPort;
+
         }
 
         public static void StartDownload()
@@ -181,7 +180,7 @@ namespace TractionAir.Serial_Classes
 
             if (CurrentAvailableSerialPorts.Contains(Properties.Settings.Default.ConnectionPort))
             {
-                Properties.Settings.Default.EcuConnected = true;
+                //Properties.Settings.Default.EcuConnected = true;
             }
             else
             {

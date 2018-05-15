@@ -386,8 +386,8 @@ namespace TractionAir
         private List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
 
         private const string ECU_VID = "04D8";
-        private const string ECU_PID = "000A";
-        private const string ECU_DEVID = "vid_04D8&pid_000A";
+        private const string ECU_PID = "EECD";
+        private const string ECU_DEVID = "vid_04d8&pid_eecd";
 
         /// <summary>
         /// Overrides the windows proc method (for interacting with USB devices)
@@ -413,7 +413,6 @@ namespace TractionAir
 
             //Check if ECU is already connected
             if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
-            //TODO if (true)
             {
                 //ECU is connected
                 Properties.Settings.Default.EcuConnected = true;
