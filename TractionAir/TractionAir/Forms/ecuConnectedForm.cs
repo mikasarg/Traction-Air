@@ -31,13 +31,18 @@ namespace TractionAir.Forms
         /// <param name="e"></param>
         private void ecuConnectedForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.boardVersionTable' table. You can move, or remove it, as needed.
-            this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
-            this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
-            this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
-            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
+            try { 
+                this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
+                this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
+                this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
+                this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+                this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
+                this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
             while (true)
             {
                 try
@@ -250,7 +255,7 @@ namespace TractionAir.Forms
                     command1.Parameters["@notes"].Value = ECU_Manager.CheckLongString("Notes", notesRichTextbox.Text, true);
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString("Serial Number", serialNumberTextbox.Text, false);
-                    command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
+                    command1.Parameters.Add("@pressureCell", SqlDbType.Int);
                     command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckBigInt("Pressure Cell", pressureCellTextbox.Text, false);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString("Pt1 Serial", pt1SerialTextbox.Text, false);
@@ -430,7 +435,7 @@ namespace TractionAir.Forms
                     command1.Parameters["@notes"].Value = ECU_Manager.CheckLongString("Notes", notesRichTextbox.Text, true);
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString("Serial Number", serialNumberTextbox.Text, false);
-                    command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
+                    command1.Parameters.Add("@pressureCell", SqlDbType.Int);
                     command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckBigInt("Pressure Cell", pressureCellTextbox.Text, false);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString("Pt1 Serial", pt1SerialTextbox.Text, false);
@@ -549,6 +554,7 @@ namespace TractionAir.Forms
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Error");
+                        return;
                     }
                 }
             }
@@ -565,7 +571,6 @@ namespace TractionAir.Forms
         /// </summary>
         private void loadValuesFromECU()
         {
-            //TODO test this somehow
             settingsFromECU settings;
             string input = "";
             try
@@ -598,7 +603,13 @@ namespace TractionAir.Forms
             boardNumberTextbox.Text = settings.boardCode.ToString();
 
             ECU_Manager.AddBoardVersionIfDoesntExist(settings.boardVersion); //Adds a new version to the table if the version doesn't already exist
-            boardVersionTableTableAdapter.Fill(ecuSettingsDatabaseDataSet.boardVersionTable); //Fills the table with the new data
+            try { 
+                boardVersionTableTableAdapter.Fill(ecuSettingsDatabaseDataSet.boardVersionTable); //Fills the table with the new data
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
             boardVersionComboBox.DataSource = boardVersionTableBindingSource; //Resets the datasource of the combobox
             boardVersionComboBox.Refresh(); //Refreshes the combobox so the new value will display
             boardVersionComboBox.SelectedIndex = boardVersionComboBox.FindStringExact("V" + settings.boardVersion); //Selects the new value

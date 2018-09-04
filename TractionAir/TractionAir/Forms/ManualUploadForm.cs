@@ -32,14 +32,20 @@ namespace TractionAir
         /// <param name="e"></param>
         private void ChangeForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ecuSettingsDatabaseDataSet.boardVersionTable' table. You can move, or remove it, as needed.
-            this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
-            this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
-            this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
-            this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
-            this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
-            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
-            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+            try
+            {
+                this.boardVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.boardVersionTable);
+                this.speedControlTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.speedControlTable);
+                this.programVersionTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.programVersionTable);
+                this.countryCodeTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.countryCodeTable);
+                this.customerTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.customerTable);
+                this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+                this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
         }
 
         /// <summary>
@@ -97,7 +103,7 @@ namespace TractionAir
                     command1.Parameters["@notes"].Value = ECU_Manager.CheckLongString("Notes", notesRichTextbox.Text, true);
                     command1.Parameters.Add("@serialNumber", SqlDbType.NVarChar);
                     command1.Parameters["@serialNumber"].Value = ECU_Manager.CheckString("Serial Number", serialNumberTextbox.Text, false);
-                    command1.Parameters.Add("@pressureCell", SqlDbType.SmallInt);
+                    command1.Parameters.Add("@pressureCell", SqlDbType.Int);
                     command1.Parameters["@pressureCell"].Value = ECU_Manager.CheckBigInt("Pressure Cell", pressureCellTextbox.Text, false);
                     command1.Parameters.Add("@pt1Serial", SqlDbType.NVarChar);
                     command1.Parameters["@pt1Serial"].Value = ECU_Manager.CheckString("Pt1 Serial", pt1SerialTextbox.Text, false);
@@ -216,6 +222,7 @@ namespace TractionAir
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Error");
+                        return;
                     }
                 }
             }

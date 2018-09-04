@@ -25,7 +25,7 @@ namespace TractionAir.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.1")]
         public string TractionAirDesktopVersion {
             get {
                 return ((string)(this["TractionAirDesktopVersion"]));

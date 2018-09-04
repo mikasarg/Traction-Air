@@ -61,6 +61,7 @@ namespace TractionAir.Forms
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Error");
+                        return;
                     }
                 }
             }
@@ -88,7 +89,13 @@ namespace TractionAir.Forms
 
         private void changePressureGroupForm_Load(object sender, EventArgs e)
         {
-            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            try { 
+                this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
             try
             {
                 PressureGroupObject pressureGroup = ECU_Manager.getPGByID(id); //Obtains a pressureGroupObject

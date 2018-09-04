@@ -23,7 +23,6 @@ namespace TractionAir
     public partial class TractionAirForm : Form
     {
         //TODO make the progress bar work
-        //TODO connect to and edit the real database (online or offline)
         //TODO disable copy if newer?
         private splashForm splash;
 
@@ -93,8 +92,15 @@ namespace TractionAir
         /// </summary>
         private void refreshTable()
         {
-            this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
-            mainSettingsTableDataGridView.Update();
+            try
+            {
+                this.mainSettingsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.mainSettingsTable);
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
+    mainSettingsTableDataGridView.Update();
             mainSettingsTableDataGridView.Refresh();
             ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
         }

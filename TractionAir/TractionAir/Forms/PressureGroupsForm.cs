@@ -33,7 +33,13 @@ namespace TractionAir
         /// <param name="e"></param>
         private void PressureGroupsForm_Load(object sender, EventArgs e)
         {
-            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            try { 
+                this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
         }
 
         /// <summary>
@@ -128,7 +134,13 @@ namespace TractionAir
         /// </summary>
         private void refreshTable()
         {
-            this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            try { 
+                this.pressureGroupsTableTableAdapter.Fill(this.ecuSettingsDatabaseDataSet.pressureGroupsTable);
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
+            }
             pressureGroupsTableDataGridView.Update();
             pressureGroupsTableDataGridView.Refresh();
         }
