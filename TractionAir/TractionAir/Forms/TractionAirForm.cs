@@ -100,7 +100,7 @@ namespace TractionAir
             {
                 MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
             }
-    mainSettingsTableDataGridView.Update();
+            mainSettingsTableDataGridView.Update();
             mainSettingsTableDataGridView.Refresh();
             ecuCountLabel.Text = "ECU Count: " + mainSettingsTableDataGridView.RowCount;
         }
@@ -151,6 +151,17 @@ namespace TractionAir
                 onlineToolStripMenuItem.Checked = false;
                 onlineLabel.Text = "Offline Mode";
             }
+        }
+
+        /// <summary>
+        /// Turns debug mode on/off
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void debugModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            debugModeToolStripMenuItem.Checked = !debugModeToolStripMenuItem.Checked;
+            Properties.Settings.Default.debugMode = !Properties.Settings.Default.debugMode;
         }
 
         /// <summary>
@@ -417,8 +428,14 @@ namespace TractionAir
 
             USBPort.RegisterForDeviceChange(true, this.Handle);
 
+            CheckIfECUConnected();
+        }
+
+        private void CheckIfECUConnected()
+        {
             //Check if ECU is already connected
             if (USBClass.GetUSBDevice(ECU_DEVID, ref ListOfUSBDeviceProperties, false))
+            //if(true) //TODO REMOVE TESTING
             {
                 //ECU is connected
                 Properties.Settings.Default.EcuConnected = true;
@@ -521,7 +538,7 @@ namespace TractionAir
                 }
             }
             //TODO remove below line (for testing)
-            //return new List<string>() { "COM3" };
+            //return new List<string>() { "COM8" };
             return comports;
         }
         #endregion
@@ -539,6 +556,5 @@ namespace TractionAir
 
 
         #endregion
-
     }
 }

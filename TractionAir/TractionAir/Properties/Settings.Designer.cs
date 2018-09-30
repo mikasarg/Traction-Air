@@ -93,5 +93,17 @@ namespace TractionAir.Properties {
                 return ((string)(this["ecuSettingsDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool debugMode {
+            get {
+                return ((bool)(this["debugMode"]));
+            }
+            set {
+                this["debugMode"] = value;
+            }
+        }
     }
 }

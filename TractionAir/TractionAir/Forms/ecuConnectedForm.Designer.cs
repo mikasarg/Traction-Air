@@ -462,7 +462,7 @@
             this.boardNumberTextbox.ReadOnly = true;
             this.boardNumberTextbox.Size = new System.Drawing.Size(160, 20);
             this.boardNumberTextbox.TabIndex = 0;
-            this.boardNumberTextbox.Text = "1000";
+            this.boardNumberTextbox.Text = "00000";
             // 
             // descriptionTextbox
             // 

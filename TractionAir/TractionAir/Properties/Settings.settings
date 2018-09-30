@@ -25,5 +25,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Server=192.168.101.26,1433;Database=ECUSETTINGSDATABASE;User id=TRTair;Password=Tr4ct10n;</Value>
     </Setting>
+    <Setting Name="debugMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

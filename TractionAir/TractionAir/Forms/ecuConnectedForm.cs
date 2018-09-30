@@ -43,7 +43,7 @@ namespace TractionAir.Forms
             {
                 MessageBox.Show("An error occurred loading data into the database tables. Ensure you are connected to the database and try again. Error: " + sqlex.Message);
             }
-            while (true)
+            while (true) //loops if they wish to retry connecting
             {
                 try
                 {
@@ -575,24 +575,46 @@ namespace TractionAir.Forms
             string input = "";
             try
             {
+                if (Properties.Settings.Default.debugMode)
+                {
+                    MessageBox.Show("Attempting to write " + readWriteHelper.appendCRC("GET,"));
+                }
+                Console.WriteLine(readWriteHelper.appendCRC("GET,")); //todo remove these
                 SerialManager.WriteLine(readWriteHelper.appendCRC("GET,"));
+                if (Properties.Settings.Default.debugMode)
+                {
+                    MessageBox.Show("Successfully wrote, attempting to read now");
+                }
+                Console.WriteLine(readWriteHelper.appendCRC("GET,"));
+                Console.WriteLine("Trying to read");
                 input = SerialManager.ReadLine();
             }
             catch (System.IO.IOException ioex)
             {
-                throw new InvalidOperationException("Error when asking for data from ECU: " + ioex.Message);
+                ECU_Manager.ECU_SerialPort.DiscardInBuffer();
+                ECU_Manager.ECU_SerialPort.DiscardOutBuffer();
+                Console.WriteLine(ioex.Message + ioex.HelpLink + ioex.Source + ioex.StackTrace);
+                throw new InvalidOperationException("I/O Error when asking for data from ECU: " + ioex.Message + "\nDisconnect and reconnect the ECU, and try again");
             }
             catch (TimeoutException toex)
             {
-                throw new InvalidOperationException("Error when asking for data from ECU: " + toex.Message);
+                ECU_Manager.ECU_SerialPort.DiscardInBuffer();
+                ECU_Manager.ECU_SerialPort.DiscardOutBuffer();
+                Console.WriteLine(toex.Message + toex.HelpLink + toex.Source + toex.StackTrace);
+                throw new InvalidOperationException("Timeout Error when asking for data from ECU: " + toex.Message);
             }
             try
             {
+                if (Properties.Settings.Default.debugMode)
+                {
+                    MessageBox.Show("Successfully read, parsing input now");
+                }
+                Console.WriteLine("Reading from port successful, reading input now");
                 settings = readWriteHelper.readInput(input);
             }
             catch (InvalidOperationException ioex)
             {
-                throw new InvalidOperationException("Error when reading data from ECU: " + ioex.Message);
+                throw new InvalidOperationException("Error when parsing data from ECU: " + ioex.Message);
             }
             if (settings.boardCode == DEFAULT_BC)
             {

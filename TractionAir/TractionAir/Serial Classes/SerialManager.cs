@@ -227,6 +227,7 @@ namespace TractionAir.Serial_Classes
                 {
                     MessageBox.Show("An error occured during the download (was the ECU disconnected?): " + e.ToString(), "Error");
                 }
+                Console.WriteLine(incomingString);
                 //TODO SerialDataProcessor.AddData(incomingString);
 
                 //TODO Check that the data received starts as we would expect
@@ -426,20 +427,52 @@ namespace TractionAir.Serial_Classes
 
         public static void WriteLine(string line)
         {
+
             if (!ECU_Manager.ECU_SerialPort.IsOpen)
             {
-                OpenSerialPort();
+                Console.WriteLine("Serial port wasn't open, opening now"); //todo remove
+                int i = OpenSerialPort(); //todo take out of writeline
+                if (Properties.Settings.Default.debugMode)
+                {
+                    MessageBox.Show("Serialport opened with code " + i);
+                }
+                Console.WriteLine(i);
+                Console.WriteLine("Opened serial port"); //todo remove
             }
-            ECU_Manager.ECU_SerialPort.WriteLine(line);
+            if (Properties.Settings.Default.debugMode)
+            {
+                MessageBox.Show("Writing " + line + " now");
+            }
+            Console.WriteLine("Writing"); //todo remove
+            string foo = ECU_Manager.ECU_SerialPort.ReadExisting();
+            ECU_Manager.ECU_SerialPort.Write(line);
+            while (ECU_Manager.ECU_SerialPort.BytesToWrite > 0)
+            {
+                Thread.Sleep(2);
+            }
+            Thread.Sleep(2);
+            Console.WriteLine("Finished writing"); //todo remove
         }
 
         public static string ReadLine()
         {
             if (!ECU_Manager.ECU_SerialPort.IsOpen)
             {
-                OpenSerialPort();
+                Console.WriteLine("Wasn't open");
+                int i = OpenSerialPort();
+                if (Properties.Settings.Default.debugMode)
+                {
+                    MessageBox.Show("Serialport opened with code " + i);
+                }
+                Console.WriteLine("Opened");
             }
-            return ECU_Manager.ECU_SerialPort.ReadTo("\u000D");
+            if (Properties.Settings.Default.debugMode)
+            {
+                MessageBox.Show("Reading " + ECU_Manager.ECU_SerialPort.BytesToRead + " bytes now");
+            }
+            Console.WriteLine("Reading now");
+            Console.WriteLine(ECU_Manager.ECU_SerialPort.BytesToRead);
+            return ECU_Manager.ECU_SerialPort.ReadTo("\n");
         }
 
         public static int OpenSerialPort()

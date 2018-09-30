@@ -227,9 +227,13 @@ namespace TractionAir.Serial_Classes
                 }
                 output += c;
             }
-            return output + string.Format("{0:000}", CRC); //carraige return is added automatically by writeline?
+            if (output.Length > 10) //(LF) for data, (CR) for GET
+            {
+                return output + string.Format("{0:000}", CRC) + (char)10; //TODO still unsure if correct
+            }
+            return output + string.Format("{0:000}", CRC) + (char)13; //TODO still unsure if correct
         }
-        
+
         /// <summary>
         /// Checks that our calculated CRC matches the CRC in the input string
         /// </summary>
