@@ -538,7 +538,7 @@ namespace TractionAir
                 }
             }
             //TODO remove below line (for testing)
-            //return new List<string>() { "COM8" };
+            //return new List<string>() { "COM9" };
             return comports;
         }
         #endregion

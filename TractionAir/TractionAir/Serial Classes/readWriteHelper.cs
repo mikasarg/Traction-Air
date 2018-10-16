@@ -128,12 +128,10 @@ namespace TractionAir.Serial_Classes
         /// <returns></returns>
         public static settingsFromECU readInput(string input)
         {
-            if (!input.Substring(0, 6).Equals("000000")) //TODO REMOVE No point checking if CRCs match if this is a new board
+            Console.WriteLine(input);
+            if(!checkCRCsMatch(input))
             {
-                if (!checkCRCsMatch(input))
-                {
-                    throw new InvalidOperationException("CRCs did not match - could be caused by noise in the connection. Please try again.");
-                }
+                throw new InvalidOperationException("CRCs did not match - could be caused by noise in the connection. Please try again.");
             }
 
             settingsFromECU sfe = new settingsFromECU();
@@ -221,10 +219,10 @@ namespace TractionAir.Serial_Classes
             byte CRC = 000;
             foreach (char c in input.ToCharArray())
             {
-                if (c != ',')
-                {
+                //if (c != ',')
+                //{
                     CRC = calculateCRC(CRC, Convert.ToByte(c));
-                }
+                //}
                 output += c;
             }
             if (output.Length > 10) //(LF) for data, (CR) for GET
@@ -240,7 +238,10 @@ namespace TractionAir.Serial_Classes
         /// <returns></returns>
         public static bool checkCRCsMatch(string input)
         {
-            if (input.Equals(appendCRC(input.Substring(0, input.Length - 4)))){ //Manually appends the CRC and checks if the 2 strings match
+            Console.WriteLine(input.Substring(input.Length - 3, 3));
+            Console.WriteLine(appendCRC(input.Substring(0, input.Length - 3)).Substring(input.Length - 3, 3)); 
+            if (input.Substring(input.Length-3,3).Equals(appendCRC(input.Substring(0, input.Length - 3)).Substring(input.Length - 3, 3)))
+            { //Manually appends the CRC and checks if the 2 strings match
                 return true;
             }
             return false;

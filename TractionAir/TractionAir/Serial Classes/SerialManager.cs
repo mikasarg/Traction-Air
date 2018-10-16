@@ -38,7 +38,6 @@ namespace TractionAir.Serial_Classes
 
         static float timeSinceLastLineReceived = 0;
 
-
         public static void SetTimeout()
         {
             //TODO set timeout for ECU?
@@ -193,50 +192,52 @@ namespace TractionAir.Serial_Classes
 
         public static void HandleIncomingData(object sender, SerialDataReceivedEventArgs e)
         {
-            string incomingString = "";
+            //string input = ECU_Manager.ECU_SerialPort.ReadExisting();
+            Console.WriteLine("Data received!");
+
 
             //Handle responses to requests           
-            if (DownloadAllowed)
-            {
-                try
-                {
-                    incomingString = ReadLine();
+            //if (DownloadAllowed)
+            //{
+            //    try
+            //    {
+            //        incomingString = ReadLine();
 
-                    if (false) //TODO download cancelled by ECU
-                    {
-                        Event_DownloadStopped(null, EventArgs.Empty);
-                        MessageBox.Show("Download was cancelled by the ECU.");
-                    }
+            //        if (false) //TODO download cancelled by ECU
+            //        {
+            //            Event_DownloadStopped(null, EventArgs.Empty);
+            //            MessageBox.Show("Download was cancelled by the ECU.");
+            //        }
 
-                    linesReceived++;
-                    downloadStream += incomingString;
-                }
-                catch (InvalidOperationException invalidOpEx)
-                {
-                    MessageBox.Show("Download could not be completed (port is closed): " + invalidOpEx.Message, "Error" );
-                    StopDownload();
-                    return;
-                }
-                catch (TimeoutException timeoutEx)
-                {
-                    MessageBox.Show("Download timed out: " + timeoutEx.ToString(), "Error");
-                    StopDownload();
-                    return;
-                }
-                catch (IOException ioex)
-                {
-                    MessageBox.Show("An error occured during the download (was the ECU disconnected?): " + e.ToString(), "Error");
-                }
-                Console.WriteLine(incomingString);
-                //TODO SerialDataProcessor.AddData(incomingString);
+            //        linesReceived++;
+            //        downloadStream += incomingString;
+            //    }
+            //    catch (InvalidOperationException invalidOpEx)
+            //    {
+            //        MessageBox.Show("Download could not be completed (port is closed): " + invalidOpEx.Message, "Error" );
+            //        StopDownload();
+            //        return;
+            //    }
+            //    catch (TimeoutException timeoutEx)
+            //    {
+            //        MessageBox.Show("Download timed out: " + timeoutEx.ToString(), "Error");
+            //        StopDownload();
+            //        return;
+            //    }
+            //    catch (IOException ioex)
+            //    {
+            //        MessageBox.Show("An error occured during the download (was the ECU disconnected?): " + e.ToString(), "Error");
+            //    }
+            //    Console.WriteLine(incomingString);
+            //    //TODO SerialDataProcessor.AddData(incomingString);
 
-                //TODO Check that the data received starts as we would expect
-                
-                // Add download progress to status bar
+            //    //TODO Check that the data received starts as we would expect
 
-                //Alert download window that a line has been received
-                Event_DataLineReceived(null, EventArgs.Empty);
-            }
+            //    // Add download progress to status bar
+
+            //    //Alert download window that a line has been received
+            //    Event_DataLineReceived(null, EventArgs.Empty);
+            //}
         }
 
         public static void ProcessDownloadCompletion()
@@ -466,13 +467,14 @@ namespace TractionAir.Serial_Classes
                 }
                 Console.WriteLine("Opened");
             }
+            ECU_Manager.ECU_SerialPort.DtrEnable = true;
             if (Properties.Settings.Default.debugMode)
             {
                 MessageBox.Show("Reading " + ECU_Manager.ECU_SerialPort.BytesToRead + " bytes now");
             }
             Console.WriteLine("Reading now");
-            Console.WriteLine(ECU_Manager.ECU_SerialPort.BytesToRead);
-            return ECU_Manager.ECU_SerialPort.ReadTo("\n");
+            String lf = Convert.ToString((char)13);
+            return ECU_Manager.ECU_SerialPort.ReadTo(lf);
         }
 
         public static int OpenSerialPort()
